@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateFineTuningJobRequestModel : IEquatable<InternalCreateFineTuningJobRequestModel>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.FineTuning
             _value = value;
         }
 
-        internal static InternalCreateFineTuningJobRequestModel Babbage002 { get; } = new InternalCreateFineTuningJobRequestModel(Babbage002Value);
+        public static InternalCreateFineTuningJobRequestModel Babbage002 { get; } = new InternalCreateFineTuningJobRequestModel(Babbage002Value);
 
-        internal static InternalCreateFineTuningJobRequestModel Davinci002 { get; } = new InternalCreateFineTuningJobRequestModel(Davinci002Value);
+        public static InternalCreateFineTuningJobRequestModel Davinci002 { get; } = new InternalCreateFineTuningJobRequestModel(Davinci002Value);
 
-        internal static InternalCreateFineTuningJobRequestModel Gpt35Turbo { get; } = new InternalCreateFineTuningJobRequestModel(Gpt35TurboValue);
+        public static InternalCreateFineTuningJobRequestModel Gpt35Turbo { get; } = new InternalCreateFineTuningJobRequestModel(Gpt35TurboValue);
 
-        internal static InternalCreateFineTuningJobRequestModel Gpt4oMini { get; } = new InternalCreateFineTuningJobRequestModel(Gpt4oMiniValue);
+        public static InternalCreateFineTuningJobRequestModel Gpt4oMini { get; } = new InternalCreateFineTuningJobRequestModel(Gpt4oMiniValue);
 
         public static bool operator ==(InternalCreateFineTuningJobRequestModel left, InternalCreateFineTuningJobRequestModel right) => left.Equals(right);
 

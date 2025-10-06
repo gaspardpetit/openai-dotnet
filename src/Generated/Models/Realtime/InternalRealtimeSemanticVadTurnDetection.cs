@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeSemanticVadTurnDetection : TurnDetectionOptions
     {
         public InternalRealtimeSemanticVadTurnDetection() : this(TurnDetectionKind.SemanticVoiceActivityDetection, default, default, null, default)

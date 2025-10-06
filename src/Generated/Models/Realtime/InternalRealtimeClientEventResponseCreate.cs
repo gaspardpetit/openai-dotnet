@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeClientEventResponseCreate : InternalRealtimeClientEvent
     {
         public InternalRealtimeClientEventResponseCreate() : this(InternalRealtimeClientEventType.ResponseCreate, null, null, null)

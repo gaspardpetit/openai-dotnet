@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantMessageClientGetMessagesCollectionResult : CollectionResult
+    internal partial class InternalAssistantMessageClientGetMessagesCollectionResult : CollectionResult
     {
         private readonly InternalAssistantMessageClient _client;
         private readonly string _threadId;
@@ -20,7 +20,7 @@ namespace OpenAI.Assistants
         private readonly string _before;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantMessageClientGetMessagesCollectionResult(InternalAssistantMessageClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
+        public InternalAssistantMessageClientGetMessagesCollectionResult(InternalAssistantMessageClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
         {
             Argument.AssertNotNullOrEmpty(threadId, nameof(threadId));
 

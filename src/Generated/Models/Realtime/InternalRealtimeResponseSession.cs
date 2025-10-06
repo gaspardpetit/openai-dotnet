@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeResponseSession
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -58,7 +60,7 @@ namespace OpenAI.Realtime
 
         public string Model { get; }
 
-        internal IList<InternalRealtimeRequestSessionModality> Modalities { get; }
+        public IList<InternalRealtimeRequestSessionModality> Modalities { get; }
 
         public string Instructions { get; }
 

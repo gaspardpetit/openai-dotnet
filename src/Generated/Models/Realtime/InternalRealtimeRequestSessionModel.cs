@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeRequestSessionModel : IEquatable<InternalRealtimeRequestSessionModel>
     {
         private readonly string _value;
@@ -24,15 +26,15 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeRequestSessionModel Gpt4oRealtimePreview { get; } = new InternalRealtimeRequestSessionModel(Gpt4oRealtimePreviewValue);
+        public static InternalRealtimeRequestSessionModel Gpt4oRealtimePreview { get; } = new InternalRealtimeRequestSessionModel(Gpt4oRealtimePreviewValue);
 
-        internal static InternalRealtimeRequestSessionModel Gpt4oRealtimePreview20241001 { get; } = new InternalRealtimeRequestSessionModel(Gpt4oRealtimePreview20241001Value);
+        public static InternalRealtimeRequestSessionModel Gpt4oRealtimePreview20241001 { get; } = new InternalRealtimeRequestSessionModel(Gpt4oRealtimePreview20241001Value);
 
-        internal static InternalRealtimeRequestSessionModel Gpt4oRealtimePreview20241217 { get; } = new InternalRealtimeRequestSessionModel(Gpt4oRealtimePreview20241217Value);
+        public static InternalRealtimeRequestSessionModel Gpt4oRealtimePreview20241217 { get; } = new InternalRealtimeRequestSessionModel(Gpt4oRealtimePreview20241217Value);
 
-        internal static InternalRealtimeRequestSessionModel Gpt4oMiniRealtimePreview { get; } = new InternalRealtimeRequestSessionModel(Gpt4oMiniRealtimePreviewValue);
+        public static InternalRealtimeRequestSessionModel Gpt4oMiniRealtimePreview { get; } = new InternalRealtimeRequestSessionModel(Gpt4oMiniRealtimePreviewValue);
 
-        internal static InternalRealtimeRequestSessionModel Gpt4oMiniRealtimePreview20241217 { get; } = new InternalRealtimeRequestSessionModel(Gpt4oMiniRealtimePreview20241217Value);
+        public static InternalRealtimeRequestSessionModel Gpt4oMiniRealtimePreview20241217 { get; } = new InternalRealtimeRequestSessionModel(Gpt4oMiniRealtimePreview20241217Value);
 
         public static bool operator ==(InternalRealtimeRequestSessionModel left, InternalRealtimeRequestSessionModel right) => left.Equals(right);
 

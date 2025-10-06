@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRunOutputItemSample
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -43,17 +45,17 @@ namespace OpenAI.Evals
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal IList<InternalEvalRunOutputItemSampleInput> Input { get; }
+        public IList<InternalEvalRunOutputItemSampleInput> Input { get; }
 
-        internal IList<InternalEvalRunOutputItemSampleOutput> Output { get; }
+        public IList<InternalEvalRunOutputItemSampleOutput> Output { get; }
 
         public string FinishReason { get; }
 
         public string Model { get; }
 
-        internal InternalEvalRunOutputItemSampleUsage Usage { get; }
+        public InternalEvalRunOutputItemSampleUsage Usage { get; }
 
-        internal InternalEvalApiError Error { get; }
+        public InternalEvalApiError Error { get; }
 
         public float Temperature { get; }
 

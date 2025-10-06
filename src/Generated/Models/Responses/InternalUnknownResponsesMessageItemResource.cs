@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
-	public partial class InternalUnknownResponsesMessageItemResource : MessageResponseItem
+    [Experimental("OPENAI001")]
+    public partial class InternalUnknownResponsesMessageItemResource : MessageResponseItem
     {
         internal InternalUnknownResponsesMessageItemResource(InternalItemType kind, string id, IDictionary<string, BinaryData> additionalBinaryDataProperties, MessageStatus? status, InternalResponsesMessageRole internalRole) : base(kind != default ? kind : "unknown", id, additionalBinaryDataProperties, status, internalRole != default ? internalRole : "unknown")
         {

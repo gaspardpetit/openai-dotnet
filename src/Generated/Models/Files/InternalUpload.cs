@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUpload
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -46,7 +48,7 @@ namespace OpenAI.Files
 
         public string Purpose { get; }
 
-        internal InternalUploadStatus Status { get; }
+        public InternalUploadStatus Status { get; }
 
         public DateTimeOffset ExpiresAt { get; }
 

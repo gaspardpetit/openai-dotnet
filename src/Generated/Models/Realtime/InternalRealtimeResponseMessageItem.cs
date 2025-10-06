@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeResponseMessageItem : InternalRealtimeResponseItem
     {
         internal InternalRealtimeResponseMessageItem(string id, ConversationMessageRole role, IEnumerable<ConversationContentPart> content, ConversationItemStatus status) : base(InternalRealtimeItemType.Message, id)

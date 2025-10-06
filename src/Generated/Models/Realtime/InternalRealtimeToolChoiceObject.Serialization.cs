@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Realtime
 {
     [PersistableModelProxy(typeof(UnknownRealtimeToolChoiceObject))]
-    public abstract partial class InternalRealtimeToolChoiceObject : IJsonModel<InternalRealtimeToolChoiceObject>
+    public partial class InternalRealtimeToolChoiceObject : IJsonModel<InternalRealtimeToolChoiceObject>
     {
         internal InternalRealtimeToolChoiceObject()
         {

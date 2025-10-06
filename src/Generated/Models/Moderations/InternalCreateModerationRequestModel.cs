@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Moderations
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateModerationRequestModel : IEquatable<InternalCreateModerationRequestModel>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.Moderations
             _value = value;
         }
 
-        internal static InternalCreateModerationRequestModel OmniModerationLatest { get; } = new InternalCreateModerationRequestModel(OmniModerationLatestValue);
+        public static InternalCreateModerationRequestModel OmniModerationLatest { get; } = new InternalCreateModerationRequestModel(OmniModerationLatestValue);
 
-        internal static InternalCreateModerationRequestModel OmniModeration20240926 { get; } = new InternalCreateModerationRequestModel(OmniModeration20240926Value);
+        public static InternalCreateModerationRequestModel OmniModeration20240926 { get; } = new InternalCreateModerationRequestModel(OmniModeration20240926Value);
 
-        internal static InternalCreateModerationRequestModel TextModerationLatest { get; } = new InternalCreateModerationRequestModel(TextModerationLatestValue);
+        public static InternalCreateModerationRequestModel TextModerationLatest { get; } = new InternalCreateModerationRequestModel(TextModerationLatestValue);
 
-        internal static InternalCreateModerationRequestModel TextModerationStable { get; } = new InternalCreateModerationRequestModel(TextModerationStableValue);
+        public static InternalCreateModerationRequestModel TextModerationStable { get; } = new InternalCreateModerationRequestModel(TextModerationStableValue);
 
         public static bool operator ==(InternalCreateModerationRequestModel left, InternalCreateModerationRequestModel right) => left.Equals(right);
 

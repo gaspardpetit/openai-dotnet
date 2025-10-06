@@ -25,7 +25,7 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeResponseStatusDetailsType? Kind { get; }
+        public InternalRealtimeResponseStatusDetailsType? Kind { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

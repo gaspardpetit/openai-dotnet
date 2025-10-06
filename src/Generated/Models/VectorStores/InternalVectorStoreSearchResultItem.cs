@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVectorStoreSearchResultItem
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -42,7 +44,7 @@ namespace OpenAI.VectorStores
 
         public IDictionary<string, BinaryData> Attributes { get; }
 
-        internal IList<InternalVectorStoreSearchResultContentObject> Content { get; }
+        public IList<InternalVectorStoreSearchResultContentObject> Content { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

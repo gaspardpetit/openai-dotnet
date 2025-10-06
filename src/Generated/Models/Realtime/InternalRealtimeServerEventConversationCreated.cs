@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeServerEventConversationCreated : RealtimeUpdate
     {
         internal InternalRealtimeServerEventConversationCreated(InternalRealtimeServerEventConversationCreatedConversation conversation) : base(RealtimeUpdateKind.ConversationCreated)
@@ -19,6 +21,6 @@ namespace OpenAI.Realtime
             Conversation = conversation;
         }
 
-        internal InternalRealtimeServerEventConversationCreatedConversation Conversation { get; }
+        public InternalRealtimeServerEventConversationCreatedConversation Conversation { get; }
     }
 }

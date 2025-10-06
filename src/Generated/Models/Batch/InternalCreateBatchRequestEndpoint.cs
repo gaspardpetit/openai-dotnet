@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateBatchRequestEndpoint : IEquatable<InternalCreateBatchRequestEndpoint>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Batch
             _value = value;
         }
 
-        internal static InternalCreateBatchRequestEndpoint V1ChatCompletions { get; } = new InternalCreateBatchRequestEndpoint(V1ChatCompletionsValue);
+        public static InternalCreateBatchRequestEndpoint V1ChatCompletions { get; } = new InternalCreateBatchRequestEndpoint(V1ChatCompletionsValue);
 
-        internal static InternalCreateBatchRequestEndpoint V1Embeddings { get; } = new InternalCreateBatchRequestEndpoint(V1EmbeddingsValue);
+        public static InternalCreateBatchRequestEndpoint V1Embeddings { get; } = new InternalCreateBatchRequestEndpoint(V1EmbeddingsValue);
 
         public static bool operator ==(InternalCreateBatchRequestEndpoint left, InternalCreateBatchRequestEndpoint right) => left.Equals(right);
 

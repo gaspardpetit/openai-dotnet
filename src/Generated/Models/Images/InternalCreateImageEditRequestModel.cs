@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageEditRequestModel : IEquatable<InternalCreateImageEditRequestModel>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Images
             _value = value;
         }
 
-        internal static InternalCreateImageEditRequestModel DallE2 { get; } = new InternalCreateImageEditRequestModel(DallE2Value);
+        public static InternalCreateImageEditRequestModel DallE2 { get; } = new InternalCreateImageEditRequestModel(DallE2Value);
 
-        internal static InternalCreateImageEditRequestModel GptImage1 { get; } = new InternalCreateImageEditRequestModel(GptImage1Value);
+        public static InternalCreateImageEditRequestModel GptImage1 { get; } = new InternalCreateImageEditRequestModel(GptImage1Value);
 
         public static bool operator ==(InternalCreateImageEditRequestModel left, InternalCreateImageEditRequestModel right) => left.Equals(right);
 

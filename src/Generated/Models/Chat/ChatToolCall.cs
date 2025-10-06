@@ -12,7 +12,7 @@ namespace OpenAI.Chat
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal ChatToolCall(string id, ChatToolCallKind kind, InternalChatCompletionMessageToolCallFunction function)
+        public ChatToolCall(string id, ChatToolCallKind kind, InternalChatCompletionMessageToolCallFunction function)
         {
             Argument.AssertNotNull(id, nameof(id));
             Argument.AssertNotNull(function, nameof(function));

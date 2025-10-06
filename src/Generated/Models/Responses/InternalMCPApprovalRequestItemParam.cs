@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMCPApprovalRequestItemParam : InternalItemParam
     {
         public InternalMCPApprovalRequestItemParam(string serverLabel, string name, string arguments) : base(InternalItemType.McpApprovalRequest)

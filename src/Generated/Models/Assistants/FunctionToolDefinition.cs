@@ -17,6 +17,6 @@ namespace OpenAI.Assistants
             Function = function;
         }
 
-        internal InternalFunctionDefinition Function { get; set; }
+        public InternalFunctionDefinition Function { get; set; }
     }
 }
