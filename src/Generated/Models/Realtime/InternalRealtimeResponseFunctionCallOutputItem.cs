@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeResponseFunctionCallOutputItem : InternalRealtimeResponseItem
     {
         internal InternalRealtimeResponseFunctionCallOutputItem(string id, string callId, string output) : base(InternalRealtimeItemType.FunctionCallOutput, id)

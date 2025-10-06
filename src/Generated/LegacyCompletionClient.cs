@@ -5,12 +5,14 @@
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class LegacyCompletionClient
     {
         private readonly Uri _endpoint;

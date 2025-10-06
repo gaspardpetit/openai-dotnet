@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeServerEventResponseContentPartAdded : RealtimeUpdate
     {
         internal InternalRealtimeServerEventResponseContentPartAdded(string responseId, string itemId, int outputIndex, int contentIndex, ConversationContentPart internalContentPart) : base(RealtimeUpdateKind.ItemContentPartStarted)

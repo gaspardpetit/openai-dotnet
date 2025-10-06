@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Containers
 {
-    public partial class ContainerClientGetContainersCollectionResult : CollectionResult
+    internal partial class ContainerClientGetContainersCollectionResult : CollectionResult
     {
         private readonly ContainerClient _client;
         private readonly int? _limit;

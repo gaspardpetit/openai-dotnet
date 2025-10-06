@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerActionMove : ComputerCallAction
     {
         public InternalComputerActionMove(int x, int y) : base(ComputerCallActionKind.Move)

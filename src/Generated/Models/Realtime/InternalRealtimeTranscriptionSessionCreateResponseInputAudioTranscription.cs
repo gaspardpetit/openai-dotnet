@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeTranscriptionSessionCreateResponseInputAudioTranscription
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -23,7 +25,7 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeTranscriptionSessionCreateResponseInputAudioTranscriptionModel? Model { get; }
+        public InternalRealtimeTranscriptionSessionCreateResponseInputAudioTranscriptionModel? Model { get; }
 
         public string Language { get; }
 

@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalBatchStatus : IEquatable<InternalBatchStatus>
     {
         private readonly string _value;
@@ -27,21 +29,21 @@ namespace OpenAI.Batch
             _value = value;
         }
 
-        internal static InternalBatchStatus Validating { get; } = new InternalBatchStatus(ValidatingValue);
+        public static InternalBatchStatus Validating { get; } = new InternalBatchStatus(ValidatingValue);
 
-        internal static InternalBatchStatus Failed { get; } = new InternalBatchStatus(FailedValue);
+        public static InternalBatchStatus Failed { get; } = new InternalBatchStatus(FailedValue);
 
-        internal static InternalBatchStatus InProgress { get; } = new InternalBatchStatus(InProgressValue);
+        public static InternalBatchStatus InProgress { get; } = new InternalBatchStatus(InProgressValue);
 
-        internal static InternalBatchStatus Finalizing { get; } = new InternalBatchStatus(FinalizingValue);
+        public static InternalBatchStatus Finalizing { get; } = new InternalBatchStatus(FinalizingValue);
 
-        internal static InternalBatchStatus Completed { get; } = new InternalBatchStatus(CompletedValue);
+        public static InternalBatchStatus Completed { get; } = new InternalBatchStatus(CompletedValue);
 
-        internal static InternalBatchStatus Expired { get; } = new InternalBatchStatus(ExpiredValue);
+        public static InternalBatchStatus Expired { get; } = new InternalBatchStatus(ExpiredValue);
 
-        internal static InternalBatchStatus Cancelling { get; } = new InternalBatchStatus(CancellingValue);
+        public static InternalBatchStatus Cancelling { get; } = new InternalBatchStatus(CancellingValue);
 
-        internal static InternalBatchStatus Cancelled { get; } = new InternalBatchStatus(CancelledValue);
+        public static InternalBatchStatus Cancelled { get; } = new InternalBatchStatus(CancelledValue);
 
         public static bool operator ==(InternalBatchStatus left, InternalBatchStatus right) => left.Equals(right);
 

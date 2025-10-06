@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalMessageDeltaObjectDeltaRole : IEquatable<InternalMessageDeltaObjectDeltaRole>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalMessageDeltaObjectDeltaRole User { get; } = new InternalMessageDeltaObjectDeltaRole(UserValue);
+        public static InternalMessageDeltaObjectDeltaRole User { get; } = new InternalMessageDeltaObjectDeltaRole(UserValue);
 
-        internal static InternalMessageDeltaObjectDeltaRole Assistant { get; } = new InternalMessageDeltaObjectDeltaRole(AssistantValue);
+        public static InternalMessageDeltaObjectDeltaRole Assistant { get; } = new InternalMessageDeltaObjectDeltaRole(AssistantValue);
 
         public static bool operator ==(InternalMessageDeltaObjectDeltaRole left, InternalMessageDeltaObjectDeltaRole right) => left.Equals(right);
 

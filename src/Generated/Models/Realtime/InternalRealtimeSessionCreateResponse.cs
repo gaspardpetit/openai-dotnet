@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Internal;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeSessionCreateResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -40,25 +42,25 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeSessionCreateResponseClientSecret ClientSecret { get; }
+        public InternalRealtimeSessionCreateResponseClientSecret ClientSecret { get; }
 
-        internal IList<InternalRealtimeRequestSessionModality> Modalities { get; }
+        public IList<InternalRealtimeRequestSessionModality> Modalities { get; }
 
         public string Instructions { get; }
 
-        internal InternalVoiceIdsShared? Voice { get; }
+        public InternalVoiceIdsShared? Voice { get; }
 
         public RealtimeAudioFormat? InputAudioFormat { get; }
 
         public RealtimeAudioFormat? OutputAudioFormat { get; }
 
-        internal InternalRealtimeSessionCreateResponseInputAudioTranscription InputAudioTranscription { get; }
+        public InternalRealtimeSessionCreateResponseInputAudioTranscription InputAudioTranscription { get; }
 
         public float? Speed { get; }
 
         public BinaryData Tracing { get; }
 
-        internal InternalRealtimeSessionCreateResponseTurnDetection TurnDetection { get; }
+        public InternalRealtimeSessionCreateResponseTurnDetection TurnDetection { get; }
 
         public IList<ConversationTool> Tools { get; }
 

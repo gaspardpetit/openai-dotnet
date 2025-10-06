@@ -7,7 +7,7 @@ using System;
 namespace OpenAI
 {
     [AttributeUsage((AttributeTargets.Property | AttributeTargets.Field))]
-    public partial class CodeGenMemberAttribute : CodeGenTypeAttribute
+    internal partial class CodeGenMemberAttribute : CodeGenTypeAttribute
     {
         public CodeGenMemberAttribute(string originalName) : base(originalName)
         {

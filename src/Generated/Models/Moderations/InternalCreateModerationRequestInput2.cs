@@ -4,15 +4,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Moderations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateModerationRequestInput2
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalCreateModerationRequestInput2(InternalCreateModerationRequestInputImageUrl imageUrl)
+        public InternalCreateModerationRequestInput2(InternalCreateModerationRequestInputImageUrl imageUrl)
         {
             Argument.AssertNotNull(imageUrl, nameof(imageUrl));
 
@@ -28,7 +30,7 @@ namespace OpenAI.Moderations
 
         public string Kind { get; } = "image_url";
 
-        internal InternalCreateModerationRequestInputImageUrl ImageUrl { get; }
+        public InternalCreateModerationRequestInputImageUrl ImageUrl { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

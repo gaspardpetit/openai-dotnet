@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartAudio : ChatMessageContentPart
     {
-        internal InternalChatCompletionRequestMessageContentPartAudio(InternalChatCompletionRequestMessageContentPartAudioInputAudio inputAudio)
+        public InternalChatCompletionRequestMessageContentPartAudio(InternalChatCompletionRequestMessageContentPartAudioInputAudio inputAudio)
         {
             Argument.AssertNotNull(inputAudio, nameof(inputAudio));
 
@@ -22,6 +24,6 @@ namespace OpenAI.Chat
             InputAudio = inputAudio;
         }
 
-        internal InternalChatCompletionRequestMessageContentPartAudioInputAudio InputAudio { get; }
+        public InternalChatCompletionRequestMessageContentPartAudioInputAudio InputAudio { get; }
     }
 }

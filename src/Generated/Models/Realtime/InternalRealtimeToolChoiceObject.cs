@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
-    public abstract partial class InternalRealtimeToolChoiceObject
+    [Experimental("OPENAI002")]
+    public partial class InternalRealtimeToolChoiceObject
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

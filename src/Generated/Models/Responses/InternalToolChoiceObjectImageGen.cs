@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalToolChoiceObjectImageGen : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectImageGen() : this(InternalToolChoiceObjectType.ImageGeneration, null)

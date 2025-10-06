@@ -31,7 +31,7 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeTranscriptionSessionCreateRequestClientSecret ClientSecret { get; set; }
+        public InternalRealtimeTranscriptionSessionCreateRequestClientSecret ClientSecret { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

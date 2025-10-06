@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public partial class InternalBatchRequestInput
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

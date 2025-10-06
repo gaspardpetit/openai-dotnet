@@ -4,16 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateEvalRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalCreateEvalRequest(InternalEvalDataSourceConfigParams dataSourceConfig, IEnumerable<InternalEvalGraderParams> testingCriteria)
+        public InternalCreateEvalRequest(InternalEvalDataSourceConfigParams dataSourceConfig, IEnumerable<InternalEvalGraderParams> testingCriteria)
         {
             Argument.AssertNotNull(dataSourceConfig, nameof(dataSourceConfig));
             Argument.AssertNotNull(testingCriteria, nameof(testingCriteria));
@@ -37,9 +39,9 @@ namespace OpenAI.Evals
 
         public IDictionary<string, string> Metadata { get; }
 
-        internal InternalEvalDataSourceConfigParams DataSourceConfig { get; }
+        public InternalEvalDataSourceConfigParams DataSourceConfig { get; }
 
-        internal IList<InternalEvalGraderParams> TestingCriteria { get; }
+        public IList<InternalEvalGraderParams> TestingCriteria { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

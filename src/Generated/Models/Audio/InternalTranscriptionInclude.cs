@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalTranscriptionInclude : IEquatable<InternalTranscriptionInclude>
     {
         private readonly string _value;
@@ -20,7 +22,7 @@ namespace OpenAI.Audio
             _value = value;
         }
 
-        internal static InternalTranscriptionInclude Logprobs { get; } = new InternalTranscriptionInclude(LogprobsValue);
+        public static InternalTranscriptionInclude Logprobs { get; } = new InternalTranscriptionInclude(LogprobsValue);
 
         public static bool operator ==(InternalTranscriptionInclude left, InternalTranscriptionInclude right) => left.Equals(right);
 

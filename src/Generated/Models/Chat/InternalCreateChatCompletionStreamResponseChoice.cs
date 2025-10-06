@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateChatCompletionStreamResponseChoice
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -27,9 +29,9 @@ namespace OpenAI.Chat
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalChatCompletionStreamResponseDelta Delta { get; }
+        public InternalChatCompletionStreamResponseDelta Delta { get; }
 
-        internal InternalCreateChatCompletionStreamResponseChoiceLogprobs Logprobs { get; }
+        public InternalCreateChatCompletionStreamResponseChoiceLogprobs Logprobs { get; }
 
         public int Index { get; }
 

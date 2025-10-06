@@ -4,14 +4,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerActionDrag : ComputerCallAction
     {
-        internal InternalComputerActionDrag(IEnumerable<InternalCoordinate> path) : base(ComputerCallActionKind.Drag)
+        public InternalComputerActionDrag(IEnumerable<InternalCoordinate> path) : base(ComputerCallActionKind.Drag)
         {
             Argument.AssertNotNull(path, nameof(path));
 
@@ -24,6 +26,6 @@ namespace OpenAI.Responses
             Path = path ?? new ChangeTrackingList<InternalCoordinate>();
         }
 
-        internal IList<InternalCoordinate> Path { get; }
+        public IList<InternalCoordinate> Path { get; }
     }
 }

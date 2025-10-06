@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeToolChoiceFunctionObject : InternalRealtimeToolChoiceObject
     {
-        internal InternalRealtimeToolChoiceFunctionObject(InternalRealtimeToolChoiceFunctionObjectFunction function) : base(ConversationToolKind.Function)
+        public InternalRealtimeToolChoiceFunctionObject(InternalRealtimeToolChoiceFunctionObjectFunction function) : base(ConversationToolKind.Function)
         {
             Argument.AssertNotNull(function, nameof(function));
 
@@ -22,6 +24,6 @@ namespace OpenAI.Realtime
             Function = function;
         }
 
-        internal InternalRealtimeToolChoiceFunctionObjectFunction Function { get; set; }
+        public InternalRealtimeToolChoiceFunctionObjectFunction Function { get; set; }
     }
 }

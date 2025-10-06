@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionResponseMessage
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

@@ -4,16 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateChatCompletionRequestWebSearchOptionsUserLocation1
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalCreateChatCompletionRequestWebSearchOptionsUserLocation1(InternalWebSearchLocation approximate)
+        public InternalCreateChatCompletionRequestWebSearchOptionsUserLocation1(InternalWebSearchLocation approximate)
         {
             Argument.AssertNotNull(approximate, nameof(approximate));
 
@@ -29,7 +31,7 @@ namespace OpenAI.Chat
 
         public string Kind { get; } = "approximate";
 
-        internal InternalWebSearchLocation Approximate { get; }
+        public InternalWebSearchLocation Approximate { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {
