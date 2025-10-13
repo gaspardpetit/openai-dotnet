@@ -4,22 +4,23 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionResponseMessage
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalChatCompletionResponseMessage(ChatMessageContent content, string refusal, ChatMessageRole role)
+        internal InternalChatCompletionResponseMessage(ChatMessageContent content, string refusal)
         {
             // Plugin customization: ensure initialization of collections
             Content = content ?? new ChatMessageContent();
             Refusal = refusal;
             ToolCalls = new ChangeTrackingList<ChatToolCall>();
             Annotations = new ChangeTrackingList<ChatMessageAnnotation>();
-            Role = role;
         }
 
         internal InternalChatCompletionResponseMessage(ChatMessageContent content, string refusal, IReadOnlyList<ChatToolCall> toolCalls, IReadOnlyList<ChatMessageAnnotation> annotations, ChatMessageRole role, ChatFunctionCall functionCall, ChatOutputAudio audio, IDictionary<string, BinaryData> additionalBinaryDataProperties)

@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateTranslationRequestModel : IEquatable<InternalCreateTranslationRequestModel>
     {
         private readonly string _value;
@@ -20,7 +22,7 @@ namespace OpenAI.Audio
             _value = value;
         }
 
-        internal static InternalCreateTranslationRequestModel Whisper1 { get; } = new InternalCreateTranslationRequestModel(Whisper1Value);
+        public static InternalCreateTranslationRequestModel Whisper1 { get; } = new InternalCreateTranslationRequestModel(Whisper1Value);
 
         public static bool operator ==(InternalCreateTranslationRequestModel left, InternalCreateTranslationRequestModel right) => left.Equals(right);
 

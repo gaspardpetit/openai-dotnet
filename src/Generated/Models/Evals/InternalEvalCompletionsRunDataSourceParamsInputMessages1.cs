@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalCompletionsRunDataSourceParamsInputMessages1
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -28,7 +30,7 @@ namespace OpenAI.Evals
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        public string Kind { get; } = "template";
+        internal string Kind { get; } = "template";
 
         public IList<BinaryData> Template { get; }
 

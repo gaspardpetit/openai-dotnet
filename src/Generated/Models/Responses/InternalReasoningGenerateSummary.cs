@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalReasoningGenerateSummary : IEquatable<InternalReasoningGenerateSummary>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalReasoningGenerateSummary Auto { get; } = new InternalReasoningGenerateSummary(AutoValue);
+        public static InternalReasoningGenerateSummary Auto { get; } = new InternalReasoningGenerateSummary(AutoValue);
 
-        internal static InternalReasoningGenerateSummary Concise { get; } = new InternalReasoningGenerateSummary(ConciseValue);
+        public static InternalReasoningGenerateSummary Concise { get; } = new InternalReasoningGenerateSummary(ConciseValue);
 
-        internal static InternalReasoningGenerateSummary Detailed { get; } = new InternalReasoningGenerateSummary(DetailedValue);
+        public static InternalReasoningGenerateSummary Detailed { get; } = new InternalReasoningGenerateSummary(DetailedValue);
 
         public static bool operator ==(InternalReasoningGenerateSummary left, InternalReasoningGenerateSummary right) => left.Equals(right);
 

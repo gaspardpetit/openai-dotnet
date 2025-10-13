@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
-    public abstract partial class InternalComparisonFilter
+    [Experimental("OPENAI001")]
+    public partial class InternalComparisonFilter
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

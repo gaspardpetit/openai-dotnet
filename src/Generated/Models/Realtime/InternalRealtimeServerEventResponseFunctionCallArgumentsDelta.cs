@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeServerEventResponseFunctionCallArgumentsDelta : RealtimeUpdate
     {
         internal InternalRealtimeServerEventResponseFunctionCallArgumentsDelta(string responseId, string itemId, int outputIndex, string callId, string delta) : base(RealtimeUpdateKind.ItemStreamingFunctionCallArgumentsDelta)

@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateCompletionResponseChoiceFinishReason : IEquatable<InternalCreateCompletionResponseChoiceFinishReason>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.LegacyCompletions
             _value = value;
         }
 
-        internal static InternalCreateCompletionResponseChoiceFinishReason Stop { get; } = new InternalCreateCompletionResponseChoiceFinishReason(StopValue);
+        public static InternalCreateCompletionResponseChoiceFinishReason Stop { get; } = new InternalCreateCompletionResponseChoiceFinishReason(StopValue);
 
-        internal static InternalCreateCompletionResponseChoiceFinishReason Length { get; } = new InternalCreateCompletionResponseChoiceFinishReason(LengthValue);
+        public static InternalCreateCompletionResponseChoiceFinishReason Length { get; } = new InternalCreateCompletionResponseChoiceFinishReason(LengthValue);
 
-        internal static InternalCreateCompletionResponseChoiceFinishReason ContentFilter { get; } = new InternalCreateCompletionResponseChoiceFinishReason(ContentFilterValue);
+        public static InternalCreateCompletionResponseChoiceFinishReason ContentFilter { get; } = new InternalCreateCompletionResponseChoiceFinishReason(ContentFilterValue);
 
         public static bool operator ==(InternalCreateCompletionResponseChoiceFinishReason left, InternalCreateCompletionResponseChoiceFinishReason right) => left.Equals(right);
 

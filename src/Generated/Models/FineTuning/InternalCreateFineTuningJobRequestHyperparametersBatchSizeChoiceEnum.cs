@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum : IEquatable<InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum>
     {
         private readonly string _value;
@@ -20,7 +22,7 @@ namespace OpenAI.FineTuning
             _value = value;
         }
 
-        internal static InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum Auto { get; } = new InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum(AutoValue);
+        public static InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum Auto { get; } = new InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum(AutoValue);
 
         public static bool operator ==(InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum left, InternalCreateFineTuningJobRequestHyperparametersBatchSizeChoiceEnum right) => left.Equals(right);
 

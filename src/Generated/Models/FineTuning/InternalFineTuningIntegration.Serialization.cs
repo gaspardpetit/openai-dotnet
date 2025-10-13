@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.FineTuning
 {
     [PersistableModelProxy(typeof(UnknownFineTuningIntegration))]
-    public abstract partial class InternalFineTuningIntegration : IJsonModel<InternalFineTuningIntegration>
+    public partial class InternalFineTuningIntegration : IJsonModel<InternalFineTuningIntegration>
     {
         internal InternalFineTuningIntegration()
         {

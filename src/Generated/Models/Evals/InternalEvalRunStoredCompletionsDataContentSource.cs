@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRunStoredCompletionsDataContentSource : InternalEvalRunDataContentSource
     {
         public InternalEvalRunStoredCompletionsDataContentSource(IDictionary<string, string> metadata) : base(InternalEvalRunDataContentSourceType.StoredCompletions)

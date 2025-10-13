@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.FineTuning
 {
-    public abstract partial class InternalFineTuningIntegration
+    [Experimental("OPENAI001")]
+    public partial class InternalFineTuningIntegration
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

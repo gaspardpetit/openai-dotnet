@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCompoundFilterAnd : InternalCompoundFilter
     {
         public InternalCompoundFilterAnd(IEnumerable<BinaryData> filters) : base(InternalCompoundFilterType.And, filters)

@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalFineTuneMethodType : IEquatable<InternalFineTuneMethodType>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.FineTuning
             _value = value;
         }
 
-        internal static InternalFineTuneMethodType Supervised { get; } = new InternalFineTuneMethodType(SupervisedValue);
+        public static InternalFineTuneMethodType Supervised { get; } = new InternalFineTuneMethodType(SupervisedValue);
 
-        internal static InternalFineTuneMethodType Dpo { get; } = new InternalFineTuneMethodType(DpoValue);
+        public static InternalFineTuneMethodType Dpo { get; } = new InternalFineTuneMethodType(DpoValue);
 
-        internal static InternalFineTuneMethodType Reinforcement { get; } = new InternalFineTuneMethodType(ReinforcementValue);
+        public static InternalFineTuneMethodType Reinforcement { get; } = new InternalFineTuneMethodType(ReinforcementValue);
 
         public static bool operator ==(InternalFineTuneMethodType left, InternalFineTuneMethodType right) => left.Equals(right);
 

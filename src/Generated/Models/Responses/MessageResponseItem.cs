@@ -11,7 +11,7 @@ namespace OpenAI.Responses
     [Experimental("OPENAI001")]
     public partial class MessageResponseItem : ResponseItem
     {
-        internal MessageResponseItem(InternalResponsesMessageRole internalRole) : base(InternalItemType.Message)
+        public MessageResponseItem(InternalResponsesMessageRole internalRole) : base(InternalItemType.Message)
         {
             InternalRole = internalRole;
         }
