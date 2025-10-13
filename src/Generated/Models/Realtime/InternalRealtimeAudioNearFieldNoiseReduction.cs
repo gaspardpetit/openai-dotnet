@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeAudioNearFieldNoiseReduction : InputNoiseReductionOptions
     {
         public InternalRealtimeAudioNearFieldNoiseReduction() : this(InputNoiseReductionKind.NearField, null)

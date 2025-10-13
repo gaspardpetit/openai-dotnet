@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalTruncationObjectType : IEquatable<InternalTruncationObjectType>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalTruncationObjectType Auto { get; } = new InternalTruncationObjectType(AutoValue);
+        public static InternalTruncationObjectType Auto { get; } = new InternalTruncationObjectType(AutoValue);
 
-        internal static InternalTruncationObjectType LastMessages { get; } = new InternalTruncationObjectType(LastMessagesValue);
+        public static InternalTruncationObjectType LastMessages { get; } = new InternalTruncationObjectType(LastMessagesValue);
 
         public static bool operator ==(InternalTruncationObjectType left, InternalTruncationObjectType right) => left.Equals(right);
 

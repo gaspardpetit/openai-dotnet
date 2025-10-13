@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeResponseTextContentPart : ConversationContentPart
     {
         internal InternalRealtimeResponseTextContentPart(string internalTextValue) : base(ConversationContentPartKind.OutputText)

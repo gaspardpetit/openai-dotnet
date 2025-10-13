@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageDeltaContentTextObject : InternalMessageDeltaContent
     {
         internal InternalMessageDeltaContentTextObject(int index) : base(InternalMessageContentType.Text)
@@ -22,6 +24,6 @@ namespace OpenAI.Assistants
 
         public int Index { get; }
 
-        internal InternalMessageDeltaContentTextObjectText Text { get; }
+        public InternalMessageDeltaContentTextObjectText Text { get; }
     }
 }

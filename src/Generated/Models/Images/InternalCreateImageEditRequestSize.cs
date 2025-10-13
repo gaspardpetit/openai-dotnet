@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageEditRequestSize : IEquatable<InternalCreateImageEditRequestSize>
     {
         private readonly string _value;
@@ -25,17 +27,17 @@ namespace OpenAI.Images
             _value = value;
         }
 
-        internal static InternalCreateImageEditRequestSize _256x256 { get; } = new InternalCreateImageEditRequestSize(_256x256Value);
+        public static InternalCreateImageEditRequestSize _256x256 { get; } = new InternalCreateImageEditRequestSize(_256x256Value);
 
-        internal static InternalCreateImageEditRequestSize _512x512 { get; } = new InternalCreateImageEditRequestSize(_512x512Value);
+        public static InternalCreateImageEditRequestSize _512x512 { get; } = new InternalCreateImageEditRequestSize(_512x512Value);
 
-        internal static InternalCreateImageEditRequestSize _1024x1024 { get; } = new InternalCreateImageEditRequestSize(_1024x1024Value);
+        public static InternalCreateImageEditRequestSize _1024x1024 { get; } = new InternalCreateImageEditRequestSize(_1024x1024Value);
 
-        internal static InternalCreateImageEditRequestSize _1536x1024 { get; } = new InternalCreateImageEditRequestSize(_1536x1024Value);
+        public static InternalCreateImageEditRequestSize _1536x1024 { get; } = new InternalCreateImageEditRequestSize(_1536x1024Value);
 
-        internal static InternalCreateImageEditRequestSize _1024x1536 { get; } = new InternalCreateImageEditRequestSize(_1024x1536Value);
+        public static InternalCreateImageEditRequestSize _1024x1536 { get; } = new InternalCreateImageEditRequestSize(_1024x1536Value);
 
-        internal static InternalCreateImageEditRequestSize Auto { get; } = new InternalCreateImageEditRequestSize(AutoValue);
+        public static InternalCreateImageEditRequestSize Auto { get; } = new InternalCreateImageEditRequestSize(AutoValue);
 
         public static bool operator ==(InternalCreateImageEditRequestSize left, InternalCreateImageEditRequestSize right) => left.Equals(right);
 

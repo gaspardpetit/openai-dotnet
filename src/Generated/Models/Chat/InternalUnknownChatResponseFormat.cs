@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUnknownChatResponseFormat : ChatResponseFormat
     {
         internal InternalUnknownChatResponseFormat(InternalResponseFormatType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)

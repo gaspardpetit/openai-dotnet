@@ -6,12 +6,14 @@ using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalAssistantRunClient
     {
         private readonly Uri _endpoint;

@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComparisonFilterGreaterThanOrEquals : InternalComparisonFilter
     {
         public InternalComparisonFilterGreaterThanOrEquals(string key, BinaryData value) : base(InternalComparisonFilterType.Gte, key, value)

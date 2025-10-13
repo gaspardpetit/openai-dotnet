@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeRequestSystemMessageItem : InternalRealtimeRequestMessageItem
     {
         internal InternalRealtimeRequestSystemMessageItem(InternalRealtimeItemType kind, string id, IDictionary<string, BinaryData> additionalBinaryDataProperties, ConversationMessageRole role, ConversationItemStatus? status, IList<ConversationContentPart> content) : base(kind, id, additionalBinaryDataProperties, role, status)

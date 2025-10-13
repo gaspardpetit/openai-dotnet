@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeServerVadTurnDetection : TurnDetectionOptions
     {
         public InternalRealtimeServerVadTurnDetection() : this(TurnDetectionKind.ServerVoiceActivityDetection, default, default, null, default, default, default)

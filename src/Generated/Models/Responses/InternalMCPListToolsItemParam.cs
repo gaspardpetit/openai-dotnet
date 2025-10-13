@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMCPListToolsItemParam : InternalItemParam
     {
         public InternalMCPListToolsItemParam(string serverLabel, IEnumerable<McpToolDefinition> tools) : base(InternalItemType.McpListTools)

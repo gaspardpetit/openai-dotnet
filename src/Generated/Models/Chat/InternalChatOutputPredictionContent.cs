@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatOutputPredictionContent : ChatOutputPrediction
     {
         public InternalChatOutputPredictionContent(ChatMessageContent content) : base(InternalChatOutputPredictionKind.StaticContent)

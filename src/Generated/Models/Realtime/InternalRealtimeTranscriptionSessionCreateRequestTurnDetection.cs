@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeTranscriptionSessionCreateRequestTurnDetection
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -27,9 +29,9 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType? Kind { get; set; }
+        public InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType? Kind { get; set; }
 
-        internal InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness? Eagerness { get; set; }
+        public InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness? Eagerness { get; set; }
 
         public float? Threshold { get; set; }
 

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class UnknownResponseStreamEvent : StreamingResponseUpdate
     {
         internal UnknownResponseStreamEvent(InternalResponseStreamEventType kind, int sequenceNumber, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", sequenceNumber, additionalBinaryDataProperties)

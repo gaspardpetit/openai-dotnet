@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Assistants
 {
     [PersistableModelProxy(typeof(UnknownRunStepDeltaStepDetailsToolCallsObjectToolCallsObject))]
-    public abstract partial class InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject : IJsonModel<InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject>
+    public partial class InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject : IJsonModel<InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject>
     {
         internal InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject()
         {

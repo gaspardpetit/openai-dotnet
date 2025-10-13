@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
-	public partial class InternalResponsesUserMessage : MessageResponseItem
+    [Experimental("OPENAI001")]
+    public partial class InternalResponsesUserMessage : MessageResponseItem
     {
         public InternalResponsesUserMessage(IEnumerable<ResponseContentPart> internalContent) : base(InternalResponsesMessageRole.User)
         {

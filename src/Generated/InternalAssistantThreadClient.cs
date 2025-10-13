@@ -4,9 +4,11 @@
 
 using System;
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalAssistantThreadClient
     {
         private readonly Uri _endpoint;

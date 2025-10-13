@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalRunStepDetailsType : IEquatable<InternalRunStepDetailsType>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalRunStepDetailsType MessageCreation { get; } = new InternalRunStepDetailsType(MessageCreationValue);
+        public static InternalRunStepDetailsType MessageCreation { get; } = new InternalRunStepDetailsType(MessageCreationValue);
 
-        internal static InternalRunStepDetailsType ToolCalls { get; } = new InternalRunStepDetailsType(ToolCallsValue);
+        public static InternalRunStepDetailsType ToolCalls { get; } = new InternalRunStepDetailsType(ToolCallsValue);
 
         public static bool operator ==(InternalRunStepDetailsType left, InternalRunStepDetailsType right) => left.Equals(right);
 

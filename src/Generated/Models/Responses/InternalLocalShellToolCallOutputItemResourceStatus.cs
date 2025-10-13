@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalLocalShellToolCallOutputItemResourceStatus : IEquatable<InternalLocalShellToolCallOutputItemResourceStatus>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalLocalShellToolCallOutputItemResourceStatus InProgress { get; } = new InternalLocalShellToolCallOutputItemResourceStatus(InProgressValue);
+        public static InternalLocalShellToolCallOutputItemResourceStatus InProgress { get; } = new InternalLocalShellToolCallOutputItemResourceStatus(InProgressValue);
 
-        internal static InternalLocalShellToolCallOutputItemResourceStatus Completed { get; } = new InternalLocalShellToolCallOutputItemResourceStatus(CompletedValue);
+        public static InternalLocalShellToolCallOutputItemResourceStatus Completed { get; } = new InternalLocalShellToolCallOutputItemResourceStatus(CompletedValue);
 
-        internal static InternalLocalShellToolCallOutputItemResourceStatus Incomplete { get; } = new InternalLocalShellToolCallOutputItemResourceStatus(IncompleteValue);
+        public static InternalLocalShellToolCallOutputItemResourceStatus Incomplete { get; } = new InternalLocalShellToolCallOutputItemResourceStatus(IncompleteValue);
 
         public static bool operator ==(InternalLocalShellToolCallOutputItemResourceStatus left, InternalLocalShellToolCallOutputItemResourceStatus right) => left.Equals(right);
 

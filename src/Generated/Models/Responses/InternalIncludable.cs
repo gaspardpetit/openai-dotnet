@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalIncludable : IEquatable<InternalIncludable>
     {
         private readonly string _value;
@@ -17,34 +19,24 @@ namespace OpenAI.Responses
         private const string ReasoningEncryptedContentValue = "reasoning.encrypted_content";
         private const string CodeInterpreterCallOutputsValue = "code_interpreter_call.outputs";
 
-		// <GP> added
-		private const string WebSearchCallActionSourcesValue = "web_search_call.action.sources";
-        private const string MessageOutputTextLogprobsValue = "message.output_text.logprobs";
-		public static InternalIncludable WebSearchCallActionSources { get; } = new InternalIncludable(WebSearchCallActionSourcesValue);
-
-		public static InternalIncludable MessageOutputTextLogprobs { get; } = new InternalIncludable(MessageOutputTextLogprobsValue);
-		// </GP>
-
-		public InternalIncludable(string value)
+        public InternalIncludable(string value)
         {
             Argument.AssertNotNull(value, nameof(value));
 
             _value = value;
         }
 
-		// <GP> made public 
-		public static InternalIncludable FileSearchCallResults { get; } = new InternalIncludable(FileSearchCallResultsValue);
+        public static InternalIncludable FileSearchCallResults { get; } = new InternalIncludable(FileSearchCallResultsValue);
 
-		public static InternalIncludable MessageInputImageImageUrl { get; } = new InternalIncludable(MessageInputImageImageUrlValue);
+        public static InternalIncludable MessageInputImageImageUrl { get; } = new InternalIncludable(MessageInputImageImageUrlValue);
 
-		public static InternalIncludable ComputerCallOutputOutputImageUrl { get; } = new InternalIncludable(ComputerCallOutputOutputImageUrlValue);
+        public static InternalIncludable ComputerCallOutputOutputImageUrl { get; } = new InternalIncludable(ComputerCallOutputOutputImageUrlValue);
 
-		public static InternalIncludable ReasoningEncryptedContent { get; } = new InternalIncludable(ReasoningEncryptedContentValue);
+        public static InternalIncludable ReasoningEncryptedContent { get; } = new InternalIncludable(ReasoningEncryptedContentValue);
 
-		public static InternalIncludable CodeInterpreterCallOutputs { get; } = new InternalIncludable(CodeInterpreterCallOutputsValue);
-		// </GP>
+        public static InternalIncludable CodeInterpreterCallOutputs { get; } = new InternalIncludable(CodeInterpreterCallOutputsValue);
 
-		public static bool operator ==(InternalIncludable left, InternalIncludable right) => left.Equals(right);
+        public static bool operator ==(InternalIncludable left, InternalIncludable right) => left.Equals(right);
 
         public static bool operator !=(InternalIncludable left, InternalIncludable right) => !left.Equals(right);
 
