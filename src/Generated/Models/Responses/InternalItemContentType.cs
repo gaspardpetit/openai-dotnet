@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalItemContentType : IEquatable<InternalItemContentType>
     {
         private readonly string _value;
@@ -26,19 +28,19 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalItemContentType InputText { get; } = new InternalItemContentType(InputTextValue);
+        public static InternalItemContentType InputText { get; } = new InternalItemContentType(InputTextValue);
 
-        internal static InternalItemContentType InputAudio { get; } = new InternalItemContentType(InputAudioValue);
+        public static InternalItemContentType InputAudio { get; } = new InternalItemContentType(InputAudioValue);
 
-        internal static InternalItemContentType InputImage { get; } = new InternalItemContentType(InputImageValue);
+        public static InternalItemContentType InputImage { get; } = new InternalItemContentType(InputImageValue);
 
-        internal static InternalItemContentType InputFile { get; } = new InternalItemContentType(InputFileValue);
+        public static InternalItemContentType InputFile { get; } = new InternalItemContentType(InputFileValue);
 
-        internal static InternalItemContentType OutputText { get; } = new InternalItemContentType(OutputTextValue);
+        public static InternalItemContentType OutputText { get; } = new InternalItemContentType(OutputTextValue);
 
-        internal static InternalItemContentType OutputAudio { get; } = new InternalItemContentType(OutputAudioValue);
+        public static InternalItemContentType OutputAudio { get; } = new InternalItemContentType(OutputAudioValue);
 
-        internal static InternalItemContentType Refusal { get; } = new InternalItemContentType(RefusalValue);
+        public static InternalItemContentType Refusal { get; } = new InternalItemContentType(RefusalValue);
 
         public static bool operator ==(InternalItemContentType left, InternalItemContentType right) => left.Equals(right);
 

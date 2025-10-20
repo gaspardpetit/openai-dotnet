@@ -4,16 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLogProb
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalLogProb(string token, float logprob, IEnumerable<int> bytes, IEnumerable<InternalTopLogProb> topLogprobs)
+        public InternalLogProb(string token, float logprob, IEnumerable<int> bytes, IEnumerable<InternalTopLogProb> topLogprobs)
         {
             Argument.AssertNotNull(token, nameof(token));
             Argument.AssertNotNull(bytes, nameof(bytes));
@@ -41,7 +43,7 @@ namespace OpenAI.Responses
 
         public IList<int> Bytes { get; }
 
-        internal IList<InternalTopLogProb> TopLogprobs { get; }
+        public IList<InternalTopLogProb> TopLogprobs { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

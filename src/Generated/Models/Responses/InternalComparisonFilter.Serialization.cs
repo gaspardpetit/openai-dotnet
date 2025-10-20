@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Responses
 {
     [PersistableModelProxy(typeof(InternalUnknownComparisonFilter))]
-    public abstract partial class InternalComparisonFilter : IJsonModel<InternalComparisonFilter>
+    public partial class InternalComparisonFilter : IJsonModel<InternalComparisonFilter>
     {
         internal InternalComparisonFilter()
         {

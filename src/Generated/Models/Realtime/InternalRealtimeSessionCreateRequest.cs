@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Internal;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeSessionCreateRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -39,23 +41,23 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal IList<InternalRealtimeRequestSessionModality> Modalities { get; }
+        public IList<InternalRealtimeRequestSessionModality> Modalities { get; }
 
-        internal InternalRealtimeSessionCreateRequestModel? Model { get; set; }
+        public InternalRealtimeSessionCreateRequestModel? Model { get; set; }
 
         public string Instructions { get; set; }
 
-        internal InternalVoiceIdsShared? Voice { get; set; }
+        public InternalVoiceIdsShared? Voice { get; set; }
 
         public RealtimeAudioFormat? InputAudioFormat { get; set; }
 
         public RealtimeAudioFormat? OutputAudioFormat { get; set; }
 
-        internal InternalRealtimeSessionCreateRequestInputAudioTranscription InputAudioTranscription { get; set; }
+        public InternalRealtimeSessionCreateRequestInputAudioTranscription InputAudioTranscription { get; set; }
 
-        internal InternalRealtimeSessionCreateRequestTurnDetection TurnDetection { get; set; }
+        public InternalRealtimeSessionCreateRequestTurnDetection TurnDetection { get; set; }
 
-        internal InternalRealtimeSessionCreateRequestInputAudioNoiseReduction1 InputAudioNoiseReduction { get; set; }
+        public InternalRealtimeSessionCreateRequestInputAudioNoiseReduction1 InputAudioNoiseReduction { get; set; }
 
         public float? Speed { get; set; }
 
@@ -69,7 +71,7 @@ namespace OpenAI.Realtime
 
         public BinaryData MaxResponseOutputTokens { get; set; }
 
-        internal InternalRealtimeSessionCreateRequestClientSecret ClientSecret { get; set; }
+        public InternalRealtimeSessionCreateRequestClientSecret ClientSecret { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

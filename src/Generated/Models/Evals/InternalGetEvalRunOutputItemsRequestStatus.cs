@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalGetEvalRunOutputItemsRequestStatus : IEquatable<InternalGetEvalRunOutputItemsRequestStatus>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Evals
             _value = value;
         }
 
-        internal static InternalGetEvalRunOutputItemsRequestStatus Fail { get; } = new InternalGetEvalRunOutputItemsRequestStatus(FailValue);
+        public static InternalGetEvalRunOutputItemsRequestStatus Fail { get; } = new InternalGetEvalRunOutputItemsRequestStatus(FailValue);
 
-        internal static InternalGetEvalRunOutputItemsRequestStatus Pass { get; } = new InternalGetEvalRunOutputItemsRequestStatus(PassValue);
+        public static InternalGetEvalRunOutputItemsRequestStatus Pass { get; } = new InternalGetEvalRunOutputItemsRequestStatus(PassValue);
 
         public static bool operator ==(InternalGetEvalRunOutputItemsRequestStatus left, InternalGetEvalRunOutputItemsRequestStatus right) => left.Equals(right);
 

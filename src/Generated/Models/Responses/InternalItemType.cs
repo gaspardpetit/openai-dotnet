@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalItemType : IEquatable<InternalItemType>
     {
         private readonly string _value;
@@ -36,39 +38,39 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalItemType Message { get; } = new InternalItemType(MessageValue);
+        public static InternalItemType Message { get; } = new InternalItemType(MessageValue);
 
-        internal static InternalItemType FileSearchCall { get; } = new InternalItemType(FileSearchCallValue);
+        public static InternalItemType FileSearchCall { get; } = new InternalItemType(FileSearchCallValue);
 
-        internal static InternalItemType FunctionCall { get; } = new InternalItemType(FunctionCallValue);
+        public static InternalItemType FunctionCall { get; } = new InternalItemType(FunctionCallValue);
 
-        internal static InternalItemType FunctionCallOutput { get; } = new InternalItemType(FunctionCallOutputValue);
+        public static InternalItemType FunctionCallOutput { get; } = new InternalItemType(FunctionCallOutputValue);
 
-        internal static InternalItemType ComputerCall { get; } = new InternalItemType(ComputerCallValue);
+        public static InternalItemType ComputerCall { get; } = new InternalItemType(ComputerCallValue);
 
-        internal static InternalItemType ComputerCallOutput { get; } = new InternalItemType(ComputerCallOutputValue);
+        public static InternalItemType ComputerCallOutput { get; } = new InternalItemType(ComputerCallOutputValue);
 
-        internal static InternalItemType WebSearchCall { get; } = new InternalItemType(WebSearchCallValue);
+        public static InternalItemType WebSearchCall { get; } = new InternalItemType(WebSearchCallValue);
 
-        internal static InternalItemType Reasoning { get; } = new InternalItemType(ReasoningValue);
+        public static InternalItemType Reasoning { get; } = new InternalItemType(ReasoningValue);
 
-        internal static InternalItemType ItemReference { get; } = new InternalItemType(ItemReferenceValue);
+        public static InternalItemType ItemReference { get; } = new InternalItemType(ItemReferenceValue);
 
-        internal static InternalItemType ImageGenerationCall { get; } = new InternalItemType(ImageGenerationCallValue);
+        public static InternalItemType ImageGenerationCall { get; } = new InternalItemType(ImageGenerationCallValue);
 
-        internal static InternalItemType CodeInterpreterCall { get; } = new InternalItemType(CodeInterpreterCallValue);
+        public static InternalItemType CodeInterpreterCall { get; } = new InternalItemType(CodeInterpreterCallValue);
 
-        internal static InternalItemType LocalShellCall { get; } = new InternalItemType(LocalShellCallValue);
+        public static InternalItemType LocalShellCall { get; } = new InternalItemType(LocalShellCallValue);
 
-        internal static InternalItemType LocalShellCallOutput { get; } = new InternalItemType(LocalShellCallOutputValue);
+        public static InternalItemType LocalShellCallOutput { get; } = new InternalItemType(LocalShellCallOutputValue);
 
-        internal static InternalItemType McpListTools { get; } = new InternalItemType(McpListToolsValue);
+        public static InternalItemType McpListTools { get; } = new InternalItemType(McpListToolsValue);
 
-        internal static InternalItemType McpApprovalRequest { get; } = new InternalItemType(McpApprovalRequestValue);
+        public static InternalItemType McpApprovalRequest { get; } = new InternalItemType(McpApprovalRequestValue);
 
-        internal static InternalItemType McpApprovalResponse { get; } = new InternalItemType(McpApprovalResponseValue);
+        public static InternalItemType McpApprovalResponse { get; } = new InternalItemType(McpApprovalResponseValue);
 
-        internal static InternalItemType McpCall { get; } = new InternalItemType(McpCallValue);
+        public static InternalItemType McpCall { get; } = new InternalItemType(McpCallValue);
 
         public static bool operator ==(InternalItemType left, InternalItemType right) => left.Equals(right);
 

@@ -20,7 +20,7 @@ namespace OpenAI.Assistants
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalTruncationObjectType Kind { get; set; }
+        public InternalTruncationObjectType Kind { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

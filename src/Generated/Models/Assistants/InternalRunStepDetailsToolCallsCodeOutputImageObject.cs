@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDetailsToolCallsCodeOutputImageObject : RunStepCodeInterpreterOutput
     {
         internal InternalRunStepDetailsToolCallsCodeOutputImageObject(InternalRunStepDetailsToolCallsCodeOutputImageObjectImage image) : base(InternalRunStepDetailsCodeInterpreterOutputType.Image)

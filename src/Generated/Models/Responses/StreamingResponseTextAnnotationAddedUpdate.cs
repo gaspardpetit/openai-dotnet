@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class StreamingResponseTextAnnotationAddedUpdate : StreamingResponseUpdate
     {
-        internal StreamingResponseTextAnnotationAddedUpdate(int sequenceNumber, string itemId, int outputIndex, int contentIndex, int annotationIndex, ResponseMessageAnnotation annotation) : base(InternalResponseStreamEventType.ResponseOutputTextAnnotationAdded, sequenceNumber)
+        internal StreamingResponseTextAnnotationAddedUpdate(int sequenceNumber, string itemId, int outputIndex, int contentIndex, int annotationIndex, BinaryData annotation) : base(InternalResponseStreamEventType.ResponseOutputTextAnnotationAdded, sequenceNumber)
         {
             ItemId = itemId;
             OutputIndex = outputIndex;
@@ -18,7 +20,7 @@ namespace OpenAI.Responses
             Annotation = annotation;
         }
 
-        internal StreamingResponseTextAnnotationAddedUpdate(InternalResponseStreamEventType kind, int sequenceNumber, IDictionary<string, BinaryData> additionalBinaryDataProperties, string itemId, int outputIndex, int contentIndex, int annotationIndex, ResponseMessageAnnotation annotation) : base(kind, sequenceNumber, additionalBinaryDataProperties)
+        internal StreamingResponseTextAnnotationAddedUpdate(InternalResponseStreamEventType kind, int sequenceNumber, IDictionary<string, BinaryData> additionalBinaryDataProperties, string itemId, int outputIndex, int contentIndex, int annotationIndex, BinaryData annotation) : base(kind, sequenceNumber, additionalBinaryDataProperties)
         {
             ItemId = itemId;
             OutputIndex = outputIndex;
@@ -35,6 +37,6 @@ namespace OpenAI.Responses
 
         public int AnnotationIndex { get; }
 
-        public ResponseMessageAnnotation Annotation { get; }
+        public BinaryData Annotation { get; }
     }
 }

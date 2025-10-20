@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
-	public partial class InternalLocalShellToolCallOutputItemResource : ResponseItem
+    [Experimental("OPENAI001")]
+    public partial class InternalLocalShellToolCallOutputItemResource : ResponseItem
     {
-        internal InternalLocalShellToolCallOutputItemResource(InternalLocalShellToolCallOutputItemResourceStatus status, string output) : base(InternalItemType.LocalShellCallOutput)
+        public InternalLocalShellToolCallOutputItemResource(InternalLocalShellToolCallOutputItemResourceStatus status, string output) : base(InternalItemType.LocalShellCallOutput)
         {
             Argument.AssertNotNull(output, nameof(output));
 
@@ -24,7 +26,7 @@ namespace OpenAI.Responses
             Output = output;
         }
 
-        internal InternalLocalShellToolCallOutputItemResourceStatus Status { get; set; }
+        public InternalLocalShellToolCallOutputItemResourceStatus Status { get; set; }
 
         public string Output { get; set; }
     }

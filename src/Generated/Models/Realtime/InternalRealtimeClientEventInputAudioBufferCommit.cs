@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeClientEventInputAudioBufferCommit : InternalRealtimeClientEvent
     {
         public InternalRealtimeClientEventInputAudioBufferCommit() : this(InternalRealtimeClientEventType.InputAudioBufferCommit, null, null)

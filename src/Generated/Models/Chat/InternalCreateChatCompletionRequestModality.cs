@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateChatCompletionRequestModality : IEquatable<InternalCreateChatCompletionRequestModality>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Chat
             _value = value;
         }
 
-        internal static InternalCreateChatCompletionRequestModality Text { get; } = new InternalCreateChatCompletionRequestModality(TextValue);
+        public static InternalCreateChatCompletionRequestModality Text { get; } = new InternalCreateChatCompletionRequestModality(TextValue);
 
-        internal static InternalCreateChatCompletionRequestModality Audio { get; } = new InternalCreateChatCompletionRequestModality(AudioValue);
+        public static InternalCreateChatCompletionRequestModality Audio { get; } = new InternalCreateChatCompletionRequestModality(AudioValue);
 
         public static bool operator ==(InternalCreateChatCompletionRequestModality left, InternalCreateChatCompletionRequestModality right) => left.Equals(right);
 

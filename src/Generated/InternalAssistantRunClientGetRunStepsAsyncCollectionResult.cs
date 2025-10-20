@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantRunClientGetRunStepsAsyncCollectionResult : AsyncCollectionResult
+    internal partial class InternalAssistantRunClientGetRunStepsAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly InternalAssistantRunClient _client;
         private readonly string _threadId;
@@ -22,7 +22,7 @@ namespace OpenAI.Assistants
         private readonly IEnumerable<InternalIncludedRunStepProperty> _include;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantRunClientGetRunStepsAsyncCollectionResult(InternalAssistantRunClient client, string threadId, string runId, int? limit, string order, string after, string before, IEnumerable<InternalIncludedRunStepProperty> include, RequestOptions options)
+        public InternalAssistantRunClientGetRunStepsAsyncCollectionResult(InternalAssistantRunClient client, string threadId, string runId, int? limit, string order, string after, string before, IEnumerable<InternalIncludedRunStepProperty> include, RequestOptions options)
         {
             Argument.AssertNotNullOrEmpty(threadId, nameof(threadId));
             Argument.AssertNotNullOrEmpty(runId, nameof(runId));

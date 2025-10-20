@@ -12,7 +12,7 @@ namespace OpenAI.Responses
 {
     public partial class FileCitationMessageAnnotation : ResponseMessageAnnotation, IJsonModel<FileCitationMessageAnnotation>
     {
-        internal FileCitationMessageAnnotation() : this(ResponseMessageAnnotationKind.FileCitation, null, null, null, default)
+        internal FileCitationMessageAnnotation() : this(ResponseMessageAnnotationKind.FileCitation, null, null, default)
         {
         }
 
@@ -31,14 +31,7 @@ namespace OpenAI.Responses
                 throw new FormatException($"The model {nameof(FileCitationMessageAnnotation)} does not support writing '{format}' format.");
             }
             base.JsonModelWriteCore(writer, options);
-            // <GP> Adding missing filename field
-			if (_additionalBinaryDataProperties?.ContainsKey("filename") != true)
-			{
-				writer.WritePropertyName("filename"u8);
-				writer.WriteStringValue(Filename);
-			}
-			// </GP> Adding missing filename field
-			if (_additionalBinaryDataProperties?.ContainsKey("file_id") != true)
+            if (_additionalBinaryDataProperties?.ContainsKey("file_id") != true)
             {
                 writer.WritePropertyName("file_id"u8);
                 writer.WriteStringValue(FileId);
@@ -71,11 +64,7 @@ namespace OpenAI.Responses
             }
             ResponseMessageAnnotationKind kind = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
-			// <GP> Adding missing filename field
-            string filename = default;
-			// </GP>
-
-			string fileId = default;
+            string fileId = default;
             int index = default;
             foreach (var prop in element.EnumerateObject())
             {
@@ -84,15 +73,7 @@ namespace OpenAI.Responses
                     kind = prop.Value.GetString().ToResponseMessageAnnotationKind();
                     continue;
                 }
-				// <GP> Adding missing filename field
-				if (prop.NameEquals("filename"u8))
-				{
-					filename = prop.Value.GetString();
-					continue;
-				}
-				// </GP>
-
-				if (prop.NameEquals("file_id"u8))
+                if (prop.NameEquals("file_id"u8))
                 {
                     fileId = prop.Value.GetString();
                     continue;
@@ -105,7 +86,7 @@ namespace OpenAI.Responses
                 // Plugin customization: remove options.Format != "W" check
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new FileCitationMessageAnnotation(kind, additionalBinaryDataProperties, filename, fileId, index);
+            return new FileCitationMessageAnnotation(kind, additionalBinaryDataProperties, fileId, index);
         }
 
         BinaryData IPersistableModel<FileCitationMessageAnnotation>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);

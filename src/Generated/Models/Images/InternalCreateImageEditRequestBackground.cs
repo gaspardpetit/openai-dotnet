@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageEditRequestBackground : IEquatable<InternalCreateImageEditRequestBackground>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Images
             _value = value;
         }
 
-        internal static InternalCreateImageEditRequestBackground Transparent { get; } = new InternalCreateImageEditRequestBackground(TransparentValue);
+        public static InternalCreateImageEditRequestBackground Transparent { get; } = new InternalCreateImageEditRequestBackground(TransparentValue);
 
-        internal static InternalCreateImageEditRequestBackground Opaque { get; } = new InternalCreateImageEditRequestBackground(OpaqueValue);
+        public static InternalCreateImageEditRequestBackground Opaque { get; } = new InternalCreateImageEditRequestBackground(OpaqueValue);
 
-        internal static InternalCreateImageEditRequestBackground Auto { get; } = new InternalCreateImageEditRequestBackground(AutoValue);
+        public static InternalCreateImageEditRequestBackground Auto { get; } = new InternalCreateImageEditRequestBackground(AutoValue);
 
         public static bool operator ==(InternalCreateImageEditRequestBackground left, InternalCreateImageEditRequestBackground right) => left.Equals(right);
 

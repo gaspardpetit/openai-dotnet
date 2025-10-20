@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentImageFileObject : MessageContent
     {
-        internal InternalMessageContentImageFileObject(InternalMessageContentItemFileObjectImageFile imageFile) : base(InternalMessageContentType.ImageFile)
+        public InternalMessageContentImageFileObject(InternalMessageContentItemFileObjectImageFile imageFile) : base(InternalMessageContentType.ImageFile)
         {
             Argument.AssertNotNull(imageFile, nameof(imageFile));
 
@@ -22,6 +24,6 @@ namespace OpenAI.Assistants
             ImageFile = imageFile;
         }
 
-        internal InternalMessageContentItemFileObjectImageFile ImageFile { get; set; }
+        public InternalMessageContentItemFileObjectImageFile ImageFile { get; set; }
     }
 }

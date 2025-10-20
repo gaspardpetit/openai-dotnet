@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel : IEquatable<InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel Gpt4oTranscribe { get; } = new InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel(Gpt4oTranscribeValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel Gpt4oTranscribe { get; } = new InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel(Gpt4oTranscribeValue);
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel Gpt4oMiniTranscribe { get; } = new InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel(Gpt4oMiniTranscribeValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel Gpt4oMiniTranscribe { get; } = new InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel(Gpt4oMiniTranscribeValue);
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel Whisper1 { get; } = new InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel(Whisper1Value);
+        public static InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel Whisper1 { get; } = new InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel(Whisper1Value);
 
         public static bool operator ==(InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel left, InternalRealtimeTranscriptionSessionCreateRequestInputAudioTranscriptionModel right) => left.Equals(right);
 
