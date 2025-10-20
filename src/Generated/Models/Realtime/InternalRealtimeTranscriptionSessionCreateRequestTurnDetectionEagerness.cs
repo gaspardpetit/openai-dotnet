@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness : IEquatable<InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness Low { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(LowValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness Low { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(LowValue);
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness Medium { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(MediumValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness Medium { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(MediumValue);
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness High { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(HighValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness High { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(HighValue);
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness Auto { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(AutoValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness Auto { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness(AutoValue);
 
         public static bool operator ==(InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness left, InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionEagerness right) => left.Equals(right);
 

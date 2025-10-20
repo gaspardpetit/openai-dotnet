@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalAssistantsNamedToolChoiceType : IEquatable<InternalAssistantsNamedToolChoiceType>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalAssistantsNamedToolChoiceType Function { get; } = new InternalAssistantsNamedToolChoiceType(FunctionValue);
+        public static InternalAssistantsNamedToolChoiceType Function { get; } = new InternalAssistantsNamedToolChoiceType(FunctionValue);
 
-        internal static InternalAssistantsNamedToolChoiceType CodeInterpreter { get; } = new InternalAssistantsNamedToolChoiceType(CodeInterpreterValue);
+        public static InternalAssistantsNamedToolChoiceType CodeInterpreter { get; } = new InternalAssistantsNamedToolChoiceType(CodeInterpreterValue);
 
-        internal static InternalAssistantsNamedToolChoiceType FileSearch { get; } = new InternalAssistantsNamedToolChoiceType(FileSearchValue);
+        public static InternalAssistantsNamedToolChoiceType FileSearch { get; } = new InternalAssistantsNamedToolChoiceType(FileSearchValue);
 
         public static bool operator ==(InternalAssistantsNamedToolChoiceType left, InternalAssistantsNamedToolChoiceType right) => left.Equals(right);
 

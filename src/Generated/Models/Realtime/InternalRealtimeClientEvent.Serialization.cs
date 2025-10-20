@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Realtime
 {
     [PersistableModelProxy(typeof(UnknownRealtimeClientEvent))]
-    public abstract partial class InternalRealtimeClientEvent : IJsonModel<InternalRealtimeClientEvent>
+    public partial class InternalRealtimeClientEvent : IJsonModel<InternalRealtimeClientEvent>
     {
         internal InternalRealtimeClientEvent()
         {

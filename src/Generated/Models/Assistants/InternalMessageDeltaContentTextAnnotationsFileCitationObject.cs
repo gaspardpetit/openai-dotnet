@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageDeltaContentTextAnnotationsFileCitationObject : InternalMessageDeltaTextContentAnnotation
     {
         internal InternalMessageDeltaContentTextAnnotationsFileCitationObject(int index) : base(InternalMessageContentTextAnnotationType.FileCitation)
@@ -27,7 +29,7 @@ namespace OpenAI.Assistants
 
         public string Text { get; }
 
-        internal InternalMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation FileCitation { get; }
+        public InternalMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation FileCitation { get; }
 
         public int? StartIndex { get; }
 

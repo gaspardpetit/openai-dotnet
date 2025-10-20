@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageEditRequestQuality : IEquatable<InternalCreateImageEditRequestQuality>
     {
         private readonly string _value;
@@ -24,15 +26,15 @@ namespace OpenAI.Images
             _value = value;
         }
 
-        internal static InternalCreateImageEditRequestQuality Standard { get; } = new InternalCreateImageEditRequestQuality(StandardValue);
+        public static InternalCreateImageEditRequestQuality Standard { get; } = new InternalCreateImageEditRequestQuality(StandardValue);
 
-        internal static InternalCreateImageEditRequestQuality Low { get; } = new InternalCreateImageEditRequestQuality(LowValue);
+        public static InternalCreateImageEditRequestQuality Low { get; } = new InternalCreateImageEditRequestQuality(LowValue);
 
-        internal static InternalCreateImageEditRequestQuality Medium { get; } = new InternalCreateImageEditRequestQuality(MediumValue);
+        public static InternalCreateImageEditRequestQuality Medium { get; } = new InternalCreateImageEditRequestQuality(MediumValue);
 
-        internal static InternalCreateImageEditRequestQuality High { get; } = new InternalCreateImageEditRequestQuality(HighValue);
+        public static InternalCreateImageEditRequestQuality High { get; } = new InternalCreateImageEditRequestQuality(HighValue);
 
-        internal static InternalCreateImageEditRequestQuality Auto { get; } = new InternalCreateImageEditRequestQuality(AutoValue);
+        public static InternalCreateImageEditRequestQuality Auto { get; } = new InternalCreateImageEditRequestQuality(AutoValue);
 
         public static bool operator ==(InternalCreateImageEditRequestQuality left, InternalCreateImageEditRequestQuality right) => left.Equals(right);
 

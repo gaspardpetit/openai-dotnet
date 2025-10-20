@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI
 {
-    public partial class MultiPartFormDataBinaryContent : BinaryContent
+    internal partial class MultiPartFormDataBinaryContent : BinaryContent
     {
         private readonly MultipartFormDataContent _multipartContent;
         private static readonly Random _random = new Random();
@@ -181,7 +181,7 @@ namespace OpenAI
         public override async Task WriteToAsync(Stream stream, CancellationToken cancellationToken = default)
         {
 #if NET6_0_OR_GREATER
-            await _multipartContent.CopyToAsync(stream).ConfigureAwait(false);
+            await _multipartContent.CopyToAsync(stream, cancellationToken).ConfigureAwait(false);
 #else
             await _multipartContent.CopyToAsync(stream).ConfigureAwait(false);
 #endif

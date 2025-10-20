@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateCompletionRequestModel : IEquatable<InternalCreateCompletionRequestModel>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.LegacyCompletions
             _value = value;
         }
 
-        internal static InternalCreateCompletionRequestModel Gpt35TurboInstruct { get; } = new InternalCreateCompletionRequestModel(Gpt35TurboInstructValue);
+        public static InternalCreateCompletionRequestModel Gpt35TurboInstruct { get; } = new InternalCreateCompletionRequestModel(Gpt35TurboInstructValue);
 
-        internal static InternalCreateCompletionRequestModel Davinci002 { get; } = new InternalCreateCompletionRequestModel(Davinci002Value);
+        public static InternalCreateCompletionRequestModel Davinci002 { get; } = new InternalCreateCompletionRequestModel(Davinci002Value);
 
-        internal static InternalCreateCompletionRequestModel Babbage002 { get; } = new InternalCreateCompletionRequestModel(Babbage002Value);
+        public static InternalCreateCompletionRequestModel Babbage002 { get; } = new InternalCreateCompletionRequestModel(Babbage002Value);
 
         public static bool operator ==(InternalCreateCompletionRequestModel left, InternalCreateCompletionRequestModel right) => left.Equals(right);
 

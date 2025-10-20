@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalToolChoiceObjectCodeInterpreter : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectCodeInterpreter() : this(InternalToolChoiceObjectType.CodeInterpreter, null)

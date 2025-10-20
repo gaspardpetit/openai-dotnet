@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalToolType : IEquatable<InternalToolType>
     {
         private readonly string _value;
@@ -27,21 +29,21 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalToolType FileSearch { get; } = new InternalToolType(FileSearchValue);
+        public static InternalToolType FileSearch { get; } = new InternalToolType(FileSearchValue);
 
-        internal static InternalToolType Function { get; } = new InternalToolType(FunctionValue);
+        public static InternalToolType Function { get; } = new InternalToolType(FunctionValue);
 
-        internal static InternalToolType ComputerUsePreview { get; } = new InternalToolType(ComputerUsePreviewValue);
+        public static InternalToolType ComputerUsePreview { get; } = new InternalToolType(ComputerUsePreviewValue);
 
-        internal static InternalToolType WebSearchPreview { get; } = new InternalToolType(WebSearchPreviewValue);
+        public static InternalToolType WebSearchPreview { get; } = new InternalToolType(WebSearchPreviewValue);
 
-        internal static InternalToolType Mcp { get; } = new InternalToolType(McpValue);
+        public static InternalToolType Mcp { get; } = new InternalToolType(McpValue);
 
-        internal static InternalToolType CodeInterpreter { get; } = new InternalToolType(CodeInterpreterValue);
+        public static InternalToolType CodeInterpreter { get; } = new InternalToolType(CodeInterpreterValue);
 
-        internal static InternalToolType ImageGeneration { get; } = new InternalToolType(ImageGenerationValue);
+        public static InternalToolType ImageGeneration { get; } = new InternalToolType(ImageGenerationValue);
 
-        internal static InternalToolType LocalShell { get; } = new InternalToolType(LocalShellValue);
+        public static InternalToolType LocalShell { get; } = new InternalToolType(LocalShellValue);
 
         public static bool operator ==(InternalToolType left, InternalToolType right) => left.Equals(right);
 

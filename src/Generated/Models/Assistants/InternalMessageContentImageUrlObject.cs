@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentImageUrlObject : MessageContent
     {
-        internal InternalMessageContentImageUrlObject(InternalMessageContentImageUrlObjectImageUrl imageUrl) : base(InternalMessageContentType.ImageUrl)
+        public InternalMessageContentImageUrlObject(InternalMessageContentImageUrlObjectImageUrl imageUrl) : base(InternalMessageContentType.ImageUrl)
         {
             Argument.AssertNotNull(imageUrl, nameof(imageUrl));
 
@@ -22,6 +24,6 @@ namespace OpenAI.Assistants
             ImageUrl = imageUrl;
         }
 
-        internal InternalMessageContentImageUrlObjectImageUrl ImageUrl { get; set; }
+        public InternalMessageContentImageUrlObjectImageUrl ImageUrl { get; set; }
     }
 }

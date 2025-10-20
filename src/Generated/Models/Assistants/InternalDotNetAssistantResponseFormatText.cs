@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI.Internal;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetAssistantResponseFormatText : AssistantResponseFormat
     {
         public InternalDotNetAssistantResponseFormatText() : this(InternalResponseFormatType.Text, null)

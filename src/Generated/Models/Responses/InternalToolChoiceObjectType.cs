@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalToolChoiceObjectType : IEquatable<InternalToolChoiceObjectType>
     {
         private readonly string _value;
@@ -26,19 +28,19 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalToolChoiceObjectType FileSearch { get; } = new InternalToolChoiceObjectType(FileSearchValue);
+        public static InternalToolChoiceObjectType FileSearch { get; } = new InternalToolChoiceObjectType(FileSearchValue);
 
-        internal static InternalToolChoiceObjectType Function { get; } = new InternalToolChoiceObjectType(FunctionValue);
+        public static InternalToolChoiceObjectType Function { get; } = new InternalToolChoiceObjectType(FunctionValue);
 
-        internal static InternalToolChoiceObjectType Computer { get; } = new InternalToolChoiceObjectType(ComputerValue);
+        public static InternalToolChoiceObjectType Computer { get; } = new InternalToolChoiceObjectType(ComputerValue);
 
-        internal static InternalToolChoiceObjectType WebSearch { get; } = new InternalToolChoiceObjectType(WebSearchValue);
+        public static InternalToolChoiceObjectType WebSearch { get; } = new InternalToolChoiceObjectType(WebSearchValue);
 
-        internal static InternalToolChoiceObjectType ImageGeneration { get; } = new InternalToolChoiceObjectType(ImageGenerationValue);
+        public static InternalToolChoiceObjectType ImageGeneration { get; } = new InternalToolChoiceObjectType(ImageGenerationValue);
 
-        internal static InternalToolChoiceObjectType CodeInterpreter { get; } = new InternalToolChoiceObjectType(CodeInterpreterValue);
+        public static InternalToolChoiceObjectType CodeInterpreter { get; } = new InternalToolChoiceObjectType(CodeInterpreterValue);
 
-        internal static InternalToolChoiceObjectType Mcp { get; } = new InternalToolChoiceObjectType(McpValue);
+        public static InternalToolChoiceObjectType Mcp { get; } = new InternalToolChoiceObjectType(McpValue);
 
         public static bool operator ==(InternalToolChoiceObjectType left, InternalToolChoiceObjectType right) => left.Equals(right);
 

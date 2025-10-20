@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalFineTuneReinforcementHyperparametersReasoningEffort : IEquatable<InternalFineTuneReinforcementHyperparametersReasoningEffort>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.FineTuning
             _value = value;
         }
 
-        internal static InternalFineTuneReinforcementHyperparametersReasoningEffort Default { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(DefaultValue);
+        public static InternalFineTuneReinforcementHyperparametersReasoningEffort Default { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(DefaultValue);
 
-        internal static InternalFineTuneReinforcementHyperparametersReasoningEffort Low { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(LowValue);
+        public static InternalFineTuneReinforcementHyperparametersReasoningEffort Low { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(LowValue);
 
-        internal static InternalFineTuneReinforcementHyperparametersReasoningEffort Medium { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(MediumValue);
+        public static InternalFineTuneReinforcementHyperparametersReasoningEffort Medium { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(MediumValue);
 
-        internal static InternalFineTuneReinforcementHyperparametersReasoningEffort High { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(HighValue);
+        public static InternalFineTuneReinforcementHyperparametersReasoningEffort High { get; } = new InternalFineTuneReinforcementHyperparametersReasoningEffort(HighValue);
 
         public static bool operator ==(InternalFineTuneReinforcementHyperparametersReasoningEffort left, InternalFineTuneReinforcementHyperparametersReasoningEffort right) => left.Equals(right);
 

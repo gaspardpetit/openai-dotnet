@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType : IEquatable<InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType ServerVad { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType(ServerVadValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType ServerVad { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType(ServerVadValue);
 
-        internal static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType SemanticVad { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType(SemanticVadValue);
+        public static InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType SemanticVad { get; } = new InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType(SemanticVadValue);
 
         public static bool operator ==(InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType left, InternalRealtimeTranscriptionSessionCreateRequestTurnDetectionType right) => left.Equals(right);
 

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentInputFile : ResponseContentPart
     {
         public InternalItemContentInputFile() : this(InternalItemContentType.InputFile, null, null, null, null)

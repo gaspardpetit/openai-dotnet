@@ -13,7 +13,7 @@ namespace OpenAI.FineTuning
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal FineTuningTrainingMethod(InternalFineTuneMethodType kind)
+        public FineTuningTrainingMethod(InternalFineTuneMethodType kind)
         {
             Kind = kind;
         }
@@ -27,9 +27,9 @@ namespace OpenAI.FineTuning
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalFineTuneMethodType Kind { get; set; }
+        public InternalFineTuneMethodType Kind { get; set; }
 
-        internal InternalFineTuneReinforcementMethod Reinforcement { get; set; }
+        public InternalFineTuneReinforcementMethod Reinforcement { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

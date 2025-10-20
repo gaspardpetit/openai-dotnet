@@ -4,15 +4,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionNamedToolChoice
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalChatCompletionNamedToolChoice(InternalChatCompletionNamedToolChoiceFunction function)
+        public InternalChatCompletionNamedToolChoice(InternalChatCompletionNamedToolChoiceFunction function)
         {
             Argument.AssertNotNull(function, nameof(function));
 
@@ -26,9 +28,9 @@ namespace OpenAI.Chat
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        public string Kind { get; } = "function";
+        internal string Kind { get; } = "function";
 
-        internal InternalChatCompletionNamedToolChoiceFunction Function { get; }
+        public InternalChatCompletionNamedToolChoiceFunction Function { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {
