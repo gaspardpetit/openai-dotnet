@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateTranscriptionResponseJson
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -28,7 +30,7 @@ namespace OpenAI.Audio
 
         public string Text { get; }
 
-        internal IList<InternalCreateTranscriptionResponseJsonLogprob> Logprobs { get; }
+        public IList<InternalCreateTranscriptionResponseJsonLogprob> Logprobs { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

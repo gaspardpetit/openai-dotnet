@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalReasoningItemSummaryPartType : IEquatable<InternalReasoningItemSummaryPartType>
     {
         private readonly string _value;
@@ -20,7 +22,7 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalReasoningItemSummaryPartType SummaryText { get; } = new InternalReasoningItemSummaryPartType(SummaryTextValue);
+        public static InternalReasoningItemSummaryPartType SummaryText { get; } = new InternalReasoningItemSummaryPartType(SummaryTextValue);
 
         public static bool operator ==(InternalReasoningItemSummaryPartType left, InternalReasoningItemSummaryPartType right) => left.Equals(right);
 

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetCombinedOtherChunkingStrategyParam : FileChunkingStrategy
     {
         public InternalDotNetCombinedOtherChunkingStrategyParam() : this(InternalDotNetCombinedChunkingStrategyParamType.Other, null)

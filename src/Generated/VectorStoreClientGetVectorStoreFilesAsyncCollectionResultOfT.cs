@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.VectorStores
 {
-    public partial class VectorStoreClientGetVectorStoreFilesAsyncCollectionResultOfT : AsyncCollectionResult<VectorStoreFile>
+    internal partial class VectorStoreClientGetVectorStoreFilesAsyncCollectionResultOfT : AsyncCollectionResult<VectorStoreFile>
     {
         private readonly VectorStoreClient _client;
         private readonly string _vectorStoreId;

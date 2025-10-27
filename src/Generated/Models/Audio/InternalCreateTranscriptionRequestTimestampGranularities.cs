@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateTranscriptionRequestTimestampGranularities : IEquatable<InternalCreateTranscriptionRequestTimestampGranularities>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Audio
             _value = value;
         }
 
-        internal static InternalCreateTranscriptionRequestTimestampGranularities Word { get; } = new InternalCreateTranscriptionRequestTimestampGranularities(WordValue);
+        public static InternalCreateTranscriptionRequestTimestampGranularities Word { get; } = new InternalCreateTranscriptionRequestTimestampGranularities(WordValue);
 
-        internal static InternalCreateTranscriptionRequestTimestampGranularities Segment { get; } = new InternalCreateTranscriptionRequestTimestampGranularities(SegmentValue);
+        public static InternalCreateTranscriptionRequestTimestampGranularities Segment { get; } = new InternalCreateTranscriptionRequestTimestampGranularities(SegmentValue);
 
         public static bool operator ==(InternalCreateTranscriptionRequestTimestampGranularities left, InternalCreateTranscriptionRequestTimestampGranularities right) => left.Equals(right);
 

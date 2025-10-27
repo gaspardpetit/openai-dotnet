@@ -36,7 +36,7 @@ namespace OpenAI.Graders
 
         public BinaryData NEpochs { get; set; }
 
-        internal InternalFineTuneReinforcementHyperparametersReasoningEffort? ReasoningEffort { get; set; }
+        public InternalFineTuneReinforcementHyperparametersReasoningEffort? ReasoningEffort { get; set; }
 
         public BinaryData ComputeMultiplier { get; set; }
 

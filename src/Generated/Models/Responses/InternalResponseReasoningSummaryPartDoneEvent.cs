@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseReasoningSummaryPartDoneEvent : StreamingResponseUpdate
     {
         internal InternalResponseReasoningSummaryPartDoneEvent(int sequenceNumber, string itemId, int outputIndex, int summaryIndex, ReasoningSummaryPart part) : base(InternalResponseStreamEventType.ResponseReasoningSummaryPartDone, sequenceNumber)

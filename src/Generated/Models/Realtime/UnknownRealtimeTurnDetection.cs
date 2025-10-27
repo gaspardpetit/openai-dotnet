@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class UnknownRealtimeTurnDetection : TurnDetectionOptions
     {
         internal UnknownRealtimeTurnDetection(TurnDetectionKind kind, bool? responseCreationEnabled, bool? responseInterruptionEnabled, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind, responseCreationEnabled, responseInterruptionEnabled, additionalBinaryDataProperties)

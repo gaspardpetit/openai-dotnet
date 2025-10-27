@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Graders;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalGraderPythonParams : InternalEvalGraderParams
     {
         public InternalEvalGraderPythonParams(string name, string source) : base(GraderType.Python)

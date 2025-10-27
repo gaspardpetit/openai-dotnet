@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEval
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -43,9 +45,9 @@ namespace OpenAI.Evals
 
         public string Name { get; }
 
-        internal InternalEvalDataSourceConfigResource DataSourceConfig { get; }
+        public InternalEvalDataSourceConfigResource DataSourceConfig { get; }
 
-        internal IList<InternalEvalGraderResource> TestingCriteria { get; }
+        public IList<InternalEvalGraderResource> TestingCriteria { get; }
 
         public DateTimeOffset CreatedAt { get; }
 

@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
-	public partial class InternalUnknownItemResource : ResponseItem
+    [Experimental("OPENAI001")]
+    public partial class InternalUnknownItemResource : ResponseItem
     {
         internal InternalUnknownItemResource(InternalItemType kind, string id, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", id, additionalBinaryDataProperties)
         {

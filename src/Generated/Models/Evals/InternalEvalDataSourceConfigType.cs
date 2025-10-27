@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalEvalDataSourceConfigType : IEquatable<InternalEvalDataSourceConfigType>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Evals
             _value = value;
         }
 
-        internal static InternalEvalDataSourceConfigType Custom { get; } = new InternalEvalDataSourceConfigType(CustomValue);
+        public static InternalEvalDataSourceConfigType Custom { get; } = new InternalEvalDataSourceConfigType(CustomValue);
 
-        internal static InternalEvalDataSourceConfigType Logs { get; } = new InternalEvalDataSourceConfigType(LogsValue);
+        public static InternalEvalDataSourceConfigType Logs { get; } = new InternalEvalDataSourceConfigType(LogsValue);
 
-        internal static InternalEvalDataSourceConfigType StoredCompletions { get; } = new InternalEvalDataSourceConfigType(StoredCompletionsValue);
+        public static InternalEvalDataSourceConfigType StoredCompletions { get; } = new InternalEvalDataSourceConfigType(StoredCompletionsValue);
 
         public static bool operator ==(InternalEvalDataSourceConfigType left, InternalEvalDataSourceConfigType right) => left.Equals(right);
 

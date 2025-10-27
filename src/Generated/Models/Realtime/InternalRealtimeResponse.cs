@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -20,7 +22,7 @@ namespace OpenAI.Realtime
             Modalities = new ChangeTrackingList<InternalRealtimeResponseModality>();
         }
 
-        internal InternalRealtimeResponse(string id, string @object, ConversationStatus? status, ConversationStatusDetails statusDetails, IReadOnlyList<RealtimeItem> output, IDictionary<string, string> metadata, ConversationTokenUsage usage, string conversationId, ConversationVoice? voice, IReadOnlyList<InternalRealtimeResponseModality> modalities, RealtimeAudioFormat? outputAudioFormat, float? temperature, BinaryData maxOutputTokens, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal InternalRealtimeResponse(string id, InternalRealtimeResponseObject? @object, ConversationStatus? status, ConversationStatusDetails statusDetails, IReadOnlyList<RealtimeItem> output, IDictionary<string, string> metadata, ConversationTokenUsage usage, string conversationId, ConversationVoice? voice, IReadOnlyList<InternalRealtimeResponseModality> modalities, RealtimeAudioFormat? outputAudioFormat, float? temperature, BinaryData maxOutputTokens, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             // Plugin customization: ensure initialization of collections
             Id = id;
@@ -41,7 +43,7 @@ namespace OpenAI.Realtime
 
         public string Id { get; }
 
-        public string Object { get; }
+        public InternalRealtimeResponseObject? Object { get; }
 
         public ConversationStatus? Status { get; }
 

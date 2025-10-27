@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRunDataSourceResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -22,7 +24,7 @@ namespace OpenAI.Evals
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalEvalRunDataSourceType Kind { get; }
+        public InternalEvalRunDataSourceType Kind { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

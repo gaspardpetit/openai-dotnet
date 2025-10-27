@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeClientEventConversationItemTruncate : InternalRealtimeClientEvent
     {
         public InternalRealtimeClientEventConversationItemTruncate(string itemId, int contentIndex, int audioEndMs) : base(InternalRealtimeClientEventType.ConversationItemTruncate)

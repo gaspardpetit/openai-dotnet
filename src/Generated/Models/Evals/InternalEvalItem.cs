@@ -4,15 +4,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalItem
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalEvalItem(InternalEvalItemRole role, BinaryData content)
+        public InternalEvalItem(InternalEvalItemRole role, BinaryData content)
         {
             Argument.AssertNotNull(content, nameof(content));
 
@@ -20,7 +22,7 @@ namespace OpenAI.Evals
             Content = content;
         }
 
-        internal InternalEvalItem(InternalEvalItemRole role, BinaryData content, string kind, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal InternalEvalItem(InternalEvalItemRole role, BinaryData content, InternalEvalItemType? kind, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             Role = role;
             Content = content;
@@ -28,11 +30,11 @@ namespace OpenAI.Evals
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalEvalItemRole Role { get; set; }
+        public InternalEvalItemRole Role { get; set; }
 
         public BinaryData Content { get; set; }
 
-        public string Kind { get; set; }
+        public InternalEvalItemType? Kind { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

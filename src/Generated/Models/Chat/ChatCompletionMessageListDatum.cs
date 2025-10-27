@@ -14,13 +14,12 @@ namespace OpenAI.Chat
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal ChatCompletionMessageListDatum(string content, string refusal, ChatMessageRole role, string id)
+        internal ChatCompletionMessageListDatum(string content, string refusal, string id)
         {
             Content = content;
             Refusal = refusal;
             ToolCalls = new ChangeTrackingList<ChatToolCall>();
             Annotations = new ChangeTrackingList<ChatMessageAnnotation>();
-            Role = role;
             Id = id;
         }
 
@@ -46,7 +45,7 @@ namespace OpenAI.Chat
 
         public IReadOnlyList<ChatMessageAnnotation> Annotations { get; }
 
-        internal InternalChatCompletionResponseMessageFunctionCall FunctionCall { get; }
+        public InternalChatCompletionResponseMessageFunctionCall FunctionCall { get; }
 
         public string Id { get; }
 
