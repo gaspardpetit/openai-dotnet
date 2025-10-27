@@ -26,11 +26,9 @@ namespace OpenAI.Responses
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        // <GP> made public
-        public InternalResponseStreamEventType Kind { get; set; }
-		// </GP>
+        internal InternalResponseStreamEventType Kind { get; set; }
 
-		public int SequenceNumber { get; }
+        public int SequenceNumber { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

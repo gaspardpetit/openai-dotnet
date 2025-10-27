@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageDeltaContentTextObjectText
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -26,7 +28,7 @@ namespace OpenAI.Assistants
 
         public string Value { get; }
 
-        internal IList<InternalMessageDeltaTextContentAnnotation> Annotations { get; }
+        public IList<InternalMessageDeltaTextContentAnnotation> Annotations { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

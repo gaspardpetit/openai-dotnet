@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public partial class InternalListBatchesResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -30,7 +32,7 @@ namespace OpenAI.Batch
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal IList<InternalBatchJob> Data { get; }
+        public IList<InternalBatchJob> Data { get; }
 
         public string FirstId { get; }
 

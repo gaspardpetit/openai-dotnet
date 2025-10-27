@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
-    public abstract partial class InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject
+    [Experimental("OPENAI001")]
+    public partial class InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

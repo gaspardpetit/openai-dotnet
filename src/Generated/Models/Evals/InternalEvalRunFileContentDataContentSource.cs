@@ -4,14 +4,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRunFileContentDataContentSource : InternalEvalRunDataContentSource
     {
-        internal InternalEvalRunFileContentDataContentSource(IEnumerable<InternalEvalRunFileContentDataContentSourceContent> content) : base(InternalEvalRunDataContentSourceType.FileContent)
+        public InternalEvalRunFileContentDataContentSource(IEnumerable<InternalEvalRunFileContentDataContentSourceContent> content) : base(InternalEvalRunDataContentSourceType.FileContent)
         {
             Argument.AssertNotNull(content, nameof(content));
 
@@ -24,6 +26,6 @@ namespace OpenAI.Evals
             Content = content ?? new ChangeTrackingList<InternalEvalRunFileContentDataContentSourceContent>();
         }
 
-        internal IList<InternalEvalRunFileContentDataContentSourceContent> Content { get; }
+        public IList<InternalEvalRunFileContentDataContentSourceContent> Content { get; }
     }
 }

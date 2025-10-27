@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUnknownResponsesMessageItemResourceItemParam : InternalResponsesMessageItemParam
     {
         internal InternalUnknownResponsesMessageItemResourceItemParam(InternalItemType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties, InternalResponsesMessageRole role) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties, role != default ? role : "unknown")

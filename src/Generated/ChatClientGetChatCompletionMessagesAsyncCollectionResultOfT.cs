@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    public partial class ChatClientGetChatCompletionMessagesAsyncCollectionResultOfT : AsyncCollectionResult<ChatCompletionMessageListDatum>
+    internal partial class ChatClientGetChatCompletionMessagesAsyncCollectionResultOfT : AsyncCollectionResult<ChatCompletionMessageListDatum>
     {
         private readonly ChatClient _client;
         private readonly string _completionId;

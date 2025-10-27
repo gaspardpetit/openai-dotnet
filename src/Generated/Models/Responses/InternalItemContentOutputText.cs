@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentOutputText : ResponseContentPart
     {
         public InternalItemContentOutputText(string internalText, IEnumerable<ResponseMessageAnnotation> annotations) : base(InternalItemContentType.OutputText)
@@ -31,6 +33,6 @@ namespace OpenAI.Responses
 
         public IList<ResponseMessageAnnotation> Annotations { get; }
 
-        internal IList<InternalLogProb> Logprobs { get; }
+        public IList<InternalLogProb> Logprobs { get; }
     }
 }

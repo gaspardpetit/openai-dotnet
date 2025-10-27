@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeSessionCreateRequestTurnDetectionEagerness : IEquatable<InternalRealtimeSessionCreateRequestTurnDetectionEagerness>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeSessionCreateRequestTurnDetectionEagerness Low { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(LowValue);
+        public static InternalRealtimeSessionCreateRequestTurnDetectionEagerness Low { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(LowValue);
 
-        internal static InternalRealtimeSessionCreateRequestTurnDetectionEagerness Medium { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(MediumValue);
+        public static InternalRealtimeSessionCreateRequestTurnDetectionEagerness Medium { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(MediumValue);
 
-        internal static InternalRealtimeSessionCreateRequestTurnDetectionEagerness High { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(HighValue);
+        public static InternalRealtimeSessionCreateRequestTurnDetectionEagerness High { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(HighValue);
 
-        internal static InternalRealtimeSessionCreateRequestTurnDetectionEagerness Auto { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(AutoValue);
+        public static InternalRealtimeSessionCreateRequestTurnDetectionEagerness Auto { get; } = new InternalRealtimeSessionCreateRequestTurnDetectionEagerness(AutoValue);
 
         public static bool operator ==(InternalRealtimeSessionCreateRequestTurnDetectionEagerness left, InternalRealtimeSessionCreateRequestTurnDetectionEagerness right) => left.Equals(right);
 

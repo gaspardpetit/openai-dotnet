@@ -7,7 +7,7 @@ using System;
 namespace OpenAI
 {
     [AttributeUsage((AttributeTargets.Class | AttributeTargets.Struct), AllowMultiple = true, Inherited = true)]
-    public partial class CodeGenSerializationAttribute : Attribute
+    internal partial class CodeGenSerializationAttribute : Attribute
     {
         public CodeGenSerializationAttribute(string propertyName)
         {

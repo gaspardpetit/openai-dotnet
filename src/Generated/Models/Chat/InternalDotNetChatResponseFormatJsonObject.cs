@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetChatResponseFormatJsonObject : ChatResponseFormat
     {
         public InternalDotNetChatResponseFormatJsonObject() : this(InternalResponseFormatType.JsonObject, null)

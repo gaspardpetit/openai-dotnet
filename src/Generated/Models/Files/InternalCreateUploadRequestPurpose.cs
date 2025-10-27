@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateUploadRequestPurpose : IEquatable<InternalCreateUploadRequestPurpose>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.Files
             _value = value;
         }
 
-        internal static InternalCreateUploadRequestPurpose Assistants { get; } = new InternalCreateUploadRequestPurpose(AssistantsValue);
+        public static InternalCreateUploadRequestPurpose Assistants { get; } = new InternalCreateUploadRequestPurpose(AssistantsValue);
 
-        internal static InternalCreateUploadRequestPurpose Batch { get; } = new InternalCreateUploadRequestPurpose(BatchValue);
+        public static InternalCreateUploadRequestPurpose Batch { get; } = new InternalCreateUploadRequestPurpose(BatchValue);
 
-        internal static InternalCreateUploadRequestPurpose FineTune { get; } = new InternalCreateUploadRequestPurpose(FineTuneValue);
+        public static InternalCreateUploadRequestPurpose FineTune { get; } = new InternalCreateUploadRequestPurpose(FineTuneValue);
 
-        internal static InternalCreateUploadRequestPurpose Vision { get; } = new InternalCreateUploadRequestPurpose(VisionValue);
+        public static InternalCreateUploadRequestPurpose Vision { get; } = new InternalCreateUploadRequestPurpose(VisionValue);
 
         public static bool operator ==(InternalCreateUploadRequestPurpose left, InternalCreateUploadRequestPurpose right) => left.Equals(right);
 

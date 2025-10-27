@@ -54,8 +54,14 @@ namespace OpenAI.Responses
             if (_additionalBinaryDataProperties?.ContainsKey("annotation") != true)
             {
                 writer.WritePropertyName("annotation"u8);
-                IJsonModel<ResponseMessageAnnotation> jsonAnnotation = Annotation;
-                jsonAnnotation.Write(writer, options);
+#if NET6_0_OR_GREATER
+                writer.WriteRawValue(Annotation);
+#else
+                using (JsonDocument document = JsonDocument.Parse(Annotation))
+                {
+                    JsonSerializer.Serialize(writer, document.RootElement);
+                }
+#endif
             }
         }
 
@@ -85,7 +91,7 @@ namespace OpenAI.Responses
             int outputIndex = default;
             int contentIndex = default;
             int annotationIndex = default;
-            ResponseMessageAnnotation annotation = default;
+            BinaryData annotation = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -120,7 +126,7 @@ namespace OpenAI.Responses
                 }
                 if (prop.NameEquals("annotation"u8))
                 {
-                    annotation = ResponseMessageAnnotation.DeserializeResponseMessageAnnotation(prop.Value, options);
+                    annotation = BinaryData.FromString(prop.Value.GetRawText());
                     continue;
                 }
                 // Plugin customization: remove options.Format != "W" check

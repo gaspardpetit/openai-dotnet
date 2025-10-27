@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Realtime;
 
@@ -37,7 +38,8 @@ namespace OpenAI.Audio
 
         public float? Temperature { get; set; }
 
-        internal InternalVadConfig ChunkingStrategy { get; set; }
+        [Experimental("OPENAI001")]
+        public InternalVadConfig ChunkingStrategy { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalDotNetRealtimeLogProbProperties
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

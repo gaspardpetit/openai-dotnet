@@ -4,15 +4,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateUploadRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalCreateUploadRequest(string filename, InternalCreateUploadRequestPurpose purpose, int bytes, string mimeType)
+        public InternalCreateUploadRequest(string filename, InternalCreateUploadRequestPurpose purpose, int bytes, string mimeType)
         {
             Argument.AssertNotNull(filename, nameof(filename));
             Argument.AssertNotNull(mimeType, nameof(mimeType));
@@ -34,7 +36,7 @@ namespace OpenAI.Files
 
         public string Filename { get; }
 
-        internal InternalCreateUploadRequestPurpose Purpose { get; }
+        public InternalCreateUploadRequestPurpose Purpose { get; }
 
         public int Bytes { get; }
 
