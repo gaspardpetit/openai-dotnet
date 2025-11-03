@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalResponseStreamEventType : IEquatable<InternalResponseStreamEventType>
     {
         private readonly string _value;
@@ -72,111 +74,111 @@ namespace OpenAI.Responses
             _value = value;
         }
 
-        internal static InternalResponseStreamEventType ResponseAudioDelta { get; } = new InternalResponseStreamEventType(ResponseAudioDeltaValue);
+        public static InternalResponseStreamEventType ResponseAudioDelta { get; } = new InternalResponseStreamEventType(ResponseAudioDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseAudioDone { get; } = new InternalResponseStreamEventType(ResponseAudioDoneValue);
+        public static InternalResponseStreamEventType ResponseAudioDone { get; } = new InternalResponseStreamEventType(ResponseAudioDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseAudioTranscriptDelta { get; } = new InternalResponseStreamEventType(ResponseAudioTranscriptDeltaValue);
+        public static InternalResponseStreamEventType ResponseAudioTranscriptDelta { get; } = new InternalResponseStreamEventType(ResponseAudioTranscriptDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseAudioTranscriptDone { get; } = new InternalResponseStreamEventType(ResponseAudioTranscriptDoneValue);
+        public static InternalResponseStreamEventType ResponseAudioTranscriptDone { get; } = new InternalResponseStreamEventType(ResponseAudioTranscriptDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseCodeInterpreterCallCodeDelta { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallCodeDeltaValue);
+        public static InternalResponseStreamEventType ResponseCodeInterpreterCallCodeDelta { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallCodeDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseCodeInterpreterCallCodeDone { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallCodeDoneValue);
+        public static InternalResponseStreamEventType ResponseCodeInterpreterCallCodeDone { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallCodeDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseCodeInterpreterCallCompleted { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallCompletedValue);
+        public static InternalResponseStreamEventType ResponseCodeInterpreterCallCompleted { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseCodeInterpreterCallInProgress { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallInProgressValue);
+        public static InternalResponseStreamEventType ResponseCodeInterpreterCallInProgress { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseCodeInterpreterCallInterpreting { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallInterpretingValue);
+        public static InternalResponseStreamEventType ResponseCodeInterpreterCallInterpreting { get; } = new InternalResponseStreamEventType(ResponseCodeInterpreterCallInterpretingValue);
 
-        internal static InternalResponseStreamEventType ResponseCompleted { get; } = new InternalResponseStreamEventType(ResponseCompletedValue);
+        public static InternalResponseStreamEventType ResponseCompleted { get; } = new InternalResponseStreamEventType(ResponseCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseContentPartAdded { get; } = new InternalResponseStreamEventType(ResponseContentPartAddedValue);
+        public static InternalResponseStreamEventType ResponseContentPartAdded { get; } = new InternalResponseStreamEventType(ResponseContentPartAddedValue);
 
-        internal static InternalResponseStreamEventType ResponseContentPartDone { get; } = new InternalResponseStreamEventType(ResponseContentPartDoneValue);
+        public static InternalResponseStreamEventType ResponseContentPartDone { get; } = new InternalResponseStreamEventType(ResponseContentPartDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseCreated { get; } = new InternalResponseStreamEventType(ResponseCreatedValue);
+        public static InternalResponseStreamEventType ResponseCreated { get; } = new InternalResponseStreamEventType(ResponseCreatedValue);
 
-        internal static InternalResponseStreamEventType Error { get; } = new InternalResponseStreamEventType(ErrorValue);
+        public static InternalResponseStreamEventType Error { get; } = new InternalResponseStreamEventType(ErrorValue);
 
-        internal static InternalResponseStreamEventType ResponseFileSearchCallCompleted { get; } = new InternalResponseStreamEventType(ResponseFileSearchCallCompletedValue);
+        public static InternalResponseStreamEventType ResponseFileSearchCallCompleted { get; } = new InternalResponseStreamEventType(ResponseFileSearchCallCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseFileSearchCallInProgress { get; } = new InternalResponseStreamEventType(ResponseFileSearchCallInProgressValue);
+        public static InternalResponseStreamEventType ResponseFileSearchCallInProgress { get; } = new InternalResponseStreamEventType(ResponseFileSearchCallInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseFileSearchCallSearching { get; } = new InternalResponseStreamEventType(ResponseFileSearchCallSearchingValue);
+        public static InternalResponseStreamEventType ResponseFileSearchCallSearching { get; } = new InternalResponseStreamEventType(ResponseFileSearchCallSearchingValue);
 
-        internal static InternalResponseStreamEventType ResponseFunctionCallArgumentsDelta { get; } = new InternalResponseStreamEventType(ResponseFunctionCallArgumentsDeltaValue);
+        public static InternalResponseStreamEventType ResponseFunctionCallArgumentsDelta { get; } = new InternalResponseStreamEventType(ResponseFunctionCallArgumentsDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseFunctionCallArgumentsDone { get; } = new InternalResponseStreamEventType(ResponseFunctionCallArgumentsDoneValue);
+        public static InternalResponseStreamEventType ResponseFunctionCallArgumentsDone { get; } = new InternalResponseStreamEventType(ResponseFunctionCallArgumentsDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseInProgress { get; } = new InternalResponseStreamEventType(ResponseInProgressValue);
+        public static InternalResponseStreamEventType ResponseInProgress { get; } = new InternalResponseStreamEventType(ResponseInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseFailed { get; } = new InternalResponseStreamEventType(ResponseFailedValue);
+        public static InternalResponseStreamEventType ResponseFailed { get; } = new InternalResponseStreamEventType(ResponseFailedValue);
 
-        internal static InternalResponseStreamEventType ResponseIncomplete { get; } = new InternalResponseStreamEventType(ResponseIncompleteValue);
+        public static InternalResponseStreamEventType ResponseIncomplete { get; } = new InternalResponseStreamEventType(ResponseIncompleteValue);
 
-        internal static InternalResponseStreamEventType ResponseOutputItemAdded { get; } = new InternalResponseStreamEventType(ResponseOutputItemAddedValue);
+        public static InternalResponseStreamEventType ResponseOutputItemAdded { get; } = new InternalResponseStreamEventType(ResponseOutputItemAddedValue);
 
-        internal static InternalResponseStreamEventType ResponseOutputItemDone { get; } = new InternalResponseStreamEventType(ResponseOutputItemDoneValue);
+        public static InternalResponseStreamEventType ResponseOutputItemDone { get; } = new InternalResponseStreamEventType(ResponseOutputItemDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseRefusalDelta { get; } = new InternalResponseStreamEventType(ResponseRefusalDeltaValue);
+        public static InternalResponseStreamEventType ResponseRefusalDelta { get; } = new InternalResponseStreamEventType(ResponseRefusalDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseRefusalDone { get; } = new InternalResponseStreamEventType(ResponseRefusalDoneValue);
+        public static InternalResponseStreamEventType ResponseRefusalDone { get; } = new InternalResponseStreamEventType(ResponseRefusalDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseOutputTextAnnotationAdded { get; } = new InternalResponseStreamEventType(ResponseOutputTextAnnotationAddedValue);
+        public static InternalResponseStreamEventType ResponseOutputTextAnnotationAdded { get; } = new InternalResponseStreamEventType(ResponseOutputTextAnnotationAddedValue);
 
-        internal static InternalResponseStreamEventType ResponseOutputTextDelta { get; } = new InternalResponseStreamEventType(ResponseOutputTextDeltaValue);
+        public static InternalResponseStreamEventType ResponseOutputTextDelta { get; } = new InternalResponseStreamEventType(ResponseOutputTextDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseOutputTextDone { get; } = new InternalResponseStreamEventType(ResponseOutputTextDoneValue);
+        public static InternalResponseStreamEventType ResponseOutputTextDone { get; } = new InternalResponseStreamEventType(ResponseOutputTextDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningSummaryPartAdded { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryPartAddedValue);
+        public static InternalResponseStreamEventType ResponseReasoningSummaryPartAdded { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryPartAddedValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningSummaryPartDone { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryPartDoneValue);
+        public static InternalResponseStreamEventType ResponseReasoningSummaryPartDone { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryPartDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningSummaryTextDelta { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryTextDeltaValue);
+        public static InternalResponseStreamEventType ResponseReasoningSummaryTextDelta { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryTextDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningSummaryTextDone { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryTextDoneValue);
+        public static InternalResponseStreamEventType ResponseReasoningSummaryTextDone { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryTextDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseWebSearchCallCompleted { get; } = new InternalResponseStreamEventType(ResponseWebSearchCallCompletedValue);
+        public static InternalResponseStreamEventType ResponseWebSearchCallCompleted { get; } = new InternalResponseStreamEventType(ResponseWebSearchCallCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseWebSearchCallInProgress { get; } = new InternalResponseStreamEventType(ResponseWebSearchCallInProgressValue);
+        public static InternalResponseStreamEventType ResponseWebSearchCallInProgress { get; } = new InternalResponseStreamEventType(ResponseWebSearchCallInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseWebSearchCallSearching { get; } = new InternalResponseStreamEventType(ResponseWebSearchCallSearchingValue);
+        public static InternalResponseStreamEventType ResponseWebSearchCallSearching { get; } = new InternalResponseStreamEventType(ResponseWebSearchCallSearchingValue);
 
-        internal static InternalResponseStreamEventType ResponseImageGenerationCallCompleted { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallCompletedValue);
+        public static InternalResponseStreamEventType ResponseImageGenerationCallCompleted { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseImageGenerationCallGenerating { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallGeneratingValue);
+        public static InternalResponseStreamEventType ResponseImageGenerationCallGenerating { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallGeneratingValue);
 
-        internal static InternalResponseStreamEventType ResponseImageGenerationCallInProgress { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallInProgressValue);
+        public static InternalResponseStreamEventType ResponseImageGenerationCallInProgress { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseImageGenerationCallPartialImage { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallPartialImageValue);
+        public static InternalResponseStreamEventType ResponseImageGenerationCallPartialImage { get; } = new InternalResponseStreamEventType(ResponseImageGenerationCallPartialImageValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpCallArgumentsDelta { get; } = new InternalResponseStreamEventType(ResponseMcpCallArgumentsDeltaValue);
+        public static InternalResponseStreamEventType ResponseMcpCallArgumentsDelta { get; } = new InternalResponseStreamEventType(ResponseMcpCallArgumentsDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpCallArgumentsDone { get; } = new InternalResponseStreamEventType(ResponseMcpCallArgumentsDoneValue);
+        public static InternalResponseStreamEventType ResponseMcpCallArgumentsDone { get; } = new InternalResponseStreamEventType(ResponseMcpCallArgumentsDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpCallCompleted { get; } = new InternalResponseStreamEventType(ResponseMcpCallCompletedValue);
+        public static InternalResponseStreamEventType ResponseMcpCallCompleted { get; } = new InternalResponseStreamEventType(ResponseMcpCallCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpCallFailed { get; } = new InternalResponseStreamEventType(ResponseMcpCallFailedValue);
+        public static InternalResponseStreamEventType ResponseMcpCallFailed { get; } = new InternalResponseStreamEventType(ResponseMcpCallFailedValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpCallInProgress { get; } = new InternalResponseStreamEventType(ResponseMcpCallInProgressValue);
+        public static InternalResponseStreamEventType ResponseMcpCallInProgress { get; } = new InternalResponseStreamEventType(ResponseMcpCallInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpListToolsCompleted { get; } = new InternalResponseStreamEventType(ResponseMcpListToolsCompletedValue);
+        public static InternalResponseStreamEventType ResponseMcpListToolsCompleted { get; } = new InternalResponseStreamEventType(ResponseMcpListToolsCompletedValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpListToolsFailed { get; } = new InternalResponseStreamEventType(ResponseMcpListToolsFailedValue);
+        public static InternalResponseStreamEventType ResponseMcpListToolsFailed { get; } = new InternalResponseStreamEventType(ResponseMcpListToolsFailedValue);
 
-        internal static InternalResponseStreamEventType ResponseMcpListToolsInProgress { get; } = new InternalResponseStreamEventType(ResponseMcpListToolsInProgressValue);
+        public static InternalResponseStreamEventType ResponseMcpListToolsInProgress { get; } = new InternalResponseStreamEventType(ResponseMcpListToolsInProgressValue);
 
-        internal static InternalResponseStreamEventType ResponseQueued { get; } = new InternalResponseStreamEventType(ResponseQueuedValue);
+        public static InternalResponseStreamEventType ResponseQueued { get; } = new InternalResponseStreamEventType(ResponseQueuedValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningDelta { get; } = new InternalResponseStreamEventType(ResponseReasoningDeltaValue);
+        public static InternalResponseStreamEventType ResponseReasoningDelta { get; } = new InternalResponseStreamEventType(ResponseReasoningDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningDone { get; } = new InternalResponseStreamEventType(ResponseReasoningDoneValue);
+        public static InternalResponseStreamEventType ResponseReasoningDone { get; } = new InternalResponseStreamEventType(ResponseReasoningDoneValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningSummaryDelta { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryDeltaValue);
+        public static InternalResponseStreamEventType ResponseReasoningSummaryDelta { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryDeltaValue);
 
-        internal static InternalResponseStreamEventType ResponseReasoningSummaryDone { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryDoneValue);
+        public static InternalResponseStreamEventType ResponseReasoningSummaryDone { get; } = new InternalResponseStreamEventType(ResponseReasoningSummaryDoneValue);
 
         public static bool operator ==(InternalResponseStreamEventType left, InternalResponseStreamEventType right) => left.Equals(right);
 

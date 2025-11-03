@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartFile : ChatMessageContentPart
     {
-        internal InternalChatCompletionRequestMessageContentPartFile(InternalChatCompletionRequestMessageContentPartFileFile @file)
+        public InternalChatCompletionRequestMessageContentPartFile(InternalChatCompletionRequestMessageContentPartFileFile @file)
         {
             Argument.AssertNotNull(@file, nameof(@file));
 
@@ -22,6 +24,6 @@ namespace OpenAI.Chat
             File = @file;
         }
 
-        internal InternalChatCompletionRequestMessageContentPartFileFile File { get; }
+        public InternalChatCompletionRequestMessageContentPartFileFile File { get; }
     }
 }

@@ -432,7 +432,7 @@ namespace OpenAI.Batch
 
         public static explicit operator InternalBatchJob(ClientResult result)
         {
-            using PipelineResponse response = result.GetRawResponse();
+            PipelineResponse response = result.GetRawResponse();
             using JsonDocument document = JsonDocument.Parse(response.Content);
             return DeserializeInternalBatchJob(document.RootElement, ModelSerializationExtensions.WireOptions);
         }

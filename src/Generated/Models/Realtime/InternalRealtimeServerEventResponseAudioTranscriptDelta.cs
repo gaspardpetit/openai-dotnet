@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeServerEventResponseAudioTranscriptDelta : RealtimeUpdate
     {
         internal InternalRealtimeServerEventResponseAudioTranscriptDelta(string responseId, string itemId, int outputIndex, int contentIndex, string delta) : base(RealtimeUpdateKind.ItemStreamingPartAudioTranscriptionDelta)

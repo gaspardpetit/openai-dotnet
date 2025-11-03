@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUnknownChatCompletionRequestMessageContentPart : ChatMessageContentPart
     {
         internal InternalUnknownChatCompletionRequestMessageContentPart(IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(additionalBinaryDataProperties)

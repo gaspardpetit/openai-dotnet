@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalSubmitToolOutputsRunRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

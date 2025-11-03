@@ -149,7 +149,7 @@ namespace OpenAI.Responses
 
         public static explicit operator ResponseDeletionResult(ClientResult result)
         {
-            using PipelineResponse response = result.GetRawResponse();
+            PipelineResponse response = result.GetRawResponse();
             using JsonDocument document = JsonDocument.Parse(response.Content);
             return DeserializeResponseDeletionResult(document.RootElement, ModelSerializationExtensions.WireOptions);
         }

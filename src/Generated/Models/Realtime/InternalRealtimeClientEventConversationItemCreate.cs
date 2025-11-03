@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeClientEventConversationItemCreate : InternalRealtimeClientEvent
     {
         public InternalRealtimeClientEventConversationItemCreate(RealtimeItem item) : base(InternalRealtimeClientEventType.ConversationItemCreate)

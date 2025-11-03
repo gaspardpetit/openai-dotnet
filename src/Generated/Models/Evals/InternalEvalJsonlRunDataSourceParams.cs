@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalJsonlRunDataSourceParams : InternalEvalRunDataSourceParams
     {
         public InternalEvalJsonlRunDataSourceParams(BinaryData source) : base(InternalEvalRunDataSourceType.Jsonl)

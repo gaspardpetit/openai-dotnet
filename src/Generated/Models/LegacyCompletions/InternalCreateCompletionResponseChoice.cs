@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateCompletionResponseChoice
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -28,11 +30,11 @@ namespace OpenAI.LegacyCompletions
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalCreateCompletionResponseChoiceFinishReason FinishReason { get; }
+        public InternalCreateCompletionResponseChoiceFinishReason FinishReason { get; }
 
         public int Index { get; }
 
-        internal InternalCreateCompletionResponseChoiceLogprobs Logprobs { get; }
+        public InternalCreateCompletionResponseChoiceLogprobs Logprobs { get; }
 
         public string Text { get; }
 

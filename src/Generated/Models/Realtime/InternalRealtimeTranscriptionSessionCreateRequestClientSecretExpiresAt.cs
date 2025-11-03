@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeTranscriptionSessionCreateRequestClientSecretExpiresAt
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -15,14 +17,14 @@ namespace OpenAI.Realtime
         {
         }
 
-        internal InternalRealtimeTranscriptionSessionCreateRequestClientSecretExpiresAt(string anchor, int? seconds, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal InternalRealtimeTranscriptionSessionCreateRequestClientSecretExpiresAt(InternalRealtimeTranscriptionSessionCreateRequestClientSecretExpiresAtAnchor? anchor, int? seconds, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             Anchor = anchor;
             Seconds = seconds;
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        public string Anchor { get; set; }
+        public InternalRealtimeTranscriptionSessionCreateRequestClientSecretExpiresAtAnchor? Anchor { get; set; }
 
         public int? Seconds { get; set; }
 

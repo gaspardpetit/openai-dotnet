@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponsesTextFormatJsonSchema : ResponseTextFormat
     {
         public InternalResponsesTextFormatJsonSchema(string name, BinaryData schema) : base(InternalResponsesTextFormatType.JsonSchema)

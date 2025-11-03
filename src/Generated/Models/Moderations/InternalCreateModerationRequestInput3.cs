@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Moderations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateModerationRequestInput3
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -26,7 +28,7 @@ namespace OpenAI.Moderations
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        public string Kind { get; } = "text";
+        internal string Kind { get; } = "text";
 
         public string Text { get; }
 

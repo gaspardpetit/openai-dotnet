@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDeltaStepDetailsToolCallsObject : InternalRunStepDeltaStepDetails
     {
         internal InternalRunStepDeltaStepDetailsToolCallsObject() : this(InternalRunStepDetailsType.ToolCalls, null, null)
@@ -20,6 +22,6 @@ namespace OpenAI.Assistants
             ToolCalls = toolCalls ?? new ChangeTrackingList<InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject>();
         }
 
-        internal IList<InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject> ToolCalls { get; }
+        public IList<InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject> ToolCalls { get; }
     }
 }

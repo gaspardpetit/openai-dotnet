@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalMessageContentType : IEquatable<InternalMessageContentType>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalMessageContentType Text { get; } = new InternalMessageContentType(TextValue);
+        public static InternalMessageContentType Text { get; } = new InternalMessageContentType(TextValue);
 
-        internal static InternalMessageContentType ImageFile { get; } = new InternalMessageContentType(ImageFileValue);
+        public static InternalMessageContentType ImageFile { get; } = new InternalMessageContentType(ImageFileValue);
 
-        internal static InternalMessageContentType ImageUrl { get; } = new InternalMessageContentType(ImageUrlValue);
+        public static InternalMessageContentType ImageUrl { get; } = new InternalMessageContentType(ImageUrlValue);
 
-        internal static InternalMessageContentType Refusal { get; } = new InternalMessageContentType(RefusalValue);
+        public static InternalMessageContentType Refusal { get; } = new InternalMessageContentType(RefusalValue);
 
         public static bool operator ==(InternalMessageContentType left, InternalMessageContentType right) => left.Equals(right);
 

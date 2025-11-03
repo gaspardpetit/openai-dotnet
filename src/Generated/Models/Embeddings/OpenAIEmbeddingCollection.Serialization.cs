@@ -111,7 +111,7 @@ namespace OpenAI.Embeddings
         [Experimental("OPENAI001")]
         public static explicit operator OpenAIEmbeddingCollection(ClientResult result)
         {
-            using PipelineResponse response = result.GetRawResponse();
+            PipelineResponse response = result.GetRawResponse();
             using JsonDocument document = JsonDocument.Parse(response.Content);
             return DeserializeOpenAIEmbeddingCollection(document.RootElement, ModelSerializationExtensions.WireOptions);
         }

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUnknownChunkingStrategyResponseParam : InternalChunkingStrategyResponseParam
     {
         internal InternalUnknownChunkingStrategyResponseParam(InternalChunkingStrategyResponseParamType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)

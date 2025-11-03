@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeResponseModality : IEquatable<InternalRealtimeResponseModality>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeResponseModality Text { get; } = new InternalRealtimeResponseModality(TextValue);
+        public static InternalRealtimeResponseModality Text { get; } = new InternalRealtimeResponseModality(TextValue);
 
-        internal static InternalRealtimeResponseModality Audio { get; } = new InternalRealtimeResponseModality(AudioValue);
+        public static InternalRealtimeResponseModality Audio { get; } = new InternalRealtimeResponseModality(AudioValue);
 
         public static bool operator ==(InternalRealtimeResponseModality left, InternalRealtimeResponseModality right) => left.Equals(right);
 

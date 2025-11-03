@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFileSearchToolCallItemParam : InternalItemParam
     {
         public InternalFileSearchToolCallItemParam(IEnumerable<string> queries) : base(InternalItemType.FileSearchCall)

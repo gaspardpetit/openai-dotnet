@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 using OpenAI.Graders;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalGraderScoreModelResource : InternalEvalGraderResource
     {
         internal InternalEvalGraderScoreModelResource(string name, string model, IEnumerable<InternalEvalItem> input) : base(GraderType.ScoreModel)
@@ -37,7 +39,7 @@ namespace OpenAI.Evals
 
         public BinaryData SamplingParams { get; }
 
-        internal IList<InternalEvalItem> Input { get; }
+        public IList<InternalEvalItem> Input { get; }
 
         public IList<float> Range { get; }
 

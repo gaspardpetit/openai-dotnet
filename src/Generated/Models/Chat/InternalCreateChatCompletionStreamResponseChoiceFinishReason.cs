@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateChatCompletionStreamResponseChoiceFinishReason : IEquatable<InternalCreateChatCompletionStreamResponseChoiceFinishReason>
     {
         private readonly string _value;
@@ -24,15 +26,15 @@ namespace OpenAI.Chat
             _value = value;
         }
 
-        internal static InternalCreateChatCompletionStreamResponseChoiceFinishReason Stop { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(StopValue);
+        public static InternalCreateChatCompletionStreamResponseChoiceFinishReason Stop { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(StopValue);
 
-        internal static InternalCreateChatCompletionStreamResponseChoiceFinishReason Length { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(LengthValue);
+        public static InternalCreateChatCompletionStreamResponseChoiceFinishReason Length { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(LengthValue);
 
-        internal static InternalCreateChatCompletionStreamResponseChoiceFinishReason ToolCalls { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(ToolCallsValue);
+        public static InternalCreateChatCompletionStreamResponseChoiceFinishReason ToolCalls { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(ToolCallsValue);
 
-        internal static InternalCreateChatCompletionStreamResponseChoiceFinishReason ContentFilter { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(ContentFilterValue);
+        public static InternalCreateChatCompletionStreamResponseChoiceFinishReason ContentFilter { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(ContentFilterValue);
 
-        internal static InternalCreateChatCompletionStreamResponseChoiceFinishReason FunctionCall { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(FunctionCallValue);
+        public static InternalCreateChatCompletionStreamResponseChoiceFinishReason FunctionCall { get; } = new InternalCreateChatCompletionStreamResponseChoiceFinishReason(FunctionCallValue);
 
         public static bool operator ==(InternalCreateChatCompletionStreamResponseChoiceFinishReason left, InternalCreateChatCompletionStreamResponseChoiceFinishReason right) => left.Equals(right);
 

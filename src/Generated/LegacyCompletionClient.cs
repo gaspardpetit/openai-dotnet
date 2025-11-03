@@ -5,12 +5,14 @@
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class LegacyCompletionClient
     {
         private readonly Uri _endpoint;
@@ -41,7 +43,7 @@ namespace OpenAI.LegacyCompletions
         {
             Argument.AssertNotNull(requestBody, nameof(requestBody));
 
-            ClientResult result = CreateCompletion(requestBody, cancellationToken.CanBeCanceled ? new RequestOptions { CancellationToken = cancellationToken } : null);
+            ClientResult result = CreateCompletion(requestBody, cancellationToken.ToRequestOptions());
             return ClientResult.FromValue((InternalCreateCompletionResponse)result, result.GetRawResponse());
         }
 
@@ -49,7 +51,7 @@ namespace OpenAI.LegacyCompletions
         {
             Argument.AssertNotNull(requestBody, nameof(requestBody));
 
-            ClientResult result = await CreateCompletionAsync(requestBody, cancellationToken.CanBeCanceled ? new RequestOptions { CancellationToken = cancellationToken } : null).ConfigureAwait(false);
+            ClientResult result = await CreateCompletionAsync(requestBody, cancellationToken.ToRequestOptions()).ConfigureAwait(false);
             return ClientResult.FromValue((InternalCreateCompletionResponse)result, result.GetRawResponse());
         }
     }

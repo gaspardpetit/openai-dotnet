@@ -237,7 +237,7 @@ namespace OpenAI.Chat
         [Experimental("OPENAI001")]
         public static explicit operator ChatCompletion(ClientResult result)
         {
-            using PipelineResponse response = result.GetRawResponse();
+            PipelineResponse response = result.GetRawResponse();
             using JsonDocument document = JsonDocument.Parse(response.Content);
             return DeserializeChatCompletion(document.RootElement, ModelSerializationExtensions.WireOptions);
         }
