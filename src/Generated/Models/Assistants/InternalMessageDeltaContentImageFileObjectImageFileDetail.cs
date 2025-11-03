@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalMessageDeltaContentImageFileObjectImageFileDetail : IEquatable<InternalMessageDeltaContentImageFileObjectImageFileDetail>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalMessageDeltaContentImageFileObjectImageFileDetail Auto { get; } = new InternalMessageDeltaContentImageFileObjectImageFileDetail(AutoValue);
+        public static InternalMessageDeltaContentImageFileObjectImageFileDetail Auto { get; } = new InternalMessageDeltaContentImageFileObjectImageFileDetail(AutoValue);
 
-        internal static InternalMessageDeltaContentImageFileObjectImageFileDetail Low { get; } = new InternalMessageDeltaContentImageFileObjectImageFileDetail(LowValue);
+        public static InternalMessageDeltaContentImageFileObjectImageFileDetail Low { get; } = new InternalMessageDeltaContentImageFileObjectImageFileDetail(LowValue);
 
-        internal static InternalMessageDeltaContentImageFileObjectImageFileDetail High { get; } = new InternalMessageDeltaContentImageFileObjectImageFileDetail(HighValue);
+        public static InternalMessageDeltaContentImageFileObjectImageFileDetail High { get; } = new InternalMessageDeltaContentImageFileObjectImageFileDetail(HighValue);
 
         public static bool operator ==(InternalMessageDeltaContentImageFileObjectImageFileDetail left, InternalMessageDeltaContentImageFileObjectImageFileDetail right) => left.Equals(right);
 

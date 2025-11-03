@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public partial class InternalBatchRequestOutput
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -28,9 +30,9 @@ namespace OpenAI.Batch
 
         public string CustomId { get; }
 
-        internal InternalBatchRequestOutputResponse Response { get; }
+        public InternalBatchRequestOutputResponse Response { get; }
 
-        internal InternalBatchRequestOutputError Error { get; }
+        public InternalBatchRequestOutputError Error { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

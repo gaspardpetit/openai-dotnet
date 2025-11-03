@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum : IEquatable<InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum>
     {
         private readonly string _value;
@@ -20,7 +22,7 @@ namespace OpenAI.FineTuning
             _value = value;
         }
 
-        internal static InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum Auto { get; } = new InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum(AutoValue);
+        public static InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum Auto { get; } = new InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum(AutoValue);
 
         public static bool operator ==(InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum left, InternalCreateFineTuningJobRequestHyperparametersLearningRateMultiplierChoiceEnum right) => left.Equals(right);
 

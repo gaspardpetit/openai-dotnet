@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeResponseOutputAudioFormat : IEquatable<InternalRealtimeResponseOutputAudioFormat>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeResponseOutputAudioFormat Pcm16 { get; } = new InternalRealtimeResponseOutputAudioFormat(Pcm16Value);
+        public static InternalRealtimeResponseOutputAudioFormat Pcm16 { get; } = new InternalRealtimeResponseOutputAudioFormat(Pcm16Value);
 
-        internal static InternalRealtimeResponseOutputAudioFormat G711Ulaw { get; } = new InternalRealtimeResponseOutputAudioFormat(G711UlawValue);
+        public static InternalRealtimeResponseOutputAudioFormat G711Ulaw { get; } = new InternalRealtimeResponseOutputAudioFormat(G711UlawValue);
 
-        internal static InternalRealtimeResponseOutputAudioFormat G711Alaw { get; } = new InternalRealtimeResponseOutputAudioFormat(G711AlawValue);
+        public static InternalRealtimeResponseOutputAudioFormat G711Alaw { get; } = new InternalRealtimeResponseOutputAudioFormat(G711AlawValue);
 
         public static bool operator ==(InternalRealtimeResponseOutputAudioFormat left, InternalRealtimeResponseOutputAudioFormat right) => left.Equals(right);
 

@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType : IEquatable<InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType>
     {
         private readonly string _value;
@@ -21,9 +23,9 @@ namespace OpenAI.Realtime
             _value = value;
         }
 
-        internal static InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType NearField { get; } = new InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType(NearFieldValue);
+        public static InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType NearField { get; } = new InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType(NearFieldValue);
 
-        internal static InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType FarField { get; } = new InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType(FarFieldValue);
+        public static InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType FarField { get; } = new InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType(FarFieldValue);
 
         public static bool operator ==(InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType left, InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType right) => left.Equals(right);
 

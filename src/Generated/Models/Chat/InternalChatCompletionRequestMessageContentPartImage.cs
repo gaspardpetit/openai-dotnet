@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartImage : ChatMessageContentPart
     {
-        internal InternalChatCompletionRequestMessageContentPartImage(InternalChatCompletionRequestMessageContentPartImageImageUrl imageUrl)
+        public InternalChatCompletionRequestMessageContentPartImage(InternalChatCompletionRequestMessageContentPartImageImageUrl imageUrl)
         {
             Argument.AssertNotNull(imageUrl, nameof(imageUrl));
 
@@ -22,6 +24,6 @@ namespace OpenAI.Chat
             ImageUrl = imageUrl;
         }
 
-        internal InternalChatCompletionRequestMessageContentPartImageImageUrl ImageUrl { get; }
+        public InternalChatCompletionRequestMessageContentPartImageImageUrl ImageUrl { get; }
     }
 }

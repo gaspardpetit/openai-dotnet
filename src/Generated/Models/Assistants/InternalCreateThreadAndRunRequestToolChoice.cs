@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateThreadAndRunRequestToolChoice : IEquatable<InternalCreateThreadAndRunRequestToolChoice>
     {
         private readonly string _value;
@@ -22,11 +24,11 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalCreateThreadAndRunRequestToolChoice None { get; } = new InternalCreateThreadAndRunRequestToolChoice(NoneValue);
+        public static InternalCreateThreadAndRunRequestToolChoice None { get; } = new InternalCreateThreadAndRunRequestToolChoice(NoneValue);
 
-        internal static InternalCreateThreadAndRunRequestToolChoice Auto { get; } = new InternalCreateThreadAndRunRequestToolChoice(AutoValue);
+        public static InternalCreateThreadAndRunRequestToolChoice Auto { get; } = new InternalCreateThreadAndRunRequestToolChoice(AutoValue);
 
-        internal static InternalCreateThreadAndRunRequestToolChoice Required { get; } = new InternalCreateThreadAndRunRequestToolChoice(RequiredValue);
+        public static InternalCreateThreadAndRunRequestToolChoice Required { get; } = new InternalCreateThreadAndRunRequestToolChoice(RequiredValue);
 
         public static bool operator ==(InternalCreateThreadAndRunRequestToolChoice left, InternalCreateThreadAndRunRequestToolChoice right) => left.Equals(right);
 

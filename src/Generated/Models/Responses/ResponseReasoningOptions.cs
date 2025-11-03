@@ -25,7 +25,7 @@ namespace OpenAI.Responses
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalReasoningGenerateSummary? GenerateSummary { get; set; }
+        public InternalReasoningGenerateSummary? GenerateSummary { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

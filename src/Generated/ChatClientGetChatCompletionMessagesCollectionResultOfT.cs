@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    public partial class ChatClientGetChatCompletionMessagesCollectionResultOfT : CollectionResult<ChatCompletionMessageListDatum>
+    internal partial class ChatClientGetChatCompletionMessagesCollectionResultOfT : CollectionResult<ChatCompletionMessageListDatum>
     {
         private readonly ChatClient _client;
         private readonly string _completionId;

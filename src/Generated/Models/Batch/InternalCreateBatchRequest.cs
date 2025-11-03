@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateBatchRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -31,9 +33,9 @@ namespace OpenAI.Batch
 
         public string InputFileId { get; }
 
-        internal InternalCreateBatchRequestEndpoint Endpoint { get; }
+        public InternalCreateBatchRequestEndpoint Endpoint { get; }
 
-        public string CompletionWindow { get; } = "24h";
+        internal string CompletionWindow { get; } = "24h";
 
         public IDictionary<string, string> Metadata { get; }
 

@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVoiceIdsShared : IEquatable<InternalVoiceIdsShared>
     {
         private readonly string _value;
@@ -30,27 +32,27 @@ namespace OpenAI.Internal
             _value = value;
         }
 
-        internal static InternalVoiceIdsShared Alloy { get; } = new InternalVoiceIdsShared(AlloyValue);
+        public static InternalVoiceIdsShared Alloy { get; } = new InternalVoiceIdsShared(AlloyValue);
 
-        internal static InternalVoiceIdsShared Ash { get; } = new InternalVoiceIdsShared(AshValue);
+        public static InternalVoiceIdsShared Ash { get; } = new InternalVoiceIdsShared(AshValue);
 
-        internal static InternalVoiceIdsShared Ballad { get; } = new InternalVoiceIdsShared(BalladValue);
+        public static InternalVoiceIdsShared Ballad { get; } = new InternalVoiceIdsShared(BalladValue);
 
-        internal static InternalVoiceIdsShared Coral { get; } = new InternalVoiceIdsShared(CoralValue);
+        public static InternalVoiceIdsShared Coral { get; } = new InternalVoiceIdsShared(CoralValue);
 
-        internal static InternalVoiceIdsShared Echo { get; } = new InternalVoiceIdsShared(EchoValue);
+        public static InternalVoiceIdsShared Echo { get; } = new InternalVoiceIdsShared(EchoValue);
 
-        internal static InternalVoiceIdsShared Fable { get; } = new InternalVoiceIdsShared(FableValue);
+        public static InternalVoiceIdsShared Fable { get; } = new InternalVoiceIdsShared(FableValue);
 
-        internal static InternalVoiceIdsShared Onyx { get; } = new InternalVoiceIdsShared(OnyxValue);
+        public static InternalVoiceIdsShared Onyx { get; } = new InternalVoiceIdsShared(OnyxValue);
 
-        internal static InternalVoiceIdsShared Nova { get; } = new InternalVoiceIdsShared(NovaValue);
+        public static InternalVoiceIdsShared Nova { get; } = new InternalVoiceIdsShared(NovaValue);
 
-        internal static InternalVoiceIdsShared Sage { get; } = new InternalVoiceIdsShared(SageValue);
+        public static InternalVoiceIdsShared Sage { get; } = new InternalVoiceIdsShared(SageValue);
 
-        internal static InternalVoiceIdsShared Shimmer { get; } = new InternalVoiceIdsShared(ShimmerValue);
+        public static InternalVoiceIdsShared Shimmer { get; } = new InternalVoiceIdsShared(ShimmerValue);
 
-        internal static InternalVoiceIdsShared Verse { get; } = new InternalVoiceIdsShared(VerseValue);
+        public static InternalVoiceIdsShared Verse { get; } = new InternalVoiceIdsShared(VerseValue);
 
         public static bool operator ==(InternalVoiceIdsShared left, InternalVoiceIdsShared right) => left.Equals(right);
 

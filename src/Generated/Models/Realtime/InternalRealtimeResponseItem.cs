@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
-    public abstract partial class InternalRealtimeResponseItem
+    [Experimental("OPENAI002")]
+    public partial class InternalRealtimeResponseItem
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

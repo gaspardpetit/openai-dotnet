@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalChatOutputPredictionKind : IEquatable<InternalChatOutputPredictionKind>
     {
         private readonly string _value;
@@ -20,7 +22,7 @@ namespace OpenAI.Chat
             _value = value;
         }
 
-        internal static InternalChatOutputPredictionKind StaticContent { get; } = new InternalChatOutputPredictionKind(StaticContentValue);
+        public static InternalChatOutputPredictionKind StaticContent { get; } = new InternalChatOutputPredictionKind(StaticContentValue);
 
         public static bool operator ==(InternalChatOutputPredictionKind left, InternalChatOutputPredictionKind right) => left.Equals(right);
 

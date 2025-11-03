@@ -4,13 +4,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentTextAnnotationsFilePathObject : InternalMessageContentTextObjectAnnotation
     {
-        internal InternalMessageContentTextAnnotationsFilePathObject(string text, InternalMessageContentTextAnnotationsFilePathObjectFilePath filePath, int startIndex, int endIndex) : base(InternalMessageContentTextAnnotationType.FilePath)
+        public InternalMessageContentTextAnnotationsFilePathObject(string text, InternalMessageContentTextAnnotationsFilePathObjectFilePath filePath, int startIndex, int endIndex) : base(InternalMessageContentTextAnnotationType.FilePath)
         {
             Argument.AssertNotNull(text, nameof(text));
             Argument.AssertNotNull(filePath, nameof(filePath));
@@ -31,7 +33,7 @@ namespace OpenAI.Assistants
 
         public string Text { get; set; }
 
-        internal InternalMessageContentTextAnnotationsFilePathObjectFilePath FilePath { get; set; }
+        public InternalMessageContentTextAnnotationsFilePathObjectFilePath FilePath { get; set; }
 
         public int StartIndex { get; set; }
 

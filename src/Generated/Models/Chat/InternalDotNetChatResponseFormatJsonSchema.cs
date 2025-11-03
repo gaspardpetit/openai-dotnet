@@ -4,14 +4,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetChatResponseFormatJsonSchema : ChatResponseFormat
     {
-        internal InternalDotNetChatResponseFormatJsonSchema(InternalDotNetChatResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalResponseFormatType.JsonSchema)
+        public InternalDotNetChatResponseFormatJsonSchema(InternalDotNetChatResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalResponseFormatType.JsonSchema)
         {
             Argument.AssertNotNull(jsonSchema, nameof(jsonSchema));
 
@@ -23,6 +25,6 @@ namespace OpenAI.Chat
             JsonSchema = jsonSchema;
         }
 
-        internal InternalDotNetChatResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
+        public InternalDotNetChatResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
     }
 }

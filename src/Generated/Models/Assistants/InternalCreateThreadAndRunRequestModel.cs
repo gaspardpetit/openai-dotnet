@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateThreadAndRunRequestModel : IEquatable<InternalCreateThreadAndRunRequestModel>
     {
         private readonly string _value;
@@ -51,69 +53,69 @@ namespace OpenAI.Assistants
             _value = value;
         }
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt41 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt41 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt41Mini { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41MiniValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt41Mini { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41MiniValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt41Nano { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41NanoValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt41Nano { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41NanoValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4120250414 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4120250414Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4120250414 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4120250414Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt41Mini20250414 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41Mini20250414Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt41Mini20250414 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41Mini20250414Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt41Nano20250414 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41Nano20250414Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt41Nano20250414 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41Nano20250414Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4o { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4oValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt4o { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4oValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4o20241120 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4o20241120Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4o20241120 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4o20241120Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4o20240806 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4o20240806Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4o20240806 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4o20240806Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4o20240513 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4o20240513Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4o20240513 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4o20240513Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4oMini { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4oMiniValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt4oMini { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4oMiniValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4oMini20240718 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4oMini20240718Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4oMini20240718 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4oMini20240718Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt45Preview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt45PreviewValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt45Preview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt45PreviewValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt45Preview20250227 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt45Preview20250227Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt45Preview20250227 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt45Preview20250227Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4Turbo { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4TurboValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt4Turbo { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4TurboValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4Turbo20240409 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4Turbo20240409Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4Turbo20240409 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4Turbo20240409Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt40125Preview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt40125PreviewValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt40125Preview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt40125PreviewValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4TurboPreview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4TurboPreviewValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt4TurboPreview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4TurboPreviewValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt41106Preview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41106PreviewValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt41106Preview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt41106PreviewValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4VisionPreview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4VisionPreviewValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt4VisionPreview { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4VisionPreviewValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt4 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt4 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt4Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt40314 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt40314Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt40314 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt40314Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt40613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt40613Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt40613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt40613Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt432k { get; } = new InternalCreateThreadAndRunRequestModel(Gpt432kValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt432k { get; } = new InternalCreateThreadAndRunRequestModel(Gpt432kValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt432k0314 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt432k0314Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt432k0314 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt432k0314Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt432k0613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt432k0613Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt432k0613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt432k0613Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt35Turbo { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35TurboValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt35Turbo { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35TurboValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt35Turbo16k { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo16kValue);
+        public static InternalCreateThreadAndRunRequestModel Gpt35Turbo16k { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo16kValue);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt35Turbo0613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo0613Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt35Turbo0613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo0613Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt35Turbo1106 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo1106Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt35Turbo1106 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo1106Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt35Turbo0125 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo0125Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt35Turbo0125 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo0125Value);
 
-        internal static InternalCreateThreadAndRunRequestModel Gpt35Turbo16k0613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo16k0613Value);
+        public static InternalCreateThreadAndRunRequestModel Gpt35Turbo16k0613 { get; } = new InternalCreateThreadAndRunRequestModel(Gpt35Turbo16k0613Value);
 
         public static bool operator ==(InternalCreateThreadAndRunRequestModel left, InternalCreateThreadAndRunRequestModel right) => left.Equals(right);
 

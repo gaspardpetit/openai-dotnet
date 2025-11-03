@@ -4,10 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalUploadStatus : IEquatable<InternalUploadStatus>
     {
         private readonly string _value;
@@ -23,13 +25,13 @@ namespace OpenAI.Files
             _value = value;
         }
 
-        internal static InternalUploadStatus Pending { get; } = new InternalUploadStatus(PendingValue);
+        public static InternalUploadStatus Pending { get; } = new InternalUploadStatus(PendingValue);
 
-        internal static InternalUploadStatus Completed { get; } = new InternalUploadStatus(CompletedValue);
+        public static InternalUploadStatus Completed { get; } = new InternalUploadStatus(CompletedValue);
 
-        internal static InternalUploadStatus Cancelled { get; } = new InternalUploadStatus(CancelledValue);
+        public static InternalUploadStatus Cancelled { get; } = new InternalUploadStatus(CancelledValue);
 
-        internal static InternalUploadStatus Expired { get; } = new InternalUploadStatus(ExpiredValue);
+        public static InternalUploadStatus Expired { get; } = new InternalUploadStatus(ExpiredValue);
 
         public static bool operator ==(InternalUploadStatus left, InternalUploadStatus right) => left.Equals(right);
 

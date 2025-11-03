@@ -187,7 +187,7 @@ namespace OpenAI.Chat
 
         public static explicit operator InternalChatCompletionMessageList(ClientResult result)
         {
-            using PipelineResponse response = result.GetRawResponse();
+            PipelineResponse response = result.GetRawResponse();
             using JsonDocument document = JsonDocument.Parse(response.Content);
             return DeserializeInternalChatCompletionMessageList(document.RootElement, ModelSerializationExtensions.WireOptions);
         }

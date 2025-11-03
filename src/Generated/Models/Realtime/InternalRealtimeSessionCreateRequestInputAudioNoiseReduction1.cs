@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeSessionCreateRequestInputAudioNoiseReduction1
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -21,7 +23,7 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType? Kind { get; set; }
+        public InternalRealtimeSessionCreateRequestInputAudioNoiseReductionType? Kind { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {
