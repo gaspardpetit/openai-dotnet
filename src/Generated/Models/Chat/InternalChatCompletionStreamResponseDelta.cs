@@ -15,17 +15,18 @@ namespace OpenAI.Chat
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        internal InternalChatCompletionStreamResponseDelta() : this(null, null, null, null, default, null, default)
+        internal InternalChatCompletionStreamResponseDelta() : this(null, null, null, null, null, default, null, default)
         {
         }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-        internal InternalChatCompletionStreamResponseDelta(StreamingChatOutputAudioUpdate audio, ChatMessageContent content, StreamingChatFunctionCallUpdate functionCall, IReadOnlyList<StreamingChatToolCallUpdate> toolCalls, ChatMessageRole? role, string refusal, in JsonPatch patch)
+        internal InternalChatCompletionStreamResponseDelta(StreamingChatOutputAudioUpdate audio, ChatMessageContent content, ChatMessageContent reasoning, StreamingChatFunctionCallUpdate functionCall, IReadOnlyList<StreamingChatToolCallUpdate> toolCalls, ChatMessageRole? role, string refusal, in JsonPatch patch)
         {
             // Plugin customization: ensure initialization of collections
             Audio = audio;
             Content = content ?? new ChatMessageContent();
-            FunctionCall = functionCall;
+            Reasoning = reasoning ?? new ChatMessageContent(); // <GP> Added reasoning support as used by ollama
+			FunctionCall = functionCall;
             ToolCalls = toolCalls ?? new ChangeTrackingList<StreamingChatToolCallUpdate>();
             Role = role;
             Refusal = refusal;

@@ -14,4 +14,8 @@ public partial class InternalChatCompletionStreamResponseDelta
     /// <summary> The contents of the message. </summary>
     [CodeGenMember("Content")]
     public ChatMessageContent Content { get; }
+
+    // <GP> Added reasoning support as used by ollama
+	public ChatMessageContent Reasoning { get; }
+    // </GP>
 }
