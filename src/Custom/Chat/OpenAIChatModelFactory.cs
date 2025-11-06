@@ -268,8 +268,9 @@ public static partial class OpenAIChatModelFactory
     [Experimental("OPENAI001")]
     public static StreamingChatCompletionUpdate StreamingChatCompletionUpdate(
         string completionId = null,
-        ChatMessageContent contentUpdate = null,
-        StreamingChatFunctionCallUpdate functionCallUpdate = null,
+		ChatMessageContent contentUpdate = null,
+		ChatMessageContent reasoningUpdate = null, // <GP> Added reasoning support as used by ollama
+		StreamingChatFunctionCallUpdate functionCallUpdate = null,
         IEnumerable<StreamingChatToolCallUpdate> toolCallUpdates = null,
         ChatMessageRole? role = default,
         string refusalUpdate = null,
@@ -283,8 +284,9 @@ public static partial class OpenAIChatModelFactory
         ChatTokenUsage usage = default,
         StreamingChatOutputAudioUpdate outputAudioUpdate = default)
     {
-        contentUpdate ??= new ChatMessageContent();
-        toolCallUpdates ??= new List<StreamingChatToolCallUpdate>();
+		contentUpdate ??= new ChatMessageContent();
+		reasoningUpdate ??= new ChatMessageContent();
+		toolCallUpdates ??= new List<StreamingChatToolCallUpdate>();
         contentTokenLogProbabilities ??= new List<ChatTokenLogProbabilityDetails>();
         refusalTokenLogProbabilities ??= new List<ChatTokenLogProbabilityDetails>();
 
@@ -294,8 +296,9 @@ public static partial class OpenAIChatModelFactory
             toolCalls: toolCallUpdates.ToList(),
             refusal: refusalUpdate,
             role: role,
-            content: contentUpdate,
-            patch: default);
+			content: contentUpdate,
+			reasoning: reasoningUpdate,
+			patch: default);
 
         InternalCreateChatCompletionStreamResponseChoiceLogprobs logprobs = new InternalCreateChatCompletionStreamResponseChoiceLogprobs(
             contentTokenLogProbabilities.ToList(),
