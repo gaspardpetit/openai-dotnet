@@ -9,35 +9,31 @@ using OpenAI;
 namespace OpenAI.Responses
 {
     [Experimental("OPENAI001")]
-	// <GP> Adding missing constructor with filename
-	public partial class FileCitationMessageAnnotation : ResponseMessageAnnotation
+    public partial class FileCitationMessageAnnotation : ResponseMessageAnnotation
     {
-        public FileCitationMessageAnnotation(string filename, string fileId, int index) : base(ResponseMessageAnnotationKind.FileCitation)
+        public FileCitationMessageAnnotation(string fileId, int index, string filename) : base(ResponseMessageAnnotationKind.FileCitation)
         {
             Argument.AssertNotNull(fileId, nameof(fileId));
+            Argument.AssertNotNull(filename, nameof(filename));
 
-            Filename = filename;
-			FileId = fileId;
+            FileId = fileId;
             Index = index;
+            Filename = filename;
         }
-		// </GP>
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-		// </GP> Adding missing filename
-		internal FileCitationMessageAnnotation(ResponseMessageAnnotationKind kind, in JsonPatch patch, string filename, string fileId, int index) : base(kind, patch)
+        internal FileCitationMessageAnnotation(ResponseMessageAnnotationKind kind, in JsonPatch patch, string fileId, int index, string filename) : base(kind, patch)
         {
-			Filename = filename;
-			FileId = fileId;
+            FileId = fileId;
             Index = index;
+            Filename = filename;
         }
-		// </GP>
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-		// <GP> Adding missing filename
-		public string Filename { get; set; }
-		// </GP> Adding missing filename
         public string FileId { get; set; }
 
-		public int Index { get; set; }
+        public int Index { get; set; }
+
+        public string Filename { get; set; }
     }
 }

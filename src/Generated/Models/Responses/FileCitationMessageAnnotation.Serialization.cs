@@ -12,7 +12,7 @@ namespace OpenAI.Responses
 {
     public partial class FileCitationMessageAnnotation : ResponseMessageAnnotation, IJsonModel<FileCitationMessageAnnotation>
     {
-        internal FileCitationMessageAnnotation() : this(ResponseMessageAnnotationKind.FileCitation, default, default, null, default)
+        internal FileCitationMessageAnnotation() : this(ResponseMessageAnnotationKind.FileCitation, default, null, default, null)
         {
         }
 
@@ -39,14 +39,8 @@ namespace OpenAI.Responses
                 throw new FormatException($"The model {nameof(FileCitationMessageAnnotation)} does not support writing '{format}' format.");
             }
             base.JsonModelWriteCore(writer, options);
-			// <GP> Adding missing filename field
-			if (Patch.Contains("$.filename"u8))
-			{
-				writer.WritePropertyName("filename"u8);
-				writer.WriteStringValue(Filename);
-			}
-			// </GP> Adding missing filename field#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-			if (!Patch.Contains("$.file_id"u8))
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+            if (!Patch.Contains("$.file_id"u8))
             {
                 writer.WritePropertyName("file_id"u8);
                 writer.WriteStringValue(FileId);
@@ -55,6 +49,11 @@ namespace OpenAI.Responses
             {
                 writer.WritePropertyName("index"u8);
                 writer.WriteNumberValue(Index);
+            }
+            if (!Patch.Contains("$.filename"u8))
+            {
+                writer.WritePropertyName("filename"u8);
+                writer.WriteStringValue(Filename);
             }
 
             Patch.WriteTo(writer);
@@ -84,11 +83,9 @@ namespace OpenAI.Responses
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
             JsonPatch patch = new JsonPatch(data is null ? ReadOnlyMemory<byte>.Empty : data.ToMemory());
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-			string fileId = default;
-			// <GP> Adding missing filename field
-			string filename = default;
-			// </GP>
-			int index = default;
+            string fileId = default;
+            int index = default;
+            string filename = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -96,16 +93,9 @@ namespace OpenAI.Responses
                     kind = prop.Value.GetString().ToResponseMessageAnnotationKind();
                     continue;
                 }
-				// <GP> Adding missing filename field
-				if (prop.NameEquals("filename"u8))
-				{
-					filename = prop.Value.GetString();
-					continue;
-				}
-				// </GP>
                 if (prop.NameEquals("file_id"u8))
-				{
-					fileId = prop.Value.GetString();
+                {
+                    fileId = prop.Value.GetString();
                     continue;
                 }
                 if (prop.NameEquals("index"u8))
@@ -113,9 +103,14 @@ namespace OpenAI.Responses
                     index = prop.Value.GetInt32();
                     continue;
                 }
+                if (prop.NameEquals("filename"u8))
+                {
+                    filename = prop.Value.GetString();
+                    continue;
+                }
                 patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
             }
-            return new FileCitationMessageAnnotation(kind, patch, filename, fileId, index);
+            return new FileCitationMessageAnnotation(kind, patch, fileId, index, filename);
         }
 
         BinaryData IPersistableModel<FileCitationMessageAnnotation>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
@@ -140,7 +135,7 @@ namespace OpenAI.Responses
             switch (format)
             {
                 case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data))
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
                     {
                         return DeserializeFileCitationMessageAnnotation(document.RootElement, data, options);
                     }
