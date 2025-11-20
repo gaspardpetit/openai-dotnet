@@ -25,6 +25,9 @@ internal static partial class ChatMessageContentPartKindExtensions
         if (StringComparer.OrdinalIgnoreCase.Equals(value, "image_url")) return ChatMessageContentPartKind.Image;
         if (StringComparer.OrdinalIgnoreCase.Equals(value, "input_audio")) return ChatMessageContentPartKind.InputAudio;
         if (StringComparer.OrdinalIgnoreCase.Equals(value, "file")) return ChatMessageContentPartKind.File;
-        throw new ArgumentOutOfRangeException(nameof(value), value, "Unknown ChatMessageContentPartKind value.");
+		// <GP> Added support for thinking as used by MistralAI
+		if (StringComparer.OrdinalIgnoreCase.Equals(value, "thinking")) return ChatMessageContentPartKind.Text;
+		// </GP>
+		throw new ArgumentOutOfRangeException(nameof(value), value, "Unknown ChatMessageContentPartKind value.");
     }
 }
