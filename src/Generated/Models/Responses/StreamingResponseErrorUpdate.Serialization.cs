@@ -96,7 +96,7 @@ namespace OpenAI.Responses
             string message = default;
             string @param = default;
 			string errorType = default;
-			foreach (var prop in element.EnumerateObject())
+            foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
                 {
@@ -175,15 +175,15 @@ namespace OpenAI.Responses
 						}
 					}
 					continue;
-				}
-				patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
+                }
+                patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
             }
             return new StreamingResponseErrorUpdate(
                 kind,
                 sequenceNumber,
                 patch,
 				errorType,
-				code,
+                code,
                 message,
                 @param);
         }

@@ -2,9 +2,7 @@
 
 #nullable disable
 
-using System;
 using System.ClientModel.Primitives;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
@@ -13,21 +11,21 @@ namespace OpenAI.Responses
     public partial class StreamingResponseErrorUpdate : StreamingResponseUpdate
     {
 		internal StreamingResponseErrorUpdate(int sequenceNumber, string errorType, string code, string message, string @param) : base(InternalResponseStreamEventType.Error, sequenceNumber)
-		{
+        {
 			ErrorType = errorType;
-			Code = code;
-			Message = message;
-			Param = @param;
-		}
+            Code = code;
+            Message = message;
+            Param = @param;
+        }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 		internal StreamingResponseErrorUpdate(InternalResponseStreamEventType kind, int sequenceNumber, in JsonPatch patch, string errorType, string code, string message, string @param) : base(kind, sequenceNumber)
-		{
+        {
 			ErrorType = errorType;
-			Code = code;
-			Message = message;
-			Param = @param;
-		}
+            Code = code;
+            Message = message;
+            Param = @param;
+        }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
 		public string ErrorType { get; }

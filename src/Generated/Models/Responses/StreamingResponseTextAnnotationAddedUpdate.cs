@@ -11,7 +11,7 @@ namespace OpenAI.Responses
     [Experimental("OPENAI001")]
     public partial class StreamingResponseTextAnnotationAddedUpdate : StreamingResponseUpdate
     {
-        internal StreamingResponseTextAnnotationAddedUpdate(int sequenceNumber, string itemId, int outputIndex, int contentIndex, int annotationIndex, ResponseMessageAnnotation annotation) : base(InternalResponseStreamEventType.ResponseOutputTextAnnotationAdded, sequenceNumber)
+        internal StreamingResponseTextAnnotationAddedUpdate(int sequenceNumber, string itemId, int outputIndex, int contentIndex, int annotationIndex, BinaryData annotation) : base(InternalResponseStreamEventType.ResponseOutputTextAnnotationAdded, sequenceNumber)
         {
             ItemId = itemId;
             OutputIndex = outputIndex;
@@ -21,7 +21,7 @@ namespace OpenAI.Responses
         }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-        internal StreamingResponseTextAnnotationAddedUpdate(InternalResponseStreamEventType kind, int sequenceNumber, in JsonPatch patch, string itemId, int outputIndex, int contentIndex, int annotationIndex, ResponseMessageAnnotation annotation) : base(kind, sequenceNumber, patch)
+        internal StreamingResponseTextAnnotationAddedUpdate(InternalResponseStreamEventType kind, int sequenceNumber, in JsonPatch patch, string itemId, int outputIndex, int contentIndex, int annotationIndex, BinaryData annotation) : base(kind, sequenceNumber, patch)
         {
             ItemId = itemId;
             OutputIndex = outputIndex;
@@ -31,14 +31,14 @@ namespace OpenAI.Responses
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        public string ItemId { get; }
+        public string ItemId { get; set; }
 
-        public int OutputIndex { get; }
+        public int OutputIndex { get; set; }
 
-        public int ContentIndex { get; }
+        public int ContentIndex { get; set; }
 
-        public int AnnotationIndex { get; }
+        public int AnnotationIndex { get; set; }
 
-        public ResponseMessageAnnotation Annotation { get; }
+        public BinaryData Annotation { get; set; }
     }
 }

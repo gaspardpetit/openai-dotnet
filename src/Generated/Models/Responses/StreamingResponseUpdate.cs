@@ -37,6 +37,6 @@ namespace OpenAI.Responses
 
         public InternalResponseStreamEventType Kind { get; set; }
 
-        public int SequenceNumber { get; }
+        public int SequenceNumber { get; set; }
     }
 }

@@ -4,12 +4,9 @@ namespace OpenAI.Responses;
 [CodeGenType("WebSearchToolCallItemResource")]
 public partial class WebSearchCallResponseItem
 {
-    // CUSTOM: Made nullable since this is a read-only property.
+    // CUSTOM:
+    // - Made nullable because this is an optional property.
+    // - Added setter because this is an optional property in an input/output type.
     [CodeGenMember("Status")]
-    public WebSearchCallStatus? Status { get; }
-
-    // <GP>
-	[CodeGenMember("Action")]
-	public object Action { get;  }
-	// </GP>
+    public WebSearchCallStatus? Status { get; set; }
 }
