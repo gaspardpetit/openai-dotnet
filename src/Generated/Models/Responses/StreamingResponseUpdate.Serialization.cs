@@ -65,7 +65,7 @@ namespace OpenAI.Responses
             return DeserializeStreamingResponseUpdate(document.RootElement, null, options);
         }
 
-        internal static StreamingResponseUpdate DeserializeStreamingResponseUpdate(JsonElement element, BinaryData data, ModelReaderWriterOptions options)
+        public static StreamingResponseUpdate DeserializeStreamingResponseUpdate(JsonElement element, BinaryData data, ModelReaderWriterOptions options)
         {
             if (element.ValueKind == JsonValueKind.Null)
             {
