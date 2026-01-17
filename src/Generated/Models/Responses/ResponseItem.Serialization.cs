@@ -112,6 +112,13 @@ namespace OpenAI.Responses
                         return McpToolCallItem.DeserializeMcpToolCallItem(element, data, options);
                     case "item_reference":
                         return ReferenceResponseItem.DeserializeReferenceResponseItem(element, data, options);
+                    // <GP>
+                    // Targeted patch: support for the Responses API apply_patch tool item types.
+                    case "apply_patch_call":
+                        return ApplyPatchCallResponseItem.DeserializeApplyPatchCallResponseItem(element, data, options);
+                    case "apply_patch_call_output":
+                        return ApplyPatchCallOutputResponseItem.DeserializeApplyPatchCallOutputResponseItem(element, data, options);
+                    // </GP>
                 }
             }
             return InternalUnknownItemResource.DeserializeInternalUnknownItemResource(element, data, options);

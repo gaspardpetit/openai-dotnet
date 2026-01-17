@@ -142,4 +142,13 @@ public partial class ResponseTool
             inputImageMask: inputImageMask,
             partialImageCount: partialImageCount);
     }
+
+    // <GP>
+    // Targeted patch: add support for the OpenAI "apply_patch" tool for Responses API.
+    // This tool has no configuration payload; we represent it as an unknown tool with kind "apply_patch".
+    public static ResponseTool CreateApplyPatchTool()
+    {
+        return new InternalUnknownTool(new InternalToolType("apply_patch"), patch: default);
+    }
+    // </GP>
 }
