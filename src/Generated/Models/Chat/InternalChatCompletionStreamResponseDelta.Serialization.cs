@@ -137,13 +137,22 @@ namespace OpenAI.Chat
                     DeserializeContentValue(prop, ref content);
                     continue;
                 }
-                // <GP> Added reasoning support as used by ollama
+				// <GP> Added reasoning support as used by ollama
+
+                // reasoning is used by ollama
 				if (prop.NameEquals("reasoning"u8))
 				{
 					DeserializeContentValue(prop, ref reasoning);
 					continue;
 				}
-                // </GP>
+				// reasoning_content is used by llama.cpp
+				if (prop.NameEquals("reasoning_content"u8))
+				{
+					DeserializeContentValue(prop, ref reasoning);
+					continue;
+				}
+
+				// </GP>
 				if (prop.NameEquals("function_call"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
