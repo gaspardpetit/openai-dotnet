@@ -1,7 +1,5 @@
-using OpenAI.Graders;
+using Microsoft.TypeSpec.Generator.Customizations;
 using System.ClientModel;
-using System.ClientModel.Primitives;
-using System.Text.Json;
 
 namespace OpenAI.Files;
 
@@ -43,3 +41,4 @@ public partial class InternalUpload
 [CodeGenType("UploadPart")] public partial class InternalUploadPart { }
 [CodeGenType("UploadPartObject")] public readonly partial struct InternalUploadPartObject { }
 [CodeGenType("UploadStatus")] public readonly partial struct InternalUploadStatus { }
+[CodeGenType("FileExpirationAfter")] public readonly partial struct InternalFileExpirationAfter { }

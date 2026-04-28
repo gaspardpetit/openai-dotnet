@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.Collections.Generic;
 
@@ -19,13 +20,6 @@ public partial class VectorStoreFile
     /// </summary>
     [CodeGenMember("Id")]
     public string FileId { get; }
-
-    /// <summary>
-    /// The total count of bytes used for vector storage of the file. Note that this may differ from the size of the
-    /// file.
-    /// </summary>
-    [CodeGenMember("UsageBytes")]
-    public int Size { get; }
 
     // CUSTOM: Changed type.
     [CodeGenMember("Attributes")]

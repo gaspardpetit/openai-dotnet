@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
@@ -92,6 +93,12 @@ public partial class OpenAIFileClient
         Pipeline = pipeline;
         _endpoint = OpenAIClient.GetEndpoint(options);
         _internalUploadsClient = new(pipeline, options);
+    }
+
+    [Experimental("SCME0002")]
+    public OpenAIFileClient(OpenAIFileClientSettings settings)
+        : this(AuthenticationPolicy.Create(settings), settings?.Options)
+    {
     }
 
     /// <summary>

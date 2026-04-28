@@ -13,6 +13,39 @@ namespace OpenAI.Files
 {
     public partial class InternalFileUploadOptions : IJsonModel<InternalFileUploadOptions>
     {
+        protected virtual InternalFileUploadOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<InternalFileUploadOptions>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeInternalFileUploadOptions(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(InternalFileUploadOptions)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<InternalFileUploadOptions>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(InternalFileUploadOptions)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<InternalFileUploadOptions>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        InternalFileUploadOptions IPersistableModel<InternalFileUploadOptions>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<InternalFileUploadOptions>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
         void IJsonModel<InternalFileUploadOptions>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
@@ -43,6 +76,11 @@ namespace OpenAI.Files
             {
                 writer.WritePropertyName("purpose"u8);
                 writer.WriteStringValue(Purpose.ToString());
+            }
+            if (Optional.IsDefined(ExpiresAfter) && _additionalBinaryDataProperties?.ContainsKey("expires_after") != true)
+            {
+                writer.WritePropertyName("expires_after"u8);
+                writer.WriteObjectValue<InternalFileExpirationAfter?>(ExpiresAfter.Value, options);
             }
             // Plugin customization: remove options.Format != "W" check
             if (_additionalBinaryDataProperties != null)
@@ -87,6 +125,7 @@ namespace OpenAI.Files
             }
             Stream @file = default;
             FileUploadPurpose purpose = default;
+            InternalFileExpirationAfter? expiresAfter = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
@@ -100,43 +139,19 @@ namespace OpenAI.Files
                     purpose = new FileUploadPurpose(prop.Value.GetString());
                     continue;
                 }
+                if (prop.NameEquals("expires_after"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    expiresAfter = InternalFileExpirationAfter.DeserializeInternalFileExpirationAfter(prop.Value, options);
+                    continue;
+                }
                 // Plugin customization: remove options.Format != "W" check
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new InternalFileUploadOptions(@file, purpose, additionalBinaryDataProperties);
+            return new InternalFileUploadOptions(@file, purpose, expiresAfter, additionalBinaryDataProperties);
         }
-
-        BinaryData IPersistableModel<InternalFileUploadOptions>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<InternalFileUploadOptions>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(InternalFileUploadOptions)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        InternalFileUploadOptions IPersistableModel<InternalFileUploadOptions>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        protected virtual InternalFileUploadOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<InternalFileUploadOptions>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeInternalFileUploadOptions(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(InternalFileUploadOptions)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<InternalFileUploadOptions>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

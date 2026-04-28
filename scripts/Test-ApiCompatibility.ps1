@@ -70,6 +70,9 @@ function Invoke-APICompat {
         [string]$ProjectPath,
 
         [Parameter(Mandatory = $true)]
+        [string]$DirectoryBuildPropsPath,
+
+        [Parameter(Mandatory = $true)]
         [string]$ReleasePath,
 
         [Parameter(Mandatory = $true)]
@@ -89,9 +92,9 @@ function Invoke-APICompat {
         Invoke-DotNetPack -ProjectPath $ProjectPath
 
         # Extract the values of VersionPrefix and VersionSuffix from the .csproj XML file.
-        $xml = [xml](Get-Content $ProjectPath)
-        $versionPrefix = $($xml.Project.PropertyGroup[0].VersionPrefix)
-        $versionSuffix = $($xml.Project.PropertyGroup[0].VersionSuffix)
+        $xml = [xml](Get-Content $DirectoryBuildPropsPath)
+        $versionPrefix = $($xml.Project.PropertyGroup[3].VersionPrefix)
+        $versionSuffix = $($xml.Project.PropertyGroup[3].VersionSuffix)
         $currentVersion = [string]::IsNullOrEmpty($versionSuffix) ? "$($versionPrefix)" : "$($versionPrefix)-$($versionSuffix)"
 
         $currentNuGetPackagePath = Join-Path $ReleasePath "$($PackageName).$($currentVersion).nupkg"
@@ -160,22 +163,26 @@ function Invoke-APICompat {
 
 $repoRootPath = Join-Path $PSScriptRoot .. -Resolve
 $projectPath = Join-Path $repoRootPath "src\OpenAI.csproj"
+$buildPropsPath = Join-Path $repoRootPath "Directory.Build.props"
 $releasePath = Join-Path $repoRootPath "src\bin\Release"
 
 $experimentalNamespaces = @(
     "OpenAI.Assistants",
     "OpenAI.Batch",
     "OpenAI.Containers",
+    "OpenAI.Conversations",
     "OpenAI.Evals",
     "OpenAI.FineTuning",
     "OpenAI.Graders",
     "OpenAI.Realtime",
     "OpenAI.Responses",
-    "OpenAI.VectorStores"
+    "OpenAI.VectorStores",
+    "OpenAI.Videos"
 )
 
 Invoke-APICompat -ProjectPath $projectPath `
+    -DirectoryBuildPropsPath $buildPropsPath `
     -ReleasePath $releasePath `
     -PackageName "OpenAI" `
-    -BaselineVersion "2.7.0" `
+    -BaselineVersion "2.9.1" `
     -IgnoredNamespaces $experimentalNamespaces

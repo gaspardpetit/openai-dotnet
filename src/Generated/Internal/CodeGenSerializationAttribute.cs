@@ -4,7 +4,7 @@
 
 using System;
 
-namespace OpenAI
+namespace Microsoft.TypeSpec.Generator.Customizations
 {
     [AttributeUsage((AttributeTargets.Class | AttributeTargets.Struct), AllowMultiple = true, Inherited = true)]
     public partial class CodeGenSerializationAttribute : Attribute

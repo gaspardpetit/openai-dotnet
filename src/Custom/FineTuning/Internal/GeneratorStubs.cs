@@ -1,9 +1,8 @@
+using Microsoft.TypeSpec.Generator.Customizations;
+
 namespace OpenAI.FineTuning;
 
 // CUSTOM: Made internal.
-
-[CodeGenType("FineTuningIntegration")]
-public partial class InternalFineTuningIntegration { }
 
 [CodeGenType("FineTuningIntegrationType")]
 public readonly partial struct InternalFineTuningIntegrationType { }

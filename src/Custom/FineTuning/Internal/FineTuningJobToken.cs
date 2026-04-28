@@ -10,7 +10,7 @@ using System.Text.Json;
 namespace OpenAI.FineTuning;
 
 [Experimental("OPENAI001")]
-internal class FineTuningJobToken : ContinuationToken
+public class FineTuningJobToken : ContinuationToken
 {
     public FineTuningJobToken(string jobId)
     {

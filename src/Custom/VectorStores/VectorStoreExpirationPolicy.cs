@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using Microsoft.TypeSpec.Generator.Customizations;
 
 namespace OpenAI.VectorStores;
 
 /// <summary>
-/// Represents the the configuration that controls when a vector store will be automatically deleted.
+/// Represents the configuration that controls when a vector store will be automatically deleted.
 /// </summary>
 [CodeGenType("VectorStoreExpirationAfter")]
 [CodeGenSuppress(nameof(VectorStoreExpirationPolicy), typeof(int))]

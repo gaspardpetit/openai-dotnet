@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
@@ -75,6 +76,12 @@ public partial class ContainerClient
 
         Pipeline = pipeline;
         _endpoint = OpenAIClient.GetEndpoint(options);
+    }
+
+    [Experimental("SCME0002")]
+    public ContainerClient(ContainerClientSettings settings)
+        : this(AuthenticationPolicy.Create(settings), settings?.Options)
+    {
     }
 
     /// <summary>

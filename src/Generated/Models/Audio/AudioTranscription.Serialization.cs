@@ -13,9 +13,44 @@ namespace OpenAI.Audio
 {
     public partial class AudioTranscription : IJsonModel<AudioTranscription>
     {
-        internal AudioTranscription() : this(null, null, default, null, null, null, null, null)
+        internal AudioTranscription() : this(null, default, null, null, null, null, null, null)
         {
         }
+
+        [Experimental("OPENAI001")]
+        protected virtual AudioTranscription PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<AudioTranscription>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeAudioTranscription(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(AudioTranscription)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        [Experimental("OPENAI001")]
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<AudioTranscription>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(AudioTranscription)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<AudioTranscription>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        AudioTranscription IPersistableModel<AudioTranscription>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<AudioTranscription>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
 
         void IJsonModel<AudioTranscription>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
@@ -31,11 +66,6 @@ namespace OpenAI.Audio
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(AudioTranscription)} does not support writing '{format}' format.");
-            }
-            if (_additionalBinaryDataProperties?.ContainsKey("task") != true)
-            {
-                writer.WritePropertyName("task"u8);
-                writer.WriteStringValue(Task);
             }
             if (_additionalBinaryDataProperties?.ContainsKey("language") != true)
             {
@@ -73,6 +103,11 @@ namespace OpenAI.Audio
                     writer.WriteObjectValue(item, options);
                 }
                 writer.WriteEndArray();
+            }
+            if (Optional.IsDefined(Usage) && _additionalBinaryDataProperties?.ContainsKey("usage") != true)
+            {
+                writer.WritePropertyName("usage"u8);
+                writer.WriteObjectValue(Usage, options);
             }
             if (Optional.IsCollectionDefined(TranscriptionTokenLogProbabilities) && _additionalBinaryDataProperties?.ContainsKey("logprobs") != true)
             {
@@ -126,21 +161,16 @@ namespace OpenAI.Audio
             {
                 return null;
             }
-            string task = default;
             string language = default;
             TimeSpan? duration = default;
             string text = default;
             IReadOnlyList<TranscribedWord> words = default;
             IReadOnlyList<TranscribedSegment> segments = default;
+            AudioTranscriptionUsage usage = default;
             IReadOnlyList<AudioTokenLogProbabilityDetails> transcriptionTokenLogProbabilities = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
-                if (prop.NameEquals("task"u8))
-                {
-                    task = prop.Value.GetString();
-                    continue;
-                }
                 if (prop.NameEquals("language"u8))
                 {
                     language = prop.Value.GetString();
@@ -184,6 +214,15 @@ namespace OpenAI.Audio
                     segments = array;
                     continue;
                 }
+                if (prop.NameEquals("usage"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    usage = AudioTranscriptionUsage.DeserializeAudioTranscriptionUsage(prop.Value, options);
+                    continue;
+                }
                 if (prop.NameEquals("logprobs"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
@@ -202,49 +241,14 @@ namespace OpenAI.Audio
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
             return new AudioTranscription(
-                task,
                 language,
                 duration,
                 text,
                 words ?? new ChangeTrackingList<TranscribedWord>(),
                 segments ?? new ChangeTrackingList<TranscribedSegment>(),
+                usage,
                 transcriptionTokenLogProbabilities ?? new ChangeTrackingList<AudioTokenLogProbabilityDetails>(),
                 additionalBinaryDataProperties);
         }
-
-        BinaryData IPersistableModel<AudioTranscription>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        [Experimental("OPENAI001")]
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<AudioTranscription>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(AudioTranscription)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        AudioTranscription IPersistableModel<AudioTranscription>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        [Experimental("OPENAI001")]
-        protected virtual AudioTranscription PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<AudioTranscription>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeAudioTranscription(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(AudioTranscription)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<AudioTranscription>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

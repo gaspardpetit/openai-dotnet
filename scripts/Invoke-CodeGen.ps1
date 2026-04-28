@@ -165,7 +165,7 @@ function Get-GitHubRepoContent {
             return $false
         }
 
-        # Copy the contents directly to destination, preserving only the internal structure
+        # Copy the contents directly to destination, preserving only the public structure
         if (Test-Path $sourcePath -PathType Container) {
             Copy-Item -Path "$sourcePath\*" -Destination $Destination -Recurse -Force
         }
@@ -213,7 +213,7 @@ function Get-LocalRepoContent {
         # Create the destination directory if it doesn't exist
         New-Item -ItemType Directory -Path $Destination -Force | Out-Null
 
-        # Copy the contents directly to destination, preserving only the internal structure
+        # Copy the contents directly to destination, preserving only the public structure
         if (Test-Path $sourcePath -PathType Container) {
             Copy-Item -Path "$sourcePath\*" -Destination $Destination -Recurse -Force
         }

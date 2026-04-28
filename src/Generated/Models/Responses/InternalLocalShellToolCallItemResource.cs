@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-	public partial class InternalLocalShellToolCallItemResource : ResponseItem
+    public partial class InternalLocalShellToolCallItemResource : ResponseItem
     {
         internal InternalLocalShellToolCallItemResource(InternalLocalShellToolCallItemResourceStatus status, string callId, InternalLocalShellExecAction action) : base(InternalItemType.LocalShellCall)
         {

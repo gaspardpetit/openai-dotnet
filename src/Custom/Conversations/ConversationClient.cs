@@ -1,4 +1,5 @@
-﻿using System;
+using Microsoft.TypeSpec.Generator.Customizations;
+using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Diagnostics.CodeAnalysis;
@@ -79,6 +80,12 @@ public partial class ConversationClient
 
         Pipeline = pipeline;
         _endpoint = OpenAIClient.GetEndpoint(options);
+    }
+
+    [Experimental("SCME0002")]
+    public ConversationClient(ConversationClientSettings settings)
+        : this(AuthenticationPolicy.Create(settings), settings?.Options)
+    {
     }
 
     /// <summary>

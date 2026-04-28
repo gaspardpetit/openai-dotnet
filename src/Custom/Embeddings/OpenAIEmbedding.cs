@@ -1,80 +1,32 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.Buffers;
 using System.Buffers.Binary;
 using System.Buffers.Text;
 using System.ClientModel.Primitives;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.Json;
 
 namespace OpenAI.Embeddings;
 
-/// <summary>
-/// Represents an embedding vector returned by embedding endpoint.
-/// </summary>
+// CUSTOM: Renamed.
+/// <summary> Represents an embedding vector returned by embedding endpoint. </summary>
 [CodeGenType("Embedding")]
 [CodeGenSuppress("OpenAIEmbedding", typeof(int), typeof(BinaryData))]
 public partial class OpenAIEmbedding
 {
+    private ReadOnlyMemory<float> _vector;
+
     // CUSTOM: Made private. The value of the embedding is publicly exposed as ReadOnlyMemory<float> instead of BinaryData.
-    /// <summary>
-    /// The embedding vector, which is a list of floats. The length of vector depends on the model as
-    /// listed in the [embedding guide](/docs/guides/embeddings).
-    /// <para>
-    /// To assign an object to this property use <see cref="BinaryData.FromObjectAsJson{T}(T, System.Text.Json.JsonSerializerOptions?)"/>.
-    /// </para>
-    /// <para>
-    /// To assign an already formatted json string to this property use <see cref="BinaryData.FromString(string)"/>.
-    /// </para>
-    /// <para>
-    /// <remarks>
-    /// Supported types:
-    /// <list type="bullet">
-    /// <item>
-    /// <description><see cref="IList{T}"/> where <c>T</c> is of type <see cref="double"/></description>
-    /// </item>
-    /// <item>
-    /// <description><see cref="string"/></description>
-    /// </item>
-    /// </list>
-    /// </remarks>
-    /// Examples:
-    /// <list type="bullet">
-    /// <item>
-    /// <term>BinaryData.FromObjectAsJson("foo")</term>
-    /// <description>Creates a payload of "foo".</description>
-    /// </item>
-    /// <item>
-    /// <term>BinaryData.FromString("\"foo\"")</term>
-    /// <description>Creates a payload of "foo".</description>
-    /// </item>
-    /// <item>
-    /// <term>BinaryData.FromObjectAsJson(new { key = "value" })</term>
-    /// <description>Creates a payload of { "key": "value" }.</description>
-    /// </item>
-    /// <item>
-    /// <term>BinaryData.FromString("{\"key\": \"value\"}")</term>
-    /// <description>Creates a payload of { "key": "value" }.</description>
-    /// </item>
-    /// </list>
-    /// </para>
-    /// </summary>
     [CodeGenMember("Embedding")]
     private BinaryData EmbeddingProperty { get; }
 
     // CUSTOM: Made private. This property does not add value in the context of a strongly-typed class.
-    /// <summary> The object type, which is always "embedding". </summary>
+    [CodeGenMember("Object")]
     private string Object { get; } = "embedding";
 
     // CUSTOM: Added logic to handle additional custom properties.
-    /// <summary> Initializes a new instance of <see cref="OpenAIEmbedding"/>. </summary>
-    /// <param name="index"> The index of the embedding in the list of embeddings. </param>
-    /// <param name="embeddingProperty">
-    /// The embedding vector, which is a list of floats. The length of vector depends on the model as
-    /// listed in the [embedding guide](/docs/guides/embeddings).
-    /// </param>
-    /// <param name="object"> The object type, which is always "embedding". </param>
-    /// <param name="patch"> Keeps track of any properties unknown to the library. </param>
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     internal OpenAIEmbedding(int index, BinaryData embeddingProperty, string @object, in JsonPatch patch)
     {
@@ -89,16 +41,11 @@ public partial class OpenAIEmbedding
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
     // CUSTOM: Entirely custom constructor used by the Model Factory.
-    /// <summary> Initializes a new instance of <see cref="OpenAIEmbedding"/>. </summary>
-    /// <param name="index"> The index of the embedding in the list of embeddings. </param>
-    /// <param name="vector"> The embedding vector, which is a list of floats. </param>
     internal OpenAIEmbedding(int index, ReadOnlyMemory<float> vector)
     {
         Index = index;
         _vector = vector;
     }
-
-    private ReadOnlyMemory<float> _vector;
 
     // CUSTOM: Added as a public, custom method. For slightly better performance, the embedding is always requested as a base64-encoded
     // string and then manually transformed into a more user-friendly ReadOnlyMemory<float>.
@@ -108,7 +55,6 @@ public partial class OpenAIEmbedding
     /// <returns>A read-only memory segment of floats representing the embedding vector.</returns>
     public ReadOnlyMemory<float> ToFloats() => _vector;
 
-    // CUSTOM: Implemented custom logic to transform from BinaryData to ReadOnlyMemory<float>.
     private static ReadOnlyMemory<float> ConvertToVectorOfFloats(BinaryData binaryData)
     {
         ReadOnlySpan<byte> bytes = binaryData.ToMemory().Span;
@@ -121,22 +67,47 @@ public partial class OpenAIEmbedding
         return ConvertFromJsonArray(binaryData);
     }
 
-    private static ReadOnlyMemory<float> ConvertFromBase64(ReadOnlySpan<byte> base64)
+    private static ReadOnlyMemory<float> ConvertFromBase64(ReadOnlySpan<byte> quotedBase64)
     {
-        base64 = base64.Slice(1, base64.Length - 2);
+        scoped ReadOnlySpan<byte> base64 = quotedBase64.Slice(1, quotedBase64.Length - 2);
 
-        // Decode base64 string to bytes.
+        // Per RFC 8259 §7, JSON strings may contain escape sequences (e.g., '\/' for '/').
+        // Since '/' is a valid base64 character, we must unescape before decoding.
+        byte[] unescaped = null;
         byte[] bytes = null;
+
         try
         {
+            if (base64.IndexOf((byte)'\\') >= 0)
+            {
+                Utf8JsonReader reader = new(quotedBase64);
+                reader.Read();
+
+#if NET8_0_OR_GREATER
+                unescaped = ArrayPool<byte>.Shared.Rent(base64.Length);
+                base64 = unescaped.AsSpan(0, reader.CopyString(unescaped));
+#else
+                base64 = Encoding.UTF8.GetBytes(reader.GetString()!);
+#endif
+            }
+
+            // Decode base64 string to bytes.
             bytes = ArrayPool<byte>.Shared.Rent(Base64.GetMaxDecodedFromUtf8Length(base64.Length));
-            OperationStatus status = Base64.DecodeFromUtf8(base64, bytes.AsSpan(), out int bytesConsumed, out int bytesWritten);
+            OperationStatus status = Base64.DecodeFromUtf8(base64, bytes.AsSpan(), out _, out int bytesWritten);
+
+            // Done with the unescape buffer — release before validation and float conversion.
+            if (unescaped is not null)
+            {
+                ArrayPool<byte>.Shared.Return(unescaped);
+                unescaped = null;
+            }
+
             if (status != OperationStatus.Done || bytesWritten % sizeof(float) != 0)
             {
                 ThrowInvalidData();
             }
 
-            // Interpret bytes as floats
+            // Interpret bytes as floats.
             float[] vector = new float[bytesWritten / sizeof(float)];
             bytes.AsSpan(0, bytesWritten).CopyTo(MemoryMarshal.AsBytes(vector.AsSpan()));
             if (!BitConverter.IsLittleEndian)
@@ -156,6 +127,10 @@ public partial class OpenAIEmbedding
         }
         finally
         {
+            if (unescaped is not null)
+            {
+                ArrayPool<byte>.Shared.Return(unescaped);
+            }
             if (bytes is not null)
             {
                 ArrayPool<byte>.Shared.Return(bytes);

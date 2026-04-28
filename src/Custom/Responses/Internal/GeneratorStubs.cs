@@ -1,3 +1,5 @@
+using Microsoft.TypeSpec.Generator.Customizations;
+
 namespace OpenAI.Responses;
 
 [CodeGenType("CodeInterpreterContainerConfigurationType")] public readonly partial struct InternalCodeInterpreterContainerConfigurationType {}
@@ -84,7 +86,6 @@ namespace OpenAI.Responses;
 [CodeGenType("UnknownResponseTextFormatConfiguration")] public partial class InternalUnknownResponseTextFormatConfiguration {}
 [CodeGenType("UnknownTool")] public partial class InternalUnknownTool {}
 [CodeGenType("UnknownToolChoiceObject")] public partial class InternalUnknownToolChoiceObject {}
-[CodeGenType("WebSearchToolCallItemParam")] public partial class InternalWebSearchToolCallItemParam {}
 [CodeGenType("CodeInterpreterFileOutputType")] public readonly partial struct InternalCodeInterpreterFileOutputType {}
 [CodeGenType("CodeInterpreterTextOutputType")] public readonly partial struct InternalCodeInterpreterTextOutputType {}
 [CodeGenType("CodeInterpreterToolOutputType")] public readonly partial struct InternalCodeInterpreterToolOutputType {}
@@ -120,3 +121,11 @@ namespace OpenAI.Responses;
 [CodeGenType("DotNetCustomToolCallApprovalPolicyNever")] public partial class InternalDotNetCustomToolCallApprovalPolicyNever { }
 [CodeGenType("UnknownCodeInterpreterToolOutput")] public partial class InternalUnknownCodeInterpreterToolOutput {}
 [CodeGenType("UnknownCodeInterpreterContainerConfiguration")] public partial class InternalUnknownCodeInterpreterContainerConfiguration {}
+[CodeGenType("GetInputTokenCountsRequestContentType")] public readonly partial struct InternalGetInputTokenCountsRequestContentType {}
+[CodeGenType("CompactConversationRequestContentType")] public readonly partial struct InternalCompactConversationRequestContentType {}
+[CodeGenType("WebSearchActionType")] public readonly partial struct InternalWebSearchActionType { }
+[CodeGenType("UnknownWebSearchActionBase")] public partial class InternalUnknownWebSearchActionBase { }
+[CodeGenType("WebSearchActionSearchSourcesType")] public readonly partial struct InternalWebSearchActionSearchSourcesType { }
+[CodeGenType("UnknownWebSearchActionSearchSourceBase")] public partial class InternalUnknownWebSearchActionSearchSourceBase { }
+[CodeGenType("ApplyPatchOperationType")] public readonly partial struct InternalApplyPatchOperationType { }
+[CodeGenType("UnknownApplyPatchOperation")] public partial class InternalUnknownApplyPatchOperation { }

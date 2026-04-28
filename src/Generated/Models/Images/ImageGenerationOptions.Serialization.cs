@@ -17,6 +17,41 @@ namespace OpenAI.Images
         {
         }
 
+        [Experimental("OPENAI001")]
+        protected virtual ImageGenerationOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<ImageGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeImageGenerationOptions(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(ImageGenerationOptions)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        [Experimental("OPENAI001")]
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<ImageGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(ImageGenerationOptions)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<ImageGenerationOptions>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        ImageGenerationOptions IPersistableModel<ImageGenerationOptions>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<ImageGenerationOptions>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
         void IJsonModel<ImageGenerationOptions>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
@@ -66,6 +101,16 @@ namespace OpenAI.Images
             {
                 writer.WritePropertyName("output_compression"u8);
                 writer.WriteNumberValue(OutputCompressionFactor.Value);
+            }
+            if (Optional.IsDefined(Stream) && _additionalBinaryDataProperties?.ContainsKey("stream") != true)
+            {
+                writer.WritePropertyName("stream"u8);
+                writer.WriteBooleanValue(Stream.Value);
+            }
+            if (Optional.IsDefined(PartialImages) && _additionalBinaryDataProperties?.ContainsKey("partial_images") != true)
+            {
+                writer.WritePropertyName("partial_images"u8);
+                writer.WriteNumberValue(PartialImages.Value);
             }
             if (Optional.IsDefined(Size) && _additionalBinaryDataProperties?.ContainsKey("size") != true)
             {
@@ -141,6 +186,8 @@ namespace OpenAI.Images
             GeneratedImageFormat? responseFormat = default;
             GeneratedImageFileFormat? outputFileFormat = default;
             int? outputCompressionFactor = default;
+            bool? stream = default;
+            int? partialImages = default;
             GeneratedImageSize? size = default;
             GeneratedImageModerationLevel? moderationLevel = default;
             GeneratedImageBackground? background = default;
@@ -214,6 +261,26 @@ namespace OpenAI.Images
                     outputCompressionFactor = prop.Value.GetInt32();
                     continue;
                 }
+                if (prop.NameEquals("stream"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        stream = null;
+                        continue;
+                    }
+                    stream = prop.Value.GetBoolean();
+                    continue;
+                }
+                if (prop.NameEquals("partial_images"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        partialImages = null;
+                        continue;
+                    }
+                    partialImages = prop.Value.GetInt32();
+                    continue;
+                }
                 if (prop.NameEquals("size"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
@@ -270,6 +337,8 @@ namespace OpenAI.Images
                 responseFormat,
                 outputFileFormat,
                 outputCompressionFactor,
+                stream,
+                partialImages,
                 size,
                 moderationLevel,
                 background,
@@ -277,40 +346,5 @@ namespace OpenAI.Images
                 endUserId,
                 additionalBinaryDataProperties);
         }
-
-        BinaryData IPersistableModel<ImageGenerationOptions>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        [Experimental("OPENAI001")]
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<ImageGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(ImageGenerationOptions)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        ImageGenerationOptions IPersistableModel<ImageGenerationOptions>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        [Experimental("OPENAI001")]
-        protected virtual ImageGenerationOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<ImageGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeImageGenerationOptions(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(ImageGenerationOptions)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<ImageGenerationOptions>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

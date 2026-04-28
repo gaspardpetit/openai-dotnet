@@ -12,6 +12,39 @@ namespace OpenAI.Audio
 {
     public partial class InternalCreateTranscriptionResponseJsonLogprob : IJsonModel<InternalCreateTranscriptionResponseJsonLogprob>
     {
+        protected virtual InternalCreateTranscriptionResponseJsonLogprob PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeInternalCreateTranscriptionResponseJsonLogprob(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(InternalCreateTranscriptionResponseJsonLogprob)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(InternalCreateTranscriptionResponseJsonLogprob)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        InternalCreateTranscriptionResponseJsonLogprob IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
         void IJsonModel<InternalCreateTranscriptionResponseJsonLogprob>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
@@ -40,7 +73,7 @@ namespace OpenAI.Audio
             {
                 writer.WritePropertyName("bytes"u8);
                 writer.WriteStartArray();
-                foreach (float item in Bytes)
+                foreach (double item in Bytes)
                 {
                     writer.WriteNumberValue(item);
                 }
@@ -89,7 +122,7 @@ namespace OpenAI.Audio
             }
             string token = default;
             float? logprob = default;
-            IList<float> bytes = default;
+            IList<double> bytes = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
@@ -113,10 +146,10 @@ namespace OpenAI.Audio
                     {
                         continue;
                     }
-                    List<float> array = new List<float>();
+                    List<double> array = new List<double>();
                     foreach (var item in prop.Value.EnumerateArray())
                     {
-                        array.Add(item.GetSingle());
+                        array.Add(item.GetDouble());
                     }
                     bytes = array;
                     continue;
@@ -124,40 +157,7 @@ namespace OpenAI.Audio
                 // Plugin customization: remove options.Format != "W" check
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new InternalCreateTranscriptionResponseJsonLogprob(token, logprob, bytes ?? new ChangeTrackingList<float>(), additionalBinaryDataProperties);
+            return new InternalCreateTranscriptionResponseJsonLogprob(token, logprob, bytes ?? new ChangeTrackingList<double>(), additionalBinaryDataProperties);
         }
-
-        BinaryData IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(InternalCreateTranscriptionResponseJsonLogprob)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        InternalCreateTranscriptionResponseJsonLogprob IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        protected virtual InternalCreateTranscriptionResponseJsonLogprob PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeInternalCreateTranscriptionResponseJsonLogprob(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(InternalCreateTranscriptionResponseJsonLogprob)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<InternalCreateTranscriptionResponseJsonLogprob>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

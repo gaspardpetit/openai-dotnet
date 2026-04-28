@@ -1,4 +1,6 @@
-﻿namespace OpenAI.Responses;
+using Microsoft.TypeSpec.Generator.Customizations;
+
+namespace OpenAI.Responses;
 
 [CodeGenType("ItemContentRefusal")]
 public partial class InternalItemContentRefusal

@@ -15,10 +15,14 @@ namespace OpenAI.Responses
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-        internal ImageGenerationToolInputImageMask(string imageUrl, string fileId, in JsonPatch patch)
+        internal ImageGenerationToolInputImageMask()
         {
-            ImageUrl = imageUrl;
+        }
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        internal ImageGenerationToolInputImageMask(string imageUri, string fileId, in JsonPatch patch)
+        {
+            ImageUri = imageUri;
             FileId = fileId;
             _patch = patch;
         }
@@ -28,5 +32,9 @@ namespace OpenAI.Responses
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
+
+        public string ImageUri { get; set; }
+
+        public string FileId { get; set; }
     }
 }

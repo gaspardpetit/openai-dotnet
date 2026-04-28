@@ -4,8 +4,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
-using OpenAI.Realtime;
 
 namespace OpenAI.Audio
 {
@@ -13,7 +13,7 @@ namespace OpenAI.Audio
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal AudioTranscriptionOptions(BinaryData @file, InternalCreateTranscriptionRequestModel model, string language, string prompt, AudioTranscriptionFormat? responseFormat, float? temperature, IList<InternalTranscriptionInclude> internalInclude, IList<BinaryData> internalTimestampGranularities, bool? stream, InternalVadConfig chunkingStrategy, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal AudioTranscriptionOptions(BinaryData @file, InternalCreateTranscriptionRequestModel model, string language, string prompt, AudioTranscriptionFormat? responseFormat, float? temperature, IList<InternalTranscriptionInclude> internalInclude, IList<BinaryData> internalTimestampGranularities, bool? stream, AudioTranscriptionChunkingStrategy chunkingStrategy, IList<string> knownSpeakerNames, IList<Uri> knownSpeakerReferenceUris, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             // Plugin customization: ensure initialization of collections
             File = @file;
@@ -26,6 +26,8 @@ namespace OpenAI.Audio
             InternalTimestampGranularities = internalTimestampGranularities ?? new ChangeTrackingList<BinaryData>();
             Stream = stream;
             ChunkingStrategy = chunkingStrategy;
+            KnownSpeakerNames = knownSpeakerNames ?? new ChangeTrackingList<string>();
+            KnownSpeakerReferenceUris = knownSpeakerReferenceUris ?? new ChangeTrackingList<Uri>();
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
@@ -37,7 +39,8 @@ namespace OpenAI.Audio
 
         public float? Temperature { get; set; }
 
-        internal InternalVadConfig ChunkingStrategy { get; set; }
+        [Experimental("OPENAI001")]
+        public IList<string> KnownSpeakerNames { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

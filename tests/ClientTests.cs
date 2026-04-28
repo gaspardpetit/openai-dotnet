@@ -1,10 +1,9 @@
 ﻿using NUnit.Framework;
-using OpenAI.Chat;
+using OpenAI.Realtime;
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -26,7 +25,8 @@ public class ClientTests
                 type.IsClass && 
                 !type.IsAbstract &&
                 type.Name.EndsWith("Client", StringComparison.Ordinal) &&
-                HasEndpointField(type))
+                HasEndpointField(type) &&
+                type != typeof(RealtimeSessionClient))
             .OrderBy(type => type.Name); // For consistent ordering in test results
     }
 

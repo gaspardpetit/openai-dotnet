@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.ClientModel.TestFramework;
+using Microsoft.ClientModel.TestFramework.Mocks;
+using NUnit.Framework;
+using OpenAI.Audio;
+using System;
 using System.ClientModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.ClientModel.TestFramework;
-using Microsoft.ClientModel.TestFramework.Mocks;
-using NUnit.Framework;
-using OpenAI.Audio;
 
 namespace OpenAI.Tests.Audio;
 
@@ -147,6 +147,47 @@ public partial class TranscriptionMockTests : ClientTestBase
 
         Assert.That(async () => await client.TranscribeAudioAsync(stream, "filename", cancellationToken: cancellationSource.Token),
                 Throws.InstanceOf<OperationCanceledException>());
+    }
+
+    [Test]
+    public void TranscribeAudioThrowsForDiarizedFormat()
+    {
+        AudioClient client = new("model", s_fakeCredential);
+        string path = Path.Combine("Assets", "audio_hello_world.mp3");
+
+        AudioTranscriptionOptions options = new()
+        {
+            ResponseFormat = AudioTranscriptionFormat.Diarized,
+        };
+
+        Assert.Throws<InvalidOperationException>(() => client.TranscribeAudio(path, options));
+    }
+
+    [Test]
+    [TestCase("text")]
+    [TestCase("json")]
+    [TestCase("verbose_json")]
+    [TestCase("srt")]
+    [TestCase("vtt")]
+    public void TranscribeAudioDiarizedThrowsForNonDiarizedFormat(string responseFormat)
+    {
+        AudioClient client = new("model", s_fakeCredential);
+        string path = Path.Combine("Assets", "audio_hello_world.mp3");
+
+        AudioTranscriptionOptions options = new()
+        {
+            ResponseFormat = responseFormat switch
+            {
+                "text" => AudioTranscriptionFormat.Text,
+                "json" => AudioTranscriptionFormat.Simple,
+                "verbose_json" => AudioTranscriptionFormat.Verbose,
+                "srt" => AudioTranscriptionFormat.Srt,
+                "vtt" => AudioTranscriptionFormat.Vtt,
+                _ => throw new ArgumentException(nameof(responseFormat)),
+            }
+        };
+
+        Assert.Throws<InvalidOperationException>(() => client.TranscribeAudioDiarized(path, options));
     }
 
     private OpenAIClientOptions GetClientOptionsWithMockResponse(int status, string content)

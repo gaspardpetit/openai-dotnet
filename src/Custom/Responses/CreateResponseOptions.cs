@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,12 +9,13 @@ namespace OpenAI.Responses;
 public partial class CreateResponseOptions
 {
     // CUSTOM: Added as a convenience.
-    public CreateResponseOptions(IEnumerable<ResponseItem> inputItems, string model = default) : this()
+    public CreateResponseOptions(string model, IEnumerable<ResponseItem> inputItems) : this()
     {
+        Argument.AssertNotNullOrEmpty(model, nameof(model));
         Argument.AssertNotNull(inputItems, nameof(inputItems));
 
+        Model = model;
         InputItems = inputItems.ToList();
-        Model = default;
     }
 
     // CUSTOM: Renamed.
@@ -121,10 +123,4 @@ public partial class CreateResponseOptions
     [CodeGenMember("User")]
     public string EndUserId { get; set; }
 
-    internal CreateResponseOptions GetClone()
-    {
-        CreateResponseOptions copiedOptions = (CreateResponseOptions)this.MemberwiseClone();
-        copiedOptions.Patch = _patch;
-        return copiedOptions;
-    }
 }

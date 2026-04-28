@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using OpenAI.Telemetry;
 using System;
 using System.ClientModel;
@@ -118,6 +119,12 @@ public partial class ChatClient
         _telemetry = new OpenTelemetrySource(model, _endpoint);
     }
 
+    [Experimental("SCME0002")]
+    public ChatClient(ChatClientSettings settings)
+        : this(settings?.Model, AuthenticationPolicy.Create(settings), settings?.Options)
+    {
+    }
+
     /// <summary>
     /// Gets the name of the model used in requests sent to the service.
     /// </summary>
@@ -151,12 +158,12 @@ public partial class ChatClient
         }
 
         options ??= new();
-        CreateChatCompletionOptions(messages, ref options);
-        using OpenTelemetryScope scope = _telemetry.StartChatScope(options);
+        var clonedOptions = CreateChatCompletionOptions(messages, options);
+        using OpenTelemetryScope scope = _telemetry.StartChatScope(clonedOptions);
 
         try
         {
-            using BinaryContent content = options.ToBinaryContent();
+            using BinaryContent content = clonedOptions.ToBinaryContent();
 
             ClientResult result = await CompleteChatAsync(content, requestOptions).ConfigureAwait(false);
             ChatCompletion chatCompletion = (ChatCompletion)result;
@@ -181,12 +188,12 @@ public partial class ChatClient
         Argument.AssertNotNullOrEmpty(messages, nameof(messages));
 
         options ??= new();
-        CreateChatCompletionOptions(messages, ref options);
-        using OpenTelemetryScope scope = _telemetry.StartChatScope(options);
+        var clonedOptions = CreateChatCompletionOptions(messages, options);
+        using OpenTelemetryScope scope = _telemetry.StartChatScope(clonedOptions);
 
         try
         {
-            using BinaryContent content = options.ToBinaryContent();
+            using BinaryContent content = clonedOptions.ToBinaryContent();
             ClientResult result = CompleteChat(content, cancellationToken.ToRequestOptions());
             ChatCompletion chatCompletion = (ChatCompletion)result;
 
@@ -242,9 +249,9 @@ public partial class ChatClient
         }
 
         options ??= new();
-        CreateChatCompletionOptions(messages, ref options, stream: true);
+        var clonedOptions = CreateChatCompletionOptions(messages, options, stream: true);
 
-        using BinaryContent content = options.ToBinaryContent();
+        using BinaryContent content = clonedOptions.ToBinaryContent();
         return new AsyncSseUpdateCollection<StreamingChatCompletionUpdate>(
             async () => await CompleteChatAsync(content, requestOptions).ConfigureAwait(false),
             StreamingChatCompletionUpdate.DeserializeStreamingChatCompletionUpdate,
@@ -269,9 +276,9 @@ public partial class ChatClient
         Argument.AssertNotNull(messages, nameof(messages));
 
         options ??= new();
-        CreateChatCompletionOptions(messages, ref options, stream: true);
+        var clonedOptions = CreateChatCompletionOptions(messages, options, stream: true);
 
-        using BinaryContent content = options.ToBinaryContent();
+        using BinaryContent content = clonedOptions.ToBinaryContent();
         return new SseUpdateCollection<StreamingChatCompletionUpdate>(
             () => CompleteChat(content, cancellationToken.ToRequestOptions(streaming: true)),
             StreamingChatCompletionUpdate.DeserializeStreamingChatCompletionUpdate,
@@ -380,26 +387,31 @@ public partial class ChatClient
         return ClientResult.FromValue((ChatCompletionDeletionResult)result, result.GetRawResponse());
     }
 
-    private void CreateChatCompletionOptions(IEnumerable<ChatMessage> messages, ref ChatCompletionOptions options, bool stream = false)
+    private ChatCompletionOptions CreateChatCompletionOptions(IEnumerable<ChatMessage> messages, ChatCompletionOptions options, bool stream = false)
     {
-        options.Messages = messages.ToList();
-        options.Model = _model;
+        var clonedOptions = options.Clone();
+        foreach (var message in messages)
+        {
+            clonedOptions.Messages.Add(message);
+        }
+        clonedOptions.Model ??= _model;
         if (stream)
         {
-            options.Stream = true;
+            clonedOptions.Stream = true;
 
-			// <GP> For MistralAI, we need to disable `include_usage` when streaming otherwise
-			// mistral returns 422. See https://github.com/openai/openai-dotnet/issues/616
-			// original would prevent this by always setting StreamOptions to the default with
-			// include_usage set to true.
-			if (options.StreamOptions == null)
-                options.StreamOptions = s_includeUsageStreamOptions;
+            // <GP> For MistralAI, disable `include_usage` when the caller did not
+            // explicitly request stream options. Forcing include_usage causes 422s.
+            if (clonedOptions.StreamOptions == null)
+            {
+                clonedOptions.StreamOptions = s_includeUsageStreamOptions;
+            }
             // </GP>
         }
         else
         {
-            options.Stream = null;
-            options.StreamOptions = null;
+            clonedOptions.Stream = null;
+            clonedOptions.StreamOptions = null;
         }
+        return clonedOptions;
     }
 }

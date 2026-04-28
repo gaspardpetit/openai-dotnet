@@ -1,4 +1,6 @@
-﻿namespace OpenAI.Containers;
+using Microsoft.TypeSpec.Generator.Customizations;
+
+namespace OpenAI.Containers;
 
 [CodeGenType("ContainerListResource")] public partial class InternalContainerListResource { }
 [CodeGenType("ContainerFileListResource")] public partial class InternalContainerFileListResource { }

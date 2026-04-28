@@ -1,5 +1,6 @@
 namespace OpenAI.Chat;
 
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 
 /// <summary> A streaming update representing part of a tool call made by the model. </summary>
@@ -26,7 +27,7 @@ public partial class StreamingChatToolCallUpdate
     public string ToolCallId { get; }
 
     /// <summary>
-    /// The name of the the tool that the streaming tool call requests invocation of.
+    /// The name of the tool that the streaming tool call requests invocation of.
     /// </summary>
     public string FunctionName => Function?.Name;
 

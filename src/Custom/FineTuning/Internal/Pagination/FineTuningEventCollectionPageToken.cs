@@ -11,7 +11,7 @@ using System.Text.Json;
 namespace OpenAI.FineTuning;
 
 [Experimental("OPENAI001")]
-internal class FineTuningEventCollectionPageToken : ContinuationToken
+public class FineTuningEventCollectionPageToken : ContinuationToken
 {
     protected FineTuningEventCollectionPageToken(string jobId, int? limit, string? after)
     {

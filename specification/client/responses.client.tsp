@@ -12,6 +12,17 @@ using TypeSpec.HttpClient.CSharp;
 @@alternateType(Response.`model`, string);
 @@alternateType(Response.service_tier, DotNetResponseServiceTier);
 
+// Do not generate convenience methods for these operations
+@@convenientAPI(Responses.getInputTokenCounts, false);
+@@convenientAPI(Responses.compactConversation, false);
+
+@@clientName(Responses.getInputTokenCounts, "GetInputTokenCount");
+@@clientName(Responses.compactConversation, "CompactResponse");
+
+@@clientName(Includable.`computer_call_output.output.image_url`, "ComputerCallOutputImageUri");
+@@clientName(Includable.`message.input_image.image_url`, "MessageInputImageUri");
+@@clientName(Includable.`message.output_text.logprobs`, "MessageOutputTextLogProbabilities");
+
 // ------------ ItemResources ------------
 @@usage(ItemResource, Usage.input | Usage.output);
 @@visibility(ItemResource.id, Lifecycle.Read);
@@ -58,6 +69,16 @@ using TypeSpec.HttpClient.CSharp;
 @@visibility(ImageGenToolCallItemResource.status, Lifecycle.Read);
 @@clientName(ImageGenToolCallItemResource.result, "ImageResultBytes");
 
+@@visibility(ApplyPatchToolCallItemResource.status, Lifecycle.Read);
+
+// NOTE: Contrary to other tools, the "status" property of `ApplyPatchToolCallOutputItemResource`
+// is set by the client instead of being set by the server, and it is also required. The "status"
+// property is used to indicate if the client successfully applied the patch or not.
+
+// This is a data URL. Treat it as a string internally to avoid Uri limits.
+@@alternateType(ItemContentInputImage.image_url, string | null); 
+@@clientName(ItemContentInputImage.image_url, "ImageUri");
+
 // ------------ Tools ------------
 
 @@clientName(FileSearchTool.max_num_results, "MaxResultCount");
@@ -75,6 +96,10 @@ using TypeSpec.HttpClient.CSharp;
 @@clientName(MCPToolFilter.read_only, "IsReadOnly");
 
 @@clientName(Responses.listInputItems, "GetResponseInputItems");
+
+// This is a data URL. Treat it as a string internally to avoid Uri limits.
+@@alternateType(ImageGenToolInputImageMask.image_url, string);
+@@clientName(ImageGenToolInputImageMask.image_url, "ImageUri");
 
 // ------------ Streaming ------------
 
@@ -237,7 +262,6 @@ using TypeSpec.HttpClient.CSharp;
 @@dynamicModel(ComputerToolCallItemResource);
 @@dynamicModel(ComputerToolCallOutputItemParam);
 @@dynamicModel(ComputerToolCallOutputItemResource);
-@@dynamicModel(WebSearchToolCallItemParam);
 @@dynamicModel(WebSearchToolCallItemResource);
 @@dynamicModel(FunctionToolCallItemParam);
 @@dynamicModel(FunctionToolCallItemResource);
@@ -274,17 +298,9 @@ using TypeSpec.HttpClient.CSharp;
 @@dynamicModel(ResponsesDeveloperMessageItemResource);
 @@dynamicModel(ResponsesAssistantMessageItemResource);
 @@dynamicModel(ImplicitUserMessage);
-// base/entrypoints/sdk.dotnet/specialized-types.tsp models
+// base/typespec/specialized-types/models.tsp models
 @@dynamicModel(ComparisonFilter);
-@@dynamicModel(ComparisonFilterEquals);
-@@dynamicModel(ComparisonFilterNotEquals);
-@@dynamicModel(ComparisonFilterGreaterThan);
-@@dynamicModel(ComparisonFilterGreaterThanOrEquals);
-@@dynamicModel(ComparisonFilterLessThan);
-@@dynamicModel(ComparisonFilterLessThanOrEquals);
 @@dynamicModel(CompoundFilter);
-@@dynamicModel(CompoundFilterAnd);
-@@dynamicModel(CompoundFilterOr);
 // client/models/responses.models.tsp models
 @@dynamicModel(DotNetItemReferenceItemResource);
 @@dynamicModel(DotNetResponseItemCollectionOrder);

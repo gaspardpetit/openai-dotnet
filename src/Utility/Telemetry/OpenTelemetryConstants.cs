@@ -1,6 +1,6 @@
 ﻿namespace OpenAI.Telemetry;
 
-internal class OpenTelemetryConstants
+public class OpenTelemetryConstants
 {
     // follow OpenTelemetry GenAI semantic conventions:
     // https://github.com/open-telemetry/semantic-conventions/tree/v1.27.0/docs/gen-ai

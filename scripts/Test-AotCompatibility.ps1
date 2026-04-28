@@ -40,7 +40,7 @@ using $packageName;
 using System;
 namespace AotCompatibility
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {

@@ -16,6 +16,39 @@ namespace OpenAI.Images
         {
         }
 
+        protected virtual ImageTokenUsage PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<ImageTokenUsage>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeImageTokenUsage(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(ImageTokenUsage)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<ImageTokenUsage>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(ImageTokenUsage)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<ImageTokenUsage>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        ImageTokenUsage IPersistableModel<ImageTokenUsage>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<ImageTokenUsage>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
         void IJsonModel<ImageTokenUsage>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
@@ -30,20 +63,25 @@ namespace OpenAI.Images
             {
                 throw new FormatException($"The model {nameof(ImageTokenUsage)} does not support writing '{format}' format.");
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("total_tokens") != true)
-            {
-                writer.WritePropertyName("total_tokens"u8);
-                writer.WriteNumberValue(TotalTokenCount);
-            }
             if (_additionalBinaryDataProperties?.ContainsKey("input_tokens") != true)
             {
                 writer.WritePropertyName("input_tokens"u8);
                 writer.WriteNumberValue(InputTokenCount);
             }
+            if (_additionalBinaryDataProperties?.ContainsKey("total_tokens") != true)
+            {
+                writer.WritePropertyName("total_tokens"u8);
+                writer.WriteNumberValue(TotalTokenCount);
+            }
             if (_additionalBinaryDataProperties?.ContainsKey("output_tokens") != true)
             {
                 writer.WritePropertyName("output_tokens"u8);
                 writer.WriteNumberValue(OutputTokenCount);
+            }
+            if (Optional.IsDefined(OutputTokenDetails) && _additionalBinaryDataProperties?.ContainsKey("output_tokens_details") != true)
+            {
+                writer.WritePropertyName("output_tokens_details"u8);
+                writer.WriteObjectValue(OutputTokenDetails, options);
             }
             if (_additionalBinaryDataProperties?.ContainsKey("input_tokens_details") != true)
             {
@@ -91,26 +129,36 @@ namespace OpenAI.Images
             {
                 return null;
             }
-            int totalTokenCount = default;
-            int inputTokenCount = default;
-            int outputTokenCount = default;
+            long inputTokenCount = default;
+            long totalTokenCount = default;
+            long outputTokenCount = default;
+            ImageOutputTokenUsageDetails outputTokenDetails = default;
             ImageInputTokenUsageDetails inputTokenDetails = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
-                if (prop.NameEquals("total_tokens"u8))
-                {
-                    totalTokenCount = prop.Value.GetInt32();
-                    continue;
-                }
                 if (prop.NameEquals("input_tokens"u8))
                 {
-                    inputTokenCount = prop.Value.GetInt32();
+                    inputTokenCount = prop.Value.GetInt64();
+                    continue;
+                }
+                if (prop.NameEquals("total_tokens"u8))
+                {
+                    totalTokenCount = prop.Value.GetInt64();
                     continue;
                 }
                 if (prop.NameEquals("output_tokens"u8))
                 {
-                    outputTokenCount = prop.Value.GetInt32();
+                    outputTokenCount = prop.Value.GetInt64();
+                    continue;
+                }
+                if (prop.NameEquals("output_tokens_details"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    outputTokenDetails = ImageOutputTokenUsageDetails.DeserializeImageOutputTokenUsageDetails(prop.Value, options);
                     continue;
                 }
                 if (prop.NameEquals("input_tokens_details"u8))
@@ -121,40 +169,13 @@ namespace OpenAI.Images
                 // Plugin customization: remove options.Format != "W" check
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new ImageTokenUsage(totalTokenCount, inputTokenCount, outputTokenCount, inputTokenDetails, additionalBinaryDataProperties);
+            return new ImageTokenUsage(
+                inputTokenCount,
+                totalTokenCount,
+                outputTokenCount,
+                outputTokenDetails,
+                inputTokenDetails,
+                additionalBinaryDataProperties);
         }
-
-        BinaryData IPersistableModel<ImageTokenUsage>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<ImageTokenUsage>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(ImageTokenUsage)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        ImageTokenUsage IPersistableModel<ImageTokenUsage>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        protected virtual ImageTokenUsage PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<ImageTokenUsage>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeImageTokenUsage(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(ImageTokenUsage)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<ImageTokenUsage>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

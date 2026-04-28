@@ -15,7 +15,7 @@ namespace OpenAI.Realtime;
 /// WebSocket messages can be split across multiple network receive operations and a single
 /// <see cref="WebsocketPipelineResponse"/> may thus ingest and present data across several such operations.
 /// </remarks>
-internal class WebsocketPipelineResponse : PipelineResponse
+public class WebsocketPipelineResponse : PipelineResponse
 {
     public override int Status => _status;
     private int _status;

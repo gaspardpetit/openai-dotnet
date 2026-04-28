@@ -1,5 +1,4 @@
-﻿using Microsoft.ClientModel.TestFramework;
-using Microsoft.ClientModel.TestFramework.TestProxy.Admin;
+﻿using Microsoft.ClientModel.TestFramework.TestProxy.Admin;
 using NUnit.Framework;
 using OpenAI.Chat;
 using OpenAI.Tests.Utility;
@@ -8,7 +7,6 @@ using System.ClientModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static OpenAI.Tests.TestHelpers;
 
 namespace OpenAI.Tests.Images;
 
@@ -45,7 +43,7 @@ public class ImageTestFixtureBase : OpenAIRecordedTestBase
 
     public async Task ValidateGeneratedImage(Uri imageUri, IEnumerable<string> possibleExpectedSubstrings, string descriptionHint = null)
     {
-        ChatClient chatClient = GetProxiedOpenAIClient<ChatClient>(TestScenario.Chat);
+        ChatClient chatClient = GetProxiedOpenAIClient<ChatClient>();
         IEnumerable<ChatMessage> messages = [
             new UserChatMessage(
                 ChatMessageContentPart.CreateTextPart($"Describe this image for me. {descriptionHint}"),
@@ -62,7 +60,7 @@ public class ImageTestFixtureBase : OpenAIRecordedTestBase
 
     public async Task ValidateGeneratedImage(BinaryData imageBytes, IEnumerable<string> possibleExpectedSubstrings, string descriptionHint = null)
     {
-        ChatClient chatClient = GetProxiedOpenAIClient<ChatClient>(TestScenario.Chat);
+        ChatClient chatClient = GetProxiedOpenAIClient<ChatClient>();
         IEnumerable<ChatMessage> messages = [
             new UserChatMessage(
                 ChatMessageContentPart.CreateTextPart($"Describe this image for me. {descriptionHint}"),

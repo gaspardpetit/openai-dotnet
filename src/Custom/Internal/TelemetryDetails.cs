@@ -11,7 +11,7 @@ namespace OpenAI;
 /// <summary>
 /// Details about the package to be included in UserAgent telemetry
 /// </summary>
-internal class TelemetryDetails
+public class TelemetryDetails
 {
     private const int MaxApplicationIdLength = 24;
     private readonly string _userAgent;
@@ -139,7 +139,7 @@ internal class TelemetryDetails
         return sb.ToString();
     }
 
-    internal class RuntimeInformationWrapper
+    public class RuntimeInformationWrapper
     {
         public virtual string FrameworkDescription => RuntimeInformation.FrameworkDescription;
         public virtual string OSDescription => RuntimeInformation.OSDescription;

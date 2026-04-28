@@ -17,6 +17,41 @@ namespace OpenAI.Audio
         {
         }
 
+        [Experimental("OPENAI001")]
+        protected virtual SpeechGenerationOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<SpeechGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeSpeechGenerationOptions(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(SpeechGenerationOptions)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        [Experimental("OPENAI001")]
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<SpeechGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(SpeechGenerationOptions)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<SpeechGenerationOptions>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        SpeechGenerationOptions IPersistableModel<SpeechGenerationOptions>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<SpeechGenerationOptions>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
         void IJsonModel<SpeechGenerationOptions>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
@@ -61,6 +96,11 @@ namespace OpenAI.Audio
             {
                 writer.WritePropertyName("speed"u8);
                 writer.WriteNumberValue(SpeedRatio.Value);
+            }
+            if (Optional.IsDefined(StreamFormat) && _additionalBinaryDataProperties?.ContainsKey("stream_format") != true)
+            {
+                writer.WritePropertyName("stream_format"u8);
+                writer.WriteStringValue(StreamFormat.Value.ToString());
             }
             // Plugin customization: remove options.Format != "W" check
             if (_additionalBinaryDataProperties != null)
@@ -110,6 +150,7 @@ namespace OpenAI.Audio
             GeneratedSpeechVoice voice = default;
             GeneratedSpeechFormat? responseFormat = default;
             float? speedRatio = default;
+            InternalCreateSpeechRequestStreamFormat? streamFormat = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
@@ -151,6 +192,15 @@ namespace OpenAI.Audio
                     speedRatio = prop.Value.GetSingle();
                     continue;
                 }
+                if (prop.NameEquals("stream_format"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    streamFormat = new InternalCreateSpeechRequestStreamFormat(prop.Value.GetString());
+                    continue;
+                }
                 // Plugin customization: remove options.Format != "W" check
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
@@ -161,42 +211,8 @@ namespace OpenAI.Audio
                 voice,
                 responseFormat,
                 speedRatio,
+                streamFormat,
                 additionalBinaryDataProperties);
         }
-
-        BinaryData IPersistableModel<SpeechGenerationOptions>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        [Experimental("OPENAI001")]
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<SpeechGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(SpeechGenerationOptions)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        SpeechGenerationOptions IPersistableModel<SpeechGenerationOptions>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        [Experimental("OPENAI001")]
-        protected virtual SpeechGenerationOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<SpeechGenerationOptions>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeSpeechGenerationOptions(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(SpeechGenerationOptions)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<SpeechGenerationOptions>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

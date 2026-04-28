@@ -17,6 +17,47 @@ namespace OpenAI.Responses
         {
         }
 
+        protected virtual ResponseItem PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<ResponseItem>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeResponseItem(document.RootElement, data, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(ResponseItem)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<ResponseItem>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(ResponseItem)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<ResponseItem>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        ResponseItem IPersistableModel<ResponseItem>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<ResponseItem>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
+        public static explicit operator ResponseItem(ClientResult result)
+        {
+            PipelineResponse response = result.GetRawResponse();
+            BinaryData data = response.Content;
+            using JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions);
+            return DeserializeResponseItem(document.RootElement, data, ModelSerializationExtensions.WireOptions);
+        }
+
         void IJsonModel<ResponseItem>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
@@ -110,59 +151,15 @@ namespace OpenAI.Responses
                         return McpToolCallApprovalRequestItem.DeserializeMcpToolCallApprovalRequestItem(element, data, options);
                     case "mcp_call":
                         return McpToolCallItem.DeserializeMcpToolCallItem(element, data, options);
-                    case "item_reference":
-                        return ReferenceResponseItem.DeserializeReferenceResponseItem(element, data, options);
-                    // <GP>
-                    // Targeted patch: support for the Responses API apply_patch tool item types.
                     case "apply_patch_call":
                         return ApplyPatchCallItem.DeserializeApplyPatchCallItem(element, data, options);
                     case "apply_patch_call_output":
                         return ApplyPatchCallOutputItem.DeserializeApplyPatchCallOutputItem(element, data, options);
-                    // </GP>
+                    case "item_reference":
+                        return ReferenceResponseItem.DeserializeReferenceResponseItem(element, data, options);
                 }
             }
             return InternalUnknownItemResource.DeserializeInternalUnknownItemResource(element, data, options);
-        }
-
-        BinaryData IPersistableModel<ResponseItem>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<ResponseItem>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(ResponseItem)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        ResponseItem IPersistableModel<ResponseItem>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        protected virtual ResponseItem PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<ResponseItem>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeResponseItem(document.RootElement, data, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(ResponseItem)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<ResponseItem>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
-
-        public static explicit operator ResponseItem(ClientResult result)
-        {
-            PipelineResponse response = result.GetRawResponse();
-            BinaryData data = response.Content;
-            using JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions);
-            return DeserializeResponseItem(document.RootElement, data, ModelSerializationExtensions.WireOptions);
         }
     }
 }

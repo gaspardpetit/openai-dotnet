@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
@@ -91,6 +92,12 @@ public partial class BatchClient
 
         Pipeline = pipeline;
         _endpoint = OpenAIClient.GetEndpoint(options);
+    }
+
+    [Experimental("SCME0002")]
+    public BatchClient(BatchClientSettings settings)
+        : this(AuthenticationPolicy.Create(settings), settings?.Options)
+    {
     }
 
     /// <summary>

@@ -10,7 +10,7 @@ using System.Text.Json;
 namespace OpenAI.FineTuning;
 
 [Experimental("OPENAI001")]
-internal class FineTuningEventCollectionResult : CollectionResult<FineTuningEvent>
+public class FineTuningEventCollectionResult : CollectionResult<FineTuningEvent>
 {
     private readonly FineTuningJob _job;
     private readonly RequestOptions? _options;

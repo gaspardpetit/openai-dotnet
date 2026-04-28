@@ -8,7 +8,7 @@ using static OpenAI.Telemetry.OpenTelemetryConstants;
 
 namespace OpenAI.Telemetry;
 
-internal class OpenTelemetryScope : IDisposable
+public class OpenTelemetryScope : IDisposable
 {
     private static readonly ActivitySource s_chatSource = new ActivitySource("OpenAI.ChatClient");
     private static readonly Meter s_chatMeter = new Meter("OpenAI.ChatClient");
@@ -168,7 +168,7 @@ internal class OpenTelemetryScope : IDisposable
             _ => finishReason.ToString(),
         };
 
-        // There could be multiple finish reasons, so semantic conventions use array type for the corrresponding attribute.
+        // There could be multiple finish reasons, so semantic conventions use array type for the corresponding attribute.
         // It's likely to change, but for now let's report it as array.
         _activity.SetTag(GenAiResponseFinishReasonKey, new[] { reasonStr });
     }

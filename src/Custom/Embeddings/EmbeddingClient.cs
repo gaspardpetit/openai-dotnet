@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
@@ -89,6 +90,12 @@ public partial class EmbeddingClient
         _model = model;
         Pipeline = OpenAIClient.CreatePipeline(authenticationPolicy, options);
         _endpoint = OpenAIClient.GetEndpoint(options);
+    }
+
+    [Experimental("SCME0002")]
+    public EmbeddingClient(EmbeddingClientSettings settings)
+        : this(settings?.Model, AuthenticationPolicy.Create(settings), settings?.Options)
+    {
     }
 
     // CUSTOM:

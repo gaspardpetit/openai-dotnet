@@ -1,8 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
+using Microsoft.TypeSpec.Generator.Customizations;
 
 namespace OpenAI.VectorStores;
 
-[CodeGenType("VectorStoreFileObjectLastError1")]
+[CodeGenType("VectorStoreFileObjectLastError")]
 public partial class VectorStoreFileError
 {
 }

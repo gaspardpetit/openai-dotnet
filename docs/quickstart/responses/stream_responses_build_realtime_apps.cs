@@ -5,18 +5,16 @@
 
 #:package System.Linq.Async@6.*
 #:package OpenAI@2.*
-#:property PublishAot=false
 
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5", apiKey: key);
+ResponsesClient client = new(key);
 
-var responses = client.CreateResponseStreamingAsync([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Say 'double bubble bath' ten times fast.")
-    ])
-]);
+var responses = client.CreateResponseStreamingAsync(
+    "gpt-5.2",
+    "Say 'double bubble bath' ten times fast."
+);
 
 await foreach (var response in responses)
 {

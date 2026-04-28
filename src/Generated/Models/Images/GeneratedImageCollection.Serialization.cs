@@ -15,6 +15,49 @@ namespace OpenAI.Images
 {
     public partial class GeneratedImageCollection : ReadOnlyCollection<GeneratedImage>, IJsonModel<GeneratedImageCollection>
     {
+        [Experimental("OPENAI001")]
+        protected virtual GeneratedImageCollection PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<GeneratedImageCollection>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeGeneratedImageCollection(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(GeneratedImageCollection)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        [Experimental("OPENAI001")]
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<GeneratedImageCollection>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(GeneratedImageCollection)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<GeneratedImageCollection>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        GeneratedImageCollection IPersistableModel<GeneratedImageCollection>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<GeneratedImageCollection>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
+        [Experimental("OPENAI001")]
+        public static explicit operator GeneratedImageCollection(ClientResult result)
+        {
+            PipelineResponse response = result.GetRawResponse();
+            using JsonDocument document = JsonDocument.Parse(response.Content, ModelSerializationExtensions.JsonDocumentOptions);
+            return DeserializeGeneratedImageCollection(document.RootElement, ModelSerializationExtensions.WireOptions);
+        }
+
         void IJsonModel<GeneratedImageCollection>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
             writer.WriteStartObject();
@@ -35,15 +78,35 @@ namespace OpenAI.Images
                 writer.WritePropertyName("created"u8);
                 writer.WriteNumberValue(CreatedAt, "U");
             }
-            if (Optional.IsCollectionDefined(Data) && _additionalBinaryDataProperties?.ContainsKey("data") != true)
+            if (Optional.IsCollectionDefined(Items) && _additionalBinaryDataProperties?.ContainsKey("data") != true)
             {
                 writer.WritePropertyName("data"u8);
                 writer.WriteStartArray();
-                foreach (GeneratedImage item in Data)
+                foreach (GeneratedImage item in Items)
                 {
                     writer.WriteObjectValue(item, options);
                 }
                 writer.WriteEndArray();
+            }
+            if (Optional.IsDefined(Background) && _additionalBinaryDataProperties?.ContainsKey("background") != true)
+            {
+                writer.WritePropertyName("background"u8);
+                writer.WriteStringValue(Background.Value.ToString());
+            }
+            if (Optional.IsDefined(OutputFileFormat) && _additionalBinaryDataProperties?.ContainsKey("output_format") != true)
+            {
+                writer.WritePropertyName("output_format"u8);
+                writer.WriteStringValue(OutputFileFormat.Value.ToString());
+            }
+            if (Optional.IsDefined(Size) && _additionalBinaryDataProperties?.ContainsKey("size") != true)
+            {
+                writer.WritePropertyName("size"u8);
+                writer.WriteStringValue(Size.Value.ToString());
+            }
+            if (Optional.IsDefined(Quality) && _additionalBinaryDataProperties?.ContainsKey("quality") != true)
+            {
+                writer.WritePropertyName("quality"u8);
+                writer.WriteStringValue(Quality.Value.ToString());
             }
             if (Optional.IsDefined(Usage) && _additionalBinaryDataProperties?.ContainsKey("usage") != true)
             {
@@ -93,7 +156,11 @@ namespace OpenAI.Images
                 return null;
             }
             DateTimeOffset createdAt = default;
-            IList<GeneratedImage> data = default;
+            IList<GeneratedImage> items = default;
+            GeneratedImageBackground? background = default;
+            GeneratedImageFileFormat? outputFileFormat = default;
+            GeneratedImageSize? size = default;
+            GeneratedImageQuality? quality = default;
             ImageTokenUsage usage = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
@@ -114,7 +181,43 @@ namespace OpenAI.Images
                     {
                         array.Add(GeneratedImage.DeserializeGeneratedImage(item, options));
                     }
-                    data = array;
+                    items = array;
+                    continue;
+                }
+                if (prop.NameEquals("background"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    background = new GeneratedImageBackground(prop.Value.GetString());
+                    continue;
+                }
+                if (prop.NameEquals("output_format"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    outputFileFormat = new GeneratedImageFileFormat(prop.Value.GetString());
+                    continue;
+                }
+                if (prop.NameEquals("size"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    size = new GeneratedImageSize(prop.Value.GetString());
+                    continue;
+                }
+                if (prop.NameEquals("quality"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    quality = new GeneratedImageQuality(prop.Value.GetString());
                     continue;
                 }
                 if (prop.NameEquals("usage"u8))
@@ -129,50 +232,15 @@ namespace OpenAI.Images
                 // Plugin customization: remove options.Format != "W" check
                 additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new GeneratedImageCollection(createdAt, data ?? new ChangeTrackingList<GeneratedImage>(), usage, additionalBinaryDataProperties);
-        }
-
-        BinaryData IPersistableModel<GeneratedImageCollection>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        [Experimental("OPENAI001")]
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<GeneratedImageCollection>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(GeneratedImageCollection)} does not support writing '{options.Format}' format.");
-            }
-        }
-
-        GeneratedImageCollection IPersistableModel<GeneratedImageCollection>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        [Experimental("OPENAI001")]
-        protected virtual GeneratedImageCollection PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<GeneratedImageCollection>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeGeneratedImageCollection(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(GeneratedImageCollection)} does not support reading '{options.Format}' format.");
-            }
-        }
-
-        string IPersistableModel<GeneratedImageCollection>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
-
-        [Experimental("OPENAI001")]
-        public static explicit operator GeneratedImageCollection(ClientResult result)
-        {
-            PipelineResponse response = result.GetRawResponse();
-            using JsonDocument document = JsonDocument.Parse(response.Content, ModelSerializationExtensions.JsonDocumentOptions);
-            return DeserializeGeneratedImageCollection(document.RootElement, ModelSerializationExtensions.WireOptions);
+            return new GeneratedImageCollection(
+                createdAt,
+                items ?? new ChangeTrackingList<GeneratedImage>(),
+                background,
+                outputFileFormat,
+                size,
+                quality,
+                usage,
+                additionalBinaryDataProperties);
         }
     }
 }

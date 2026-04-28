@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -71,6 +72,12 @@ public partial class ResponseTool
     }
 
     // CUSTOM: Added factory method as a convenience.
+    public static ApplyPatchTool CreateApplyPatchTool()
+    {
+        return new ApplyPatchTool();
+    }
+
+    // CUSTOM: Added factory method as a convenience.
     public static McpTool CreateMcpTool(string serverLabel, Uri serverUri, string authorizationToken = null, string serverDescription = null, IDictionary<string, string> headers = null, McpToolFilter allowedTools = null, McpToolCallApprovalPolicy toolCallApprovalPolicy = null)
     {
         Argument.AssertNotNull(serverLabel, nameof(serverLabel));
@@ -126,7 +133,7 @@ public partial class ResponseTool
     /// <summary>
     /// Creates a new instance of the <see cref="ImageGenerationTool"/> class.
     /// </summary>
-    public static ImageGenerationTool CreateImageGenerationTool(string model, ImageGenerationToolQuality? quality = null, ImageGenerationToolSize? size = null, ImageGenerationToolOutputFileFormat? outputFileFormat = null, int? outputCompressionFactor = null, ImageGenerationToolModerationLevel? moderationLevel = null, ImageGenerationToolBackground? background = null, ImageGenerationToolInputFidelity? inputFidelity = null, ImageGenerationToolInputImageMask inputImageMask = null, int? partialImageCount = null)
+    public static ImageGenerationTool CreateImageGenerationTool(string model, ImageGenerationToolQuality? quality = null, ImageGenerationToolSize? size = null, ImageGenerationToolOutputFileFormat? outputFileFormat = null, int? outputCompressionFactor = null, ImageGenerationToolModerationLevel? moderationLevel = null, ImageGenerationToolBackground? background = null, ImageGenerationToolInputFidelity? inputFidelity = null, ImageGenerationToolInputImageMask inputImageMask = null, int? partialImageCount = null, ImageGenerationToolAction? action = null)
     {
         return new ImageGenerationTool(
             kind: InternalToolType.ImageGeneration,
@@ -140,15 +147,8 @@ public partial class ResponseTool
             background: background,
             inputFidelity: inputFidelity,
             inputImageMask: inputImageMask,
-            partialImageCount: partialImageCount);
+            partialImageCount: partialImageCount,
+            action: action);
     }
 
-    // <GP>
-    // Targeted patch: add support for the OpenAI "apply_patch" tool for Responses API.
-    // This tool has no configuration payload; we represent it as an unknown tool with kind "apply_patch".
-    public static ResponseTool CreateApplyPatchTool()
-    {
-        return new InternalUnknownTool(new InternalToolType("apply_patch"), patch: default);
-    }
-    // </GP>
 }

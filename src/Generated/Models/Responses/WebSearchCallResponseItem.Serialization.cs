@@ -12,6 +12,39 @@ namespace OpenAI.Responses
 {
     public partial class WebSearchCallResponseItem : ResponseItem, IJsonModel<WebSearchCallResponseItem>
     {
+        protected override ResponseItem PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<WebSearchCallResponseItem>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeWebSearchCallResponseItem(document.RootElement, data, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(WebSearchCallResponseItem)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        protected override BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<WebSearchCallResponseItem>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(WebSearchCallResponseItem)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<WebSearchCallResponseItem>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        WebSearchCallResponseItem IPersistableModel<WebSearchCallResponseItem>.Create(BinaryData data, ModelReaderWriterOptions options) => (WebSearchCallResponseItem)PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<WebSearchCallResponseItem>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
         void IJsonModel<WebSearchCallResponseItem>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
@@ -43,6 +76,11 @@ namespace OpenAI.Responses
                 writer.WritePropertyName("status"u8);
                 writer.WriteStringValue(Status.Value.ToSerialString());
             }
+            if (Optional.IsDefined(Action) && !Patch.Contains("$.action"u8))
+            {
+                writer.WritePropertyName("action"u8);
+                writer.WriteObjectValue(Action, options);
+            }
 
             Patch.WriteTo(writer);
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
@@ -73,6 +111,7 @@ namespace OpenAI.Responses
             JsonPatch patch = new JsonPatch(data is null ? ReadOnlyMemory<byte>.Empty : data.ToMemory());
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
             WebSearchCallStatus? status = default;
+            WebSearchAction action = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -90,42 +129,46 @@ namespace OpenAI.Responses
                     status = prop.Value.GetString().ToWebSearchCallStatus();
                     continue;
                 }
+                if (prop.NameEquals("action"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    action = WebSearchAction.DeserializeWebSearchAction(prop.Value, prop.Value.GetUtf8Bytes(), options);
+                    continue;
+                }
                 patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
             }
-            return new WebSearchCallResponseItem(kind, id, patch, status);
+            return new WebSearchCallResponseItem(kind, id, patch, status, action);
         }
 
-        BinaryData IPersistableModel<WebSearchCallResponseItem>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        protected override BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool PropagateGet(ReadOnlySpan<byte> jsonPath, out JsonPatch.EncodedValue value)
         {
-            string format = options.Format == "W" ? ((IPersistableModel<WebSearchCallResponseItem>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
+            ReadOnlySpan<byte> local = jsonPath.SliceToStartOfPropertyName();
+            value = default;
+
+            if (local.StartsWith("action"u8))
             {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(WebSearchCallResponseItem)} does not support writing '{options.Format}' format.");
+                return Action.Patch.TryGetEncodedValue([.. "$"u8, .. local.Slice("action"u8.Length)], out value);
             }
+            return false;
         }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        WebSearchCallResponseItem IPersistableModel<WebSearchCallResponseItem>.Create(BinaryData data, ModelReaderWriterOptions options) => (WebSearchCallResponseItem)PersistableModelCreateCore(data, options);
-
-        protected override ResponseItem PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool PropagateSet(ReadOnlySpan<byte> jsonPath, JsonPatch.EncodedValue value)
         {
-            string format = options.Format == "W" ? ((IPersistableModel<WebSearchCallResponseItem>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeWebSearchCallResponseItem(document.RootElement, data, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(WebSearchCallResponseItem)} does not support reading '{options.Format}' format.");
-            }
-        }
+            ReadOnlySpan<byte> local = jsonPath.SliceToStartOfPropertyName();
 
-        string IPersistableModel<WebSearchCallResponseItem>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+            if (local.StartsWith("action"u8))
+            {
+                Action.Patch.Set([.. "$"u8, .. local.Slice("action"u8.Length)], value);
+                return true;
+            }
+            return false;
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace OpenAILibraryPlugin.Tests.TestHelpers
 {
-    internal class MockHelpers
+    public class MockHelpers
     {
         private static readonly string _configFilePath = Path.Combine(AppContext.BaseDirectory, TestHelpersFolder);
         private const string TestHelpersFolder = "TestHelpers";

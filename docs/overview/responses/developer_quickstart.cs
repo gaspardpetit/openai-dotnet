@@ -4,12 +4,15 @@
 #pragma warning disable OPENAI001
 
 #:package OpenAI@2.*
-#:property PublishAot=false
 
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5", apiKey: key);
-OpenAIResponse response = client.CreateResponse("Write a short bedtime story about a unicorn.");
+ResponsesClient client = new(key);
+
+ResponseResult response = client.CreateResponse(
+    "gpt-5.2",
+    "Write a short bedtime story about a unicorn."
+);
 
 Console.WriteLine(response.GetOutputText());

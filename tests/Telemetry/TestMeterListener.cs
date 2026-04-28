@@ -7,7 +7,7 @@ using System.Diagnostics.Metrics;
 
 namespace OpenAI.Tests.Telemetry;
 
-internal class TestMeterListener : IDisposable
+public class TestMeterListener : IDisposable
 {
     public record TestMeasurement(object value, Dictionary<string, object> tags);
 

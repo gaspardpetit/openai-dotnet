@@ -5,6 +5,7 @@
 using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
@@ -14,6 +15,56 @@ namespace OpenAI.Models
 {
     public partial class OpenAIModelCollection : ReadOnlyCollection<OpenAIModel>, IJsonModel<OpenAIModelCollection>
     {
+        [Experimental("OPENAI001")]
+        protected virtual OpenAIModelCollection PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<OpenAIModelCollection>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeOpenAIModelCollection(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(OpenAIModelCollection)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        [Experimental("OPENAI001")]
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<OpenAIModelCollection>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(OpenAIModelCollection)} does not support writing '{options.Format}' format.");
+            }
+        }
+
+        BinaryData IPersistableModel<OpenAIModelCollection>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
+
+        OpenAIModelCollection IPersistableModel<OpenAIModelCollection>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
+
+        string IPersistableModel<OpenAIModelCollection>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+
+        [Experimental("OPENAI001")]
+        public static explicit operator OpenAIModelCollection(ClientResult result)
+        {
+            PipelineResponse response = result.GetRawResponse();
+            using JsonDocument document = JsonDocument.Parse(response.Content, ModelSerializationExtensions.JsonDocumentOptions);
+            return DeserializeOpenAIModelCollection(document.RootElement, ModelSerializationExtensions.WireOptions);
+        }
+
+        void IJsonModel<OpenAIModelCollection>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
         [Experimental("OPENAI001")]
         protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
@@ -26,6 +77,16 @@ namespace OpenAI.Models
             {
                 writer.WritePropertyName("object"u8);
                 writer.WriteStringValue(Object);
+            }
+            if (_additionalBinaryDataProperties?.ContainsKey("data") != true)
+            {
+                writer.WritePropertyName("data"u8);
+                writer.WriteStartArray();
+                foreach (OpenAIModel item in Items)
+                {
+                    writer.WriteObjectValue(item, options);
+                }
+                writer.WriteEndArray();
             }
             // Plugin customization: remove options.Format != "W" check
             if (_additionalBinaryDataProperties != null)
@@ -63,47 +124,36 @@ namespace OpenAI.Models
             return DeserializeOpenAIModelCollection(document.RootElement, options);
         }
 
-        BinaryData IPersistableModel<OpenAIModelCollection>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        [Experimental("OPENAI001")]
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        internal static OpenAIModelCollection DeserializeOpenAIModelCollection(JsonElement element, ModelReaderWriterOptions options)
         {
-            string format = options.Format == "W" ? ((IPersistableModel<OpenAIModelCollection>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
+            if (element.ValueKind == JsonValueKind.Null)
             {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, OpenAIContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(OpenAIModelCollection)} does not support writing '{options.Format}' format.");
+                return null;
             }
-        }
-
-        OpenAIModelCollection IPersistableModel<OpenAIModelCollection>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
-
-        [Experimental("OPENAI001")]
-        protected virtual OpenAIModelCollection PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<OpenAIModelCollection>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
+            string @object = default;
+            IList<OpenAIModel> items = default;
+            IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
+            foreach (var prop in element.EnumerateObject())
             {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                if (prop.NameEquals("object"u8))
+                {
+                    @object = prop.Value.GetString();
+                    continue;
+                }
+                if (prop.NameEquals("data"u8))
+                {
+                    List<OpenAIModel> array = new List<OpenAIModel>();
+                    foreach (var item in prop.Value.EnumerateArray())
                     {
-                        return DeserializeOpenAIModelCollection(document.RootElement, options);
+                        array.Add(OpenAIModel.DeserializeOpenAIModel(item, options));
                     }
-                default:
-                    throw new FormatException($"The model {nameof(OpenAIModelCollection)} does not support reading '{options.Format}' format.");
+                    items = array;
+                    continue;
+                }
+                // Plugin customization: remove options.Format != "W" check
+                additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-        }
-
-        string IPersistableModel<OpenAIModelCollection>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
-
-        [Experimental("OPENAI001")]
-        public static explicit operator OpenAIModelCollection(ClientResult result)
-        {
-            PipelineResponse response = result.GetRawResponse();
-            using JsonDocument document = JsonDocument.Parse(response.Content, ModelSerializationExtensions.JsonDocumentOptions);
-            return DeserializeOpenAIModelCollection(document.RootElement, ModelSerializationExtensions.WireOptions);
+            return new OpenAIModelCollection(@object, items, additionalBinaryDataProperties);
         }
     }
 }

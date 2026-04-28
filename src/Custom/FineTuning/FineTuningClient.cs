@@ -1,3 +1,4 @@
+using Microsoft.TypeSpec.Generator.Customizations;
 using OpenAI.VectorStores;
 using System;
 using System.ClientModel;
@@ -121,6 +122,12 @@ public partial class FineTuningClient
 
         Pipeline = pipeline;
         _endpoint = endpoint;
+    }
+
+    [Experimental("SCME0002")]
+    public FineTuningClient(FineTuningClientSettings settings)
+        : this(AuthenticationPolicy.Create(settings), settings?.Options)
+    {
     }
 
     /// <summary>
