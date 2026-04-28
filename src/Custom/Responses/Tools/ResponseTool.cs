@@ -150,5 +150,4 @@ public partial class ResponseTool
             partialImageCount: partialImageCount,
             action: action);
     }
-
 }

@@ -22,7 +22,7 @@ namespace OpenAI.Responses
         private const string ReasoningEncryptedContentValue = "reasoning.encrypted_content";
         private const string MessageOutputTextLogProbabilitiesValue = "message.output_text.logprobs";
 
-		public IncludedResponseProperty(string value)
+        public IncludedResponseProperty(string value)
         {
             Argument.AssertNotNull(value, nameof(value));
 

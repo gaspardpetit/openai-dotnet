@@ -18,7 +18,7 @@ namespace OpenAI.Responses
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        private protected InternalCompoundFilter(InternalCompoundFilterType kind, IEnumerable<BinaryData> filters)
+        internal InternalCompoundFilter(InternalCompoundFilterType kind, IEnumerable<BinaryData> filters)
         {
             Kind = kind;
             Filters = filters.ToList();
