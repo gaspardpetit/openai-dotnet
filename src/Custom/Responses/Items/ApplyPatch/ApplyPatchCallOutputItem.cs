@@ -14,13 +14,13 @@ namespace OpenAI.Responses;
 
 // <GP>
 [CodeGenType("ApplyPatchCallOutput")]
-public partial class ApplyPatchCallOutputResponseItem : ResponseItem
+public partial class ApplyPatchCallOutputItem : ResponseItem
 {
     public string CallId { get; set; }
     public string Status { get; set; }
     public string Output { get; set; }
 
-    public ApplyPatchCallOutputResponseItem(string callId, string status, string output = null)
+    public ApplyPatchCallOutputItem(string callId, string status, string output = null)
         : base(new InternalItemType("apply_patch_call_output"))
     {
         Argument.AssertNotNull(callId, nameof(callId));
@@ -31,7 +31,7 @@ public partial class ApplyPatchCallOutputResponseItem : ResponseItem
     }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-    internal ApplyPatchCallOutputResponseItem(InternalItemType kind, string id, in JsonPatch patch, string status, string callId, string output)
+    internal ApplyPatchCallOutputItem(InternalItemType kind, string id, in JsonPatch patch, string status, string callId, string output)
         : base(kind, id, patch)
     {
         Status = status;
@@ -45,7 +45,7 @@ public partial class ApplyPatchCallOutputResponseItem : ResponseItem
         string format = options.Format == "W" ? ((IPersistableModel<ResponseItem>)this).GetFormatFromOptions(options) : options.Format;
         if (format != "J")
         {
-            throw new FormatException($"The model {nameof(ApplyPatchCallOutputResponseItem)} does not support writing '{format}' format.");
+            throw new FormatException($"The model {nameof(ApplyPatchCallOutputItem)} does not support writing '{format}' format.");
         }
 
         base.JsonModelWriteCore(writer, options);
@@ -73,7 +73,7 @@ public partial class ApplyPatchCallOutputResponseItem : ResponseItem
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
     }
 
-    internal static ApplyPatchCallOutputResponseItem DeserializeApplyPatchCallOutputResponseItem(JsonElement element, BinaryData data, ModelReaderWriterOptions options)
+    internal static ApplyPatchCallOutputItem DeserializeApplyPatchCallOutputItem(JsonElement element, BinaryData data, ModelReaderWriterOptions options)
     {
         if (element.ValueKind == JsonValueKind.Null)
         {
@@ -125,7 +125,7 @@ public partial class ApplyPatchCallOutputResponseItem : ResponseItem
             patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
         }
 
-        return new ApplyPatchCallOutputResponseItem(kind, id, patch, status, callId, output);
+        return new ApplyPatchCallOutputItem(kind, id, patch, status, callId, output);
     }
 }
 // </GP>

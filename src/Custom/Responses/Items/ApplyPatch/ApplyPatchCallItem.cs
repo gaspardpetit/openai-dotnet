@@ -15,18 +15,18 @@ namespace OpenAI.Responses;
 
 // <GP>
 [CodeGenType("ApplyPatchCall")]
-public partial class ApplyPatchCallResponseItem : ResponseItem
+public partial class ApplyPatchCallItem : ResponseItem
 {
     public string Status { get; set; }
     public string CallId { get; set; }
     public ApplyPatchOperation Operation { get; set; }
 
-    public ApplyPatchCallResponseItem() : base(new InternalItemType("apply_patch_call"))
+    public ApplyPatchCallItem() : base(new InternalItemType("apply_patch_call"))
     {
     }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-    internal ApplyPatchCallResponseItem(InternalItemType kind, string id, in JsonPatch patch, string status, string callId, ApplyPatchOperation operation)
+    internal ApplyPatchCallItem(InternalItemType kind, string id, in JsonPatch patch, string status, string callId, ApplyPatchOperation operation)
         : base(kind, id, patch)
     {
         Status = status;
@@ -40,7 +40,7 @@ public partial class ApplyPatchCallResponseItem : ResponseItem
         string format = options.Format == "W" ? ((IPersistableModel<ResponseItem>)this).GetFormatFromOptions(options) : options.Format;
         if (format != "J")
         {
-            throw new FormatException($"The model {nameof(ApplyPatchCallResponseItem)} does not support writing '{format}' format.");
+            throw new FormatException($"The model {nameof(ApplyPatchCallItem)} does not support writing '{format}' format.");
         }
 
         base.JsonModelWriteCore(writer, options);
@@ -68,7 +68,7 @@ public partial class ApplyPatchCallResponseItem : ResponseItem
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
     }
 
-    internal static ApplyPatchCallResponseItem DeserializeApplyPatchCallResponseItem(JsonElement element, BinaryData data, ModelReaderWriterOptions options)
+    internal static ApplyPatchCallItem DeserializeApplyPatchCallItem(JsonElement element, BinaryData data, ModelReaderWriterOptions options)
     {
         if (element.ValueKind == JsonValueKind.Null)
         {
@@ -120,7 +120,7 @@ public partial class ApplyPatchCallResponseItem : ResponseItem
             patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
         }
 
-        return new ApplyPatchCallResponseItem(kind, id, patch, status, callId, operation);
+        return new ApplyPatchCallItem(kind, id, patch, status, callId, operation);
     }
 }
 // </GP>

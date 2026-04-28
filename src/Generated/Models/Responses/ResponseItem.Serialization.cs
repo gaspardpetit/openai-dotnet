@@ -115,9 +115,9 @@ namespace OpenAI.Responses
                     // <GP>
                     // Targeted patch: support for the Responses API apply_patch tool item types.
                     case "apply_patch_call":
-                        return ApplyPatchCallResponseItem.DeserializeApplyPatchCallResponseItem(element, data, options);
+                        return ApplyPatchCallItem.DeserializeApplyPatchCallItem(element, data, options);
                     case "apply_patch_call_output":
-                        return ApplyPatchCallOutputResponseItem.DeserializeApplyPatchCallOutputResponseItem(element, data, options);
+                        return ApplyPatchCallOutputItem.DeserializeApplyPatchCallOutputItem(element, data, options);
                     // </GP>
                 }
             }
