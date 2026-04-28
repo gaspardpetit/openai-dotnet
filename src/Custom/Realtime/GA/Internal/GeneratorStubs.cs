@@ -3,112 +3,112 @@
 namespace OpenAI.Realtime;
 
 [CodeGenType("RealtimeSessionCreateRequestGABaseTypeGA")]
-internal readonly partial struct InternalRealtimeSessionCreateRequestGABaseTypeGA { }
+public readonly partial struct InternalRealtimeSessionCreateRequestGABaseTypeGA { }
 
 [CodeGenType("UnknownRealtimeSessionCreateRequestGABaseGA")]
-internal partial class InternalUnknownRealtimeSessionCreateRequestGABaseGA { }
+public partial class InternalUnknownRealtimeSessionCreateRequestGABaseGA { }
 
 [CodeGenType("RealtimeAudioFormatTypeGA")]
-internal readonly partial struct InternalRealtimeAudioFormatType { }
+public readonly partial struct InternalRealtimeAudioFormatType { }
 
 [CodeGenType("UnknownRealtimeAudioFormatGA")]
-internal partial class InternalUnknownRealtimeAudioFormatGA { }
+public partial class InternalUnknownRealtimeAudioFormatGA { }
 
 [CodeGenType("ToolChoiceBaseTypeGA")]
-internal readonly partial struct InternalToolChoiceBaseTypeGA { }
+public readonly partial struct InternalToolChoiceBaseTypeGA { }
 
 [CodeGenType("UnknownToolChoiceBaseGA")]
-internal partial class InternalUnknownToolChoiceBaseGA { }
+public partial class InternalUnknownToolChoiceBaseGA { }
 
 [CodeGenType("RealtimeTruncationBaseTypeGA")]
-internal readonly partial struct InternalRealtimeTruncationBaseTypeGA { }
+public readonly partial struct InternalRealtimeTruncationBaseTypeGA { }
 
 [CodeGenType("UnknownRealtimeTruncationBaseGA")]
-internal partial class InternalUnknownRealtimeTruncationBaseGA { }
+public partial class InternalUnknownRealtimeTruncationBaseGA { }
 
 [CodeGenType("RealtimeToolBaseTypeGA")]
-internal readonly partial struct InternalRealtimeToolBaseTypeGA { }
+public readonly partial struct InternalRealtimeToolBaseTypeGA { }
 
 [CodeGenType("UnknownRealtimeToolBaseGA")]
-internal partial class InternalUnknownRealtimeToolBaseGA { }
+public partial class InternalUnknownRealtimeToolBaseGA { }
 
 [CodeGenType("RealtimeSessionCreateResponseBaseTypeGA")]
-internal readonly partial struct InternalRealtimeSessionCreateResponseBaseTypeGA { }
+public readonly partial struct InternalRealtimeSessionCreateResponseBaseTypeGA { }
 
 [CodeGenType("UnknownRealtimeSessionCreateResponseBaseGA")]
-internal partial class InternalUnknownRealtimeSessionCreateResponseBaseGA { }
+public partial class InternalUnknownRealtimeSessionCreateResponseBaseGA { }
 
 [CodeGenType("RealtimeTurnDetectionBaseTypeGA")]
-internal readonly partial struct InternalRealtimeTurnDetectionBaseTypeGA { }
+public readonly partial struct InternalRealtimeTurnDetectionBaseTypeGA { }
 
 [CodeGenType("UnknownRealtimeTurnDetectionBaseGA")]
-internal partial class InternalUnknownRealtimeTurnDetectionBaseGA { }
+public partial class InternalUnknownRealtimeTurnDetectionBaseGA { }
 
 [CodeGenType("RealtimeServerEventTypeGA")]
-internal readonly partial struct InternalRealtimeServerEventTypeGA { }
+public readonly partial struct InternalRealtimeServerEventTypeGA { }
 
 [CodeGenType("UnknownRealtimeServerEventGA")]
-internal partial class InternalUnknownRealtimeServerEventGA { }
+public partial class InternalUnknownRealtimeServerEventGA { }
 
 [CodeGenType("RealtimeConversationItemTypeGA")]
-internal readonly partial struct InternalRealtimeConversationItemTypeGA { }
+public readonly partial struct InternalRealtimeConversationItemTypeGA { }
 
 [CodeGenType("UnknownRealtimeConversationItemGA")]
-internal partial class InternalUnknownRealtimeConversationItemGA { }
+public partial class InternalUnknownRealtimeConversationItemGA { }
 
 [CodeGenType("RealtimeMCPErrorTypeGA")]
-internal readonly partial struct InternalRealtimeMcpErrorTypeGA { }
+public readonly partial struct InternalRealtimeMcpErrorTypeGA { }
 
 [CodeGenType("UnknownRealtimeMCPErrorGA")]
-internal partial class InternalUnknownRealtimeMCPErrorGA { }
+public partial class InternalUnknownRealtimeMCPErrorGA { }
 
 [CodeGenType("RealtimeConversationItemMessageContentPartTypeGA")]
-internal readonly partial struct InternalRealtimeConversationItemMessageContentPartTypeGA { }
+public readonly partial struct InternalRealtimeConversationItemMessageContentPartTypeGA { }
 
 [CodeGenType("UnknownRealtimeConversationItemMessageContentPartGA")]
-internal partial class InternalUnknownRealtimeConversationItemMessageContentPartGA { }
+public partial class InternalUnknownRealtimeConversationItemMessageContentPartGA { }
 
 [CodeGenType("TranscriptionTokenUsageBaseTypeGA")]
-internal readonly partial struct InternalTranscriptionTokenUsageBaseTypeGA { }
+public readonly partial struct InternalTranscriptionTokenUsageBaseTypeGA { }
 
 [CodeGenType("UnknownTranscriptionTokenUsageBaseGA")]
-internal partial class InternalUnknownTranscriptionTokenUsageBaseGA { }
+public partial class InternalUnknownTranscriptionTokenUsageBaseGA { }
 
 [CodeGenType("RealtimeClientEventTypeGA")]
-internal readonly partial struct InternalRealtimeClientEventTypeGA { }
+public readonly partial struct InternalRealtimeClientEventTypeGA { }
 
 [CodeGenType("UnknownRealtimeClientEventGA")]
-internal partial class InternalUnknownRealtimeClientEventGA { }
+public partial class InternalUnknownRealtimeClientEventGA { }
 
 // CUSTOM: Unused.
 [CodeGenType("RealtimeSessionCreateRequestGAGAModel")]
-internal readonly partial struct InternalRealtimeSessionCreateRequestGAGAModel { }
+public readonly partial struct InternalRealtimeSessionCreateRequestGAGAModel { }
 
 // CUSTOM: Unused.
 [CodeGenType("RealtimeSessionCreateResponseGAGAModel")]
-internal readonly partial struct InternalRealtimeSessionCreateResponseGAGAModel { }
+public readonly partial struct InternalRealtimeSessionCreateResponseGAGAModel { }
 
 // CUSTOM: Unused.
 [CodeGenType("AudioTranscriptionGAModel")]
-internal readonly partial struct InternalAudioTranscriptionGAModel { }
+public readonly partial struct InternalAudioTranscriptionGAModel { }
 
 // CUSTOM: Unused.
 [CodeGenType("RealtimeConversationItemFunctionCallGAObject")]
-internal readonly partial struct InternalRealtimeConversationItemFunctionCallGAObject { }
+public readonly partial struct InternalRealtimeConversationItemFunctionCallGAObject { }
 
 // CUSTOM: Unused.
 [CodeGenType("RealtimeConversationItemFunctionCallOutputGAObject")]
-internal readonly partial struct InternalRealtimeConversationItemFunctionCallOutputGAObject { }
+public readonly partial struct InternalRealtimeConversationItemFunctionCallOutputGAObject { }
 
 // CUSTOM: Unused.
 [CodeGenType("RealtimeConversationItemMessageGAObject")]
-internal readonly partial struct InternalRealtimeConversationItemMessageGAObject { }
+public readonly partial struct InternalRealtimeConversationItemMessageGAObject { }
 
 // CUSTOM: Unused.
 
 [CodeGenType("RealtimeServerEventConversationCreatedConversationGAObject")]
-internal readonly partial struct InternalRealtimeServerEventConversationCreatedConversationGAObject { }
+public readonly partial struct InternalRealtimeServerEventConversationCreatedConversationGAObject { }
 
 // CUSTOM: Unused.
 [CodeGenType("RealtimeResponseGAObject")]
-internal readonly partial struct InternalRealtimeResponseGAObject { }
+public readonly partial struct InternalRealtimeResponseGAObject { }

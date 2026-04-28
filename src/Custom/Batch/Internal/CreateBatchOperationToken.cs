@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace OpenAI.Batch;
 
-internal class CreateBatchOperationToken : ContinuationToken
+public class CreateBatchOperationToken : ContinuationToken
 {
     public CreateBatchOperationToken(string batchId)
     {

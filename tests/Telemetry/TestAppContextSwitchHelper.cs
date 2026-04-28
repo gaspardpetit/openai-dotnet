@@ -2,7 +2,7 @@
 
 namespace OpenAI.Tests.Telemetry;
 
-internal class TestAppContextSwitchHelper : IDisposable
+public class TestAppContextSwitchHelper : IDisposable
 {
     private const string OpenTelemetrySwitchName = "OpenAI.Experimental.EnableOpenTelemetry";
 

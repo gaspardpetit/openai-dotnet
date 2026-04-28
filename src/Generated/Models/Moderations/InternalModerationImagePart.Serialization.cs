@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalModerationImagePart : ModerationInputPart, IJsonModel<InternalModerationImagePart>
+    public partial class InternalModerationImagePart : ModerationInputPart, IJsonModel<InternalModerationImagePart>
     {
         internal InternalModerationImagePart() : this(ModerationInputPartKind.Image, null, null)
         {

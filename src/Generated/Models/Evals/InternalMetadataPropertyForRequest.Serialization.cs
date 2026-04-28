@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalMetadataPropertyForRequest : IJsonModel<InternalMetadataPropertyForRequest>
+    public partial class InternalMetadataPropertyForRequest : IJsonModel<InternalMetadataPropertyForRequest>
     {
         protected virtual InternalMetadataPropertyForRequest PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

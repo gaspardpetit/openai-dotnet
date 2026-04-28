@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalAssistantsNamedToolChoiceFunction
+    public partial class InternalAssistantsNamedToolChoiceFunction
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

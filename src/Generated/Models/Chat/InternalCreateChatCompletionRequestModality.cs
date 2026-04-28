@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Chat
 {
-    internal readonly partial struct InternalCreateChatCompletionRequestModality : IEquatable<InternalCreateChatCompletionRequestModality>
+    public readonly partial struct InternalCreateChatCompletionRequestModality : IEquatable<InternalCreateChatCompletionRequestModality>
     {
         private readonly string _value;
         private const string TextValue = "text";

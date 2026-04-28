@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalWebSearchActionType : IEquatable<InternalWebSearchActionType>
+    public readonly partial struct InternalWebSearchActionType : IEquatable<InternalWebSearchActionType>
     {
         private readonly string _value;
         private const string SearchValue = "search";

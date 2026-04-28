@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalModerationTextPart : ModerationInputPart, IJsonModel<InternalModerationTextPart>
+    public partial class InternalModerationTextPart : ModerationInputPart, IJsonModel<InternalModerationTextPart>
     {
         internal InternalModerationTextPart() : this(ModerationInputPartKind.Text, null, null)
         {

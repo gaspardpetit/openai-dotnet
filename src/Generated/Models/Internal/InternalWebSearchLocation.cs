@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Internal
 {
-    internal partial class InternalWebSearchLocation
+    public partial class InternalWebSearchLocation
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

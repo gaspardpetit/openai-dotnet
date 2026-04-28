@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalResponsesRunDataSourceParamsInputMessages2
+    public partial class InternalEvalResponsesRunDataSourceParamsInputMessages2
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

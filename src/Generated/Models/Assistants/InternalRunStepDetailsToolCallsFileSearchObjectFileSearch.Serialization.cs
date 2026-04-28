@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalRunStepDetailsToolCallsFileSearchObjectFileSearch : IJsonModel<InternalRunStepDetailsToolCallsFileSearchObjectFileSearch>
+    public partial class InternalRunStepDetailsToolCallsFileSearchObjectFileSearch : IJsonModel<InternalRunStepDetailsToolCallsFileSearchObjectFileSearch>
     {
         protected virtual InternalRunStepDetailsToolCallsFileSearchObjectFileSearch PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

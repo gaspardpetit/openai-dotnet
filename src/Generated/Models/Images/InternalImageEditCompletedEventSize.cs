@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalImageEditCompletedEventSize : IEquatable<InternalImageEditCompletedEventSize>
+    public readonly partial struct InternalImageEditCompletedEventSize : IEquatable<InternalImageEditCompletedEventSize>
     {
         private readonly string _value;
         private const string _1024x1024Value = "1024x1024";

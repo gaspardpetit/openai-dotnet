@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.FineTuning
 {
-    internal partial class InternalFineTuningJobRequestMethodSupervised : IJsonModel<InternalFineTuningJobRequestMethodSupervised>
+    public partial class InternalFineTuningJobRequestMethodSupervised : IJsonModel<InternalFineTuningJobRequestMethodSupervised>
     {
         protected virtual InternalFineTuningJobRequestMethodSupervised PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

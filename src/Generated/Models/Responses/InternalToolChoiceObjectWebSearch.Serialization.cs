@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectWebSearch : InternalToolChoiceObject, IJsonModel<InternalToolChoiceObjectWebSearch>
+    public partial class InternalToolChoiceObjectWebSearch : InternalToolChoiceObject, IJsonModel<InternalToolChoiceObjectWebSearch>
     {
         protected override InternalToolChoiceObject PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

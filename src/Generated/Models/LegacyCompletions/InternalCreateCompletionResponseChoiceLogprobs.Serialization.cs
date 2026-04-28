@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCreateCompletionResponseChoiceLogprobs : IJsonModel<InternalCreateCompletionResponseChoiceLogprobs>
+    public partial class InternalCreateCompletionResponseChoiceLogprobs : IJsonModel<InternalCreateCompletionResponseChoiceLogprobs>
     {
         protected virtual InternalCreateCompletionResponseChoiceLogprobs PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

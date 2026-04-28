@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalCreateAssistantRequestToolResourcesCodeInterpreter : IJsonModel<InternalCreateAssistantRequestToolResourcesCodeInterpreter>
+    public partial class InternalCreateAssistantRequestToolResourcesCodeInterpreter : IJsonModel<InternalCreateAssistantRequestToolResourcesCodeInterpreter>
     {
         protected virtual InternalCreateAssistantRequestToolResourcesCodeInterpreter PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

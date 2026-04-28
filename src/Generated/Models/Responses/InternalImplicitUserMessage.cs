@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalImplicitUserMessage
+    public partial class InternalImplicitUserMessage
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

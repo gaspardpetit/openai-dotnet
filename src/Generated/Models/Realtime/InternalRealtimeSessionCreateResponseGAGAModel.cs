@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalRealtimeSessionCreateResponseGAGAModel : IEquatable<InternalRealtimeSessionCreateResponseGAGAModel>
+    public readonly partial struct InternalRealtimeSessionCreateResponseGAGAModel : IEquatable<InternalRealtimeSessionCreateResponseGAGAModel>
     {
         private readonly string _value;
         private const string GptRealtimeValue = "gpt-realtime";

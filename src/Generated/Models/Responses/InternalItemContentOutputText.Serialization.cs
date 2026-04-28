@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalItemContentOutputText : ResponseContentPart, IJsonModel<InternalItemContentOutputText>
+    public partial class InternalItemContentOutputText : ResponseContentPart, IJsonModel<InternalItemContentOutputText>
     {
         internal InternalItemContentOutputText() : this(InternalItemContentType.OutputText, default, null, null, null)
         {

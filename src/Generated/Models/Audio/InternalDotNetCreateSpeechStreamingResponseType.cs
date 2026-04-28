@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalDotNetCreateSpeechStreamingResponseType : IEquatable<InternalDotNetCreateSpeechStreamingResponseType>
+    public readonly partial struct InternalDotNetCreateSpeechStreamingResponseType : IEquatable<InternalDotNetCreateSpeechStreamingResponseType>
     {
         private readonly string _value;
         private const string SpeechAudioDeltaValue = "speech.audio.delta";

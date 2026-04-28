@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownRealtimeTruncationBaseGA : RealtimeCustomTruncation, IJsonModel<RealtimeCustomTruncation>
+    public partial class InternalUnknownRealtimeTruncationBaseGA : RealtimeCustomTruncation, IJsonModel<RealtimeCustomTruncation>
     {
         internal InternalUnknownRealtimeTruncationBaseGA() : this(default, default)
         {

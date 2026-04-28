@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionRequestMessageContentPartFile : ChatMessageContentPart
+    public partial class InternalChatCompletionRequestMessageContentPartFile : ChatMessageContentPart
     {
         internal InternalChatCompletionRequestMessageContentPartFile(InternalChatCompletionRequestMessageContentPartFileFile @file)
         {

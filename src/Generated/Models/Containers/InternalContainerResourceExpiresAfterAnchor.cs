@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Containers
 {
-    internal readonly partial struct InternalContainerResourceExpiresAfterAnchor : IEquatable<InternalContainerResourceExpiresAfterAnchor>
+    public readonly partial struct InternalContainerResourceExpiresAfterAnchor : IEquatable<InternalContainerResourceExpiresAfterAnchor>
     {
         private readonly string _value;
         private const string LastActiveAtValue = "last_active_at";

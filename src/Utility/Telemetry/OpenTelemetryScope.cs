@@ -8,7 +8,7 @@ using static OpenAI.Telemetry.OpenTelemetryConstants;
 
 namespace OpenAI.Telemetry;
 
-internal class OpenTelemetryScope : IDisposable
+public class OpenTelemetryScope : IDisposable
 {
     private static readonly ActivitySource s_chatSource = new ActivitySource("OpenAI.ChatClient");
     private static readonly Meter s_chatMeter = new Meter("OpenAI.ChatClient");

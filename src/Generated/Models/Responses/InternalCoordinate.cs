@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalCoordinate
+    public partial class InternalCoordinate
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

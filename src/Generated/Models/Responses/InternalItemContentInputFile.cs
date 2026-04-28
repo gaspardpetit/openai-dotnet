@@ -7,7 +7,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalItemContentInputFile : ResponseContentPart
+    public partial class InternalItemContentInputFile : ResponseContentPart
     {
         public InternalItemContentInputFile() : this(InternalItemContentType.InputFile, default, null, null, null, null)
         {

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Videos
 {
-    internal readonly partial struct InternalVideoCollectionOrder : IEquatable<InternalVideoCollectionOrder>
+    public readonly partial struct InternalVideoCollectionOrder : IEquatable<InternalVideoCollectionOrder>
     {
         private readonly string _value;
         private const string AscendingValue = "asc";

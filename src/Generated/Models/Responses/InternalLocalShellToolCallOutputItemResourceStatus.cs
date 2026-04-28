@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalLocalShellToolCallOutputItemResourceStatus : IEquatable<InternalLocalShellToolCallOutputItemResourceStatus>
+    public readonly partial struct InternalLocalShellToolCallOutputItemResourceStatus : IEquatable<InternalLocalShellToolCallOutputItemResourceStatus>
     {
         private readonly string _value;
         private const string InProgressValue = "in_progress";

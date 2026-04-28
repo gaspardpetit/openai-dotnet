@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalGetInputTokenCountsRequestContentType : IEquatable<InternalGetInputTokenCountsRequestContentType>
+    public readonly partial struct InternalGetInputTokenCountsRequestContentType : IEquatable<InternalGetInputTokenCountsRequestContentType>
     {
         private readonly string _value;
         private const string ApplicationJsonValue = "application/json";

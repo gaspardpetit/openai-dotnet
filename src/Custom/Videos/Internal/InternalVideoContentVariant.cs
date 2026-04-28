@@ -6,6 +6,6 @@ namespace OpenAI.Videos;
 // - Renamed.
 // - Made internal until we support the convenience methods.
 [CodeGenType("VideoContentVariant")]
-internal readonly partial struct InternalVideoContentVariant
+public readonly partial struct InternalVideoContentVariant
 {
 }

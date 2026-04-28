@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Chat
 {
-    internal partial class ChatClientGetChatCompletionMessagesAsyncCollectionResultOfT : AsyncCollectionResult<ChatCompletionMessageListDatum>
+    public partial class ChatClientGetChatCompletionMessagesAsyncCollectionResultOfT : AsyncCollectionResult<ChatCompletionMessageListDatum>
     {
         private readonly ChatClient _client;
         private readonly string _completionId;

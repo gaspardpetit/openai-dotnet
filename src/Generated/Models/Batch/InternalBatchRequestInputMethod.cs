@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Batch
 {
-    internal readonly partial struct InternalBatchRequestInputMethod : IEquatable<InternalBatchRequestInputMethod>
+    public readonly partial struct InternalBatchRequestInputMethod : IEquatable<InternalBatchRequestInputMethod>
     {
         private readonly string _value;
         private const string POSTValue = "POST";

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Audio
 {
-    internal partial class AudioClientGetVoiceConsentsCollectionResult : CollectionResult
+    public partial class AudioClientGetVoiceConsentsCollectionResult : CollectionResult
     {
         private readonly AudioClient _client;
         private readonly string _after;

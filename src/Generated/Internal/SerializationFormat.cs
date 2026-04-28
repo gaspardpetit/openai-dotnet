@@ -4,7 +4,7 @@
 
 namespace OpenAI
 {
-    internal enum SerializationFormat
+    public enum SerializationFormat
     {
         Default = 0,
         DateTime_RFC1123 = 1,

@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalCreateChatCompletionStreamResponseChoiceLogprobs
+    public partial class InternalCreateChatCompletionStreamResponseChoiceLogprobs
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

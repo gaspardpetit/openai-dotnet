@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalComputerActionDoubleClick : ComputerCallAction
+    public partial class InternalComputerActionDoubleClick : ComputerCallAction
     {
         public InternalComputerActionDoubleClick(int x, int y) : base(ComputerCallActionKind.DoubleClick)
         {

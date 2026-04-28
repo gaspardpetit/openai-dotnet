@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Batch
 {
-    internal readonly partial struct InternalBatchErrorsObject : IEquatable<InternalBatchErrorsObject>
+    public readonly partial struct InternalBatchErrorsObject : IEquatable<InternalBatchErrorsObject>
     {
         private readonly string _value;
         private const string ListValue = "list";

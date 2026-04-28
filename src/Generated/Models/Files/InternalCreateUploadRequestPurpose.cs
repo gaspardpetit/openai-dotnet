@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Files
 {
-    internal readonly partial struct InternalCreateUploadRequestPurpose : IEquatable<InternalCreateUploadRequestPurpose>
+    public readonly partial struct InternalCreateUploadRequestPurpose : IEquatable<InternalCreateUploadRequestPurpose>
     {
         private readonly string _value;
         private const string AssistantsValue = "assistants";

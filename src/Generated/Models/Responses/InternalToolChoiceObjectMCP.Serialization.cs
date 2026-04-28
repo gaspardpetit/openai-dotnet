@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectMCP : InternalToolChoiceObject, IJsonModel<InternalToolChoiceObjectMCP>
+    public partial class InternalToolChoiceObjectMCP : InternalToolChoiceObject, IJsonModel<InternalToolChoiceObjectMCP>
     {
         protected override InternalToolChoiceObject PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

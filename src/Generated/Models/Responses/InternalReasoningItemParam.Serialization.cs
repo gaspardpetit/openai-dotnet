@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalReasoningItemParam : InternalItemParam, IJsonModel<InternalReasoningItemParam>
+    public partial class InternalReasoningItemParam : InternalItemParam, IJsonModel<InternalReasoningItemParam>
     {
         internal InternalReasoningItemParam() : this(InternalItemType.Reasoning, default, null, null)
         {

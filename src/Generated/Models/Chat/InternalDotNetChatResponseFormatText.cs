@@ -7,7 +7,7 @@ using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalDotNetChatResponseFormatText : ChatResponseFormat
+    public partial class InternalDotNetChatResponseFormatText : ChatResponseFormat
     {
         public InternalDotNetChatResponseFormatText() : this(InternalResponseFormatType.Text, default)
         {

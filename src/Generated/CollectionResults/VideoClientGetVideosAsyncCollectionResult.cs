@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Videos
 {
-    internal partial class VideoClientGetVideosAsyncCollectionResult : AsyncCollectionResult
+    public partial class VideoClientGetVideosAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly VideoClient _client;
         private readonly int? _limit;

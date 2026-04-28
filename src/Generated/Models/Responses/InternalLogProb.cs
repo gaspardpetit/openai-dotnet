@@ -12,7 +12,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalLogProb
+    public partial class InternalLogProb
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

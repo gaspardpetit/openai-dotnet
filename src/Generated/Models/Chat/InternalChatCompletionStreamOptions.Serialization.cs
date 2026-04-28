@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionStreamOptions : IJsonModel<InternalChatCompletionStreamOptions>
+    public partial class InternalChatCompletionStreamOptions : IJsonModel<InternalChatCompletionStreamOptions>
     {
         protected virtual InternalChatCompletionStreamOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

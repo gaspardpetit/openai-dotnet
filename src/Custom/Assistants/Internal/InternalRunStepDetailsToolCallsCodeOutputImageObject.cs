@@ -3,7 +3,7 @@ using Microsoft.TypeSpec.Generator.Customizations;
 namespace OpenAI.Assistants;
 
 [CodeGenType("RunStepDetailsToolCallsCodeOutputImageObject")]
-internal partial class InternalRunStepDetailsToolCallsCodeOutputImageObject
+public partial class InternalRunStepDetailsToolCallsCodeOutputImageObject
 {
     /// <inheritdoc cref="InternalRunStepDetailsToolCallsCodeOutputImageObjectImage.FileId"/>
     public string FileId => _image.FileId;

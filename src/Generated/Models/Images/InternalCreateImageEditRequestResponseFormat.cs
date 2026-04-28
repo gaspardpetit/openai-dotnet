@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalCreateImageEditRequestResponseFormat : IEquatable<InternalCreateImageEditRequestResponseFormat>
+    public readonly partial struct InternalCreateImageEditRequestResponseFormat : IEquatable<InternalCreateImageEditRequestResponseFormat>
     {
         private readonly string _value;
         private const string UrlValue = "url";

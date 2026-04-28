@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Internal
 {
-    internal partial class InternalUnknownResponseFormat : InternalResponseFormat
+    public partial class InternalUnknownResponseFormat : InternalResponseFormat
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownResponseFormat(InternalResponseFormatType kind, in JsonPatch patch) : base(kind != default ? kind : "unknown", patch)

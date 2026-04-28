@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Images
 {
-    internal partial class InternalImagesUsageInputTokensDetails : IJsonModel<InternalImagesUsageInputTokensDetails>
+    public partial class InternalImagesUsageInputTokensDetails : IJsonModel<InternalImagesUsageInputTokensDetails>
     {
         internal InternalImagesUsageInputTokensDetails()
         {

@@ -5,10 +5,10 @@ namespace OpenAI.Models;
 // CUSTOM: Made internal.
 
 [CodeGenType("DeleteModelResponseObject")]
-internal readonly partial struct InternalDeleteModelResponseObject { }
+public readonly partial struct InternalDeleteModelResponseObject { }
 
 [CodeGenType("ListModelsResponseObject")]
-internal readonly partial struct InternalListModelsResponseObject { }
+public readonly partial struct InternalListModelsResponseObject { }
 
 [CodeGenType("ModelObject")]
-internal readonly partial struct InternalModelObject { }
+public readonly partial struct InternalModelObject { }

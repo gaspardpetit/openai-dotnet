@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalImageGenToolModel : IEquatable<InternalImageGenToolModel>
+    public readonly partial struct InternalImageGenToolModel : IEquatable<InternalImageGenToolModel>
     {
         private readonly string _value;
         private const string GptImage1Value = "gpt-image-1";

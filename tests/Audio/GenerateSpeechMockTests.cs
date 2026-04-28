@@ -10,7 +10,7 @@ namespace OpenAI.Tests.Audio;
 [Parallelizable(ParallelScope.All)]
 [Category("Audio")]
 [Category("Smoke")]
-internal class GenerateSpeechMockTests : ClientTestBase
+public class GenerateSpeechMockTests : ClientTestBase
 {
     private static readonly ApiKeyCredential s_fakeCredential = new ApiKeyCredential("key");
 

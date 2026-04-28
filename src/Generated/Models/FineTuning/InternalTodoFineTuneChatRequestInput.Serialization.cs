@@ -11,7 +11,7 @@ using OpenAI.Chat;
 
 namespace OpenAI.FineTuning
 {
-    internal partial class InternalTodoFineTuneChatRequestInput : IJsonModel<InternalTodoFineTuneChatRequestInput>
+    public partial class InternalTodoFineTuneChatRequestInput : IJsonModel<InternalTodoFineTuneChatRequestInput>
     {
         protected virtual InternalTodoFineTuneChatRequestInput PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

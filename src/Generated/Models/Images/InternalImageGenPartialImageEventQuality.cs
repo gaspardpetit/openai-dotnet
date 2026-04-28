@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalImageGenPartialImageEventQuality : IEquatable<InternalImageGenPartialImageEventQuality>
+    public readonly partial struct InternalImageGenPartialImageEventQuality : IEquatable<InternalImageGenPartialImageEventQuality>
     {
         private readonly string _value;
         private const string LowValue = "low";

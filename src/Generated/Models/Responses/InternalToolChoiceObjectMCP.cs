@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectMCP : InternalToolChoiceObject
+    public partial class InternalToolChoiceObjectMCP : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectMCP() : this(InternalToolChoiceObjectType.Mcp, default)
         {

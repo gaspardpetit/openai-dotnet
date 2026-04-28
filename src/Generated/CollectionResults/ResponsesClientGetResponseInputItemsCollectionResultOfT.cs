@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Responses
 {
-    internal partial class ResponsesClientGetResponseInputItemsCollectionResultOfT : CollectionResult<ResponseItem>
+    public partial class ResponsesClientGetResponseInputItemsCollectionResultOfT : CollectionResult<ResponseItem>
     {
         private readonly ResponsesClient _client;
         private readonly string _responseId;

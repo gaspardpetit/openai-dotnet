@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalCreateChatCompletionResponseChoiceLogprobs : IJsonModel<InternalCreateChatCompletionResponseChoiceLogprobs>
+    public partial class InternalCreateChatCompletionResponseChoiceLogprobs : IJsonModel<InternalCreateChatCompletionResponseChoiceLogprobs>
     {
         protected virtual InternalCreateChatCompletionResponseChoiceLogprobs PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct InternalEvalItemType : IEquatable<InternalEvalItemType>
+    public readonly partial struct InternalEvalItemType : IEquatable<InternalEvalItemType>
     {
         private readonly string _value;
         private const string MessageValue = "message";

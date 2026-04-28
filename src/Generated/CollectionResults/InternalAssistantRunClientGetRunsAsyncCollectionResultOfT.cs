@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalAssistantRunClientGetRunsAsyncCollectionResultOfT : AsyncCollectionResult<ThreadRun>
+    public partial class InternalAssistantRunClientGetRunsAsyncCollectionResultOfT : AsyncCollectionResult<ThreadRun>
     {
         private readonly InternalAssistantRunClient _client;
         private readonly string _threadId;

@@ -7,7 +7,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalImageGenToolCallItemParam : InternalItemParam
+    public partial class InternalImageGenToolCallItemParam : InternalItemParam
     {
         public InternalImageGenToolCallItemParam(BinaryData result) : base(InternalItemType.ImageGenerationCall)
         {

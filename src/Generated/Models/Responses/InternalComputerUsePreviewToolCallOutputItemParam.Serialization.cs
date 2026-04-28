@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalComputerUsePreviewToolCallOutputItemParam : InternalItemParam, IJsonModel<InternalComputerUsePreviewToolCallOutputItemParam>
+    public partial class InternalComputerUsePreviewToolCallOutputItemParam : InternalItemParam, IJsonModel<InternalComputerUsePreviewToolCallOutputItemParam>
     {
         internal InternalComputerUsePreviewToolCallOutputItemParam() : this(InternalItemType.ComputerCallOutput, default, null, null, null)
         {

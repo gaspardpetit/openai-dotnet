@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalUnknownModerationInputPart : ModerationInputPart, IJsonModel<ModerationInputPart>
+    public partial class InternalUnknownModerationInputPart : ModerationInputPart, IJsonModel<ModerationInputPart>
     {
         internal InternalUnknownModerationInputPart() : this(default, null)
         {

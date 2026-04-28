@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponsesMessageItemParam : InternalItemParam
+    public partial class InternalResponsesMessageItemParam : InternalItemParam
     {
         internal InternalResponsesMessageItemParam(InternalResponsesMessageRole role) : base(InternalItemType.Message)
         {

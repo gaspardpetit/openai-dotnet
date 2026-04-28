@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalItemContentInputFile : ResponseContentPart, IJsonModel<InternalItemContentInputFile>
+    public partial class InternalItemContentInputFile : ResponseContentPart, IJsonModel<InternalItemContentInputFile>
     {
         protected override ResponseContentPart PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

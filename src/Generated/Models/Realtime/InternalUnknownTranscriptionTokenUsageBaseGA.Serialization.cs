@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownTranscriptionTokenUsageBaseGA : RealtimeTranscriptionUsage, IJsonModel<RealtimeTranscriptionUsage>
+    public partial class InternalUnknownTranscriptionTokenUsageBaseGA : RealtimeTranscriptionUsage, IJsonModel<RealtimeTranscriptionUsage>
     {
         internal InternalUnknownTranscriptionTokenUsageBaseGA() : this(default, default)
         {

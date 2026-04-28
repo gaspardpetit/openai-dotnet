@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace OpenAI.Moderations;
 
 [CodeGenType("CreateModerationResponseResultsCategoryAppliedInputTypes")]
-internal partial class InternalCreateModerationResponseResultCategoryAppliedInputTypes
+public partial class InternalCreateModerationResponseResultCategoryAppliedInputTypes
 {
     // CUSTOM: normalize to List<string> for internal representation
     public IReadOnlyList<string> Hate { get; }

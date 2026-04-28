@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalImageGenCompletedEventBackground : IEquatable<InternalImageGenCompletedEventBackground>
+    public readonly partial struct InternalImageGenCompletedEventBackground : IEquatable<InternalImageGenCompletedEventBackground>
     {
         private readonly string _value;
         private const string TransparentValue = "transparent";

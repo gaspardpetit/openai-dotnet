@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponsesSystemMessage : MessageResponseItem, IJsonModel<InternalResponsesSystemMessage>
+    public partial class InternalResponsesSystemMessage : MessageResponseItem, IJsonModel<InternalResponsesSystemMessage>
     {
         internal InternalResponsesSystemMessage() : this(default, null, default, default, default, null)
         {

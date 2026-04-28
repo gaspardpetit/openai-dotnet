@@ -6,6 +6,6 @@ namespace OpenAI.Videos;
 // - Renamed.
 // - Made internal until we support the convenience methods.
 [CodeGenType("OrderEnum")]
-internal readonly partial struct InternalOrderEnum
+public readonly partial struct InternalOrderEnum
 {
 }

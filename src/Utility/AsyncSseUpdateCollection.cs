@@ -15,7 +15,7 @@ namespace OpenAI;
 /// <summary>
 /// Implementation of collection abstraction over streaming chat updates.
 /// </summary>
-internal class AsyncSseUpdateCollection<T> : AsyncCollectionResult<T>
+public class AsyncSseUpdateCollection<T> : AsyncCollectionResult<T>
 {
     private readonly Func<Task<ClientResult>> _sendRequestAsync;
     private readonly Func<SseItem<byte[]>, IEnumerable<T>> _eventDeserializerFunc;

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalRunOutputItemSampleOutput : IJsonModel<InternalEvalRunOutputItemSampleOutput>
+    public partial class InternalEvalRunOutputItemSampleOutput : IJsonModel<InternalEvalRunOutputItemSampleOutput>
     {
         protected virtual InternalEvalRunOutputItemSampleOutput PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

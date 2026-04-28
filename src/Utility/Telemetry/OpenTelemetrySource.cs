@@ -3,7 +3,7 @@ using System;
 
 namespace OpenAI.Telemetry;
 
-internal class OpenTelemetrySource
+public class OpenTelemetrySource
 {
     private const string ChatOperationName = "chat";
     private readonly bool IsOTelEnabled = AppContextSwitchHelper

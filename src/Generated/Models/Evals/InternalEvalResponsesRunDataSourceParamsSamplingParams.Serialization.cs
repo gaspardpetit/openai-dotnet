@@ -11,7 +11,7 @@ using OpenAI.Responses;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalResponsesRunDataSourceParamsSamplingParams : IJsonModel<InternalEvalResponsesRunDataSourceParamsSamplingParams>
+    public partial class InternalEvalResponsesRunDataSourceParamsSamplingParams : IJsonModel<InternalEvalResponsesRunDataSourceParamsSamplingParams>
     {
         protected virtual InternalEvalResponsesRunDataSourceParamsSamplingParams PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

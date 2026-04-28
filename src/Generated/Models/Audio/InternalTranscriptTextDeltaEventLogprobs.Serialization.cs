@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalTranscriptTextDeltaEventLogprobs : IJsonModel<InternalTranscriptTextDeltaEventLogprobs>
+    public partial class InternalTranscriptTextDeltaEventLogprobs : IJsonModel<InternalTranscriptTextDeltaEventLogprobs>
     {
         protected virtual InternalTranscriptTextDeltaEventLogprobs PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalCompletionsRunDataSourceParams : InternalEvalRunDataSourceParams
+    public partial class InternalEvalCompletionsRunDataSourceParams : InternalEvalRunDataSourceParams
     {
         public InternalEvalCompletionsRunDataSourceParams(BinaryData source) : base(InternalEvalRunDataSourceType.Completions)
         {

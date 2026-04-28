@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalCreateImageVariationRequestModel : IEquatable<InternalCreateImageVariationRequestModel>
+    public readonly partial struct InternalCreateImageVariationRequestModel : IEquatable<InternalCreateImageVariationRequestModel>
     {
         private readonly string _value;
         private const string DallE2Value = "dall-e-2";

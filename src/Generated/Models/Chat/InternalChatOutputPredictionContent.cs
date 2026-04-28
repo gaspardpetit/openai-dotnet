@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatOutputPredictionContent : ChatOutputPrediction
+    public partial class InternalChatOutputPredictionContent : ChatOutputPrediction
     {
         public InternalChatOutputPredictionContent(ChatMessageContent content) : base(InternalChatOutputPredictionKind.StaticContent)
         {

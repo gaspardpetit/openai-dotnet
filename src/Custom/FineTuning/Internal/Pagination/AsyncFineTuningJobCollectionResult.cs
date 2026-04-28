@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace OpenAI.FineTuning;
 
 [Experimental("OPENAI001")]
-internal class AsyncFineTuningJobCollectionResult : AsyncCollectionResult<FineTuningJob>
+public class AsyncFineTuningJobCollectionResult : AsyncCollectionResult<FineTuningJob>
 {
     private readonly FineTuningClient _fineTuningClient;
     private readonly ClientPipeline _pipeline;

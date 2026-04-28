@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalMessageObjectRole : IEquatable<InternalMessageObjectRole>
+    public readonly partial struct InternalMessageObjectRole : IEquatable<InternalMessageObjectRole>
     {
         private readonly string _value;
         private const string UserValue = "user";

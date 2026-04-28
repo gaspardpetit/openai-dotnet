@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Conversations
 {
-    internal partial class ConversationClientGetConversationItemsAsyncCollectionResult : AsyncCollectionResult
+    public partial class ConversationClientGetConversationItemsAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly ConversationClient _client;
         private readonly string _conversationId;

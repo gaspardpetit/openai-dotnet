@@ -8,7 +8,7 @@ using OpenAI.Graders;
 
 namespace OpenAI.FineTuning
 {
-    internal partial class InternalFineTuneReinforcementMethod
+    public partial class InternalFineTuneReinforcementMethod
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

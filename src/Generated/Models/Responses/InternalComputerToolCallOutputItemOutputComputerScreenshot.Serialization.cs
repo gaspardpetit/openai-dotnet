@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalComputerToolCallOutputItemOutputComputerScreenshot : ComputerCallOutput, IJsonModel<InternalComputerToolCallOutputItemOutputComputerScreenshot>
+    public partial class InternalComputerToolCallOutputItemOutputComputerScreenshot : ComputerCallOutput, IJsonModel<InternalComputerToolCallOutputItemOutputComputerScreenshot>
     {
         protected override ComputerCallOutput PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalCreateThreadAndRunRequestToolChoice : IEquatable<InternalCreateThreadAndRunRequestToolChoice>
+    public readonly partial struct InternalCreateThreadAndRunRequestToolChoice : IEquatable<InternalCreateThreadAndRunRequestToolChoice>
     {
         private readonly string _value;
         private const string NoneValue = "none";

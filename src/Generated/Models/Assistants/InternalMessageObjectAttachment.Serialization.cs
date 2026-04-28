@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalMessageObjectAttachment : IJsonModel<InternalMessageObjectAttachment>
+    public partial class InternalMessageObjectAttachment : IJsonModel<InternalMessageObjectAttachment>
     {
         protected virtual InternalMessageObjectAttachment PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

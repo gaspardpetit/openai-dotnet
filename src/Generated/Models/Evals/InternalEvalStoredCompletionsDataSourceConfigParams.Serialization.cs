@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalStoredCompletionsDataSourceConfigParams : InternalEvalDataSourceConfigParams, IJsonModel<InternalEvalStoredCompletionsDataSourceConfigParams>
+    public partial class InternalEvalStoredCompletionsDataSourceConfigParams : InternalEvalDataSourceConfigParams, IJsonModel<InternalEvalStoredCompletionsDataSourceConfigParams>
     {
         protected override InternalEvalDataSourceConfigParams PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Conversations
 {
-    internal partial class InternalConversationItemCollectionOptions : IJsonModel<InternalConversationItemCollectionOptions>
+    public partial class InternalConversationItemCollectionOptions : IJsonModel<InternalConversationItemCollectionOptions>
     {
         protected virtual InternalConversationItemCollectionOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

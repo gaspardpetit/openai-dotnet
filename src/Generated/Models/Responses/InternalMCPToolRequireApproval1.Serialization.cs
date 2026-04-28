@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalMCPToolRequireApproval1 : IJsonModel<InternalMCPToolRequireApproval1>
+    public partial class InternalMCPToolRequireApproval1 : IJsonModel<InternalMCPToolRequireApproval1>
     {
         protected virtual InternalMCPToolRequireApproval1 PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

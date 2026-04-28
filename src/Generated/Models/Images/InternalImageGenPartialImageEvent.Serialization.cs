@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Images
 {
-    internal partial class InternalImageGenPartialImageEvent : IJsonModel<InternalImageGenPartialImageEvent>
+    public partial class InternalImageGenPartialImageEvent : IJsonModel<InternalImageGenPartialImageEvent>
     {
         internal InternalImageGenPartialImageEvent()
         {

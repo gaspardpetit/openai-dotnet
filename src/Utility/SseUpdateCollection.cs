@@ -14,7 +14,7 @@ namespace OpenAI;
 /// <summary>
 /// Implementation of collection abstraction over streaming updates.
 /// </summary>
-internal class SseUpdateCollection<T> : CollectionResult<T>
+public class SseUpdateCollection<T> : CollectionResult<T>
 {
     private readonly Func<ClientResult> _sendRequestFunc;
     private readonly Func<SseItem<byte[]>, IEnumerable<T>> _eventDeserializerFunc;

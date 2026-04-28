@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownResponsesMessageItemResourceItemParam : InternalResponsesMessageItemParam
+    public partial class InternalUnknownResponsesMessageItemResourceItemParam : InternalResponsesMessageItemParam
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownResponsesMessageItemResourceItemParam(InternalItemType kind, in JsonPatch patch, InternalResponsesMessageRole role) : base(kind != default ? kind : "unknown", patch, role != default ? role : "unknown")

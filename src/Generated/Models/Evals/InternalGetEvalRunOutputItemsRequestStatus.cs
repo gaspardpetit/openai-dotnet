@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct InternalGetEvalRunOutputItemsRequestStatus : IEquatable<InternalGetEvalRunOutputItemsRequestStatus>
+    public readonly partial struct InternalGetEvalRunOutputItemsRequestStatus : IEquatable<InternalGetEvalRunOutputItemsRequestStatus>
     {
         private readonly string _value;
         private const string FailValue = "fail";

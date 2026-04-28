@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalCreateTranscriptionResponseJsonUsageType : IEquatable<InternalCreateTranscriptionResponseJsonUsageType>
+    public readonly partial struct InternalCreateTranscriptionResponseJsonUsageType : IEquatable<InternalCreateTranscriptionResponseJsonUsageType>
     {
         private readonly string _value;
         private const string TokensValue = "tokens";

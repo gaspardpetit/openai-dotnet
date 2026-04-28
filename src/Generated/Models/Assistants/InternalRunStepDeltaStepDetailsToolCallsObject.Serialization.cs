@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalRunStepDeltaStepDetailsToolCallsObject : InternalRunStepDeltaStepDetails, IJsonModel<InternalRunStepDeltaStepDetailsToolCallsObject>
+    public partial class InternalRunStepDeltaStepDetailsToolCallsObject : InternalRunStepDeltaStepDetails, IJsonModel<InternalRunStepDeltaStepDetailsToolCallsObject>
     {
         protected override InternalRunStepDeltaStepDetails PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

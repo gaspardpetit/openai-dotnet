@@ -6,6 +6,6 @@ namespace OpenAI.Videos;
 // - Renamed.
 // - Made internal until we support the convenience methods.
 [CodeGenType("VideoCollectionOptions")]
-internal partial class InternaVideoCollectionOptions
+public partial class InternaVideoCollectionOptions
 {
 }

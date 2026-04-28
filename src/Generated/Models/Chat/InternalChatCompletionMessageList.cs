@@ -12,7 +12,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionMessageList
+    public partial class InternalChatCompletionMessageList
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

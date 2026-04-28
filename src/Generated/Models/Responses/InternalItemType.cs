@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalItemType : IEquatable<InternalItemType>
+    public readonly partial struct InternalItemType : IEquatable<InternalItemType>
     {
         private readonly string _value;
         private const string MessageValue = "message";

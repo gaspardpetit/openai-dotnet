@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectWebSearch : InternalToolChoiceObject
+    public partial class InternalToolChoiceObjectWebSearch : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectWebSearch() : this(InternalToolChoiceObjectType.WebSearch, default)
         {

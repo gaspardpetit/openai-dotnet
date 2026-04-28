@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownToolChoiceBaseGA : RealtimeCustomToolChoice, IJsonModel<RealtimeCustomToolChoice>
+    public partial class InternalUnknownToolChoiceBaseGA : RealtimeCustomToolChoice, IJsonModel<RealtimeCustomToolChoice>
     {
         internal InternalUnknownToolChoiceBaseGA() : this(default, default)
         {

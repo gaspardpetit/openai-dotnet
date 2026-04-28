@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.VectorStores
 {
-    internal readonly partial struct InternalDotNetCombinedChunkingStrategyParamType : IEquatable<InternalDotNetCombinedChunkingStrategyParamType>
+    public readonly partial struct InternalDotNetCombinedChunkingStrategyParamType : IEquatable<InternalDotNetCombinedChunkingStrategyParamType>
     {
         private readonly string _value;
         private const string AutoValue = "auto";

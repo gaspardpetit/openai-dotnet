@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Internal
 {
-    internal partial class InternalResponseFormatJsonObject : InternalResponseFormat
+    public partial class InternalResponseFormatJsonObject : InternalResponseFormat
     {
         public InternalResponseFormatJsonObject() : this(InternalResponseFormatType.JsonObject, default)
         {

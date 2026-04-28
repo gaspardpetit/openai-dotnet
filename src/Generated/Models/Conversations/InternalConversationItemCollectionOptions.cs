@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Conversations
 {
-    internal partial class InternalConversationItemCollectionOptions
+    public partial class InternalConversationItemCollectionOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

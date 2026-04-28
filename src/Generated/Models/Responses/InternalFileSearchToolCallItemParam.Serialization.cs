@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalFileSearchToolCallItemParam : InternalItemParam, IJsonModel<InternalFileSearchToolCallItemParam>
+    public partial class InternalFileSearchToolCallItemParam : InternalItemParam, IJsonModel<InternalFileSearchToolCallItemParam>
     {
         internal InternalFileSearchToolCallItemParam() : this(InternalItemType.FileSearchCall, default, null, null)
         {

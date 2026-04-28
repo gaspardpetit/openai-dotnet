@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionStreamResponseDelta : IJsonModel<InternalChatCompletionStreamResponseDelta>
+    public partial class InternalChatCompletionStreamResponseDelta : IJsonModel<InternalChatCompletionStreamResponseDelta>
     {
         protected virtual InternalChatCompletionStreamResponseDelta PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

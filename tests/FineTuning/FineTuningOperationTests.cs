@@ -6,7 +6,7 @@ namespace OpenAI.Tests.FineTuning;
 
 [Parallelizable(ParallelScope.Fixtures)]
 [Category("FineTuning")]
-internal class FineTuningOperationTests
+public class FineTuningOperationTests
 {
     [Test]
     [Parallelizable]

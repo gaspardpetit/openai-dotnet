@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponseReasoningSummaryDoneEvent : StreamingResponseUpdate
+    public partial class InternalResponseReasoningSummaryDoneEvent : StreamingResponseUpdate
     {
         internal InternalResponseReasoningSummaryDoneEvent(int sequenceNumber, string itemId, int outputIndex, int summaryIndex, string text) : base(InternalResponseStreamEventType.ResponseReasoningSummaryDone, sequenceNumber)
         {

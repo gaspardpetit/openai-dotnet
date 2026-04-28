@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalToolChoiceOptions : IEquatable<InternalToolChoiceOptions>
+    public readonly partial struct InternalToolChoiceOptions : IEquatable<InternalToolChoiceOptions>
     {
         private readonly string _value;
         private const string NoneValue = "none";

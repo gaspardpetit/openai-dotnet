@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Batch
 {
-    internal readonly partial struct InternalBatchStatus : IEquatable<InternalBatchStatus>
+    public readonly partial struct InternalBatchStatus : IEquatable<InternalBatchStatus>
     {
         private readonly string _value;
         private const string ValidatingValue = "validating";

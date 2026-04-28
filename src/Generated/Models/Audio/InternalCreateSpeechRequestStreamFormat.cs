@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalCreateSpeechRequestStreamFormat : IEquatable<InternalCreateSpeechRequestStreamFormat>
+    public readonly partial struct InternalCreateSpeechRequestStreamFormat : IEquatable<InternalCreateSpeechRequestStreamFormat>
     {
         private readonly string _value;
         private const string SseValue = "sse";

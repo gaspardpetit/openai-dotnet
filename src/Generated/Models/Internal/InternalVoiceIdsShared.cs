@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Internal
 {
-    internal readonly partial struct InternalVoiceIdsShared : IEquatable<InternalVoiceIdsShared>
+    public readonly partial struct InternalVoiceIdsShared : IEquatable<InternalVoiceIdsShared>
     {
         private readonly string _value;
         private const string AlloyValue = "alloy";

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalAssistantsNamedToolChoiceType : IEquatable<InternalAssistantsNamedToolChoiceType>
+    public readonly partial struct InternalAssistantsNamedToolChoiceType : IEquatable<InternalAssistantsNamedToolChoiceType>
     {
         private readonly string _value;
         private const string FunctionValue = "function";

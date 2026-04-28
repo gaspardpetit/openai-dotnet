@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalModerationTextPart : ModerationInputPart
+    public partial class InternalModerationTextPart : ModerationInputPart
     {
         public InternalModerationTextPart(string internalText) : base(ModerationInputPartKind.Text)
         {

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalReasoningItemSummaryPartType : IEquatable<InternalReasoningItemSummaryPartType>
+    public readonly partial struct InternalReasoningItemSummaryPartType : IEquatable<InternalReasoningItemSummaryPartType>
     {
         private readonly string _value;
         private const string SummaryTextValue = "summary_text";

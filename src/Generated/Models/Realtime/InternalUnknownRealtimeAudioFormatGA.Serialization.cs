@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownRealtimeAudioFormatGA : RealtimeAudioFormat, IJsonModel<RealtimeAudioFormat>
+    public partial class InternalUnknownRealtimeAudioFormatGA : RealtimeAudioFormat, IJsonModel<RealtimeAudioFormat>
     {
         internal InternalUnknownRealtimeAudioFormatGA() : this(default, default)
         {

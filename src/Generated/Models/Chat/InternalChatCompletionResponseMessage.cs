@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionResponseMessage
+    public partial class InternalChatCompletionResponseMessage
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace OpenAI.Tests.Telemetry;
 
-internal class TestActivityListener : IDisposable
+public class TestActivityListener : IDisposable
 {
     private readonly ActivityListener _listener;
     private readonly ConcurrentQueue<Activity> stoppedActivities = new ConcurrentQueue<Activity>();

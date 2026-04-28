@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalAudioTranscriptionGAModel : IEquatable<InternalAudioTranscriptionGAModel>
+    public readonly partial struct InternalAudioTranscriptionGAModel : IEquatable<InternalAudioTranscriptionGAModel>
     {
         private readonly string _value;
         private const string Whisper1Value = "whisper-1";
