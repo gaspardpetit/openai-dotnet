@@ -13,7 +13,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    public abstract partial class InternalCompoundFilter
+    public partial class InternalCompoundFilter
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;
