@@ -4,14 +4,18 @@
 
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCodeInterpreterToolCallItemParam : InternalItemParam
     {
         public InternalCodeInterpreterToolCallItemParam(string code) : base(InternalItemType.CodeInterpreterCall)
         {
+            Argument.AssertNotNull(code, nameof(code));
+
             Code = code;
             Outputs = new ChangeTrackingList<CodeInterpreterCallOutput>();
         }

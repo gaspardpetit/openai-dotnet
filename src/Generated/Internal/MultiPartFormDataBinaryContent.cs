@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI
 {
-    public partial class MultiPartFormDataBinaryContent : BinaryContent
+    internal partial class MultiPartFormDataBinaryContent : BinaryContent
     {
         private readonly MultipartFormDataContent _multipartContent;
         private static readonly Random _random = new Random();

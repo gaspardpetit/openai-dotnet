@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalBatchErrorsObject : IEquatable<InternalBatchErrorsObject>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Batch
 
         public InternalBatchErrorsObject(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalBatchErrorsObject List { get; } = new InternalBatchErrorsObject(ListValue);
+        public static InternalBatchErrorsObject List { get; } = new InternalBatchErrorsObject(ListValue);
 
         public static bool operator ==(InternalBatchErrorsObject left, InternalBatchErrorsObject right) => left.Equals(right);
 

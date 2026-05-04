@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalMessageDeltaContentImageUrlObjectImageUrlDetail : IEquatable<InternalMessageDeltaContentImageUrlObjectImageUrlDetail>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Assistants
 
         public InternalMessageDeltaContentImageUrlObjectImageUrlDetail(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalMessageDeltaContentImageUrlObjectImageUrlDetail Auto { get; } = new InternalMessageDeltaContentImageUrlObjectImageUrlDetail(AutoValue);
+        public static InternalMessageDeltaContentImageUrlObjectImageUrlDetail Auto { get; } = new InternalMessageDeltaContentImageUrlObjectImageUrlDetail(AutoValue);
 
-        internal static InternalMessageDeltaContentImageUrlObjectImageUrlDetail Low { get; } = new InternalMessageDeltaContentImageUrlObjectImageUrlDetail(LowValue);
+        public static InternalMessageDeltaContentImageUrlObjectImageUrlDetail Low { get; } = new InternalMessageDeltaContentImageUrlObjectImageUrlDetail(LowValue);
 
-        internal static InternalMessageDeltaContentImageUrlObjectImageUrlDetail High { get; } = new InternalMessageDeltaContentImageUrlObjectImageUrlDetail(HighValue);
+        public static InternalMessageDeltaContentImageUrlObjectImageUrlDetail High { get; } = new InternalMessageDeltaContentImageUrlObjectImageUrlDetail(HighValue);
 
         public static bool operator ==(InternalMessageDeltaContentImageUrlObjectImageUrlDetail left, InternalMessageDeltaContentImageUrlObjectImageUrlDetail right) => left.Equals(right);
 

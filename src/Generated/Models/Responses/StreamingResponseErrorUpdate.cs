@@ -10,30 +10,26 @@ namespace OpenAI.Responses
     [Experimental("OPENAI001")]
     public partial class StreamingResponseErrorUpdate : StreamingResponseUpdate
     {
-		internal StreamingResponseErrorUpdate(int sequenceNumber, string errorType, string code, string message, string @param) : base(InternalResponseStreamEventType.Error, sequenceNumber)
+        internal StreamingResponseErrorUpdate(int sequenceNumber, string code, string message, string @param) : base(InternalResponseStreamEventType.Error, sequenceNumber)
         {
-			ErrorType = errorType;
             Code = code;
             Message = message;
             Param = @param;
         }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-		internal StreamingResponseErrorUpdate(InternalResponseStreamEventType kind, int sequenceNumber, in JsonPatch patch, string errorType, string code, string message, string @param) : base(kind, sequenceNumber)
+        internal StreamingResponseErrorUpdate(InternalResponseStreamEventType kind, int sequenceNumber, in JsonPatch patch, string code, string message, string @param) : base(kind, sequenceNumber, patch)
         {
-			ErrorType = errorType;
             Code = code;
             Message = message;
             Param = @param;
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-		public string ErrorType { get; }
+        public string Code { get; set; }
 
-        public string Code { get; }
+        public string Message { get; set; }
 
-        public string Message { get; }
-
-        public string Param { get; }
+        public string Param { get; set; }
     }
 }

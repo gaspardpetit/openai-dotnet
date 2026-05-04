@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Evals
 {
-    public abstract partial class InternalEvalRunDataSourceParams
+    [Experimental("OPENAI001")]
+    public partial class InternalEvalRunDataSourceParams
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

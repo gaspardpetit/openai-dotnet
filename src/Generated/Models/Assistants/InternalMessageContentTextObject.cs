@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentTextObject : MessageContent
     {
         public InternalMessageContentTextObject(BinaryData internalText) : base(InternalMessageContentType.Text)
         {
+            Argument.AssertNotNull(internalText, nameof(internalText));
+
             InternalText = internalText;
         }
 

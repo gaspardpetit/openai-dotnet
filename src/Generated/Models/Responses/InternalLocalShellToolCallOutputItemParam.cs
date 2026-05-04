@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLocalShellToolCallOutputItemParam : InternalItemParam
     {
         public InternalLocalShellToolCallOutputItemParam(string output) : base(InternalItemType.LocalShellCallOutput)
         {
+            Argument.AssertNotNull(output, nameof(output));
+
             Output = output;
         }
 

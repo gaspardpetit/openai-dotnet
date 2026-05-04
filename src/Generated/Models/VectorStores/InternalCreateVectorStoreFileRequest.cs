@@ -4,16 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateVectorStoreFileRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalCreateVectorStoreFileRequest(string fileId)
         {
+            Argument.AssertNotNull(fileId, nameof(fileId));
+
             FileId = fileId;
             Attributes = new ChangeTrackingDictionary<string, BinaryData>();
         }

@@ -3,12 +3,14 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponsesMessageItemParam : InternalItemParam
     {
-        internal InternalResponsesMessageItemParam(InternalResponsesMessageRole role) : base(InternalItemType.Message)
+        public InternalResponsesMessageItemParam(InternalResponsesMessageRole role) : base(InternalItemType.Message)
         {
             Role = role;
         }

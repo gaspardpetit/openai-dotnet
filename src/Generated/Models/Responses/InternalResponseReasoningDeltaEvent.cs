@@ -4,9 +4,11 @@
 
 using System;
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseReasoningDeltaEvent : StreamingResponseUpdate
     {
         internal InternalResponseReasoningDeltaEvent(int sequenceNumber, string itemId, int outputIndex, int contentIndex, BinaryData delta) : base(InternalResponseStreamEventType.ResponseReasoningDelta, sequenceNumber)

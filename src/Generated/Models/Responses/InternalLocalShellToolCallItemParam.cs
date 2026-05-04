@@ -3,13 +3,19 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLocalShellToolCallItemParam : InternalItemParam
     {
-        internal InternalLocalShellToolCallItemParam(string callId, InternalLocalShellExecAction action) : base(InternalItemType.LocalShellCall)
+        public InternalLocalShellToolCallItemParam(string callId, InternalLocalShellExecAction action) : base(InternalItemType.LocalShellCall)
         {
+            Argument.AssertNotNull(callId, nameof(callId));
+            Argument.AssertNotNull(action, nameof(action));
+
             CallId = callId;
             Action = action;
         }
@@ -25,6 +31,6 @@ namespace OpenAI.Responses
 
         public string CallId { get; set; }
 
-        internal InternalLocalShellExecAction Action { get; set; }
+        public InternalLocalShellExecAction Action { get; set; }
     }
 }

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalItemContentInputAudioFormat : IEquatable<InternalItemContentInputAudioFormat>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Responses
 
         public InternalItemContentInputAudioFormat(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalItemContentInputAudioFormat Mp3 { get; } = new InternalItemContentInputAudioFormat(Mp3Value);
+        public static InternalItemContentInputAudioFormat Mp3 { get; } = new InternalItemContentInputAudioFormat(Mp3Value);
 
-        internal static InternalItemContentInputAudioFormat Wav { get; } = new InternalItemContentInputAudioFormat(WavValue);
+        public static InternalItemContentInputAudioFormat Wav { get; } = new InternalItemContentInputAudioFormat(WavValue);
 
         public static bool operator ==(InternalItemContentInputAudioFormat left, InternalItemContentInputAudioFormat right) => left.Equals(right);
 

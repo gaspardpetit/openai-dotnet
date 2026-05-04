@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalChunkingStrategyRequestParamType : IEquatable<InternalChunkingStrategyRequestParamType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.VectorStores
 
         public InternalChunkingStrategyRequestParamType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalChunkingStrategyRequestParamType Auto { get; } = new InternalChunkingStrategyRequestParamType(AutoValue);
+        public static InternalChunkingStrategyRequestParamType Auto { get; } = new InternalChunkingStrategyRequestParamType(AutoValue);
 
-        internal static InternalChunkingStrategyRequestParamType Static { get; } = new InternalChunkingStrategyRequestParamType(StaticValue);
+        public static InternalChunkingStrategyRequestParamType Static { get; } = new InternalChunkingStrategyRequestParamType(StaticValue);
 
         public static bool operator ==(InternalChunkingStrategyRequestParamType left, InternalChunkingStrategyRequestParamType right) => left.Equals(right);
 

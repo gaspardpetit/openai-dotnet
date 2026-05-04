@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeClientEventTypeGA : IEquatable<InternalRealtimeClientEventTypeGA>
     {
         private readonly string _value;
@@ -24,30 +27,32 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeClientEventTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeClientEventTypeGA ConversationItemCreate { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemCreateValue);
+        public static InternalRealtimeClientEventTypeGA ConversationItemCreate { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemCreateValue);
 
-        internal static InternalRealtimeClientEventTypeGA ConversationItemDelete { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemDeleteValue);
+        public static InternalRealtimeClientEventTypeGA ConversationItemDelete { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemDeleteValue);
 
-        internal static InternalRealtimeClientEventTypeGA ConversationItemRetrieve { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemRetrieveValue);
+        public static InternalRealtimeClientEventTypeGA ConversationItemRetrieve { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemRetrieveValue);
 
-        internal static InternalRealtimeClientEventTypeGA ConversationItemTruncate { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemTruncateValue);
+        public static InternalRealtimeClientEventTypeGA ConversationItemTruncate { get; } = new InternalRealtimeClientEventTypeGA(ConversationItemTruncateValue);
 
-        internal static InternalRealtimeClientEventTypeGA InputAudioBufferAppend { get; } = new InternalRealtimeClientEventTypeGA(InputAudioBufferAppendValue);
+        public static InternalRealtimeClientEventTypeGA InputAudioBufferAppend { get; } = new InternalRealtimeClientEventTypeGA(InputAudioBufferAppendValue);
 
-        internal static InternalRealtimeClientEventTypeGA InputAudioBufferClear { get; } = new InternalRealtimeClientEventTypeGA(InputAudioBufferClearValue);
+        public static InternalRealtimeClientEventTypeGA InputAudioBufferClear { get; } = new InternalRealtimeClientEventTypeGA(InputAudioBufferClearValue);
 
-        internal static InternalRealtimeClientEventTypeGA OutputAudioBufferClear { get; } = new InternalRealtimeClientEventTypeGA(OutputAudioBufferClearValue);
+        public static InternalRealtimeClientEventTypeGA OutputAudioBufferClear { get; } = new InternalRealtimeClientEventTypeGA(OutputAudioBufferClearValue);
 
-        internal static InternalRealtimeClientEventTypeGA InputAudioBufferCommit { get; } = new InternalRealtimeClientEventTypeGA(InputAudioBufferCommitValue);
+        public static InternalRealtimeClientEventTypeGA InputAudioBufferCommit { get; } = new InternalRealtimeClientEventTypeGA(InputAudioBufferCommitValue);
 
-        internal static InternalRealtimeClientEventTypeGA ResponseCancel { get; } = new InternalRealtimeClientEventTypeGA(ResponseCancelValue);
+        public static InternalRealtimeClientEventTypeGA ResponseCancel { get; } = new InternalRealtimeClientEventTypeGA(ResponseCancelValue);
 
-        internal static InternalRealtimeClientEventTypeGA ResponseCreate { get; } = new InternalRealtimeClientEventTypeGA(ResponseCreateValue);
+        public static InternalRealtimeClientEventTypeGA ResponseCreate { get; } = new InternalRealtimeClientEventTypeGA(ResponseCreateValue);
 
-        internal static InternalRealtimeClientEventTypeGA SessionUpdate { get; } = new InternalRealtimeClientEventTypeGA(SessionUpdateValue);
+        public static InternalRealtimeClientEventTypeGA SessionUpdate { get; } = new InternalRealtimeClientEventTypeGA(SessionUpdateValue);
 
         public static bool operator ==(InternalRealtimeClientEventTypeGA left, InternalRealtimeClientEventTypeGA right) => left.Equals(right);
 

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalMessageContentImageUrlObjectImageUrlDetail : IEquatable<InternalMessageContentImageUrlObjectImageUrlDetail>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Assistants
 
         public InternalMessageContentImageUrlObjectImageUrlDetail(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalMessageContentImageUrlObjectImageUrlDetail Auto { get; } = new InternalMessageContentImageUrlObjectImageUrlDetail(AutoValue);
+        public static InternalMessageContentImageUrlObjectImageUrlDetail Auto { get; } = new InternalMessageContentImageUrlObjectImageUrlDetail(AutoValue);
 
-        internal static InternalMessageContentImageUrlObjectImageUrlDetail Low { get; } = new InternalMessageContentImageUrlObjectImageUrlDetail(LowValue);
+        public static InternalMessageContentImageUrlObjectImageUrlDetail Low { get; } = new InternalMessageContentImageUrlObjectImageUrlDetail(LowValue);
 
-        internal static InternalMessageContentImageUrlObjectImageUrlDetail High { get; } = new InternalMessageContentImageUrlObjectImageUrlDetail(HighValue);
+        public static InternalMessageContentImageUrlObjectImageUrlDetail High { get; } = new InternalMessageContentImageUrlObjectImageUrlDetail(HighValue);
 
         public static bool operator ==(InternalMessageContentImageUrlObjectImageUrlDetail left, InternalMessageContentImageUrlObjectImageUrlDetail right) => left.Equals(right);
 

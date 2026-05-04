@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalWebSearchContextSize : IEquatable<InternalWebSearchContextSize>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Internal
 
         public InternalWebSearchContextSize(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalWebSearchContextSize Low { get; } = new InternalWebSearchContextSize(LowValue);
+        public static InternalWebSearchContextSize Low { get; } = new InternalWebSearchContextSize(LowValue);
 
-        internal static InternalWebSearchContextSize Medium { get; } = new InternalWebSearchContextSize(MediumValue);
+        public static InternalWebSearchContextSize Medium { get; } = new InternalWebSearchContextSize(MediumValue);
 
-        internal static InternalWebSearchContextSize High { get; } = new InternalWebSearchContextSize(HighValue);
+        public static InternalWebSearchContextSize High { get; } = new InternalWebSearchContextSize(HighValue);
 
         public static bool operator ==(InternalWebSearchContextSize left, InternalWebSearchContextSize right) => left.Equals(right);
 

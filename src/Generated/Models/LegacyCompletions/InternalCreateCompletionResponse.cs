@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 using OpenAI.Chat;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateCompletionResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -37,7 +39,7 @@ namespace OpenAI.LegacyCompletions
 
         public string Id { get; }
 
-        internal IList<InternalCreateCompletionResponseChoice> Choices { get; }
+        public IList<InternalCreateCompletionResponseChoice> Choices { get; }
 
         public DateTimeOffset Created { get; }
 

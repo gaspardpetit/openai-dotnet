@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageEditRequestModel : IEquatable<InternalCreateImageEditRequestModel>
     {
         private readonly string _value;
@@ -17,16 +20,18 @@ namespace OpenAI.Images
 
         public InternalCreateImageEditRequestModel(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateImageEditRequestModel GptImage15 { get; } = new InternalCreateImageEditRequestModel(GptImage15Value);
+        public static InternalCreateImageEditRequestModel GptImage15 { get; } = new InternalCreateImageEditRequestModel(GptImage15Value);
 
-        internal static InternalCreateImageEditRequestModel DallE2 { get; } = new InternalCreateImageEditRequestModel(DallE2Value);
+        public static InternalCreateImageEditRequestModel DallE2 { get; } = new InternalCreateImageEditRequestModel(DallE2Value);
 
-        internal static InternalCreateImageEditRequestModel GptImage1 { get; } = new InternalCreateImageEditRequestModel(GptImage1Value);
+        public static InternalCreateImageEditRequestModel GptImage1 { get; } = new InternalCreateImageEditRequestModel(GptImage1Value);
 
-        internal static InternalCreateImageEditRequestModel GptImage1Mini { get; } = new InternalCreateImageEditRequestModel(GptImage1MiniValue);
+        public static InternalCreateImageEditRequestModel GptImage1Mini { get; } = new InternalCreateImageEditRequestModel(GptImage1MiniValue);
 
         public static bool operator ==(InternalCreateImageEditRequestModel left, InternalCreateImageEditRequestModel right) => left.Equals(right);
 

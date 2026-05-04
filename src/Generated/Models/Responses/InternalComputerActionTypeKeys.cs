@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerActionTypeKeys : ComputerCallAction
     {
         public InternalComputerActionTypeKeys(string text) : base(ComputerCallActionKind.Type)
         {
+            Argument.AssertNotNull(text, nameof(text));
+
             Text = text;
         }
 

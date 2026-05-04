@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentRefusalObject : MessageContent
     {
         public InternalMessageContentRefusalObject(string internalRefusal) : base(InternalMessageContentType.Refusal)
         {
+            Argument.AssertNotNull(internalRefusal, nameof(internalRefusal));
+
             InternalRefusal = internalRefusal;
         }
 

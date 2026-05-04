@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCodeInterpreterToolOutputType : IEquatable<InternalCodeInterpreterToolOutputType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Responses
 
         public InternalCodeInterpreterToolOutputType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCodeInterpreterToolOutputType Logs { get; } = new InternalCodeInterpreterToolOutputType(LogsValue);
+        public static InternalCodeInterpreterToolOutputType Logs { get; } = new InternalCodeInterpreterToolOutputType(LogsValue);
 
-        internal static InternalCodeInterpreterToolOutputType Image { get; } = new InternalCodeInterpreterToolOutputType(ImageValue);
+        public static InternalCodeInterpreterToolOutputType Image { get; } = new InternalCodeInterpreterToolOutputType(ImageValue);
 
         public static bool operator ==(InternalCodeInterpreterToolOutputType left, InternalCodeInterpreterToolOutputType right) => left.Equals(right);
 

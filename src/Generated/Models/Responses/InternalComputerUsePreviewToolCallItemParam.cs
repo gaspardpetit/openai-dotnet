@@ -4,15 +4,21 @@
 
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerUsePreviewToolCallItemParam : InternalItemParam
     {
         public InternalComputerUsePreviewToolCallItemParam(string callId, ComputerCallAction action, IEnumerable<ComputerCallSafetyCheck> pendingSafetyChecks) : base(InternalItemType.ComputerCall)
         {
+            Argument.AssertNotNull(callId, nameof(callId));
+            Argument.AssertNotNull(action, nameof(action));
+            Argument.AssertNotNull(pendingSafetyChecks, nameof(pendingSafetyChecks));
+
             CallId = callId;
             Action = action;
             PendingSafetyChecks = pendingSafetyChecks.ToList();

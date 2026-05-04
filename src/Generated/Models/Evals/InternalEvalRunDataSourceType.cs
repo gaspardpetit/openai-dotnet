@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalEvalRunDataSourceType : IEquatable<InternalEvalRunDataSourceType>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Evals
 
         public InternalEvalRunDataSourceType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalEvalRunDataSourceType Jsonl { get; } = new InternalEvalRunDataSourceType(JsonlValue);
+        public static InternalEvalRunDataSourceType Jsonl { get; } = new InternalEvalRunDataSourceType(JsonlValue);
 
-        internal static InternalEvalRunDataSourceType Completions { get; } = new InternalEvalRunDataSourceType(CompletionsValue);
+        public static InternalEvalRunDataSourceType Completions { get; } = new InternalEvalRunDataSourceType(CompletionsValue);
 
-        internal static InternalEvalRunDataSourceType Responses { get; } = new InternalEvalRunDataSourceType(ResponsesValue);
+        public static InternalEvalRunDataSourceType Responses { get; } = new InternalEvalRunDataSourceType(ResponsesValue);
 
         public static bool operator ==(InternalEvalRunDataSourceType left, InternalEvalRunDataSourceType right) => left.Equals(right);
 

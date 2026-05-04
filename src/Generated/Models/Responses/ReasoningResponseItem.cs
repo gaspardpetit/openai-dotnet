@@ -20,19 +20,8 @@ namespace OpenAI.Responses
             SummaryParts = summaryParts.ToList();
         }
 
-		// <GP> adding ctor with EncryptedContent
-		public ReasoningResponseItem(IEnumerable<ReasoningSummaryPart> summaryParts, string encryptedContent, string id) : base(InternalItemType.Reasoning)
-		{
-			Argument.AssertNotNull(summaryParts, nameof(summaryParts));
-
-			SummaryParts = summaryParts.ToList();
-			EncryptedContent = encryptedContent;
-			Id = id;
-		}
-		// </GP>
-
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
-		internal ReasoningResponseItem(InternalItemType kind, string id, in JsonPatch patch, ReasoningStatus? status, string encryptedContent, IList<ReasoningSummaryPart> summaryParts) : base(kind, id, patch)
+        internal ReasoningResponseItem(InternalItemType kind, string id, in JsonPatch patch, ReasoningStatus? status, string encryptedContent, IList<ReasoningSummaryPart> summaryParts) : base(kind, id, patch)
         {
             // Plugin customization: ensure initialization of collections
             Status = status;

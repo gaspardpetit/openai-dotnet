@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI.Graders;
 
 namespace OpenAI.Evals
 {
-    public abstract partial class InternalEvalGraderResource
+    [Experimental("OPENAI001")]
+    public partial class InternalEvalGraderResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

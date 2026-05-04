@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateSpeechRequestModel : IEquatable<InternalCreateSpeechRequestModel>
     {
         private readonly string _value;
@@ -17,16 +20,18 @@ namespace OpenAI.Audio
 
         public InternalCreateSpeechRequestModel(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateSpeechRequestModel Tts1 { get; } = new InternalCreateSpeechRequestModel(Tts1Value);
+        public static InternalCreateSpeechRequestModel Tts1 { get; } = new InternalCreateSpeechRequestModel(Tts1Value);
 
-        internal static InternalCreateSpeechRequestModel Tts1Hd { get; } = new InternalCreateSpeechRequestModel(Tts1HdValue);
+        public static InternalCreateSpeechRequestModel Tts1Hd { get; } = new InternalCreateSpeechRequestModel(Tts1HdValue);
 
-        internal static InternalCreateSpeechRequestModel Gpt4oMiniTts { get; } = new InternalCreateSpeechRequestModel(Gpt4oMiniTtsValue);
+        public static InternalCreateSpeechRequestModel Gpt4oMiniTts { get; } = new InternalCreateSpeechRequestModel(Gpt4oMiniTtsValue);
 
-        internal static InternalCreateSpeechRequestModel Gpt4oMiniTts20251215 { get; } = new InternalCreateSpeechRequestModel(Gpt4oMiniTts20251215Value);
+        public static InternalCreateSpeechRequestModel Gpt4oMiniTts20251215 { get; } = new InternalCreateSpeechRequestModel(Gpt4oMiniTts20251215Value);
 
         public static bool operator ==(InternalCreateSpeechRequestModel left, InternalCreateSpeechRequestModel right) => left.Equals(right);
 

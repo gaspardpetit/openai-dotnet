@@ -3,10 +3,12 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetChatResponseFormatText : ChatResponseFormat
     {
         public InternalDotNetChatResponseFormatText() : this(InternalResponseFormatType.Text, default)

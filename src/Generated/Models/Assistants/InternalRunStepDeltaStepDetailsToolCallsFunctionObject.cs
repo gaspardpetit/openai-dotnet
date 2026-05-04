@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDeltaStepDetailsToolCallsFunctionObject : InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject
     {
         internal InternalRunStepDeltaStepDetailsToolCallsFunctionObject(int index) : base(RunStepToolCallKind.Function)
@@ -25,6 +27,6 @@ namespace OpenAI.Assistants
 
         public string Id { get; }
 
-        internal InternalRunStepDeltaStepDetailsToolCallsFunctionObjectFunction Function { get; }
+        public InternalRunStepDeltaStepDetailsToolCallsFunctionObjectFunction Function { get; }
     }
 }

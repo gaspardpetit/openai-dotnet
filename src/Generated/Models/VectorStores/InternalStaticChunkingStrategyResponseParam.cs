@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalStaticChunkingStrategyResponseParam : InternalChunkingStrategyResponseParam
     {
         internal InternalStaticChunkingStrategyResponseParam(InternalStaticChunkingStrategy @static) : base(InternalChunkingStrategyResponseParamType.Static)
@@ -19,6 +21,6 @@ namespace OpenAI.VectorStores
             Static = @static;
         }
 
-        internal InternalStaticChunkingStrategy Static { get; }
+        public InternalStaticChunkingStrategy Static { get; }
     }
 }

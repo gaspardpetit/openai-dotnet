@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerActionDoubleClick : ComputerCallAction
     {
         public InternalComputerActionDoubleClick(int x, int y) : base(ComputerCallActionKind.DoubleClick)

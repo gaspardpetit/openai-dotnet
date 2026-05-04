@@ -4,15 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentTextAnnotationsFilePathObjectFilePath
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalMessageContentTextAnnotationsFilePathObjectFilePath(string fileId)
         {
+            Argument.AssertNotNull(fileId, nameof(fileId));
+
             FileId = fileId;
         }
 

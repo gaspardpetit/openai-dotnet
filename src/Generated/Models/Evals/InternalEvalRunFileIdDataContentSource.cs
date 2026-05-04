@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRunFileIdDataContentSource : InternalEvalRunDataContentSource
     {
         public InternalEvalRunFileIdDataContentSource(string id) : base(InternalEvalRunDataContentSourceType.FileId)
         {
+            Argument.AssertNotNull(id, nameof(id));
+
             Id = id;
         }
 

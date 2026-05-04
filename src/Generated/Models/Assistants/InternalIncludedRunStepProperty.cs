@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalIncludedRunStepProperty : IEquatable<InternalIncludedRunStepProperty>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Assistants
 
         public InternalIncludedRunStepProperty(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalIncludedRunStepProperty FileSearchResultContent { get; } = new InternalIncludedRunStepProperty(FileSearchResultContentValue);
+        public static InternalIncludedRunStepProperty FileSearchResultContent { get; } = new InternalIncludedRunStepProperty(FileSearchResultContentValue);
 
         public static bool operator ==(InternalIncludedRunStepProperty left, InternalIncludedRunStepProperty right) => left.Equals(right);
 

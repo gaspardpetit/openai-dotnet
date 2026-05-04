@@ -12,7 +12,7 @@ namespace OpenAI.Responses
 {
     public partial class StreamingResponseErrorUpdate : StreamingResponseUpdate, IJsonModel<StreamingResponseErrorUpdate>
     {
-        internal StreamingResponseErrorUpdate() : this(InternalResponseStreamEventType.Error, default, default, default, null, null, null)
+        public StreamingResponseErrorUpdate() : this(InternalResponseStreamEventType.Error, default, default, null, null, null)
         {
         }
 
@@ -128,7 +128,6 @@ namespace OpenAI.Responses
             string code = default;
             string message = default;
             string @param = default;
-			string errorType = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -166,56 +165,12 @@ namespace OpenAI.Responses
                     @param = prop.Value.GetString();
                     continue;
                 }
-				if (prop.NameEquals("error"u8))
-				{
-					JsonElement errorElem = prop.Value;
-					foreach (var errorProp in errorElem.EnumerateObject())
-					{
-						if (errorProp.NameEquals("type"u8))
-						{
-							if (errorProp.Value.ValueKind == JsonValueKind.Null)
-							{
-								errorType = null;
-								continue;
-							}
-							errorType = errorProp.Value.GetString();
-							continue;
-						}
-						if (errorProp.NameEquals("code"u8))
-						{
-							if (errorProp.Value.ValueKind == JsonValueKind.Null)
-							{
-								code = null;
-								continue;
-							}
-							code = errorProp.Value.GetString();
-							continue;
-						}
-						if (errorProp.NameEquals("message"u8))
-						{
-							message = errorProp.Value.GetString();
-							continue;
-						}
-						if (errorProp.NameEquals("param"u8))
-						{
-							if (errorProp.Value.ValueKind == JsonValueKind.Null)
-							{
-								@param = null;
-								continue;
-							}
-							@param = errorProp.Value.GetString();
-							continue;
-						}
-					}
-					continue;
-                }
                 patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
             }
             return new StreamingResponseErrorUpdate(
                 kind,
                 sequenceNumber,
                 patch,
-				errorType,
                 code,
                 message,
                 @param);

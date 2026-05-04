@@ -11,6 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateChatCompletionResponseChoiceLogprobs
     {
         [Experimental("SCME0001")]

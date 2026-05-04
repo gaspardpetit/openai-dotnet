@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum : IEquatable<InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.FineTuning
 
         public InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum Auto { get; } = new InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum(AutoValue);
+        public static InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum Auto { get; } = new InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum(AutoValue);
 
         public static bool operator ==(InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum left, InternalCreateFineTuningJobRequestHyperparametersNEpochsChoiceEnum right) => left.Equals(right);
 

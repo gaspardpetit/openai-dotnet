@@ -6,17 +6,21 @@ using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using OpenAI;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateChatCompletionRequestWebSearchOptionsUserLocation1
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        internal InternalCreateChatCompletionRequestWebSearchOptionsUserLocation1(InternalWebSearchLocation approximate)
+        public InternalCreateChatCompletionRequestWebSearchOptionsUserLocation1(InternalWebSearchLocation approximate)
         {
+            Argument.AssertNotNull(approximate, nameof(approximate));
+
             Approximate = approximate;
         }
 
@@ -37,6 +41,6 @@ namespace OpenAI.Chat
 
         internal string Kind { get; } = "approximate";
 
-        internal InternalWebSearchLocation Approximate { get; }
+        public InternalWebSearchLocation Approximate { get; }
     }
 }

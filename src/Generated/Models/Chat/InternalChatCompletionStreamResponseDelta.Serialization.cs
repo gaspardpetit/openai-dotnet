@@ -143,11 +143,8 @@ namespace OpenAI.Chat
                 return null;
             }
             StreamingChatOutputAudioUpdate audio = default;
-			ChatMessageContent content = default;
-            // <GP> Added reasoning support as used by ollama
-			ChatMessageContent reasoning = default;
-            // </GP>
-			StreamingChatFunctionCallUpdate functionCall = default;
+            ChatMessageContent content = default;
+            StreamingChatFunctionCallUpdate functionCall = default;
             IReadOnlyList<StreamingChatToolCallUpdate> toolCalls = default;
             ChatMessageRole? role = default;
             string refusal = default;
@@ -170,23 +167,7 @@ namespace OpenAI.Chat
                     DeserializeContentValue(prop, ref content, options);
                     continue;
                 }
-				// <GP> Added reasoning support as used by ollama
-
-                // reasoning is used by ollama
-				if (prop.NameEquals("reasoning"u8))
-				{
-					DeserializeContentValue(prop, ref reasoning);
-					continue;
-				}
-				// reasoning_content is used by llama.cpp
-				if (prop.NameEquals("reasoning_content"u8))
-				{
-					DeserializeContentValue(prop, ref reasoning);
-					continue;
-				}
-
-				// </GP>
-				if (prop.NameEquals("function_call"u8))
+                if (prop.NameEquals("function_call"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
                     {
@@ -233,8 +214,7 @@ namespace OpenAI.Chat
             return new InternalChatCompletionStreamResponseDelta(
                 audio,
                 content,
-                reasoning, // <GP> Added reasoning support as used by ollama
-				functionCall,
+                functionCall,
                 toolCalls ?? new ChangeTrackingList<StreamingChatToolCallUpdate>(),
                 role,
                 refusal,

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalChatCompletionMessageToolCallChunkType : IEquatable<InternalChatCompletionMessageToolCallChunkType>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Chat
 
         public InternalChatCompletionMessageToolCallChunkType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalChatCompletionMessageToolCallChunkType Function { get; } = new InternalChatCompletionMessageToolCallChunkType(FunctionValue);
+        public static InternalChatCompletionMessageToolCallChunkType Function { get; } = new InternalChatCompletionMessageToolCallChunkType(FunctionValue);
 
         public static bool operator ==(InternalChatCompletionMessageToolCallChunkType left, InternalChatCompletionMessageToolCallChunkType right) => left.Equals(right);
 
