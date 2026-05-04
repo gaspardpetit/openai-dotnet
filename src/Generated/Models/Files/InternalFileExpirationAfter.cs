@@ -4,15 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalFileExpirationAfter
     {
         private readonly IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalFileExpirationAfter(string anchor, int seconds)
         {
+            Argument.AssertNotNull(anchor, nameof(anchor));
+
             Anchor = anchor;
             Seconds = seconds;
         }

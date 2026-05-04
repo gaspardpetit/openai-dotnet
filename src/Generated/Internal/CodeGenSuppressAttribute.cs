@@ -7,7 +7,7 @@ using System;
 namespace Microsoft.TypeSpec.Generator.Customizations
 {
     [AttributeUsage((AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Struct), AllowMultiple = true)]
-    public partial class CodeGenSuppressAttribute : Attribute
+    internal partial class CodeGenSuppressAttribute : Attribute
     {
         public CodeGenSuppressAttribute(string member, params Type[] parameters)
         {

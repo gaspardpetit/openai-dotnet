@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateVectorStoreFileBatchRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -28,9 +30,9 @@ namespace OpenAI.VectorStores
 
         public IList<string> FileIds { get; }
 
-        internal IList<InternalCreateVectorStoreFileRequest> Files { get; }
+        public IList<InternalCreateVectorStoreFileRequest> Files { get; }
 
-        internal InternalChunkingStrategyRequestParam ChunkingStrategy { get; set; }
+        public InternalChunkingStrategyRequestParam ChunkingStrategy { get; set; }
 
         public IDictionary<string, BinaryData> Attributes { get; set; }
 

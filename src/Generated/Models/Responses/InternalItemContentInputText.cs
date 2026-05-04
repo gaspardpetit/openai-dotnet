@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentInputText : ResponseContentPart
     {
         public InternalItemContentInputText(string internalText) : base(InternalItemContentType.InputText)
         {
+            Argument.AssertNotNull(internalText, nameof(internalText));
+
             InternalText = internalText;
         }
 

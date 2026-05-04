@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public partial class InternalBatchErrors
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -24,9 +26,9 @@ namespace OpenAI.Batch
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalBatchErrorsObject? Object { get; }
+        public InternalBatchErrorsObject? Object { get; }
 
-        internal IList<InternalBatchError> Data { get; }
+        public IList<InternalBatchError> Data { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

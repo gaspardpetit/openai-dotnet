@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeTruncationBaseTypeGA : IEquatable<InternalRealtimeTruncationBaseTypeGA>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeTruncationBaseTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeTruncationBaseTypeGA RetentionRatio { get; } = new InternalRealtimeTruncationBaseTypeGA(RetentionRatioValue);
+        public static InternalRealtimeTruncationBaseTypeGA RetentionRatio { get; } = new InternalRealtimeTruncationBaseTypeGA(RetentionRatioValue);
 
         public static bool operator ==(InternalRealtimeTruncationBaseTypeGA left, InternalRealtimeTruncationBaseTypeGA right) => left.Equals(right);
 

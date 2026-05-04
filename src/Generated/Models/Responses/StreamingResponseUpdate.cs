@@ -35,7 +35,7 @@ namespace OpenAI.Responses
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
 
-        public InternalResponseStreamEventType Kind { get; set; }
+        internal InternalResponseStreamEventType Kind { get; set; }
 
         public int SequenceNumber { get; set; }
     }

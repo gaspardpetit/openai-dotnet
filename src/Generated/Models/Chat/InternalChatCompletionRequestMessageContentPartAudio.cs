@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartAudio : ChatMessageContentPart
     {
-        internal InternalChatCompletionRequestMessageContentPartAudio(InternalChatCompletionRequestMessageContentPartAudioInputAudio inputAudio)
+        public InternalChatCompletionRequestMessageContentPartAudio(InternalChatCompletionRequestMessageContentPartAudioInputAudio inputAudio)
         {
+            Argument.AssertNotNull(inputAudio, nameof(inputAudio));
+
             InputAudio = inputAudio;
         }
 
@@ -21,6 +26,6 @@ namespace OpenAI.Chat
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalChatCompletionRequestMessageContentPartAudioInputAudio InputAudio { get; set; }
+        public InternalChatCompletionRequestMessageContentPartAudioInputAudio InputAudio { get; set; }
     }
 }

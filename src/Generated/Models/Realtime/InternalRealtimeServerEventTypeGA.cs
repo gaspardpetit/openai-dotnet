@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeServerEventTypeGA : IEquatable<InternalRealtimeServerEventTypeGA>
     {
         private readonly string _value;
@@ -59,100 +62,102 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeServerEventTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeServerEventTypeGA ConversationCreated { get; } = new InternalRealtimeServerEventTypeGA(ConversationCreatedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationCreated { get; } = new InternalRealtimeServerEventTypeGA(ConversationCreatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemCreated { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemCreatedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemCreated { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemCreatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemDeleted { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemDeletedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemDeleted { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemDeletedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionCompleted { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionCompletedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionCompleted { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionCompletedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionDelta { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionDeltaValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionDelta { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionDeltaValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionFailed { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionFailedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionFailed { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionFailedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemRetrieved { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemRetrievedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemRetrieved { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemRetrievedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemTruncated { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemTruncatedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemTruncated { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemTruncatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA Error { get; } = new InternalRealtimeServerEventTypeGA(ErrorValue);
+        public static InternalRealtimeServerEventTypeGA Error { get; } = new InternalRealtimeServerEventTypeGA(ErrorValue);
 
-        internal static InternalRealtimeServerEventTypeGA InputAudioBufferCleared { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferClearedValue);
+        public static InternalRealtimeServerEventTypeGA InputAudioBufferCleared { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferClearedValue);
 
-        internal static InternalRealtimeServerEventTypeGA InputAudioBufferCommitted { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferCommittedValue);
+        public static InternalRealtimeServerEventTypeGA InputAudioBufferCommitted { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferCommittedValue);
 
-        internal static InternalRealtimeServerEventTypeGA InputAudioBufferDtmfEventReceived { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferDtmfEventReceivedValue);
+        public static InternalRealtimeServerEventTypeGA InputAudioBufferDtmfEventReceived { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferDtmfEventReceivedValue);
 
-        internal static InternalRealtimeServerEventTypeGA InputAudioBufferSpeechStarted { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferSpeechStartedValue);
+        public static InternalRealtimeServerEventTypeGA InputAudioBufferSpeechStarted { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferSpeechStartedValue);
 
-        internal static InternalRealtimeServerEventTypeGA InputAudioBufferSpeechStopped { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferSpeechStoppedValue);
+        public static InternalRealtimeServerEventTypeGA InputAudioBufferSpeechStopped { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferSpeechStoppedValue);
 
-        internal static InternalRealtimeServerEventTypeGA RateLimitsUpdated { get; } = new InternalRealtimeServerEventTypeGA(RateLimitsUpdatedValue);
+        public static InternalRealtimeServerEventTypeGA RateLimitsUpdated { get; } = new InternalRealtimeServerEventTypeGA(RateLimitsUpdatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputAudioDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioDeltaValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputAudioDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioDeltaValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputAudioDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputAudioDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputAudioTranscriptDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioTranscriptDeltaValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputAudioTranscriptDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioTranscriptDeltaValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputAudioTranscriptDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioTranscriptDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputAudioTranscriptDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputAudioTranscriptDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseContentPartAdded { get; } = new InternalRealtimeServerEventTypeGA(ResponseContentPartAddedValue);
+        public static InternalRealtimeServerEventTypeGA ResponseContentPartAdded { get; } = new InternalRealtimeServerEventTypeGA(ResponseContentPartAddedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseContentPartDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseContentPartDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseContentPartDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseContentPartDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseCreated { get; } = new InternalRealtimeServerEventTypeGA(ResponseCreatedValue);
+        public static InternalRealtimeServerEventTypeGA ResponseCreated { get; } = new InternalRealtimeServerEventTypeGA(ResponseCreatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseFunctionCallArgumentsDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseFunctionCallArgumentsDeltaValue);
+        public static InternalRealtimeServerEventTypeGA ResponseFunctionCallArgumentsDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseFunctionCallArgumentsDeltaValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseFunctionCallArgumentsDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseFunctionCallArgumentsDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseFunctionCallArgumentsDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseFunctionCallArgumentsDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputItemAdded { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputItemAddedValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputItemAdded { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputItemAddedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputItemDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputItemDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputItemDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputItemDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputTextDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputTextDeltaValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputTextDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputTextDeltaValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseOutputTextDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputTextDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseOutputTextDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseOutputTextDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA SessionCreated { get; } = new InternalRealtimeServerEventTypeGA(SessionCreatedValue);
+        public static InternalRealtimeServerEventTypeGA SessionCreated { get; } = new InternalRealtimeServerEventTypeGA(SessionCreatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA SessionUpdated { get; } = new InternalRealtimeServerEventTypeGA(SessionUpdatedValue);
+        public static InternalRealtimeServerEventTypeGA SessionUpdated { get; } = new InternalRealtimeServerEventTypeGA(SessionUpdatedValue);
 
-        internal static InternalRealtimeServerEventTypeGA OutputAudioBufferStarted { get; } = new InternalRealtimeServerEventTypeGA(OutputAudioBufferStartedValue);
+        public static InternalRealtimeServerEventTypeGA OutputAudioBufferStarted { get; } = new InternalRealtimeServerEventTypeGA(OutputAudioBufferStartedValue);
 
-        internal static InternalRealtimeServerEventTypeGA OutputAudioBufferStopped { get; } = new InternalRealtimeServerEventTypeGA(OutputAudioBufferStoppedValue);
+        public static InternalRealtimeServerEventTypeGA OutputAudioBufferStopped { get; } = new InternalRealtimeServerEventTypeGA(OutputAudioBufferStoppedValue);
 
-        internal static InternalRealtimeServerEventTypeGA OutputAudioBufferCleared { get; } = new InternalRealtimeServerEventTypeGA(OutputAudioBufferClearedValue);
+        public static InternalRealtimeServerEventTypeGA OutputAudioBufferCleared { get; } = new InternalRealtimeServerEventTypeGA(OutputAudioBufferClearedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemAdded { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemAddedValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemAdded { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemAddedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemDone { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemDoneValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemDone { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA InputAudioBufferTimeoutTriggered { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferTimeoutTriggeredValue);
+        public static InternalRealtimeServerEventTypeGA InputAudioBufferTimeoutTriggered { get; } = new InternalRealtimeServerEventTypeGA(InputAudioBufferTimeoutTriggeredValue);
 
-        internal static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionSegment { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionSegmentValue);
+        public static InternalRealtimeServerEventTypeGA ConversationItemInputAudioTranscriptionSegment { get; } = new InternalRealtimeServerEventTypeGA(ConversationItemInputAudioTranscriptionSegmentValue);
 
-        internal static InternalRealtimeServerEventTypeGA McpListToolsInProgress { get; } = new InternalRealtimeServerEventTypeGA(McpListToolsInProgressValue);
+        public static InternalRealtimeServerEventTypeGA McpListToolsInProgress { get; } = new InternalRealtimeServerEventTypeGA(McpListToolsInProgressValue);
 
-        internal static InternalRealtimeServerEventTypeGA McpListToolsCompleted { get; } = new InternalRealtimeServerEventTypeGA(McpListToolsCompletedValue);
+        public static InternalRealtimeServerEventTypeGA McpListToolsCompleted { get; } = new InternalRealtimeServerEventTypeGA(McpListToolsCompletedValue);
 
-        internal static InternalRealtimeServerEventTypeGA McpListToolsFailed { get; } = new InternalRealtimeServerEventTypeGA(McpListToolsFailedValue);
+        public static InternalRealtimeServerEventTypeGA McpListToolsFailed { get; } = new InternalRealtimeServerEventTypeGA(McpListToolsFailedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseMcpCallArgumentsDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallArgumentsDeltaValue);
+        public static InternalRealtimeServerEventTypeGA ResponseMcpCallArgumentsDelta { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallArgumentsDeltaValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseMcpCallArgumentsDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallArgumentsDoneValue);
+        public static InternalRealtimeServerEventTypeGA ResponseMcpCallArgumentsDone { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallArgumentsDoneValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseMcpCallInProgress { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallInProgressValue);
+        public static InternalRealtimeServerEventTypeGA ResponseMcpCallInProgress { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallInProgressValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseMcpCallCompleted { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallCompletedValue);
+        public static InternalRealtimeServerEventTypeGA ResponseMcpCallCompleted { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallCompletedValue);
 
-        internal static InternalRealtimeServerEventTypeGA ResponseMcpCallFailed { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallFailedValue);
+        public static InternalRealtimeServerEventTypeGA ResponseMcpCallFailed { get; } = new InternalRealtimeServerEventTypeGA(ResponseMcpCallFailedValue);
 
         public static bool operator ==(InternalRealtimeServerEventTypeGA left, InternalRealtimeServerEventTypeGA right) => left.Equals(right);
 

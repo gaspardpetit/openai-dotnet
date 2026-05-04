@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRun
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -67,17 +69,17 @@ namespace OpenAI.Evals
 
         public string ReportUrl { get; }
 
-        internal InternalEvalRunResultCounts ResultCounts { get; }
+        public InternalEvalRunResultCounts ResultCounts { get; }
 
-        internal IList<InternalEvalRunPerModelUsage> PerModelUsage { get; }
+        public IList<InternalEvalRunPerModelUsage> PerModelUsage { get; }
 
-        internal IList<InternalEvalRunPerTestingCriteriaResult> PerTestingCriteriaResults { get; }
+        public IList<InternalEvalRunPerTestingCriteriaResult> PerTestingCriteriaResults { get; }
 
-        internal InternalEvalRunDataSourceResource DataSource { get; }
+        public InternalEvalRunDataSourceResource DataSource { get; }
 
         public IDictionary<string, string> Metadata { get; }
 
-        internal InternalEvalApiError Error { get; }
+        public InternalEvalApiError Error { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

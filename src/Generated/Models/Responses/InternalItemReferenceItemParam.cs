@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemReferenceItemParam : InternalItemParam
     {
         public InternalItemReferenceItemParam(string id) : base(InternalItemType.ItemReference)
         {
+            Argument.AssertNotNull(id, nameof(id));
+
             Id = id;
         }
 

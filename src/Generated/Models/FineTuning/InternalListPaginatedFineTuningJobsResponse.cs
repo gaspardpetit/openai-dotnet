@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public partial class InternalListPaginatedFineTuningJobsResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -28,7 +30,7 @@ namespace OpenAI.FineTuning
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal IList<InternalFineTuningJob> Data { get; }
+        public IList<InternalFineTuningJob> Data { get; }
 
         public bool HasMore { get; }
 

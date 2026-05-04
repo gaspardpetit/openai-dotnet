@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalApplyPatchOperationType : IEquatable<InternalApplyPatchOperationType>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Responses
 
         public InternalApplyPatchOperationType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalApplyPatchOperationType CreateFile { get; } = new InternalApplyPatchOperationType(CreateFileValue);
+        public static InternalApplyPatchOperationType CreateFile { get; } = new InternalApplyPatchOperationType(CreateFileValue);
 
-        internal static InternalApplyPatchOperationType DeleteFile { get; } = new InternalApplyPatchOperationType(DeleteFileValue);
+        public static InternalApplyPatchOperationType DeleteFile { get; } = new InternalApplyPatchOperationType(DeleteFileValue);
 
-        internal static InternalApplyPatchOperationType UpdateFile { get; } = new InternalApplyPatchOperationType(UpdateFileValue);
+        public static InternalApplyPatchOperationType UpdateFile { get; } = new InternalApplyPatchOperationType(UpdateFileValue);
 
         public static bool operator ==(InternalApplyPatchOperationType left, InternalApplyPatchOperationType right) => left.Equals(right);
 

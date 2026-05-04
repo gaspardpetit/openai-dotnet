@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Chat
 {
-    public partial class ChatClientGetChatCompletionsCollectionResultOfT : CollectionResult<ChatCompletion>
+    internal partial class ChatClientGetChatCompletionsCollectionResultOfT : CollectionResult<ChatCompletion>
     {
         private readonly ChatClient _client;
         private readonly string _after;

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDeltaStepDetailsToolCallsCodeObject : InternalRunStepDeltaStepDetailsToolCallsObjectToolCallsObject
     {
         internal InternalRunStepDeltaStepDetailsToolCallsCodeObject(int index) : base(RunStepToolCallKind.CodeInterpreter)
@@ -25,6 +27,6 @@ namespace OpenAI.Assistants
 
         public string Id { get; }
 
-        internal InternalRunStepDeltaStepDetailsToolCallsCodeObjectCodeInterpreter CodeInterpreter { get; }
+        public InternalRunStepDeltaStepDetailsToolCallsCodeObjectCodeInterpreter CodeInterpreter { get; }
     }
 }

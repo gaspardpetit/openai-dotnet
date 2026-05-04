@@ -16,6 +16,6 @@ namespace OpenAI.Assistants
             FileSearch = fileSearch;
         }
 
-        internal InternalAssistantToolsFileSearchFileSearch FileSearch { get; set; }
+        public InternalAssistantToolsFileSearchFileSearch FileSearch { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseFormatJsonSchemaSchema
     {
         [Experimental("SCME0001")]

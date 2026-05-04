@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDeltaObjectDelta
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -21,7 +23,7 @@ namespace OpenAI.Assistants
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRunStepDeltaStepDetails StepDetails { get; }
+        public InternalRunStepDeltaStepDetails StepDetails { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

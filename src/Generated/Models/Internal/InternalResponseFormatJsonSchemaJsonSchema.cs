@@ -7,9 +7,11 @@ using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using OpenAI;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseFormatJsonSchemaJsonSchema
     {
         [Experimental("SCME0001")]
@@ -17,6 +19,8 @@ namespace OpenAI.Internal
 
         public InternalResponseFormatJsonSchemaJsonSchema(string name)
         {
+            Argument.AssertNotNull(name, nameof(name));
+
             Name = name;
         }
 

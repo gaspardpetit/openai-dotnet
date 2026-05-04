@@ -4,15 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageContentImageUrlObjectImageUrl
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalMessageContentImageUrlObjectImageUrl(Uri url)
         {
+            Argument.AssertNotNull(url, nameof(url));
+
             Url = url;
         }
 

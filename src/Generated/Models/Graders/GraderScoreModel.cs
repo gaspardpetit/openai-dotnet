@@ -14,7 +14,7 @@ namespace OpenAI.Graders
     [Experimental("OPENAI001")]
     public partial class GraderScoreModel : Grader
     {
-        internal GraderScoreModel(string name, string model, IEnumerable<InternalEvalItem> input) : base(GraderType.ScoreModel)
+        public GraderScoreModel(string name, string model, IEnumerable<InternalEvalItem> input) : base(GraderType.ScoreModel)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(model, nameof(model));
@@ -42,7 +42,7 @@ namespace OpenAI.Graders
 
         public BinaryData SamplingParams { get; set; }
 
-        internal IList<InternalEvalItem> Input { get; }
+        public IList<InternalEvalItem> Input { get; }
 
         public IList<float> Range { get; }
     }

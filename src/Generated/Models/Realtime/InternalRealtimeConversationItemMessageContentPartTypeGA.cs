@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeConversationItemMessageContentPartTypeGA : IEquatable<InternalRealtimeConversationItemMessageContentPartTypeGA>
     {
         private readonly string _value;
@@ -18,18 +21,20 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeConversationItemMessageContentPartTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeConversationItemMessageContentPartTypeGA InputText { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(InputTextValue);
+        public static InternalRealtimeConversationItemMessageContentPartTypeGA InputText { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(InputTextValue);
 
-        internal static InternalRealtimeConversationItemMessageContentPartTypeGA InputAudio { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(InputAudioValue);
+        public static InternalRealtimeConversationItemMessageContentPartTypeGA InputAudio { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(InputAudioValue);
 
-        internal static InternalRealtimeConversationItemMessageContentPartTypeGA InputImage { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(InputImageValue);
+        public static InternalRealtimeConversationItemMessageContentPartTypeGA InputImage { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(InputImageValue);
 
-        internal static InternalRealtimeConversationItemMessageContentPartTypeGA OutputText { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(OutputTextValue);
+        public static InternalRealtimeConversationItemMessageContentPartTypeGA OutputText { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(OutputTextValue);
 
-        internal static InternalRealtimeConversationItemMessageContentPartTypeGA OutputAudio { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(OutputAudioValue);
+        public static InternalRealtimeConversationItemMessageContentPartTypeGA OutputAudio { get; } = new InternalRealtimeConversationItemMessageContentPartTypeGA(OutputAudioValue);
 
         public static bool operator ==(InternalRealtimeConversationItemMessageContentPartTypeGA left, InternalRealtimeConversationItemMessageContentPartTypeGA right) => left.Equals(right);
 

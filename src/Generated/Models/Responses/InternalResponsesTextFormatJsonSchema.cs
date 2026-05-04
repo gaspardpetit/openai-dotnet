@@ -4,13 +4,19 @@
 
 using System;
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponsesTextFormatJsonSchema : ResponseTextFormat
     {
         public InternalResponsesTextFormatJsonSchema(string name, BinaryData schema) : base(InternalResponsesTextFormatType.JsonSchema)
         {
+            Argument.AssertNotNull(name, nameof(name));
+            Argument.AssertNotNull(schema, nameof(schema));
+
             Name = name;
             Schema = schema;
         }

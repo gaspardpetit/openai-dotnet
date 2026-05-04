@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDetailsToolCallsFileSearchObject : RunStepToolCall
     {
         internal InternalRunStepDetailsToolCallsFileSearchObject(string id, InternalRunStepDetailsToolCallsFileSearchObjectFileSearch fileSearch) : base(RunStepToolCallKind.FileSearch, id)
@@ -19,6 +21,6 @@ namespace OpenAI.Assistants
             FileSearch = fileSearch;
         }
 
-        internal InternalRunStepDetailsToolCallsFileSearchObjectFileSearch FileSearch { get; }
+        public InternalRunStepDetailsToolCallsFileSearchObjectFileSearch FileSearch { get; }
     }
 }

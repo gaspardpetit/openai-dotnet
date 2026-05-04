@@ -12,6 +12,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLocalShellExecAction
     {
         [Experimental("SCME0001")]
@@ -20,6 +21,9 @@ namespace OpenAI.Responses
         public InternalLocalShellExecAction(IEnumerable<string> command, IDictionary<string, string> env)
         {
             // Plugin customization: ensure initialization of collections
+            Argument.AssertNotNull(command, nameof(command));
+            Argument.AssertNotNull(env, nameof(env));
+
             Command = command.ToList();
             Env = env ?? new ChangeTrackingDictionary<string, string>();
         }

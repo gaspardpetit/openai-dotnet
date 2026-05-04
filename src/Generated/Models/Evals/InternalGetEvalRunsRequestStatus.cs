@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalGetEvalRunsRequestStatus : IEquatable<InternalGetEvalRunsRequestStatus>
     {
         private readonly string _value;
@@ -18,18 +21,20 @@ namespace OpenAI.Evals
 
         public InternalGetEvalRunsRequestStatus(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalGetEvalRunsRequestStatus Queued { get; } = new InternalGetEvalRunsRequestStatus(QueuedValue);
+        public static InternalGetEvalRunsRequestStatus Queued { get; } = new InternalGetEvalRunsRequestStatus(QueuedValue);
 
-        internal static InternalGetEvalRunsRequestStatus InProgress { get; } = new InternalGetEvalRunsRequestStatus(InProgressValue);
+        public static InternalGetEvalRunsRequestStatus InProgress { get; } = new InternalGetEvalRunsRequestStatus(InProgressValue);
 
-        internal static InternalGetEvalRunsRequestStatus Completed { get; } = new InternalGetEvalRunsRequestStatus(CompletedValue);
+        public static InternalGetEvalRunsRequestStatus Completed { get; } = new InternalGetEvalRunsRequestStatus(CompletedValue);
 
-        internal static InternalGetEvalRunsRequestStatus Canceled { get; } = new InternalGetEvalRunsRequestStatus(CanceledValue);
+        public static InternalGetEvalRunsRequestStatus Canceled { get; } = new InternalGetEvalRunsRequestStatus(CanceledValue);
 
-        internal static InternalGetEvalRunsRequestStatus Failed { get; } = new InternalGetEvalRunsRequestStatus(FailedValue);
+        public static InternalGetEvalRunsRequestStatus Failed { get; } = new InternalGetEvalRunsRequestStatus(FailedValue);
 
         public static bool operator ==(InternalGetEvalRunsRequestStatus left, InternalGetEvalRunsRequestStatus right) => left.Equals(right);
 

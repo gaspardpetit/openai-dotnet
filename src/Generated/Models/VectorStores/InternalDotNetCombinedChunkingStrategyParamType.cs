@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalDotNetCombinedChunkingStrategyParamType : IEquatable<InternalDotNetCombinedChunkingStrategyParamType>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.VectorStores
 
         public InternalDotNetCombinedChunkingStrategyParamType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalDotNetCombinedChunkingStrategyParamType Auto { get; } = new InternalDotNetCombinedChunkingStrategyParamType(AutoValue);
+        public static InternalDotNetCombinedChunkingStrategyParamType Auto { get; } = new InternalDotNetCombinedChunkingStrategyParamType(AutoValue);
 
-        internal static InternalDotNetCombinedChunkingStrategyParamType Static { get; } = new InternalDotNetCombinedChunkingStrategyParamType(StaticValue);
+        public static InternalDotNetCombinedChunkingStrategyParamType Static { get; } = new InternalDotNetCombinedChunkingStrategyParamType(StaticValue);
 
-        internal static InternalDotNetCombinedChunkingStrategyParamType Other { get; } = new InternalDotNetCombinedChunkingStrategyParamType(OtherValue);
+        public static InternalDotNetCombinedChunkingStrategyParamType Other { get; } = new InternalDotNetCombinedChunkingStrategyParamType(OtherValue);
 
         public static bool operator ==(InternalDotNetCombinedChunkingStrategyParamType left, InternalDotNetCombinedChunkingStrategyParamType right) => left.Equals(right);
 

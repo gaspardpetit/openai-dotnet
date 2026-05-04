@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMCPApprovalResponseItemParam : InternalItemParam
     {
         public InternalMCPApprovalResponseItemParam(string approvalRequestId, bool approve) : base(InternalItemType.McpApprovalResponse)
         {
+            Argument.AssertNotNull(approvalRequestId, nameof(approvalRequestId));
+
             ApprovalRequestId = approvalRequestId;
             Approve = approve;
         }

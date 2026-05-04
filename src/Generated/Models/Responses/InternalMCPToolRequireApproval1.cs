@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMCPToolRequireApproval1
     {
         [Experimental("SCME0001")]

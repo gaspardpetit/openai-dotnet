@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalAudioTranscriptionGAModel : IEquatable<InternalAudioTranscriptionGAModel>
     {
         private readonly string _value;
@@ -18,18 +21,20 @@ namespace OpenAI.Realtime
 
         public InternalAudioTranscriptionGAModel(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalAudioTranscriptionGAModel Whisper1 { get; } = new InternalAudioTranscriptionGAModel(Whisper1Value);
+        public static InternalAudioTranscriptionGAModel Whisper1 { get; } = new InternalAudioTranscriptionGAModel(Whisper1Value);
 
-        internal static InternalAudioTranscriptionGAModel Gpt4oMiniTranscribe { get; } = new InternalAudioTranscriptionGAModel(Gpt4oMiniTranscribeValue);
+        public static InternalAudioTranscriptionGAModel Gpt4oMiniTranscribe { get; } = new InternalAudioTranscriptionGAModel(Gpt4oMiniTranscribeValue);
 
-        internal static InternalAudioTranscriptionGAModel Gpt4oMiniTranscribe20251215 { get; } = new InternalAudioTranscriptionGAModel(Gpt4oMiniTranscribe20251215Value);
+        public static InternalAudioTranscriptionGAModel Gpt4oMiniTranscribe20251215 { get; } = new InternalAudioTranscriptionGAModel(Gpt4oMiniTranscribe20251215Value);
 
-        internal static InternalAudioTranscriptionGAModel Gpt4oTranscribe { get; } = new InternalAudioTranscriptionGAModel(Gpt4oTranscribeValue);
+        public static InternalAudioTranscriptionGAModel Gpt4oTranscribe { get; } = new InternalAudioTranscriptionGAModel(Gpt4oTranscribeValue);
 
-        internal static InternalAudioTranscriptionGAModel Gpt4oTranscribeDiarize { get; } = new InternalAudioTranscriptionGAModel(Gpt4oTranscribeDiarizeValue);
+        public static InternalAudioTranscriptionGAModel Gpt4oTranscribeDiarize { get; } = new InternalAudioTranscriptionGAModel(Gpt4oTranscribeDiarizeValue);
 
         public static bool operator ==(InternalAudioTranscriptionGAModel left, InternalAudioTranscriptionGAModel right) => left.Equals(right);
 

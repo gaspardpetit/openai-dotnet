@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Batch
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalBatchRequestInputMethod : IEquatable<InternalBatchRequestInputMethod>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Batch
 
         public InternalBatchRequestInputMethod(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalBatchRequestInputMethod POST { get; } = new InternalBatchRequestInputMethod(POSTValue);
+        public static InternalBatchRequestInputMethod POST { get; } = new InternalBatchRequestInputMethod(POSTValue);
 
         public static bool operator ==(InternalBatchRequestInputMethod left, InternalBatchRequestInputMethod right) => left.Equals(right);
 

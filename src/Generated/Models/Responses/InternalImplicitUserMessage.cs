@@ -7,9 +7,11 @@ using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalImplicitUserMessage
     {
         [Experimental("SCME0001")]
@@ -17,6 +19,8 @@ namespace OpenAI.Responses
 
         public InternalImplicitUserMessage(BinaryData content)
         {
+            Argument.AssertNotNull(content, nameof(content));
+
             Content = content;
         }
 

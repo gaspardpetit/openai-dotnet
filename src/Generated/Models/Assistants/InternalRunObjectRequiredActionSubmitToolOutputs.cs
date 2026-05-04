@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunObjectRequiredActionSubmitToolOutputs
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -23,7 +25,7 @@ namespace OpenAI.Assistants
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal IReadOnlyList<InternalRequiredFunctionToolCall> ToolCalls { get; }
+        public IReadOnlyList<InternalRequiredFunctionToolCall> ToolCalls { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

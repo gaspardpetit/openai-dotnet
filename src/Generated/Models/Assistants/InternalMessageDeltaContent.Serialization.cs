@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Assistants
 {
     [PersistableModelProxy(typeof(UnknownMessageDeltaContent))]
-    public abstract partial class InternalMessageDeltaContent : IJsonModel<InternalMessageDeltaContent>
+    public partial class InternalMessageDeltaContent : IJsonModel<InternalMessageDeltaContent>
     {
         internal InternalMessageDeltaContent()
         {

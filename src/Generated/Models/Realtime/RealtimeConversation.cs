@@ -35,6 +35,6 @@ namespace OpenAI.Realtime
 
         public string Id { get; }
 
-        internal InternalRealtimeServerEventConversationCreatedConversationGAObject? Object { get; }
+        public InternalRealtimeServerEventConversationCreatedConversationGAObject? Object { get; }
     }
 }

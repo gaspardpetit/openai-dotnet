@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateTranscriptionResponseJsonUsageType : IEquatable<InternalCreateTranscriptionResponseJsonUsageType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Audio
 
         public InternalCreateTranscriptionResponseJsonUsageType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateTranscriptionResponseJsonUsageType Tokens { get; } = new InternalCreateTranscriptionResponseJsonUsageType(TokensValue);
+        public static InternalCreateTranscriptionResponseJsonUsageType Tokens { get; } = new InternalCreateTranscriptionResponseJsonUsageType(TokensValue);
 
-        internal static InternalCreateTranscriptionResponseJsonUsageType Duration { get; } = new InternalCreateTranscriptionResponseJsonUsageType(DurationValue);
+        public static InternalCreateTranscriptionResponseJsonUsageType Duration { get; } = new InternalCreateTranscriptionResponseJsonUsageType(DurationValue);
 
         public static bool operator ==(InternalCreateTranscriptionResponseJsonUsageType left, InternalCreateTranscriptionResponseJsonUsageType right) => left.Equals(right);
 

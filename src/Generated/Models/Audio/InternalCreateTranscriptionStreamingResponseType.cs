@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateTranscriptionStreamingResponseType : IEquatable<InternalCreateTranscriptionStreamingResponseType>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Audio
 
         public InternalCreateTranscriptionStreamingResponseType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateTranscriptionStreamingResponseType TranscriptTextSegment { get; } = new InternalCreateTranscriptionStreamingResponseType(TranscriptTextSegmentValue);
+        public static InternalCreateTranscriptionStreamingResponseType TranscriptTextSegment { get; } = new InternalCreateTranscriptionStreamingResponseType(TranscriptTextSegmentValue);
 
-        internal static InternalCreateTranscriptionStreamingResponseType TranscriptTextDelta { get; } = new InternalCreateTranscriptionStreamingResponseType(TranscriptTextDeltaValue);
+        public static InternalCreateTranscriptionStreamingResponseType TranscriptTextDelta { get; } = new InternalCreateTranscriptionStreamingResponseType(TranscriptTextDeltaValue);
 
-        internal static InternalCreateTranscriptionStreamingResponseType TranscriptTextDone { get; } = new InternalCreateTranscriptionStreamingResponseType(TranscriptTextDoneValue);
+        public static InternalCreateTranscriptionStreamingResponseType TranscriptTextDone { get; } = new InternalCreateTranscriptionStreamingResponseType(TranscriptTextDoneValue);
 
         public static bool operator ==(InternalCreateTranscriptionStreamingResponseType left, InternalCreateTranscriptionStreamingResponseType right) => left.Equals(right);
 

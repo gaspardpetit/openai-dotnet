@@ -3,13 +3,19 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFunctionToolCallOutputItemParam : InternalItemParam
     {
         public InternalFunctionToolCallOutputItemParam(string callId, string output) : base(InternalItemType.FunctionCallOutput)
         {
+            Argument.AssertNotNull(callId, nameof(callId));
+            Argument.AssertNotNull(output, nameof(output));
+
             CallId = callId;
             Output = output;
         }

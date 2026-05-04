@@ -12,6 +12,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionMessageList
     {
         [Experimental("SCME0001")]

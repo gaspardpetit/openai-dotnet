@@ -4,15 +4,19 @@
 
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponsesAssistantMessage : MessageResponseItem
     {
         public InternalResponsesAssistantMessage(IEnumerable<ResponseContentPart> internalContent) : base(InternalResponsesMessageRole.Assistant)
         {
+            Argument.AssertNotNull(internalContent, nameof(internalContent));
+
             InternalContent = internalContent.ToList();
         }
 

@@ -4,9 +4,11 @@
 
 using System;
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalImageGenToolCallItemParam : InternalItemParam
     {
         public InternalImageGenToolCallItemParam(BinaryData result) : base(InternalItemType.ImageGenerationCall)

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalEvalItemRole : IEquatable<InternalEvalItemRole>
     {
         private readonly string _value;
@@ -17,16 +20,18 @@ namespace OpenAI.Evals
 
         public InternalEvalItemRole(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalEvalItemRole User { get; } = new InternalEvalItemRole(UserValue);
+        public static InternalEvalItemRole User { get; } = new InternalEvalItemRole(UserValue);
 
-        internal static InternalEvalItemRole Assistant { get; } = new InternalEvalItemRole(AssistantValue);
+        public static InternalEvalItemRole Assistant { get; } = new InternalEvalItemRole(AssistantValue);
 
-        internal static InternalEvalItemRole System { get; } = new InternalEvalItemRole(SystemValue);
+        public static InternalEvalItemRole System { get; } = new InternalEvalItemRole(SystemValue);
 
-        internal static InternalEvalItemRole Developer { get; } = new InternalEvalItemRole(DeveloperValue);
+        public static InternalEvalItemRole Developer { get; } = new InternalEvalItemRole(DeveloperValue);
 
         public static bool operator ==(InternalEvalItemRole left, InternalEvalItemRole right) => left.Equals(right);
 

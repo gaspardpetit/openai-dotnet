@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeConversationItemTypeGA : IEquatable<InternalRealtimeConversationItemTypeGA>
     {
         private readonly string _value;
@@ -20,22 +23,24 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeConversationItemTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeConversationItemTypeGA Message { get; } = new InternalRealtimeConversationItemTypeGA(MessageValue);
+        public static InternalRealtimeConversationItemTypeGA Message { get; } = new InternalRealtimeConversationItemTypeGA(MessageValue);
 
-        internal static InternalRealtimeConversationItemTypeGA FunctionCall { get; } = new InternalRealtimeConversationItemTypeGA(FunctionCallValue);
+        public static InternalRealtimeConversationItemTypeGA FunctionCall { get; } = new InternalRealtimeConversationItemTypeGA(FunctionCallValue);
 
-        internal static InternalRealtimeConversationItemTypeGA FunctionCallOutput { get; } = new InternalRealtimeConversationItemTypeGA(FunctionCallOutputValue);
+        public static InternalRealtimeConversationItemTypeGA FunctionCallOutput { get; } = new InternalRealtimeConversationItemTypeGA(FunctionCallOutputValue);
 
-        internal static InternalRealtimeConversationItemTypeGA McpApprovalResponse { get; } = new InternalRealtimeConversationItemTypeGA(McpApprovalResponseValue);
+        public static InternalRealtimeConversationItemTypeGA McpApprovalResponse { get; } = new InternalRealtimeConversationItemTypeGA(McpApprovalResponseValue);
 
-        internal static InternalRealtimeConversationItemTypeGA McpListTools { get; } = new InternalRealtimeConversationItemTypeGA(McpListToolsValue);
+        public static InternalRealtimeConversationItemTypeGA McpListTools { get; } = new InternalRealtimeConversationItemTypeGA(McpListToolsValue);
 
-        internal static InternalRealtimeConversationItemTypeGA McpCall { get; } = new InternalRealtimeConversationItemTypeGA(McpCallValue);
+        public static InternalRealtimeConversationItemTypeGA McpCall { get; } = new InternalRealtimeConversationItemTypeGA(McpCallValue);
 
-        internal static InternalRealtimeConversationItemTypeGA McpApprovalRequest { get; } = new InternalRealtimeConversationItemTypeGA(McpApprovalRequestValue);
+        public static InternalRealtimeConversationItemTypeGA McpApprovalRequest { get; } = new InternalRealtimeConversationItemTypeGA(McpApprovalRequestValue);
 
         public static bool operator ==(InternalRealtimeConversationItemTypeGA left, InternalRealtimeConversationItemTypeGA right) => left.Equals(right);
 

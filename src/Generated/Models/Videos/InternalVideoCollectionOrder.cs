@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVideoCollectionOrder : IEquatable<InternalVideoCollectionOrder>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Videos
 
         public InternalVideoCollectionOrder(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalVideoCollectionOrder Ascending { get; } = new InternalVideoCollectionOrder(AscendingValue);
+        public static InternalVideoCollectionOrder Ascending { get; } = new InternalVideoCollectionOrder(AscendingValue);
 
-        internal static InternalVideoCollectionOrder Descending { get; } = new InternalVideoCollectionOrder(DescendingValue);
+        public static InternalVideoCollectionOrder Descending { get; } = new InternalVideoCollectionOrder(DescendingValue);
 
         public static bool operator ==(InternalVideoCollectionOrder left, InternalVideoCollectionOrder right) => left.Equals(right);
 

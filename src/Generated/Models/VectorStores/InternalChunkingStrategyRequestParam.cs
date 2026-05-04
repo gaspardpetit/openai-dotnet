@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
-    public abstract partial class InternalChunkingStrategyRequestParam
+    [Experimental("OPENAI001")]
+    public partial class InternalChunkingStrategyRequestParam
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
