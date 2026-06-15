@@ -11,9 +11,7 @@ namespace OpenAI.Audio
 {
     public partial class AudioTranscriptionOptions
     {
-        private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
-
-        internal AudioTranscriptionOptions(BinaryData @file, InternalCreateTranscriptionRequestModel model, string language, string prompt, AudioTranscriptionFormat? responseFormat, float? temperature, IList<InternalTranscriptionInclude> internalInclude, IList<BinaryData> internalTimestampGranularities, bool? stream, AudioTranscriptionChunkingStrategy chunkingStrategy, IList<string> knownSpeakerNames, IList<Uri> knownSpeakerReferenceUris, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal AudioTranscriptionOptions(BinaryData @file, InternalCreateTranscriptionRequestModel model, string language, string prompt, AudioTranscriptionFormat? responseFormat, float? temperature, IList<InternalTranscriptionInclude> internalInclude, IList<BinaryData> internalTimestampGranularities, bool? stream, AudioTranscriptionChunkingStrategy chunkingStrategy, IList<string> knownSpeakerNames, IList<Uri> knownSpeakerReferenceUris)
         {
             // Plugin customization: ensure initialization of collections
             File = @file;
@@ -28,7 +26,6 @@ namespace OpenAI.Audio
             ChunkingStrategy = chunkingStrategy;
             KnownSpeakerNames = knownSpeakerNames ?? new ChangeTrackingList<string>();
             KnownSpeakerReferenceUris = knownSpeakerReferenceUris ?? new ChangeTrackingList<Uri>();
-            _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
         public string Language { get; set; }
@@ -41,11 +38,5 @@ namespace OpenAI.Audio
 
         [Experimental("OPENAI001")]
         public IList<string> KnownSpeakerNames { get; }
-
-        internal IDictionary<string, BinaryData> SerializedAdditionalRawData
-        {
-            get => _additionalBinaryDataProperties;
-            set => _additionalBinaryDataProperties = value;
-        }
     }
 }

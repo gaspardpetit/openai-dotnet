@@ -6,10 +6,11 @@ using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OpenAI.Responses
 {
-    public partial class ResponsesClientGetResponseInputItemsAsyncCollectionResult : AsyncCollectionResult
+    internal partial class ResponsesClientGetResponseInputItemsAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly ResponsesClient _client;
         private readonly string _responseId;
@@ -36,7 +37,7 @@ namespace OpenAI.Responses
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
+                ClientResult result = await GetNextResponseAsync(message).ConfigureAwait(false);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -62,6 +63,11 @@ namespace OpenAI.Responses
             {
                 return null;
             }
+        }
+
+        private async ValueTask<ClientResult> GetNextResponseAsync(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
         }
     }
 }

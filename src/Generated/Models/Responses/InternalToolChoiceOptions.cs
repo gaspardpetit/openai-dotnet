@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalToolChoiceOptions : IEquatable<InternalToolChoiceOptions>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Responses
 
         public InternalToolChoiceOptions(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalToolChoiceOptions None { get; } = new InternalToolChoiceOptions(NoneValue);
+        public static InternalToolChoiceOptions None { get; } = new InternalToolChoiceOptions(NoneValue);
 
-        internal static InternalToolChoiceOptions Auto { get; } = new InternalToolChoiceOptions(AutoValue);
+        public static InternalToolChoiceOptions Auto { get; } = new InternalToolChoiceOptions(AutoValue);
 
-        internal static InternalToolChoiceOptions Required { get; } = new InternalToolChoiceOptions(RequiredValue);
+        public static InternalToolChoiceOptions Required { get; } = new InternalToolChoiceOptions(RequiredValue);
 
         public static bool operator ==(InternalToolChoiceOptions left, InternalToolChoiceOptions right) => left.Equals(right);
 

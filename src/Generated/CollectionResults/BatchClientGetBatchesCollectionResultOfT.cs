@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Batch
 {
-    public partial class BatchClientGetBatchesCollectionResultOfT : CollectionResult<BatchJob>
+    internal partial class BatchClientGetBatchesCollectionResultOfT : CollectionResult<BatchJob>
     {
         private readonly BatchClient _client;
         private readonly string _after;
@@ -30,7 +30,7 @@ namespace OpenAI.Batch
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
+                ClientResult result = GetNextResponse(message);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -61,6 +61,11 @@ namespace OpenAI.Batch
         protected override IEnumerable<BatchJob> GetValuesFromPage(ClientResult page)
         {
             return ((InternalListBatchesResponse)page).Data;
+        }
+
+        private ClientResult GetNextResponse(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
         }
     }
 }

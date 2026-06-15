@@ -96,8 +96,14 @@ namespace OpenAI.Responses
             if (!Patch.Contains("$.annotation"u8))
             {
                 writer.WritePropertyName("annotation"u8);
-                IJsonModel<ResponseMessageAnnotation> jsonAnnotation = Annotation;
-                jsonAnnotation.Write(writer, options);
+#if NET6_0_OR_GREATER
+                writer.WriteRawValue(Annotation);
+#else
+                using (JsonDocument document = JsonDocument.Parse(Annotation))
+                {
+                    JsonSerializer.Serialize(writer, document.RootElement);
+                }
+#endif
             }
 
             Patch.WriteTo(writer);
@@ -132,7 +138,7 @@ namespace OpenAI.Responses
             int outputIndex = default;
             int contentIndex = default;
             int annotationIndex = default;
-            ResponseMessageAnnotation annotation = default;
+            BinaryData annotation = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -167,7 +173,7 @@ namespace OpenAI.Responses
                 }
                 if (prop.NameEquals("annotation"u8))
                 {
-                    annotation = ResponseMessageAnnotation.DeserializeResponseMessageAnnotation(prop.Value, data, options);
+                    annotation = BinaryData.FromString(prop.Value.GetRawText());
                     continue;
                 }
                 patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());

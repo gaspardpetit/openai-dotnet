@@ -3,22 +3,18 @@
 #nullable disable
 
 using System;
-using System.Collections.Generic;
 
 namespace OpenAI.Audio
 {
     public partial class AudioTranslationOptions
     {
-        private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
-
-        internal AudioTranslationOptions(BinaryData @file, InternalCreateTranslationRequestModel model, string prompt, AudioTranslationFormat? responseFormat, float? temperature, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal AudioTranslationOptions(BinaryData @file, InternalCreateTranslationRequestModel model, string prompt, AudioTranslationFormat? responseFormat, float? temperature)
         {
             File = @file;
             Model = model;
             Prompt = prompt;
             ResponseFormat = responseFormat;
             Temperature = temperature;
-            _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
         public string Prompt { get; set; }
@@ -26,11 +22,5 @@ namespace OpenAI.Audio
         public AudioTranslationFormat? ResponseFormat { get; set; }
 
         public float? Temperature { get; set; }
-
-        internal IDictionary<string, BinaryData> SerializedAdditionalRawData
-        {
-            get => _additionalBinaryDataProperties;
-            set => _additionalBinaryDataProperties = value;
-        }
     }
 }

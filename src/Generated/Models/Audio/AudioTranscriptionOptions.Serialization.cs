@@ -63,37 +63,44 @@ namespace OpenAI.Audio
             {
                 throw new FormatException($"The model {nameof(AudioTranscriptionOptions)} does not support writing '{format}' format.");
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("file") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("file") != true)
             {
                 writer.WritePropertyName("file"u8);
-                writer.WriteBase64StringValue(File.ToArray(), "D");
+#if NET6_0_OR_GREATER
+                writer.WriteRawValue(File);
+#else
+                using (JsonDocument document = JsonDocument.Parse(File))
+                {
+                    JsonSerializer.Serialize(writer, document.RootElement);
+                }
+#endif
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("model") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("model") != true)
             {
                 writer.WritePropertyName("model"u8);
                 writer.WriteStringValue(Model.ToString());
             }
-            if (Optional.IsDefined(Language) && _additionalBinaryDataProperties?.ContainsKey("language") != true)
+            if (Optional.IsDefined(Language) && this._additionalBinaryDataProperties?.ContainsKey("language") != true)
             {
                 writer.WritePropertyName("language"u8);
                 writer.WriteStringValue(Language);
             }
-            if (Optional.IsDefined(Prompt) && _additionalBinaryDataProperties?.ContainsKey("prompt") != true)
+            if (Optional.IsDefined(Prompt) && this._additionalBinaryDataProperties?.ContainsKey("prompt") != true)
             {
                 writer.WritePropertyName("prompt"u8);
                 writer.WriteStringValue(Prompt);
             }
-            if (Optional.IsDefined(ResponseFormat) && _additionalBinaryDataProperties?.ContainsKey("response_format") != true)
+            if (Optional.IsDefined(ResponseFormat) && this._additionalBinaryDataProperties?.ContainsKey("response_format") != true)
             {
                 writer.WritePropertyName("response_format"u8);
                 writer.WriteStringValue(ResponseFormat.Value.ToString());
             }
-            if (Optional.IsDefined(Temperature) && _additionalBinaryDataProperties?.ContainsKey("temperature") != true)
+            if (Optional.IsDefined(Temperature) && this._additionalBinaryDataProperties?.ContainsKey("temperature") != true)
             {
                 writer.WritePropertyName("temperature"u8);
                 writer.WriteNumberValue(Temperature.Value);
             }
-            if (Optional.IsCollectionDefined(InternalInclude) && _additionalBinaryDataProperties?.ContainsKey("include") != true)
+            if (Optional.IsCollectionDefined(InternalInclude) && this._additionalBinaryDataProperties?.ContainsKey("include") != true)
             {
                 writer.WritePropertyName("include"u8);
                 writer.WriteStartArray();
@@ -103,7 +110,7 @@ namespace OpenAI.Audio
                 }
                 writer.WriteEndArray();
             }
-            if (Optional.IsCollectionDefined(InternalTimestampGranularities) && _additionalBinaryDataProperties?.ContainsKey("timestamp_granularities") != true)
+            if (Optional.IsCollectionDefined(InternalTimestampGranularities) && this._additionalBinaryDataProperties?.ContainsKey("timestamp_granularities") != true)
             {
                 writer.WritePropertyName("timestamp_granularities"u8);
                 writer.WriteStartArray();
@@ -125,17 +132,17 @@ namespace OpenAI.Audio
                 }
                 writer.WriteEndArray();
             }
-            if (Optional.IsDefined(Stream) && _additionalBinaryDataProperties?.ContainsKey("stream") != true)
+            if (Optional.IsDefined(Stream) && this._additionalBinaryDataProperties?.ContainsKey("stream") != true)
             {
                 writer.WritePropertyName("stream"u8);
                 writer.WriteBooleanValue(Stream.Value);
             }
-            if (Optional.IsDefined(ChunkingStrategy) && _additionalBinaryDataProperties?.ContainsKey("chunking_strategy") != true)
+            if (Optional.IsDefined(ChunkingStrategy) && this._additionalBinaryDataProperties?.ContainsKey("chunking_strategy") != true)
             {
                 writer.WritePropertyName("chunking_strategy"u8);
                 writer.WriteObjectValue(ChunkingStrategy, options);
             }
-            if (Optional.IsCollectionDefined(KnownSpeakerNames) && _additionalBinaryDataProperties?.ContainsKey("known_speaker_names") != true)
+            if (Optional.IsCollectionDefined(KnownSpeakerNames) && this._additionalBinaryDataProperties?.ContainsKey("known_speaker_names") != true)
             {
                 writer.WritePropertyName("known_speaker_names"u8);
                 writer.WriteStartArray();
@@ -150,7 +157,7 @@ namespace OpenAI.Audio
                 }
                 writer.WriteEndArray();
             }
-            if (Optional.IsCollectionDefined(KnownSpeakerReferenceUris) && _additionalBinaryDataProperties?.ContainsKey("known_speaker_references") != true)
+            if (Optional.IsCollectionDefined(KnownSpeakerReferenceUris) && this._additionalBinaryDataProperties?.ContainsKey("known_speaker_references") != true)
             {
                 writer.WritePropertyName("known_speaker_references"u8);
                 writer.WriteStartArray();
@@ -164,26 +171,6 @@ namespace OpenAI.Audio
                     writer.WriteStringValue(item.AbsoluteUri);
                 }
                 writer.WriteEndArray();
-            }
-            // Plugin customization: remove options.Format != "W" check
-            if (_additionalBinaryDataProperties != null)
-            {
-                foreach (var item in _additionalBinaryDataProperties)
-                {
-                    if (ModelSerializationExtensions.IsSentinelValue(item.Value))
-                    {
-                        continue;
-                    }
-                    writer.WritePropertyName(item.Key);
-#if NET6_0_OR_GREATER
-                    writer.WriteRawValue(item.Value);
-#else
-                    using (JsonDocument document = JsonDocument.Parse(item.Value))
-                    {
-                        JsonSerializer.Serialize(writer, document.RootElement);
-                    }
-#endif
-                }
             }
         }
 
@@ -219,12 +206,11 @@ namespace OpenAI.Audio
             AudioTranscriptionChunkingStrategy chunkingStrategy = default;
             IList<string> knownSpeakerNames = default;
             IList<Uri> knownSpeakerReferenceUris = default;
-            IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("file"u8))
                 {
-                    @file = BinaryData.FromBytes(prop.Value.GetBytesFromBase64("D"));
+                    @file = BinaryData.FromString(prop.Value.GetRawText());
                     continue;
                 }
                 if (prop.NameEquals("model"u8))
@@ -357,8 +343,6 @@ namespace OpenAI.Audio
                     knownSpeakerReferenceUris = array;
                     continue;
                 }
-                // Plugin customization: remove options.Format != "W" check
-                additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
             return new AudioTranscriptionOptions(
                 @file,
@@ -372,8 +356,7 @@ namespace OpenAI.Audio
                 stream,
                 chunkingStrategy,
                 knownSpeakerNames ?? new ChangeTrackingList<string>(),
-                knownSpeakerReferenceUris ?? new ChangeTrackingList<Uri>(),
-                additionalBinaryDataProperties);
+                knownSpeakerReferenceUris ?? new ChangeTrackingList<Uri>());
         }
     }
 }

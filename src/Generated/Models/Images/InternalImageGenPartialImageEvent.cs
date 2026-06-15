@@ -4,14 +4,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public partial class InternalImageGenPartialImageEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalImageGenPartialImageEvent(BinaryData b64Json, DateTimeOffset createdAt, InternalImageGenPartialImageEventSize size, InternalImageGenPartialImageEventQuality quality, InternalImageGenPartialImageEventBackground background, InternalImageGenPartialImageEventOutputFormat outputFormat, int partialImageIndex)
+        internal InternalImageGenPartialImageEvent(BinaryData b64Json, DateTimeOffset createdAt, CreateImageSize size, CreateImageQuality quality, CreateImageBackground background, CreateImageOutputFormat outputFormat, int partialImageIndex)
         {
             B64Json = b64Json;
             CreatedAt = createdAt;
@@ -22,7 +25,7 @@ namespace OpenAI.Images
             PartialImageIndex = partialImageIndex;
         }
 
-        internal InternalImageGenPartialImageEvent(string kind, BinaryData b64Json, DateTimeOffset createdAt, InternalImageGenPartialImageEventSize size, InternalImageGenPartialImageEventQuality quality, InternalImageGenPartialImageEventBackground background, InternalImageGenPartialImageEventOutputFormat outputFormat, int partialImageIndex, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal InternalImageGenPartialImageEvent(string kind, BinaryData b64Json, DateTimeOffset createdAt, CreateImageSize size, CreateImageQuality quality, CreateImageBackground background, CreateImageOutputFormat outputFormat, int partialImageIndex, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             Kind = kind;
             B64Json = b64Json;
@@ -41,13 +44,13 @@ namespace OpenAI.Images
 
         public DateTimeOffset CreatedAt { get; }
 
-        internal InternalImageGenPartialImageEventSize Size { get; }
+        public CreateImageSize Size { get; }
 
-        internal InternalImageGenPartialImageEventQuality Quality { get; }
+        public CreateImageQuality Quality { get; }
 
-        internal InternalImageGenPartialImageEventBackground Background { get; }
+        public CreateImageBackground Background { get; }
 
-        internal InternalImageGenPartialImageEventOutputFormat OutputFormat { get; }
+        public CreateImageOutputFormat OutputFormat { get; }
 
         public int PartialImageIndex { get; }
 

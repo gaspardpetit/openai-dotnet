@@ -4,16 +4,22 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 using OpenAI.Graders;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalGraderScoreModelParams : InternalEvalGraderParams
     {
-        internal InternalEvalGraderScoreModelParams(string name, string model, IEnumerable<InternalEvalItem> input) : base(GraderType.ScoreModel)
+        public InternalEvalGraderScoreModelParams(string name, string model, IEnumerable<InternalEvalItem> input) : base(GraderType.ScoreModel)
         {
+            Argument.AssertNotNull(name, nameof(name));
+            Argument.AssertNotNull(model, nameof(model));
+            Argument.AssertNotNull(input, nameof(input));
+
             Name = name;
             Model = model;
             Input = input.ToList();
@@ -37,7 +43,7 @@ namespace OpenAI.Evals
 
         public BinaryData SamplingParams { get; set; }
 
-        internal IList<InternalEvalItem> Input { get; }
+        public IList<InternalEvalItem> Input { get; }
 
         public IList<float> Range { get; }
 

@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseFormatJsonSchema : InternalResponseFormat
     {
-        internal InternalResponseFormatJsonSchema(InternalResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalResponseFormatType.JsonSchema)
+        public InternalResponseFormatJsonSchema(InternalResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalResponseFormatType.JsonSchema)
         {
+            Argument.AssertNotNull(jsonSchema, nameof(jsonSchema));
+
             JsonSchema = jsonSchema;
         }
 
@@ -21,6 +26,6 @@ namespace OpenAI.Internal
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
+        public InternalResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Containers
 {
-    public partial class ContainerClientGetContainerFilesAsyncCollectionResultOfT : AsyncCollectionResult<ContainerFileResource>
+    internal partial class ContainerClientGetContainerFilesAsyncCollectionResultOfT : AsyncCollectionResult<ContainerFileResource>
     {
         private readonly ContainerClient _client;
         private readonly string _containerId;
@@ -35,7 +35,7 @@ namespace OpenAI.Containers
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
+                ClientResult result = await GetNextResponseAsync(message).ConfigureAwait(false);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -70,6 +70,11 @@ namespace OpenAI.Containers
                 yield return item;
                 await Task.Yield();
             }
+        }
+
+        private async ValueTask<ClientResult> GetNextResponseAsync(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
         }
     }
 }
