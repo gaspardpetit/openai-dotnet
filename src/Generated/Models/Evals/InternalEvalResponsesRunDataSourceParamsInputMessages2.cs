@@ -4,15 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalResponsesRunDataSourceParamsInputMessages2
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalEvalResponsesRunDataSourceParamsInputMessages2(string itemReference)
         {
+            Argument.AssertNotNull(itemReference, nameof(itemReference));
+
             ItemReference = itemReference;
         }
 

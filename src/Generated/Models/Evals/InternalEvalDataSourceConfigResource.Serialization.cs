@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Evals
 {
     [PersistableModelProxy(typeof(InternalUnknownEvalDataSourceConfigResource))]
-    public abstract partial class InternalEvalDataSourceConfigResource : IJsonModel<InternalEvalDataSourceConfigResource>
+    public partial class InternalEvalDataSourceConfigResource : IJsonModel<InternalEvalDataSourceConfigResource>
     {
         internal InternalEvalDataSourceConfigResource()
         {

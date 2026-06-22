@@ -4,17 +4,21 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCompleteUploadRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalCompleteUploadRequest(IEnumerable<string> partIds)
         {
+            Argument.AssertNotNull(partIds, nameof(partIds));
+
             PartIds = partIds.ToList();
         }
 

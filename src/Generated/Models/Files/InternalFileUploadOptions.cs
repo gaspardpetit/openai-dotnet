@@ -2,30 +2,21 @@
 
 #nullable disable
 
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFileUploadOptions
     {
-        private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
-
-        internal InternalFileUploadOptions(Stream @file, FileUploadPurpose purpose, InternalFileExpirationAfter? expiresAfter, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal InternalFileUploadOptions(Stream @file, FileUploadPurpose purpose, InternalFileExpirationAfter? expiresAfter)
         {
             File = @file;
             Purpose = purpose;
             ExpiresAfter = expiresAfter;
-            _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalFileExpirationAfter? ExpiresAfter { get; set; }
-
-        internal IDictionary<string, BinaryData> SerializedAdditionalRawData
-        {
-            get => _additionalBinaryDataProperties;
-            set => _additionalBinaryDataProperties = value;
-        }
+        public InternalFileExpirationAfter? ExpiresAfter { get; set; }
     }
 }

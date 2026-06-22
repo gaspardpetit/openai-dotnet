@@ -3,11 +3,13 @@
 #nullable disable
 
 using System;
+using System.ClientModel;
 using System.ClientModel.Primitives;
-using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using OpenAI;
 
+#pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Files
 {
     public partial class InternalAddUploadPartRequest : IJsonModel<InternalAddUploadPartRequest>
@@ -63,30 +65,10 @@ namespace OpenAI.Files
             {
                 throw new FormatException($"The model {nameof(InternalAddUploadPartRequest)} does not support writing '{format}' format.");
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("data") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("data") != true)
             {
                 writer.WritePropertyName("data"u8);
-                writer.WriteBase64StringValue(Data.ToArray(), "D");
-            }
-            // Plugin customization: remove options.Format != "W" check
-            if (_additionalBinaryDataProperties != null)
-            {
-                foreach (var item in _additionalBinaryDataProperties)
-                {
-                    if (ModelSerializationExtensions.IsSentinelValue(item.Value))
-                    {
-                        continue;
-                    }
-                    writer.WritePropertyName(item.Key);
-#if NET6_0_OR_GREATER
-                    writer.WriteRawValue(item.Value);
-#else
-                    using (JsonDocument document = JsonDocument.Parse(item.Value))
-                    {
-                        JsonSerializer.Serialize(writer, document.RootElement);
-                    }
-#endif
-                }
+                writer.WriteObjectValue(Data, options);
             }
         }
 
@@ -109,19 +91,17 @@ namespace OpenAI.Files
             {
                 return null;
             }
-            BinaryData data = default;
-            IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
+            FileBinaryContent data = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("data"u8))
                 {
-                    data = BinaryData.FromBytes(prop.Value.GetBytesFromBase64("D"));
+                    data = new FileBinaryContent(new MemoryStream(prop.Value.GetBytesFromBase64(), false));
                     continue;
                 }
-                // Plugin customization: remove options.Format != "W" check
-                additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new InternalAddUploadPartRequest(data, additionalBinaryDataProperties);
+            return new InternalAddUploadPartRequest(data);
         }
     }
 }
+#pragma warning restore SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Conversations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalConversationItemCollectionOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -27,7 +29,7 @@ namespace OpenAI.Conversations
 
         public int? PageSizeLimit { get; set; }
 
-        internal InternalConversationItemCollectionOrder? Order { get; set; }
+        public InternalConversationItemCollectionOrder? Order { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

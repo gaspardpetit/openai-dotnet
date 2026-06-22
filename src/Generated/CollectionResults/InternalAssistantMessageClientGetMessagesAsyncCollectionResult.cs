@@ -6,10 +6,11 @@ using System;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantMessageClientGetMessagesAsyncCollectionResult : AsyncCollectionResult
+    internal partial class InternalAssistantMessageClientGetMessagesAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly InternalAssistantMessageClient _client;
         private readonly string _threadId;
@@ -19,7 +20,7 @@ namespace OpenAI.Assistants
         private readonly string _before;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantMessageClientGetMessagesAsyncCollectionResult(InternalAssistantMessageClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
+        public InternalAssistantMessageClientGetMessagesAsyncCollectionResult(InternalAssistantMessageClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
         {
             _client = client;
             _threadId = threadId;
@@ -36,7 +37,7 @@ namespace OpenAI.Assistants
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
+                ClientResult result = await GetNextResponseAsync(message).ConfigureAwait(false);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -62,6 +63,11 @@ namespace OpenAI.Assistants
             {
                 return null;
             }
+        }
+
+        private async ValueTask<ClientResult> GetNextResponseAsync(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
         }
     }
 }

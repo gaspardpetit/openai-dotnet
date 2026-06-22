@@ -154,7 +154,7 @@ namespace OpenAI.Responses
             JsonPatch patch = new JsonPatch(data is null ? ReadOnlyMemory<byte>.Empty : data.ToMemory());
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
             IList<string> queries = default;
-            IList<FileSearchCallResult> results = default;
+            IList<FileSearchToolCallItemParamResult> results = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -185,17 +185,17 @@ namespace OpenAI.Responses
                     {
                         continue;
                     }
-                    List<FileSearchCallResult> array = new List<FileSearchCallResult>();
+                    List<FileSearchToolCallItemParamResult> array = new List<FileSearchToolCallItemParamResult>();
                     foreach (var item in prop.Value.EnumerateArray())
                     {
-                        array.Add(FileSearchCallResult.DeserializeFileSearchCallResult(item, item.GetUtf8Bytes(), options));
+                        array.Add(FileSearchToolCallItemParamResult.DeserializeFileSearchToolCallItemParamResult(item, item.GetUtf8Bytes(), options));
                     }
                     results = array;
                     continue;
                 }
                 patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
             }
-            return new InternalFileSearchToolCallItemParam(kind, patch, queries, results ?? new ChangeTrackingList<FileSearchCallResult>());
+            return new InternalFileSearchToolCallItemParam(kind, patch, queries, results ?? new ChangeTrackingList<FileSearchToolCallItemParamResult>());
         }
 
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
@@ -208,6 +208,10 @@ namespace OpenAI.Responses
             {
                 int propertyLength = "results"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveResultsArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -235,6 +239,34 @@ namespace OpenAI.Responses
                 return true;
             }
             return false;
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveResultsArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveResults(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<FileSearchToolCallItemParamResult> ActiveResults()
+        {
+            if (!Optional.IsCollectionDefined(Results))
+            {
+                yield break;
+            }
+            for (int i = 0; i < Results.Count; i++)
+            {
+                if (!Results[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return Results[i];
+                }
+            }
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     }

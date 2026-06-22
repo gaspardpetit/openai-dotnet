@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Chat
 {
-    public partial class ChatClientGetChatCompletionsAsyncCollectionResultOfT : AsyncCollectionResult<ChatCompletion>
+    internal partial class ChatClientGetChatCompletionsAsyncCollectionResultOfT : AsyncCollectionResult<ChatCompletion>
     {
         private readonly ChatClient _client;
         private readonly string _after;
@@ -37,7 +37,7 @@ namespace OpenAI.Chat
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
+                ClientResult result = await GetNextResponseAsync(message).ConfigureAwait(false);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -72,6 +72,11 @@ namespace OpenAI.Chat
                 yield return item;
                 await Task.Yield();
             }
+        }
+
+        private async ValueTask<ClientResult> GetNextResponseAsync(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
         }
     }
 }

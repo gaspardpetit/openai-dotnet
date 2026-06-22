@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVectorStoreSearchRequestRankingOptionsRanker : IEquatable<InternalVectorStoreSearchRequestRankingOptionsRanker>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.VectorStores
 
         public InternalVectorStoreSearchRequestRankingOptionsRanker(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalVectorStoreSearchRequestRankingOptionsRanker None { get; } = new InternalVectorStoreSearchRequestRankingOptionsRanker(NoneValue);
+        public static InternalVectorStoreSearchRequestRankingOptionsRanker None { get; } = new InternalVectorStoreSearchRequestRankingOptionsRanker(NoneValue);
 
-        internal static InternalVectorStoreSearchRequestRankingOptionsRanker Auto { get; } = new InternalVectorStoreSearchRequestRankingOptionsRanker(AutoValue);
+        public static InternalVectorStoreSearchRequestRankingOptionsRanker Auto { get; } = new InternalVectorStoreSearchRequestRankingOptionsRanker(AutoValue);
 
-        internal static InternalVectorStoreSearchRequestRankingOptionsRanker Default20241115 { get; } = new InternalVectorStoreSearchRequestRankingOptionsRanker(Default20241115Value);
+        public static InternalVectorStoreSearchRequestRankingOptionsRanker Default20241115 { get; } = new InternalVectorStoreSearchRequestRankingOptionsRanker(Default20241115Value);
 
         public static bool operator ==(InternalVectorStoreSearchRequestRankingOptionsRanker left, InternalVectorStoreSearchRequestRankingOptionsRanker right) => left.Equals(right);
 

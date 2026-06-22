@@ -14,7 +14,7 @@ namespace OpenAI.Graders
     [Experimental("OPENAI001")]
     public partial class GraderLabelModel : Grader
     {
-        internal GraderLabelModel(string name, string model, IEnumerable<InternalEvalItem> input, IEnumerable<string> labels, IEnumerable<string> passingLabels) : base(GraderType.LabelModel)
+        public GraderLabelModel(string name, string model, IEnumerable<InternalEvalItem> input, IEnumerable<string> labels, IEnumerable<string> passingLabels) : base(GraderType.LabelModel)
         {
             Argument.AssertNotNull(name, nameof(name));
             Argument.AssertNotNull(model, nameof(model));
@@ -43,7 +43,7 @@ namespace OpenAI.Graders
 
         public string Model { get; set; }
 
-        internal IList<InternalEvalItem> Input { get; }
+        public IList<InternalEvalItem> Input { get; }
 
         public IList<string> Labels { get; }
 

@@ -12,13 +12,18 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLogProb
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        internal InternalLogProb(string token, float logprob, IEnumerable<int> bytes, IEnumerable<InternalTopLogProb> topLogprobs)
+        public InternalLogProb(string token, float logprob, IEnumerable<int> bytes, IEnumerable<InternalTopLogProb> topLogprobs)
         {
+            Argument.AssertNotNull(token, nameof(token));
+            Argument.AssertNotNull(bytes, nameof(bytes));
+            Argument.AssertNotNull(topLogprobs, nameof(topLogprobs));
+
             Token = token;
             Logprob = logprob;
             Bytes = bytes.ToList();
@@ -49,6 +54,6 @@ namespace OpenAI.Responses
 
         public IList<int> Bytes { get; }
 
-        internal IList<InternalTopLogProb> TopLogprobs { get; }
+        public IList<InternalTopLogProb> TopLogprobs { get; }
     }
 }

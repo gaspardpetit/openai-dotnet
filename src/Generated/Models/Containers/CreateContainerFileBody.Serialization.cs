@@ -3,11 +3,13 @@
 #nullable disable
 
 using System;
+using System.ClientModel;
 using System.ClientModel.Primitives;
-using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using OpenAI;
 
+#pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Containers
 {
     public partial class CreateContainerFileBody : IJsonModel<CreateContainerFileBody>
@@ -59,35 +61,15 @@ namespace OpenAI.Containers
             {
                 throw new FormatException($"The model {nameof(CreateContainerFileBody)} does not support writing '{format}' format.");
             }
-            if (Optional.IsDefined(FileId) && _additionalBinaryDataProperties?.ContainsKey("file_id") != true)
+            if (Optional.IsDefined(FileId) && this._additionalBinaryDataProperties?.ContainsKey("file_id") != true)
             {
                 writer.WritePropertyName("file_id"u8);
                 writer.WriteStringValue(FileId);
             }
-            if (Optional.IsDefined(File) && _additionalBinaryDataProperties?.ContainsKey("file") != true)
+            if (Optional.IsDefined(File) && this._additionalBinaryDataProperties?.ContainsKey("file") != true)
             {
                 writer.WritePropertyName("file"u8);
-                writer.WriteBase64StringValue(File.ToArray(), "D");
-            }
-            // Plugin customization: remove options.Format != "W" check
-            if (_additionalBinaryDataProperties != null)
-            {
-                foreach (var item in _additionalBinaryDataProperties)
-                {
-                    if (ModelSerializationExtensions.IsSentinelValue(item.Value))
-                    {
-                        continue;
-                    }
-                    writer.WritePropertyName(item.Key);
-#if NET6_0_OR_GREATER
-                    writer.WriteRawValue(item.Value);
-#else
-                    using (JsonDocument document = JsonDocument.Parse(item.Value))
-                    {
-                        JsonSerializer.Serialize(writer, document.RootElement);
-                    }
-#endif
-                }
+                writer.WriteObjectValue(File, options);
             }
         }
 
@@ -111,8 +93,7 @@ namespace OpenAI.Containers
                 return null;
             }
             string fileId = default;
-            BinaryData @file = default;
-            IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
+            FileBinaryContent @file = default;
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("file_id"u8))
@@ -126,13 +107,12 @@ namespace OpenAI.Containers
                     {
                         continue;
                     }
-                    @file = BinaryData.FromBytes(prop.Value.GetBytesFromBase64("D"));
+                    @file = new FileBinaryContent(new MemoryStream(prop.Value.GetBytesFromBase64(), false));
                     continue;
                 }
-                // Plugin customization: remove options.Format != "W" check
-                additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new CreateContainerFileBody(fileId, @file, additionalBinaryDataProperties);
+            return new CreateContainerFileBody(fileId, @file);
         }
     }
 }
+#pragma warning restore SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.

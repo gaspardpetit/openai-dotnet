@@ -2,8 +2,7 @@
 
 #nullable disable
 
-using System;
-using System.Collections.Generic;
+using System.ClientModel;
 using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Containers
@@ -11,27 +10,21 @@ namespace OpenAI.Containers
     [Experimental("OPENAI001")]
     public partial class CreateContainerFileBody
     {
-        private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
-
         public CreateContainerFileBody()
         {
         }
 
-        internal CreateContainerFileBody(string fileId, BinaryData @file, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+#pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        internal CreateContainerFileBody(string fileId, FileBinaryContent @file)
         {
             FileId = fileId;
             File = @file;
-            _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
+#pragma warning restore SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
         public string FileId { get; set; }
 
-        public BinaryData File { get; set; }
-
-        internal IDictionary<string, BinaryData> SerializedAdditionalRawData
-        {
-            get => _additionalBinaryDataProperties;
-            set => _additionalBinaryDataProperties = value;
-        }
+        [Experimental("SCME0004")]
+        public FileBinaryContent File { get; set; }
     }
 }

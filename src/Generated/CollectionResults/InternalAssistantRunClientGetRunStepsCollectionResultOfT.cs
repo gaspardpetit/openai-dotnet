@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantRunClientGetRunStepsCollectionResultOfT : CollectionResult<RunStep>
+    internal partial class InternalAssistantRunClientGetRunStepsCollectionResultOfT : CollectionResult<RunStep>
     {
         private readonly InternalAssistantRunClient _client;
         private readonly string _threadId;
@@ -21,7 +21,7 @@ namespace OpenAI.Assistants
         private readonly IEnumerable<InternalIncludedRunStepProperty> _include;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantRunClientGetRunStepsCollectionResultOfT(InternalAssistantRunClient client, string threadId, string runId, int? limit, string order, string after, string before, IEnumerable<InternalIncludedRunStepProperty> include, RequestOptions options)
+        public InternalAssistantRunClientGetRunStepsCollectionResultOfT(InternalAssistantRunClient client, string threadId, string runId, int? limit, string order, string after, string before, IEnumerable<InternalIncludedRunStepProperty> include, RequestOptions options)
         {
             _client = client;
             _threadId = threadId;
@@ -40,7 +40,7 @@ namespace OpenAI.Assistants
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
+                ClientResult result = GetNextResponse(message);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -71,6 +71,11 @@ namespace OpenAI.Assistants
         protected override IEnumerable<RunStep> GetValuesFromPage(ClientResult page)
         {
             return ((InternalListRunStepsResponse)page).Data;
+        }
+
+        private ClientResult GetNextResponse(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
         }
     }
 }

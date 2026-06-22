@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Moderations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalModerationTextPart : ModerationInputPart
     {
         public InternalModerationTextPart(string internalText) : base(ModerationInputPartKind.Text)
         {
+            Argument.AssertNotNull(internalText, nameof(internalText));
+
             InternalText = internalText;
         }
 

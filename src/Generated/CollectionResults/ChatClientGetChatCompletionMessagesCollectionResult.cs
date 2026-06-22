@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Chat
 {
-    public partial class ChatClientGetChatCompletionMessagesCollectionResult : CollectionResult
+    internal partial class ChatClientGetChatCompletionMessagesCollectionResult : CollectionResult
     {
         private readonly ChatClient _client;
         private readonly string _completionId;
@@ -34,7 +34,7 @@ namespace OpenAI.Chat
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
+                ClientResult result = GetNextResponse(message);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -60,6 +60,11 @@ namespace OpenAI.Chat
             {
                 return null;
             }
+        }
+
+        private ClientResult GetNextResponse(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
         }
     }
 }

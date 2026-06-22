@@ -33,7 +33,7 @@ namespace OpenAI.Realtime
 
         public string Id { get; set; }
 
-        internal InternalRealtimeConversationItemFunctionCallOutputGAObject? Object { get; set; }
+        public InternalRealtimeConversationItemFunctionCallOutputGAObject? Object { get; set; }
 
         public RealtimeFunctionCallOutputStatus? Status { get; set; }
 

@@ -4,14 +4,19 @@
 
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerUsePreviewToolCallOutputItemParam : InternalItemParam
     {
         public InternalComputerUsePreviewToolCallOutputItemParam(string callId, ComputerCallOutput output) : base(InternalItemType.ComputerCallOutput)
         {
+            Argument.AssertNotNull(callId, nameof(callId));
+            Argument.AssertNotNull(output, nameof(output));
+
             CallId = callId;
             AcknowledgedSafetyChecks = new ChangeTrackingList<ComputerCallSafetyCheck>();
             Output = output;

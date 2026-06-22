@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Containers
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalContainerResourceExpiresAfterAnchor : IEquatable<InternalContainerResourceExpiresAfterAnchor>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Containers
 
         public InternalContainerResourceExpiresAfterAnchor(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalContainerResourceExpiresAfterAnchor LastActiveAt { get; } = new InternalContainerResourceExpiresAfterAnchor(LastActiveAtValue);
+        public static InternalContainerResourceExpiresAfterAnchor LastActiveAt { get; } = new InternalContainerResourceExpiresAfterAnchor(LastActiveAtValue);
 
         public static bool operator ==(InternalContainerResourceExpiresAfterAnchor left, InternalContainerResourceExpiresAfterAnchor right) => left.Equals(right);
 

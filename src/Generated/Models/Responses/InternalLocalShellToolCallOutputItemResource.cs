@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLocalShellToolCallOutputItemResource : ResponseItem
     {
-        internal InternalLocalShellToolCallOutputItemResource(InternalLocalShellToolCallOutputItemResourceStatus status, string output) : base(InternalItemType.LocalShellCallOutput)
+        public InternalLocalShellToolCallOutputItemResource(InternalLocalShellToolCallOutputItemResourceStatus status, string output) : base(InternalItemType.LocalShellCallOutput)
         {
+            Argument.AssertNotNull(output, nameof(output));
+
             Status = status;
             Output = output;
         }
@@ -22,7 +27,7 @@ namespace OpenAI.Responses
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalLocalShellToolCallOutputItemResourceStatus Status { get; set; }
+        public InternalLocalShellToolCallOutputItemResourceStatus Status { get; set; }
 
         public string Output { get; set; }
     }

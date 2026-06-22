@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public partial class InternaVideoCollectionOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -27,7 +29,7 @@ namespace OpenAI.Videos
 
         public int? PageSizeLimit { get; set; }
 
-        internal InternalVideoCollectionOrder? Order { get; set; }
+        public InternalVideoCollectionOrder? Order { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {
