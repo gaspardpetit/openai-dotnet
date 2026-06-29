@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.VectorStores
 {
-    public partial class VectorStoreClientGetVectorStoreFilesInBatchCollectionResultOfT : CollectionResult<VectorStoreFile>
+    internal partial class VectorStoreClientGetVectorStoreFilesInBatchCollectionResultOfT : CollectionResult<VectorStoreFile>
     {
         private readonly VectorStoreClient _client;
         private readonly string _vectorStoreId;
@@ -40,7 +40,7 @@ namespace OpenAI.VectorStores
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
+                ClientResult result = GetNextResponse(message);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -71,6 +71,11 @@ namespace OpenAI.VectorStores
         protected override IEnumerable<VectorStoreFile> GetValuesFromPage(ClientResult page)
         {
             return ((InternalListVectorStoreFilesResponse)page).Data;
+        }
+
+        private ClientResult GetNextResponse(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
         }
     }
 }

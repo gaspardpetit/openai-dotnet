@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalGetInputTokenCountsRequestContentType : IEquatable<InternalGetInputTokenCountsRequestContentType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Responses
 
         public InternalGetInputTokenCountsRequestContentType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalGetInputTokenCountsRequestContentType ApplicationJson { get; } = new InternalGetInputTokenCountsRequestContentType(ApplicationJsonValue);
+        public static InternalGetInputTokenCountsRequestContentType ApplicationJson { get; } = new InternalGetInputTokenCountsRequestContentType(ApplicationJsonValue);
 
-        internal static InternalGetInputTokenCountsRequestContentType ApplicationXWwwFormUrlencoded { get; } = new InternalGetInputTokenCountsRequestContentType(ApplicationXWwwFormUrlencodedValue);
+        public static InternalGetInputTokenCountsRequestContentType ApplicationXWwwFormUrlencoded { get; } = new InternalGetInputTokenCountsRequestContentType(ApplicationXWwwFormUrlencodedValue);
 
         public static bool operator ==(InternalGetInputTokenCountsRequestContentType left, InternalGetInputTokenCountsRequestContentType right) => left.Equals(right);
 

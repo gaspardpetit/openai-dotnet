@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentRefusal : ResponseContentPart
     {
         public InternalItemContentRefusal(string internalRefusal) : base(InternalItemContentType.Refusal)
         {
+            Argument.AssertNotNull(internalRefusal, nameof(internalRefusal));
+
             InternalRefusal = internalRefusal;
         }
 

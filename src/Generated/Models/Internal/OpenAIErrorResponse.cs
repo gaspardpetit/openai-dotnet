@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class OpenAIErrorResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -22,7 +24,7 @@ namespace OpenAI.Internal
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal OpenAIError Error { get; }
+        public OpenAIError Error { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

@@ -5,10 +5,11 @@
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OpenAI.Conversations
 {
-    public partial class ConversationClientGetConversationItemsAsyncCollectionResult : AsyncCollectionResult
+    internal partial class ConversationClientGetConversationItemsAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly ConversationClient _client;
         private readonly string _conversationId;
@@ -32,12 +33,17 @@ namespace OpenAI.Conversations
         public override async IAsyncEnumerable<ClientResult> GetRawPagesAsync()
         {
             PipelineMessage message = _client.CreateGetConversationItemsRequest(_conversationId, _limit, _order, _after, _include, _options);
-            yield return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
+            yield return await GetNextResponseAsync(message).ConfigureAwait(false);
         }
 
         public override ContinuationToken GetContinuationToken(ClientResult page)
         {
             return null;
+        }
+
+        private async ValueTask<ClientResult> GetNextResponseAsync(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
         }
     }
 }

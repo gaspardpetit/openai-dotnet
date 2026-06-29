@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Moderations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalModerationImagePart : ModerationInputPart
     {
-        internal InternalModerationImagePart(InternalModerationImagePartImageUrl imageUrl) : base(ModerationInputPartKind.Image)
+        public InternalModerationImagePart(InternalModerationImagePartImageUrl imageUrl) : base(ModerationInputPartKind.Image)
         {
+            Argument.AssertNotNull(imageUrl, nameof(imageUrl));
+
             ImageUrl = imageUrl;
         }
 
@@ -19,6 +24,6 @@ namespace OpenAI.Moderations
             ImageUrl = imageUrl;
         }
 
-        internal InternalModerationImagePartImageUrl ImageUrl { get; }
+        public InternalModerationImagePartImageUrl ImageUrl { get; }
     }
 }

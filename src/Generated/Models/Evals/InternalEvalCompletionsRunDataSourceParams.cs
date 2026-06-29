@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalCompletionsRunDataSourceParams : InternalEvalRunDataSourceParams
     {
         public InternalEvalCompletionsRunDataSourceParams(BinaryData source) : base(InternalEvalRunDataSourceType.Completions)
         {
+            Argument.AssertNotNull(source, nameof(source));
+
             Source = source;
         }
 
@@ -24,7 +29,7 @@ namespace OpenAI.Evals
 
         public BinaryData InputMessages { get; set; }
 
-        internal InternalEvalCompletionsRunDataSourceParamsSamplingParams SamplingParams { get; set; }
+        public InternalEvalCompletionsRunDataSourceParamsSamplingParams SamplingParams { get; set; }
 
         public string Model { get; set; }
 

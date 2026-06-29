@@ -5,10 +5,11 @@
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OpenAI.Videos
 {
-    public partial class VideoClientGetVideosAsyncCollectionResult : AsyncCollectionResult
+    internal partial class VideoClientGetVideosAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly VideoClient _client;
         private readonly int? _limit;
@@ -28,12 +29,17 @@ namespace OpenAI.Videos
         public override async IAsyncEnumerable<ClientResult> GetRawPagesAsync()
         {
             PipelineMessage message = _client.CreateGetVideosRequest(_limit, _order, _after, _options);
-            yield return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
+            yield return await GetNextResponseAsync(message).ConfigureAwait(false);
         }
 
         public override ContinuationToken GetContinuationToken(ClientResult page)
         {
             return null;
+        }
+
+        private async ValueTask<ClientResult> GetNextResponseAsync(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(await _client.Pipeline.ProcessMessageAsync(message, _options).ConfigureAwait(false));
         }
     }
 }

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateSpeechRequestStreamFormat : IEquatable<InternalCreateSpeechRequestStreamFormat>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Audio
 
         public InternalCreateSpeechRequestStreamFormat(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateSpeechRequestStreamFormat Sse { get; } = new InternalCreateSpeechRequestStreamFormat(SseValue);
+        public static InternalCreateSpeechRequestStreamFormat Sse { get; } = new InternalCreateSpeechRequestStreamFormat(SseValue);
 
-        internal static InternalCreateSpeechRequestStreamFormat Audio { get; } = new InternalCreateSpeechRequestStreamFormat(AudioValue);
+        public static InternalCreateSpeechRequestStreamFormat Audio { get; } = new InternalCreateSpeechRequestStreamFormat(AudioValue);
 
         public static bool operator ==(InternalCreateSpeechRequestStreamFormat left, InternalCreateSpeechRequestStreamFormat right) => left.Equals(right);
 

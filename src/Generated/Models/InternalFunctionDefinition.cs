@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFunctionDefinition
     {
         [Experimental("SCME0001")]
@@ -17,6 +18,8 @@ namespace OpenAI
 
         public InternalFunctionDefinition(string name)
         {
+            Argument.AssertNotNull(name, nameof(name));
+
             Name = name;
         }
 

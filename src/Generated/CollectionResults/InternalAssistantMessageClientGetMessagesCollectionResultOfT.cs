@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantMessageClientGetMessagesCollectionResultOfT : CollectionResult<ThreadMessage>
+    internal partial class InternalAssistantMessageClientGetMessagesCollectionResultOfT : CollectionResult<ThreadMessage>
     {
         private readonly InternalAssistantMessageClient _client;
         private readonly string _threadId;
@@ -19,7 +19,7 @@ namespace OpenAI.Assistants
         private readonly string _before;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantMessageClientGetMessagesCollectionResultOfT(InternalAssistantMessageClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
+        public InternalAssistantMessageClientGetMessagesCollectionResultOfT(InternalAssistantMessageClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
         {
             _client = client;
             _threadId = threadId;
@@ -36,7 +36,7 @@ namespace OpenAI.Assistants
             string nextToken = null;
             while (true)
             {
-                ClientResult result = ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
+                ClientResult result = GetNextResponse(message);
                 yield return result;
 
                 // Plugin customization: add hasMore assignment
@@ -67,6 +67,11 @@ namespace OpenAI.Assistants
         protected override IEnumerable<ThreadMessage> GetValuesFromPage(ClientResult page)
         {
             return ((InternalListMessagesResponse)page).Data;
+        }
+
+        private ClientResult GetNextResponse(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
         }
     }
 }

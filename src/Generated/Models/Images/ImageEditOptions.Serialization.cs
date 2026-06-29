@@ -4,7 +4,6 @@
 
 using System;
 using System.ClientModel.Primitives;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using OpenAI;
@@ -67,7 +66,7 @@ namespace OpenAI.Images
             {
                 throw new FormatException($"The model {nameof(ImageEditOptions)} does not support writing '{format}' format.");
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("image") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("image") != true)
             {
                 writer.WritePropertyName("image"u8);
 #if NET6_0_OR_GREATER
@@ -79,95 +78,82 @@ namespace OpenAI.Images
                 }
 #endif
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("prompt") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("prompt") != true)
             {
                 writer.WritePropertyName("prompt"u8);
                 writer.WriteStringValue(Prompt);
             }
-            if (Optional.IsDefined(Mask) && _additionalBinaryDataProperties?.ContainsKey("mask") != true)
+            if (Optional.IsDefined(Mask) && this._additionalBinaryDataProperties?.ContainsKey("mask") != true)
             {
                 writer.WritePropertyName("mask"u8);
-                writer.WriteBase64StringValue(Mask.ToArray(), "D");
+#if NET6_0_OR_GREATER
+                writer.WriteRawValue(Mask);
+#else
+                using (JsonDocument document = JsonDocument.Parse(Mask))
+                {
+                    JsonSerializer.Serialize(writer, document.RootElement);
+                }
+#endif
             }
-            if (Optional.IsDefined(Background) && _additionalBinaryDataProperties?.ContainsKey("background") != true)
+            if (Optional.IsDefined(Background) && this._additionalBinaryDataProperties?.ContainsKey("background") != true)
             {
                 writer.WritePropertyName("background"u8);
                 writer.WriteStringValue(Background.Value.ToString());
             }
-            if (Optional.IsDefined(Model) && _additionalBinaryDataProperties?.ContainsKey("model") != true)
+            if (Optional.IsDefined(Model) && this._additionalBinaryDataProperties?.ContainsKey("model") != true)
             {
                 writer.WritePropertyName("model"u8);
                 writer.WriteStringValue(Model.Value.ToString());
             }
-            if (Optional.IsDefined(N) && _additionalBinaryDataProperties?.ContainsKey("n") != true)
+            if (Optional.IsDefined(N) && this._additionalBinaryDataProperties?.ContainsKey("n") != true)
             {
                 writer.WritePropertyName("n"u8);
                 writer.WriteNumberValue(N.Value);
             }
-            if (Optional.IsDefined(Size) && _additionalBinaryDataProperties?.ContainsKey("size") != true)
+            if (Optional.IsDefined(Size) && this._additionalBinaryDataProperties?.ContainsKey("size") != true)
             {
                 writer.WritePropertyName("size"u8);
                 writer.WriteStringValue(Size.Value.ToString());
             }
-            if (Optional.IsDefined(ResponseFormat) && _additionalBinaryDataProperties?.ContainsKey("response_format") != true)
+            if (Optional.IsDefined(ResponseFormat) && this._additionalBinaryDataProperties?.ContainsKey("response_format") != true)
             {
                 writer.WritePropertyName("response_format"u8);
                 writer.WriteStringValue(ResponseFormat.Value.ToString());
             }
-            if (Optional.IsDefined(OutputFileFormat) && _additionalBinaryDataProperties?.ContainsKey("output_format") != true)
+            if (Optional.IsDefined(OutputFileFormat) && this._additionalBinaryDataProperties?.ContainsKey("output_format") != true)
             {
                 writer.WritePropertyName("output_format"u8);
                 writer.WriteStringValue(OutputFileFormat.Value.ToString());
             }
-            if (Optional.IsDefined(OutputCompressionFactor) && _additionalBinaryDataProperties?.ContainsKey("output_compression") != true)
+            if (Optional.IsDefined(OutputCompressionFactor) && this._additionalBinaryDataProperties?.ContainsKey("output_compression") != true)
             {
                 writer.WritePropertyName("output_compression"u8);
                 writer.WriteNumberValue(OutputCompressionFactor.Value);
             }
-            if (Optional.IsDefined(EndUserId) && _additionalBinaryDataProperties?.ContainsKey("user") != true)
+            if (Optional.IsDefined(EndUserId) && this._additionalBinaryDataProperties?.ContainsKey("user") != true)
             {
                 writer.WritePropertyName("user"u8);
                 writer.WriteStringValue(EndUserId);
             }
-            if (Optional.IsDefined(InputFidelity) && _additionalBinaryDataProperties?.ContainsKey("input_fidelity") != true)
+            if (Optional.IsDefined(InputFidelity) && this._additionalBinaryDataProperties?.ContainsKey("input_fidelity") != true)
             {
                 writer.WritePropertyName("input_fidelity"u8);
                 writer.WriteStringValue(InputFidelity.Value.ToString());
             }
-            if (Optional.IsDefined(Stream) && _additionalBinaryDataProperties?.ContainsKey("stream") != true)
+            if (Optional.IsDefined(Stream) && this._additionalBinaryDataProperties?.ContainsKey("stream") != true)
             {
                 writer.WritePropertyName("stream"u8);
                 writer.WriteBooleanValue(Stream.Value);
             }
-            if (Optional.IsDefined(PartialImages) && _additionalBinaryDataProperties?.ContainsKey("partial_images") != true)
+            if (Optional.IsDefined(PartialImages) && this._additionalBinaryDataProperties?.ContainsKey("partial_images") != true)
             {
                 writer.WritePropertyName("partial_images"u8);
                 writer.WriteNumberValue(PartialImages.Value);
             }
-            if (Optional.IsDefined(Quality) && _additionalBinaryDataProperties?.ContainsKey("quality") != true)
+            if (Optional.IsDefined(Quality) && this._additionalBinaryDataProperties?.ContainsKey("quality") != true)
             {
                 writer.WritePropertyName("quality"u8);
                 writer.WriteStringValue(Quality.Value.ToString());
-            }
-            // Plugin customization: remove options.Format != "W" check
-            if (_additionalBinaryDataProperties != null)
-            {
-                foreach (var item in _additionalBinaryDataProperties)
-                {
-                    if (ModelSerializationExtensions.IsSentinelValue(item.Value))
-                    {
-                        continue;
-                    }
-                    writer.WritePropertyName(item.Key);
-#if NET6_0_OR_GREATER
-                    writer.WriteRawValue(item.Value);
-#else
-                    using (JsonDocument document = JsonDocument.Parse(item.Value))
-                    {
-                        JsonSerializer.Serialize(writer, document.RootElement);
-                    }
-#endif
-                }
             }
         }
 
@@ -206,7 +192,6 @@ namespace OpenAI.Images
             bool? stream = default;
             int? partialImages = default;
             GeneratedImageQuality? quality = default;
-            IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("image"u8))
@@ -225,7 +210,7 @@ namespace OpenAI.Images
                     {
                         continue;
                     }
-                    mask = BinaryData.FromBytes(prop.Value.GetBytesFromBase64("D"));
+                    mask = BinaryData.FromString(prop.Value.GetRawText());
                     continue;
                 }
                 if (prop.NameEquals("background"u8))
@@ -343,8 +328,6 @@ namespace OpenAI.Images
                     quality = new GeneratedImageQuality(prop.Value.GetString());
                     continue;
                 }
-                // Plugin customization: remove options.Format != "W" check
-                additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
             return new ImageEditOptions(
                 image,
@@ -361,8 +344,7 @@ namespace OpenAI.Images
                 inputFidelity,
                 stream,
                 partialImages,
-                quality,
-                additionalBinaryDataProperties);
+                quality);
         }
     }
 }

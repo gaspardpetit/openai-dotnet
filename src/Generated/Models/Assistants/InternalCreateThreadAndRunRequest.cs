@@ -4,16 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateThreadAndRunRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalCreateThreadAndRunRequest(string assistantId)
         {
+            Argument.AssertNotNull(assistantId, nameof(assistantId));
+
             AssistantId = assistantId;
             Tools = new ChangeTrackingList<ToolDefinition>();
             Metadata = new ChangeTrackingDictionary<string, string>();

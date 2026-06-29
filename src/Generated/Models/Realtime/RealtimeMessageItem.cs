@@ -36,7 +36,7 @@ namespace OpenAI.Realtime
 
         public string Id { get; set; }
 
-        internal InternalRealtimeConversationItemMessageGAObject? Object { get; set; }
+        public InternalRealtimeConversationItemMessageGAObject? Object { get; set; }
 
         public RealtimeMessageStatus? Status { get; set; }
 

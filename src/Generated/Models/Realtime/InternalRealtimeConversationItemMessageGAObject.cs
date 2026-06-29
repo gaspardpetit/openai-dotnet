@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeConversationItemMessageGAObject : IEquatable<InternalRealtimeConversationItemMessageGAObject>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeConversationItemMessageGAObject(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeConversationItemMessageGAObject RealtimeItem { get; } = new InternalRealtimeConversationItemMessageGAObject(RealtimeItemValue);
+        public static InternalRealtimeConversationItemMessageGAObject RealtimeItem { get; } = new InternalRealtimeConversationItemMessageGAObject(RealtimeItemValue);
 
         public static bool operator ==(InternalRealtimeConversationItemMessageGAObject left, InternalRealtimeConversationItemMessageGAObject right) => left.Equals(right);
 

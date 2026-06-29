@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalResponseFormatType : IEquatable<InternalResponseFormatType>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Internal
 
         public InternalResponseFormatType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalResponseFormatType Text { get; } = new InternalResponseFormatType(TextValue);
+        public static InternalResponseFormatType Text { get; } = new InternalResponseFormatType(TextValue);
 
-        internal static InternalResponseFormatType JsonObject { get; } = new InternalResponseFormatType(JsonObjectValue);
+        public static InternalResponseFormatType JsonObject { get; } = new InternalResponseFormatType(JsonObjectValue);
 
-        internal static InternalResponseFormatType JsonSchema { get; } = new InternalResponseFormatType(JsonSchemaValue);
+        public static InternalResponseFormatType JsonSchema { get; } = new InternalResponseFormatType(JsonSchemaValue);
 
         public static bool operator ==(InternalResponseFormatType left, InternalResponseFormatType right) => left.Equals(right);
 

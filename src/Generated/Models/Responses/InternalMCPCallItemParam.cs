@@ -3,13 +3,20 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMCPCallItemParam : InternalItemParam
     {
         public InternalMCPCallItemParam(string serverLabel, string name, string arguments) : base(InternalItemType.McpCall)
         {
+            Argument.AssertNotNull(serverLabel, nameof(serverLabel));
+            Argument.AssertNotNull(name, nameof(name));
+            Argument.AssertNotNull(arguments, nameof(arguments));
+
             ServerLabel = serverLabel;
             Name = name;
             Arguments = arguments;
