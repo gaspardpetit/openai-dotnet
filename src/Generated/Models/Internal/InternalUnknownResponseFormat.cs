@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUnknownResponseFormat : InternalResponseFormat
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.

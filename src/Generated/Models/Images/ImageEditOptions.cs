@@ -3,16 +3,13 @@
 #nullable disable
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Images
 {
     public partial class ImageEditOptions
     {
-        private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
-
-        internal ImageEditOptions(BinaryData image, string prompt, BinaryData mask, GeneratedImageBackground? background, InternalCreateImageEditRequestModel? model, long? n, GeneratedImageSize? size, GeneratedImageFormat? responseFormat, GeneratedImageFileFormat? outputFileFormat, int? outputCompressionFactor, string endUserId, ImageInputFidelity? inputFidelity, bool? stream, int? partialImages, GeneratedImageQuality? quality, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal ImageEditOptions(BinaryData image, string prompt, BinaryData mask, GeneratedImageBackground? background, InternalCreateImageEditRequestModel? model, long? n, GeneratedImageSize? size, GeneratedImageFormat? responseFormat, GeneratedImageFileFormat? outputFileFormat, int? outputCompressionFactor, string endUserId, ImageInputFidelity? inputFidelity, bool? stream, int? partialImages, GeneratedImageQuality? quality)
         {
             Image = image;
             Prompt = prompt;
@@ -29,16 +26,9 @@ namespace OpenAI.Images
             Stream = stream;
             PartialImages = partialImages;
             Quality = quality;
-            _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
         [Experimental("OPENAI001")]
         public ImageInputFidelity? InputFidelity { get; set; }
-
-        internal IDictionary<string, BinaryData> SerializedAdditionalRawData
-        {
-            get => _additionalBinaryDataProperties;
-            set => _additionalBinaryDataProperties = value;
-        }
     }
 }

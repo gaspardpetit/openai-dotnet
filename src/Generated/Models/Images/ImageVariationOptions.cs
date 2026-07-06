@@ -3,15 +3,12 @@
 #nullable disable
 
 using System;
-using System.Collections.Generic;
 
 namespace OpenAI.Images
 {
     public partial class ImageVariationOptions
     {
-        private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
-
-        internal ImageVariationOptions(BinaryData image, InternalCreateImageVariationRequestModel? model, long? n, GeneratedImageFormat? responseFormat, GeneratedImageSize? size, string endUserId, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal ImageVariationOptions(BinaryData image, InternalCreateImageVariationRequestModel? model, long? n, GeneratedImageFormat? responseFormat, GeneratedImageSize? size, string endUserId)
         {
             Image = image;
             Model = model;
@@ -19,13 +16,6 @@ namespace OpenAI.Images
             ResponseFormat = responseFormat;
             Size = size;
             EndUserId = endUserId;
-            _additionalBinaryDataProperties = additionalBinaryDataProperties;
-        }
-
-        internal IDictionary<string, BinaryData> SerializedAdditionalRawData
-        {
-            get => _additionalBinaryDataProperties;
-            set => _additionalBinaryDataProperties = value;
         }
     }
 }

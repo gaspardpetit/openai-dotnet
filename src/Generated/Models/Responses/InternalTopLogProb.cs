@@ -12,6 +12,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalTopLogProb
     {
         [Experimental("SCME0001")]
@@ -19,6 +20,9 @@ namespace OpenAI.Responses
 
         public InternalTopLogProb(string token, float logprob, IEnumerable<int> bytes)
         {
+            Argument.AssertNotNull(token, nameof(token));
+            Argument.AssertNotNull(bytes, nameof(bytes));
+
             Token = token;
             Logprob = logprob;
             Bytes = bytes.ToList();

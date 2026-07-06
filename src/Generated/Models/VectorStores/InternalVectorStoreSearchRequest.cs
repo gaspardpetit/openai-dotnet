@@ -4,15 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVectorStoreSearchRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalVectorStoreSearchRequest(BinaryData query)
         {
+            Argument.AssertNotNull(query, nameof(query));
+
             Query = query;
         }
 
@@ -34,7 +39,7 @@ namespace OpenAI.VectorStores
 
         public BinaryData Filters { get; set; }
 
-        internal InternalVectorStoreSearchRequestRankingOptions RankingOptions { get; set; }
+        public InternalVectorStoreSearchRequestRankingOptions RankingOptions { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

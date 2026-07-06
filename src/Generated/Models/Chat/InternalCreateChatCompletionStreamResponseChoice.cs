@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateChatCompletionStreamResponseChoice
     {
         [Experimental("SCME0001")]
@@ -38,9 +39,9 @@ namespace OpenAI.Chat
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
 
-        internal InternalChatCompletionStreamResponseDelta Delta { get; }
+        public InternalChatCompletionStreamResponseDelta Delta { get; }
 
-        internal InternalCreateChatCompletionStreamResponseChoiceLogprobs Logprobs { get; }
+        public InternalCreateChatCompletionStreamResponseChoiceLogprobs Logprobs { get; }
 
         public int Index { get; }
     }

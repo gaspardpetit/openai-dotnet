@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalChunkingStrategyConfigType : IEquatable<InternalChunkingStrategyConfigType>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.Audio
 
         public InternalChunkingStrategyConfigType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalChunkingStrategyConfigType ServerVad { get; } = new InternalChunkingStrategyConfigType(ServerVadValue);
+        public static InternalChunkingStrategyConfigType ServerVad { get; } = new InternalChunkingStrategyConfigType(ServerVadValue);
 
         public static bool operator ==(InternalChunkingStrategyConfigType left, InternalChunkingStrategyConfigType right) => left.Equals(right);
 

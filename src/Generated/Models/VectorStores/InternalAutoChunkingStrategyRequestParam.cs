@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalAutoChunkingStrategyRequestParam : InternalChunkingStrategyRequestParam
     {
         public InternalAutoChunkingStrategyRequestParam() : this(InternalChunkingStrategyRequestParamType.Auto, null)

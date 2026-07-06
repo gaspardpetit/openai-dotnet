@@ -4,13 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalItemContentOutputText : InternalEvalItemContent
     {
         public InternalEvalItemContentOutputText(string text) : base(InternalEvalItemContentType.OutputText)
         {
+            Argument.AssertNotNull(text, nameof(text));
+
             Text = text;
         }
 

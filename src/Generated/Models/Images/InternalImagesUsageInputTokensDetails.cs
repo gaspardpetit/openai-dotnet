@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public partial class InternalImagesUsageInputTokensDetails
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

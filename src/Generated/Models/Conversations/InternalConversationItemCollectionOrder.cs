@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Conversations
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalConversationItemCollectionOrder : IEquatable<InternalConversationItemCollectionOrder>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Conversations
 
         public InternalConversationItemCollectionOrder(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalConversationItemCollectionOrder Ascending { get; } = new InternalConversationItemCollectionOrder(AscendingValue);
+        public static InternalConversationItemCollectionOrder Ascending { get; } = new InternalConversationItemCollectionOrder(AscendingValue);
 
-        internal static InternalConversationItemCollectionOrder Descending { get; } = new InternalConversationItemCollectionOrder(DescendingValue);
+        public static InternalConversationItemCollectionOrder Descending { get; } = new InternalConversationItemCollectionOrder(DescendingValue);
 
         public static bool operator ==(InternalConversationItemCollectionOrder left, InternalConversationItemCollectionOrder right) => left.Equals(right);
 

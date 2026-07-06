@@ -4,16 +4,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Chat;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateCompletionRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalCreateCompletionRequest(InternalCreateCompletionRequestModel model, BinaryData prompt)
+        public InternalCreateCompletionRequest(InternalCreateCompletionRequestModel model, BinaryData prompt)
         {
             Model = model;
             Prompt = prompt;
@@ -44,7 +46,7 @@ namespace OpenAI.LegacyCompletions
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalCreateCompletionRequestModel Model { get; }
+        public InternalCreateCompletionRequestModel Model { get; }
 
         public BinaryData Prompt { get; }
 
@@ -70,7 +72,7 @@ namespace OpenAI.LegacyCompletions
 
         public bool? Stream { get; set; }
 
-        internal InternalChatCompletionStreamOptions StreamOptions { get; set; }
+        public InternalChatCompletionStreamOptions StreamOptions { get; set; }
 
         public string Suffix { get; set; }
 
