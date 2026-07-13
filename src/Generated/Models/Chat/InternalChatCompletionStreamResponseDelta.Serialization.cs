@@ -90,7 +90,7 @@ namespace OpenAI.Chat
                 if (!Patch.IsRemoved("$.tool_calls"u8))
                 {
                     writer.WritePropertyName("tool_calls"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.tool_calls"u8));
+                    Patch.WriteTo(writer, "$.tool_calls"u8);
                 }
             }
             else if (options.Format != "W" && Optional.IsCollectionDefined(ToolCalls))
@@ -143,11 +143,8 @@ namespace OpenAI.Chat
                 return null;
             }
             StreamingChatOutputAudioUpdate audio = default;
-			ChatMessageContent content = default;
-            // <GP> Added reasoning support as used by ollama
-			ChatMessageContent reasoning = default;
-            // </GP>
-			StreamingChatFunctionCallUpdate functionCall = default;
+            ChatMessageContent content = default;
+            StreamingChatFunctionCallUpdate functionCall = default;
             IReadOnlyList<StreamingChatToolCallUpdate> toolCalls = default;
             ChatMessageRole? role = default;
             string refusal = default;
@@ -170,23 +167,7 @@ namespace OpenAI.Chat
                     DeserializeContentValue(prop, ref content, options);
                     continue;
                 }
-				// <GP> Added reasoning support as used by ollama
-
-                // reasoning is used by ollama
-				if (prop.NameEquals("reasoning"u8))
-				{
-					DeserializeContentValue(prop, ref reasoning);
-					continue;
-				}
-				// reasoning_content is used by llama.cpp
-				if (prop.NameEquals("reasoning_content"u8))
-				{
-					DeserializeContentValue(prop, ref reasoning);
-					continue;
-				}
-
-				// </GP>
-				if (prop.NameEquals("function_call"u8))
+                if (prop.NameEquals("function_call"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
                     {
@@ -233,8 +214,7 @@ namespace OpenAI.Chat
             return new InternalChatCompletionStreamResponseDelta(
                 audio,
                 content,
-                reasoning, // <GP> Added reasoning support as used by ollama
-				functionCall,
+                functionCall,
                 toolCalls ?? new ChangeTrackingList<StreamingChatToolCallUpdate>(),
                 role,
                 refusal,
@@ -259,6 +239,10 @@ namespace OpenAI.Chat
             {
                 int propertyLength = "tool_calls"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveToolCallsArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -296,6 +280,34 @@ namespace OpenAI.Chat
                 return true;
             }
             return false;
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveToolCallsArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveToolCalls(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<StreamingChatToolCallUpdate> ActiveToolCalls()
+        {
+            if (!Optional.IsCollectionDefined(ToolCalls))
+            {
+                yield break;
+            }
+            for (int i = 0; i < ToolCalls.Count; i++)
+            {
+                if (!ToolCalls[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return ToolCalls[i];
+                }
+            }
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     }

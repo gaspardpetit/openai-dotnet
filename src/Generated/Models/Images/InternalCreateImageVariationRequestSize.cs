@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageVariationRequestSize : IEquatable<InternalCreateImageVariationRequestSize>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Images
 
         public InternalCreateImageVariationRequestSize(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateImageVariationRequestSize _256x256 { get; } = new InternalCreateImageVariationRequestSize(_256x256Value);
+        public static InternalCreateImageVariationRequestSize _256x256 { get; } = new InternalCreateImageVariationRequestSize(_256x256Value);
 
-        internal static InternalCreateImageVariationRequestSize _512x512 { get; } = new InternalCreateImageVariationRequestSize(_512x512Value);
+        public static InternalCreateImageVariationRequestSize _512x512 { get; } = new InternalCreateImageVariationRequestSize(_512x512Value);
 
-        internal static InternalCreateImageVariationRequestSize _1024x1024 { get; } = new InternalCreateImageVariationRequestSize(_1024x1024Value);
+        public static InternalCreateImageVariationRequestSize _1024x1024 { get; } = new InternalCreateImageVariationRequestSize(_1024x1024Value);
 
         public static bool operator ==(InternalCreateImageVariationRequestSize left, InternalCreateImageVariationRequestSize right) => left.Equals(right);
 

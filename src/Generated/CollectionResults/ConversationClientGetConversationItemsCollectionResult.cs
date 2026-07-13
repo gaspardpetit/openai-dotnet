@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Conversations
 {
-    public partial class ConversationClientGetConversationItemsCollectionResult : CollectionResult
+    internal partial class ConversationClientGetConversationItemsCollectionResult : CollectionResult
     {
         private readonly ConversationClient _client;
         private readonly string _conversationId;
@@ -32,12 +32,17 @@ namespace OpenAI.Conversations
         public override IEnumerable<ClientResult> GetRawPages()
         {
             PipelineMessage message = _client.CreateGetConversationItemsRequest(_conversationId, _limit, _order, _after, _include, _options);
-            yield return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
+            yield return GetNextResponse(message);
         }
 
         public override ContinuationToken GetContinuationToken(ClientResult page)
         {
             return null;
+        }
+
+        private ClientResult GetNextResponse(PipelineMessage message)
+        {
+            return ClientResult.FromResponse(_client.Pipeline.ProcessMessage(message, _options));
         }
     }
 }

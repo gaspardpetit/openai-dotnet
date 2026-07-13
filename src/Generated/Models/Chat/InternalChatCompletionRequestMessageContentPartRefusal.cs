@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartRefusal : ChatMessageContentPart
     {
         public InternalChatCompletionRequestMessageContentPartRefusal()

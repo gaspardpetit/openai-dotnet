@@ -80,7 +80,7 @@ namespace OpenAI.Responses
                 if (!Patch.IsRemoved("$.queries"u8))
                 {
                     writer.WritePropertyName("queries"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.queries"u8));
+                    Patch.WriteTo(writer, "$.queries"u8);
                 }
             }
             else if (Optional.IsCollectionDefined(Queries))
@@ -108,7 +108,7 @@ namespace OpenAI.Responses
                 if (!Patch.IsRemoved("$.sources"u8))
                 {
                     writer.WritePropertyName("sources"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.sources"u8));
+                    Patch.WriteTo(writer, "$.sources"u8);
                 }
             }
             else if (Optional.IsCollectionDefined(Sources))
@@ -219,6 +219,10 @@ namespace OpenAI.Responses
             {
                 int propertyLength = "sources"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveSourcesArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -246,6 +250,34 @@ namespace OpenAI.Responses
                 return true;
             }
             return false;
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveSourcesArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveSources(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<WebSearchActionSource> ActiveSources()
+        {
+            if (!Optional.IsCollectionDefined(Sources))
+            {
+                yield break;
+            }
+            for (int i = 0; i < Sources.Count; i++)
+            {
+                if (!Sources[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return Sources[i];
+                }
+            }
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     }

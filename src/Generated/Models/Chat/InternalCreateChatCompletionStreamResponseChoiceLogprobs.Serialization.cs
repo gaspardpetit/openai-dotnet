@@ -74,7 +74,7 @@ namespace OpenAI.Chat
                 if (!Patch.IsRemoved("$.content"u8))
                 {
                     writer.WritePropertyName("content"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.content"u8));
+                    Patch.WriteTo(writer, "$.content"u8);
                 }
             }
             else if (options.Format != "W" && !Patch.Contains("$.content"u8))
@@ -97,7 +97,7 @@ namespace OpenAI.Chat
                 if (!Patch.IsRemoved("$.refusal"u8))
                 {
                     writer.WritePropertyName("refusal"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.refusal"u8));
+                    Patch.WriteTo(writer, "$.refusal"u8);
                 }
             }
             else if (options.Format != "W" && !Patch.Contains("$.refusal"u8))
@@ -191,6 +191,10 @@ namespace OpenAI.Chat
             {
                 int propertyLength = "content"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveContentArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -201,6 +205,10 @@ namespace OpenAI.Chat
             {
                 int propertyLength = "refusal"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveRefusalArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -239,6 +247,62 @@ namespace OpenAI.Chat
                 return true;
             }
             return false;
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveContentArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveContent(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<ChatTokenLogProbabilityDetails> ActiveContent()
+        {
+            if (!Optional.IsCollectionDefined(Content))
+            {
+                yield break;
+            }
+            for (int i = 0; i < Content.Count; i++)
+            {
+                if (!Content[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return Content[i];
+                }
+            }
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveRefusalArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveRefusal(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<ChatTokenLogProbabilityDetails> ActiveRefusal()
+        {
+            if (!Optional.IsCollectionDefined(Refusal))
+            {
+                yield break;
+            }
+            for (int i = 0; i < Refusal.Count; i++)
+            {
+                if (!Refusal[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return Refusal[i];
+                }
+            }
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     }

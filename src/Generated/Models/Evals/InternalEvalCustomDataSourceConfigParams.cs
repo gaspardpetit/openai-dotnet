@@ -4,15 +4,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalCustomDataSourceConfigParams : InternalEvalDataSourceConfigParams
     {
         public InternalEvalCustomDataSourceConfigParams(IDictionary<string, BinaryData> itemSchema) : base(InternalEvalDataSourceConfigType.Custom)
         {
             // Plugin customization: ensure initialization of collections
+            Argument.AssertNotNull(itemSchema, nameof(itemSchema));
+
             ItemSchema = itemSchema ?? new ChangeTrackingDictionary<string, BinaryData>();
         }
 

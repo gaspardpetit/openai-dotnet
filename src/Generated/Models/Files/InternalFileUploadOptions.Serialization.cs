@@ -4,7 +4,6 @@
 
 using System;
 using System.ClientModel.Primitives;
-using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using OpenAI;
@@ -60,7 +59,7 @@ namespace OpenAI.Files
             {
                 throw new FormatException($"The model {nameof(InternalFileUploadOptions)} does not support writing '{format}' format.");
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("file") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("file") != true)
             {
                 writer.WritePropertyName("file"u8);
 #if NET6_0_OR_GREATER
@@ -72,35 +71,15 @@ namespace OpenAI.Files
                 }
 #endif
             }
-            if (_additionalBinaryDataProperties?.ContainsKey("purpose") != true)
+            if (this._additionalBinaryDataProperties?.ContainsKey("purpose") != true)
             {
                 writer.WritePropertyName("purpose"u8);
                 writer.WriteStringValue(Purpose.ToString());
             }
-            if (Optional.IsDefined(ExpiresAfter) && _additionalBinaryDataProperties?.ContainsKey("expires_after") != true)
+            if (Optional.IsDefined(ExpiresAfter) && this._additionalBinaryDataProperties?.ContainsKey("expires_after") != true)
             {
                 writer.WritePropertyName("expires_after"u8);
                 writer.WriteObjectValue<InternalFileExpirationAfter?>(ExpiresAfter.Value, options);
-            }
-            // Plugin customization: remove options.Format != "W" check
-            if (_additionalBinaryDataProperties != null)
-            {
-                foreach (var item in _additionalBinaryDataProperties)
-                {
-                    if (ModelSerializationExtensions.IsSentinelValue(item.Value))
-                    {
-                        continue;
-                    }
-                    writer.WritePropertyName(item.Key);
-#if NET6_0_OR_GREATER
-                    writer.WriteRawValue(item.Value);
-#else
-                    using (JsonDocument document = JsonDocument.Parse(item.Value))
-                    {
-                        JsonSerializer.Serialize(writer, document.RootElement);
-                    }
-#endif
-                }
             }
         }
 
@@ -126,7 +105,6 @@ namespace OpenAI.Files
             Stream @file = default;
             FileUploadPurpose purpose = default;
             InternalFileExpirationAfter? expiresAfter = default;
-            IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("file"u8))
@@ -148,10 +126,8 @@ namespace OpenAI.Files
                     expiresAfter = InternalFileExpirationAfter.DeserializeInternalFileExpirationAfter(prop.Value, options);
                     continue;
                 }
-                // Plugin customization: remove options.Format != "W" check
-                additionalBinaryDataProperties.Add(prop.Name, BinaryData.FromString(prop.Value.GetRawText()));
             }
-            return new InternalFileUploadOptions(@file, purpose, expiresAfter, additionalBinaryDataProperties);
+            return new InternalFileUploadOptions(@file, purpose, expiresAfter);
         }
     }
 }

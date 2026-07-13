@@ -3,14 +3,19 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 using OpenAI.Internal;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetChatResponseFormatJsonSchema : ChatResponseFormat
     {
-        internal InternalDotNetChatResponseFormatJsonSchema(InternalDotNetChatResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalResponseFormatType.JsonSchema)
+        public InternalDotNetChatResponseFormatJsonSchema(InternalDotNetChatResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalResponseFormatType.JsonSchema)
         {
+            Argument.AssertNotNull(jsonSchema, nameof(jsonSchema));
+
             JsonSchema = jsonSchema;
         }
 
@@ -22,6 +27,6 @@ namespace OpenAI.Chat
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalDotNetChatResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
+        public InternalDotNetChatResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
     }
 }

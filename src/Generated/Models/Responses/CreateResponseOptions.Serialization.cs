@@ -179,7 +179,7 @@ namespace OpenAI.Responses
                 if (!Patch.IsRemoved("$.tools"u8))
                 {
                     writer.WritePropertyName("tools"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.tools"u8));
+                    Patch.WriteTo(writer, "$.tools"u8);
                 }
             }
             else if (Optional.IsCollectionDefined(Tools))
@@ -212,7 +212,7 @@ namespace OpenAI.Responses
                 if (!Patch.IsRemoved("$.input"u8))
                 {
                     writer.WritePropertyName("input"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.input"u8));
+                    Patch.WriteTo(writer, "$.input"u8);
                 }
             }
             else if (Optional.IsCollectionDefined(InputItems))
@@ -235,7 +235,7 @@ namespace OpenAI.Responses
                 if (!Patch.IsRemoved("$.include"u8))
                 {
                     writer.WritePropertyName("include"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.include"u8));
+                    Patch.WriteTo(writer, "$.include"u8);
                 }
             }
             else if (Optional.IsCollectionDefined(IncludedProperties))
@@ -627,6 +627,10 @@ namespace OpenAI.Responses
             {
                 int propertyLength = "tools"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveToolsArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -637,6 +641,10 @@ namespace OpenAI.Responses
             {
                 int propertyLength = "input"u8.Length;
                 ReadOnlySpan<byte> currentSlice = local.Slice(propertyLength);
+                if (currentSlice.IsEmpty)
+                {
+                    return TryResolveInputItemsArray(out value);
+                }
                 if (!currentSlice.TryGetIndex(out int index, out int bytesConsumed))
                 {
                     return false;
@@ -690,6 +698,62 @@ namespace OpenAI.Responses
                 return true;
             }
             return false;
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveToolsArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveTools(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<ResponseTool> ActiveTools()
+        {
+            if (!Optional.IsCollectionDefined(Tools))
+            {
+                yield break;
+            }
+            for (int i = 0; i < Tools.Count; i++)
+            {
+                if (!Tools[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return Tools[i];
+                }
+            }
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private bool TryResolveInputItemsArray(out JsonPatch.EncodedValue value)
+        {
+            value = default;
+            BinaryData data = ModelReaderWriter.Write(ActiveInputItems(), ModelReaderWriterOptions.Json, OpenAIContext.Default);
+            JsonPatch tempPatch = new JsonPatch();
+            tempPatch.Set("$"u8, data.ToMemory().Span);
+            return tempPatch.TryGetEncodedValue("$"u8, out value);
+        }
+#pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+
+#pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+        private IEnumerable<ResponseItem> ActiveInputItems()
+        {
+            if (!Optional.IsCollectionDefined(InputItems))
+            {
+                yield break;
+            }
+            for (int i = 0; i < InputItems.Count; i++)
+            {
+                if (!InputItems[i].Patch.IsRemoved("$"u8))
+                {
+                    yield return InputItems[i];
+                }
+            }
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
     }

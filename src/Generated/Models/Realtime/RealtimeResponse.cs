@@ -49,7 +49,7 @@ namespace OpenAI.Realtime
 
         public string Id { get; }
 
-        internal InternalRealtimeResponseGAObject? Object { get; }
+        public InternalRealtimeResponseGAObject? Object { get; }
 
         public RealtimeResponseStatus? Status { get; }
 

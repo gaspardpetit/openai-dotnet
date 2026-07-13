@@ -12,7 +12,7 @@ namespace OpenAI.VectorStores
     [Experimental("OPENAI001")]
     public partial class StaticFileChunkingStrategy : FileChunkingStrategy
     {
-        internal StaticFileChunkingStrategy(InternalStaticChunkingStrategy internalDetails) : base(InternalDotNetCombinedChunkingStrategyParamType.Static)
+        public StaticFileChunkingStrategy(InternalStaticChunkingStrategy internalDetails) : base(InternalDotNetCombinedChunkingStrategyParamType.Static)
         {
             Argument.AssertNotNull(internalDetails, nameof(internalDetails));
 

@@ -3,13 +3,19 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentOutputAudio : ResponseContentPart
     {
         public InternalItemContentOutputAudio(string data, string transcript) : base(InternalItemContentType.OutputAudio)
         {
+            Argument.AssertNotNull(data, nameof(data));
+            Argument.AssertNotNull(transcript, nameof(transcript));
+
             Data = data;
             Transcript = transcript;
         }

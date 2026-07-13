@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartFile : ChatMessageContentPart
     {
-        internal InternalChatCompletionRequestMessageContentPartFile(InternalChatCompletionRequestMessageContentPartFileFile @file)
+        public InternalChatCompletionRequestMessageContentPartFile(InternalChatCompletionRequestMessageContentPartFileFile @file)
         {
+            Argument.AssertNotNull(@file, nameof(@file));
+
             File = @file;
         }
 
@@ -21,6 +26,6 @@ namespace OpenAI.Chat
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalChatCompletionRequestMessageContentPartFileFile File { get; set; }
+        public InternalChatCompletionRequestMessageContentPartFileFile File { get; set; }
     }
 }

@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVectorStoreFileContentResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -32,7 +34,7 @@ namespace OpenAI.VectorStores
 
         public string Object { get; } = "vector_store.file_content.page";
 
-        internal IList<InternalVectorStoreFileContentResponseDatum> Data { get; }
+        public IList<InternalVectorStoreFileContentResponseDatum> Data { get; }
 
         public bool HasMore { get; }
 
