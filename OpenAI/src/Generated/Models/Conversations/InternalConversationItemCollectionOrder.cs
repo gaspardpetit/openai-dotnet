@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Conversations
 {
-    internal readonly partial struct InternalConversationItemCollectionOrder : IEquatable<InternalConversationItemCollectionOrder>
+    public readonly partial struct InternalConversationItemCollectionOrder : IEquatable<InternalConversationItemCollectionOrder>
     {
         private readonly string _value;
         private const string AscendingValue = "asc";

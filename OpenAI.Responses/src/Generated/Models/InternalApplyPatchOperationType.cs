@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalApplyPatchOperationType : IEquatable<InternalApplyPatchOperationType>
+    public readonly partial struct InternalApplyPatchOperationType : IEquatable<InternalApplyPatchOperationType>
     {
         private readonly string _value;
         private const string CreateFileValue = "create_file";

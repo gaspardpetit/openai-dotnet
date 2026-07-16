@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalRunStepDetailsType : IEquatable<InternalRunStepDetailsType>
+    public readonly partial struct InternalRunStepDetailsType : IEquatable<InternalRunStepDetailsType>
     {
         private readonly string _value;
         private const string MessageCreationValue = "message_creation";

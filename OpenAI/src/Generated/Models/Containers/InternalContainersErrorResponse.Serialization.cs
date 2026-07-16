@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Containers
 {
-    internal partial class InternalContainersErrorResponse : IJsonModel<InternalContainersErrorResponse>
+    public partial class InternalContainersErrorResponse : IJsonModel<InternalContainersErrorResponse>
     {
         internal InternalContainersErrorResponse()
         {

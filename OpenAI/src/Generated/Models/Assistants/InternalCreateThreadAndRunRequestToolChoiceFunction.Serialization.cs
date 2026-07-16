@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalCreateThreadAndRunRequestToolChoiceFunction : IJsonModel<InternalCreateThreadAndRunRequestToolChoiceFunction>
+    public partial class InternalCreateThreadAndRunRequestToolChoiceFunction : IJsonModel<InternalCreateThreadAndRunRequestToolChoiceFunction>
     {
         internal InternalCreateThreadAndRunRequestToolChoiceFunction()
         {

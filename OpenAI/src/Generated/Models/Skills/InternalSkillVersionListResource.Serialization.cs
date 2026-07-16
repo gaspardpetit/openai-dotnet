@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Skills
 {
-    internal partial class InternalSkillVersionListResource : IJsonModel<InternalSkillVersionListResource>
+    public partial class InternalSkillVersionListResource : IJsonModel<InternalSkillVersionListResource>
     {
         internal InternalSkillVersionListResource() : this(null, null, null, null, default, null)
         {

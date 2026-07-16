@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Videos
 {
-    internal readonly partial struct InternalVideoSize : IEquatable<InternalVideoSize>
+    public readonly partial struct InternalVideoSize : IEquatable<InternalVideoSize>
     {
         private readonly string _value;
         private const string _720x1280Value = "720x1280";

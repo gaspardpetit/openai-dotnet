@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class StreamingResponseCustomToolCallInputDoneUpdate : StreamingResponseUpdate
+    public partial class StreamingResponseCustomToolCallInputDoneUpdate : StreamingResponseUpdate
     {
         internal StreamingResponseCustomToolCallInputDoneUpdate(int sequenceNumber, int outputIndex, string itemId, string input) : base(StreamingResponseUpdateKind.ResponseCustomToolCallInputDone, sequenceNumber)
         {

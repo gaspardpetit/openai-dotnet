@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.FineTuning
 {
-    internal partial class InternalFineTuningErrorResponse : IJsonModel<InternalFineTuningErrorResponse>
+    public partial class InternalFineTuningErrorResponse : IJsonModel<InternalFineTuningErrorResponse>
     {
         internal InternalFineTuningErrorResponse()
         {

@@ -8,7 +8,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalTranscriptTextDeltaEventLogprobs
+    public partial class InternalTranscriptTextDeltaEventLogprobs
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

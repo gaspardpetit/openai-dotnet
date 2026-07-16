@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct AssistantReasoningEffortLevel : IEquatable<AssistantReasoningEffortLevel>
+    public readonly partial struct AssistantReasoningEffortLevel : IEquatable<AssistantReasoningEffortLevel>
     {
         private readonly string _value;
         private const string NoneValue = "none";

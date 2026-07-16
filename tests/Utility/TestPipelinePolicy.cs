@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Tests;
 
-internal partial class TestPipelinePolicy : PipelinePolicy
+public partial class TestPipelinePolicy : PipelinePolicy
 {
     private Action<PipelineMessage> _processMessageAction;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Audio
 {
-    internal partial class AudioClientGetVoiceConsentsAsyncCollectionResult : AsyncCollectionResult
+    public partial class AudioClientGetVoiceConsentsAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly AudioClient _client;
         private readonly string _after;

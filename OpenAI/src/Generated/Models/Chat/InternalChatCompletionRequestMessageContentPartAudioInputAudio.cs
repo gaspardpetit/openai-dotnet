@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionRequestMessageContentPartAudioInputAudio
+    public partial class InternalChatCompletionRequestMessageContentPartAudioInputAudio
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

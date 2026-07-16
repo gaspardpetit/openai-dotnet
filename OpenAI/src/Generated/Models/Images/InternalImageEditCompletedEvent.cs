@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Images
 {
-    internal partial class InternalImageEditCompletedEvent
+    public partial class InternalImageEditCompletedEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

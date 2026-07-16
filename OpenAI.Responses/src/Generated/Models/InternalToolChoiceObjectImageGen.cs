@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectImageGen : InternalToolChoiceObject
+    public partial class InternalToolChoiceObjectImageGen : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectImageGen() : this(InternalToolChoiceObjectType.ImageGeneration, default)
         {

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponsesTextFormatJsonObject : ResponseTextFormat, IJsonModel<InternalResponsesTextFormatJsonObject>
+    public partial class InternalResponsesTextFormatJsonObject : ResponseTextFormat, IJsonModel<InternalResponsesTextFormatJsonObject>
     {
         protected override ResponseTextFormat PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

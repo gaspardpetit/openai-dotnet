@@ -4,6 +4,6 @@ namespace OpenAI.Evals;
 
 // CUSTOM: Renamed.
 [CodeGenType("EvalsReasoningEffort")]
-internal readonly partial struct EvalReasoningEffortLevel
+public readonly partial struct EvalReasoningEffortLevel
 {
 }

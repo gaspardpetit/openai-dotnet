@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Files
 {
-    internal readonly partial struct InternalUploadStatus : IEquatable<InternalUploadStatus>
+    public readonly partial struct InternalUploadStatus : IEquatable<InternalUploadStatus>
     {
         private readonly string _value;
         private const string PendingValue = "pending";

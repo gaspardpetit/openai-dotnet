@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Containers
 {
-    internal partial class InternalContainerFileUploadOptions
+    public partial class InternalContainerFileUploadOptions
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

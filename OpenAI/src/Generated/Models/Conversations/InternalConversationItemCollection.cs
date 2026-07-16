@@ -13,7 +13,7 @@ using OpenAI.Responses;
 
 namespace OpenAI.Conversations
 {
-    internal partial class InternalConversationItemCollection
+    public partial class InternalConversationItemCollection
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

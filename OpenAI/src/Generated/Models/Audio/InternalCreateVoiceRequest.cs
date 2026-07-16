@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalCreateVoiceRequest
+    public partial class InternalCreateVoiceRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

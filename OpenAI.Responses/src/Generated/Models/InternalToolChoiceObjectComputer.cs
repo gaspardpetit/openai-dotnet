@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectComputer : InternalToolChoiceObject
+    public partial class InternalToolChoiceObjectComputer : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectComputer() : this(InternalToolChoiceObjectType.Computer, default)
         {

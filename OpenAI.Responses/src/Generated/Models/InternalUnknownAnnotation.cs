@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownAnnotation : ResponseMessageAnnotation
+    public partial class InternalUnknownAnnotation : ResponseMessageAnnotation
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownAnnotation(ResponseMessageAnnotationKind kind, in JsonPatch patch) : base(kind, patch)

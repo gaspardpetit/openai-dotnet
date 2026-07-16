@@ -11,7 +11,7 @@ using OpenAI.Chat;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalCompletionsRunDataSourceParamsSamplingParams : IJsonModel<InternalEvalCompletionsRunDataSourceParamsSamplingParams>
+    public partial class InternalEvalCompletionsRunDataSourceParamsSamplingParams : IJsonModel<InternalEvalCompletionsRunDataSourceParamsSamplingParams>
     {
         protected virtual InternalEvalCompletionsRunDataSourceParamsSamplingParams PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

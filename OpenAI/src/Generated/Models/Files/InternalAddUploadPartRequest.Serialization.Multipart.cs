@@ -7,7 +7,7 @@ using System.ClientModel;
 #pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Files
 {
-    internal partial class InternalAddUploadPartRequest
+    public partial class InternalAddUploadPartRequest
     {
         internal MultiPartFormContent ToMultipartFormContent()
         {

@@ -9,7 +9,7 @@ namespace OpenAI.FineTuning;
 
 [Experimental("OPENAI001")]
 [CodeGenType("CreateFineTuningJobRequestHyperparametersBetaChoiceEnum")]
-internal readonly partial struct InternalCreateFineTuningJobRequestHyperparametersBetaChoiceEnum { }
+public readonly partial struct InternalCreateFineTuningJobRequestHyperparametersBetaChoiceEnum { }
 
 [Experimental("OPENAI001")]
 [CodeGenType("CreateFineTuningJobRequestHyperparametersBetaOption")]

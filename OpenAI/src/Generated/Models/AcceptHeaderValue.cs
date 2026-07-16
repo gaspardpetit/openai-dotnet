@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI
 {
-    internal readonly partial struct AcceptHeaderValue : IEquatable<AcceptHeaderValue>
+    public readonly partial struct AcceptHeaderValue : IEquatable<AcceptHeaderValue>
     {
         private readonly string _value;
         private const string ApplicationJsonValue = "application/json";

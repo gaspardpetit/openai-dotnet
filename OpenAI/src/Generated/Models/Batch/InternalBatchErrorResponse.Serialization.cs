@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Batch
 {
-    internal partial class InternalBatchErrorResponse : IJsonModel<InternalBatchErrorResponse>
+    public partial class InternalBatchErrorResponse : IJsonModel<InternalBatchErrorResponse>
     {
         internal InternalBatchErrorResponse()
         {

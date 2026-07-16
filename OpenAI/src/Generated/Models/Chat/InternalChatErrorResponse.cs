@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatErrorResponse
+    public partial class InternalChatErrorResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

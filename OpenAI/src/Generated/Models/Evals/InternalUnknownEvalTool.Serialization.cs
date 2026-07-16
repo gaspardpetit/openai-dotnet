@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalUnknownEvalTool : InternalEvalTool, IJsonModel<InternalEvalTool>
+    public partial class InternalUnknownEvalTool : InternalEvalTool, IJsonModel<InternalEvalTool>
     {
         internal InternalUnknownEvalTool() : this(default, null)
         {

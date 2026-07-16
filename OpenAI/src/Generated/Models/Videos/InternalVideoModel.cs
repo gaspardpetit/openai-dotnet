@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Videos
 {
-    internal readonly partial struct InternalVideoModel : IEquatable<InternalVideoModel>
+    public readonly partial struct InternalVideoModel : IEquatable<InternalVideoModel>
     {
         private readonly string _value;
         private const string Sora2Value = "sora-2";

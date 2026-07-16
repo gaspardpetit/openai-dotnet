@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Videos
 {
-    internal readonly partial struct InternalVideoStatus : IEquatable<InternalVideoStatus>
+    public readonly partial struct InternalVideoStatus : IEquatable<InternalVideoStatus>
     {
         private readonly string _value;
         private const string QueuedValue = "queued";

@@ -9,7 +9,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalCompactResource
+    public partial class InternalCompactResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

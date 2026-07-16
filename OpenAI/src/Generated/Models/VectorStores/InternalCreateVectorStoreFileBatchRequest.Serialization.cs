@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalCreateVectorStoreFileBatchRequest : IJsonModel<InternalCreateVectorStoreFileBatchRequest>
+    public partial class InternalCreateVectorStoreFileBatchRequest : IJsonModel<InternalCreateVectorStoreFileBatchRequest>
     {
         protected virtual InternalCreateVectorStoreFileBatchRequest PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

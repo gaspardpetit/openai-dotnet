@@ -3,6 +3,6 @@ using Microsoft.TypeSpec.Generator.Customizations;
 namespace OpenAI.Assistants;
 
 [CodeGenType("UnknownRunStepObjectStepDetails")]
-internal partial class UnknownRunStepObjectStepDetails
+public partial class UnknownRunStepObjectStepDetails
 {
 }

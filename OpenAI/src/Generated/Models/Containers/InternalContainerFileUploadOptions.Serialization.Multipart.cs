@@ -8,7 +8,7 @@ using OpenAI;
 #pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Containers
 {
-    internal partial class InternalContainerFileUploadOptions
+    public partial class InternalContainerFileUploadOptions
     {
         internal MultiPartFormContent ToMultipartFormContent()
         {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Images
 {
-    internal partial class InternalImagesUsageInputTokensDetails
+    public partial class InternalImagesUsageInputTokensDetails
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

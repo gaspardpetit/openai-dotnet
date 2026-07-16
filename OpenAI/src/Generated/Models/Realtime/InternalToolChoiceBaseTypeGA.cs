@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalToolChoiceBaseTypeGA : IEquatable<InternalToolChoiceBaseTypeGA>
+    public readonly partial struct InternalToolChoiceBaseTypeGA : IEquatable<InternalToolChoiceBaseTypeGA>
     {
         private readonly string _value;
         private const string FunctionValue = "function";

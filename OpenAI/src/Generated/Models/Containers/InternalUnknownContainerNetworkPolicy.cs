@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Containers
 {
-    internal partial class InternalUnknownContainerNetworkPolicy : ContainerNetworkPolicy
+    public partial class InternalUnknownContainerNetworkPolicy : ContainerNetworkPolicy
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownContainerNetworkPolicy(ContainerNetworkPolicyKind kind, in JsonPatch patch) : base(kind != default ? kind : "unknown", patch)

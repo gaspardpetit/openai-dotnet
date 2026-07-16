@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace OpenAI
 {
-    internal partial class InternalAssistantsFunctionDefinition : IJsonModel<InternalAssistantsFunctionDefinition>
+    public partial class InternalAssistantsFunctionDefinition : IJsonModel<InternalAssistantsFunctionDefinition>
     {
         internal InternalAssistantsFunctionDefinition()
         {

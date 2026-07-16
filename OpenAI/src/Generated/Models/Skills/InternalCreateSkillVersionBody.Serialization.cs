@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Skills
 {
-    internal partial class InternalCreateSkillVersionBody : IJsonModel<InternalCreateSkillVersionBody>
+    public partial class InternalCreateSkillVersionBody : IJsonModel<InternalCreateSkillVersionBody>
     {
         internal InternalCreateSkillVersionBody()
         {

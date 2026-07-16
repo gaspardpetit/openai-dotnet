@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalToolChoiceObjectType : IEquatable<InternalToolChoiceObjectType>
+    public readonly partial struct InternalToolChoiceObjectType : IEquatable<InternalToolChoiceObjectType>
     {
         private readonly string _value;
         private const string FileSearchValue = "file_search";

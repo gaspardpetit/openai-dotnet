@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Chat
 {
-    internal readonly partial struct InternalChatCompletionMessageToolCallChunkType : IEquatable<InternalChatCompletionMessageToolCallChunkType>
+    public readonly partial struct InternalChatCompletionMessageToolCallChunkType : IEquatable<InternalChatCompletionMessageToolCallChunkType>
     {
         private readonly string _value;
         private const string FunctionValue = "function";

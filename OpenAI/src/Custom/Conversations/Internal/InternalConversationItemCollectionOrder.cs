@@ -6,6 +6,6 @@ namespace OpenAI.Conversations;
 // - Renamed.
 // - Made internal until we support the convenience methods.
 [CodeGenType("ConversationItemCollectionOrder")]
-internal readonly partial struct InternalConversationItemCollectionOrder
+public readonly partial struct InternalConversationItemCollectionOrder
 {
 }

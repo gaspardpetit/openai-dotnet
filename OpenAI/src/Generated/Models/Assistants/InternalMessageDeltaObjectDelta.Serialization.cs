@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalMessageDeltaObjectDelta : IJsonModel<InternalMessageDeltaObjectDelta>
+    public partial class InternalMessageDeltaObjectDelta : IJsonModel<InternalMessageDeltaObjectDelta>
     {
         protected virtual InternalMessageDeltaObjectDelta PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

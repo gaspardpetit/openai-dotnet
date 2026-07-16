@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Videos
 {
-    internal readonly partial struct InternalVideosOrderEnum : IEquatable<InternalVideosOrderEnum>
+    public readonly partial struct InternalVideosOrderEnum : IEquatable<InternalVideosOrderEnum>
     {
         private readonly string _value;
         private const string AscValue = "asc";

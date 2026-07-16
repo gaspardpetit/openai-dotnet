@@ -5,7 +5,7 @@ namespace OpenAI.Chat;
 
 // CUSTOM: Renamed.
 [CodeGenType("UpdateChatCompletionRequest")]
-internal partial class InternalUpdateChatCompletionRequest
+public partial class InternalUpdateChatCompletionRequest
 {
     public static implicit operator BinaryContent(InternalUpdateChatCompletionRequest internalUpdateChatCompletionRequest)
     {

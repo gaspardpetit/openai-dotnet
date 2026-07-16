@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalChunkingStrategyConfigType : IEquatable<InternalChunkingStrategyConfigType>
+    public readonly partial struct InternalChunkingStrategyConfigType : IEquatable<InternalChunkingStrategyConfigType>
     {
         private readonly string _value;
         private const string ServerVadValue = "server_vad";

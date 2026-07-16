@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalDeletedVideoResource : IJsonModel<InternalDeletedVideoResource>
+    public partial class InternalDeletedVideoResource : IJsonModel<InternalDeletedVideoResource>
     {
         internal InternalDeletedVideoResource()
         {

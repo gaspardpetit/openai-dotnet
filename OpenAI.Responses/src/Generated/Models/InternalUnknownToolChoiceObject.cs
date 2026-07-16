@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownToolChoiceObject : InternalToolChoiceObject
+    public partial class InternalUnknownToolChoiceObject : InternalToolChoiceObject
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownToolChoiceObject(InternalToolChoiceObjectType kind, in JsonPatch patch) : base(kind != default ? kind : "unknown", patch)

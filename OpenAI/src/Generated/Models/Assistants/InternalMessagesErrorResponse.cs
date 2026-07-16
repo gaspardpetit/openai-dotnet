@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalMessagesErrorResponse
+    public partial class InternalMessagesErrorResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

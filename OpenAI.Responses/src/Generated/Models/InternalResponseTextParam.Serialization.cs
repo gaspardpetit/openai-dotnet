@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponseTextParam : IJsonModel<InternalResponseTextParam>
+    public partial class InternalResponseTextParam : IJsonModel<InternalResponseTextParam>
     {
         protected virtual InternalResponseTextParam PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

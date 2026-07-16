@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalMessageContentTextAnnotationType : IEquatable<InternalMessageContentTextAnnotationType>
+    public readonly partial struct InternalMessageContentTextAnnotationType : IEquatable<InternalMessageContentTextAnnotationType>
     {
         private readonly string _value;
         private const string FileCitationValue = "file_citation";

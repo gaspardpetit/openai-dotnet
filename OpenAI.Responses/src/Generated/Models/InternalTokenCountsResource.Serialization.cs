@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalTokenCountsResource : IJsonModel<InternalTokenCountsResource>
+    public partial class InternalTokenCountsResource : IJsonModel<InternalTokenCountsResource>
     {
         internal InternalTokenCountsResource()
         {

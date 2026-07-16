@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalLegacyChatCompletionStreamOptions : IJsonModel<InternalLegacyChatCompletionStreamOptions>
+    public partial class InternalLegacyChatCompletionStreamOptions : IJsonModel<InternalLegacyChatCompletionStreamOptions>
     {
         protected virtual InternalLegacyChatCompletionStreamOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

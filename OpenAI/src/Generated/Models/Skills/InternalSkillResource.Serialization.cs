@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Skills
 {
-    internal partial class InternalSkillResource : IJsonModel<InternalSkillResource>
+    public partial class InternalSkillResource : IJsonModel<InternalSkillResource>
     {
         internal InternalSkillResource()
         {

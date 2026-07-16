@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalCreateVideoRemixBody
+    public partial class InternalCreateVideoRemixBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

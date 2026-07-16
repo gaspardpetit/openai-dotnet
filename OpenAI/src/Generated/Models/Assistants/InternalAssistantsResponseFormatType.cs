@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalAssistantsResponseFormatType : IEquatable<InternalAssistantsResponseFormatType>
+    public readonly partial struct InternalAssistantsResponseFormatType : IEquatable<InternalAssistantsResponseFormatType>
     {
         private readonly string _value;
         private const string TextValue = "text";

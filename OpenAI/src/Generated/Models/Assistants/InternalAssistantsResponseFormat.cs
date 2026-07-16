@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal abstract partial class InternalAssistantsResponseFormat
+    public abstract partial class InternalAssistantsResponseFormat
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

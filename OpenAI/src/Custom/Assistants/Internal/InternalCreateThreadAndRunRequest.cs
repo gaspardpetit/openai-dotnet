@@ -3,7 +3,7 @@ using Microsoft.TypeSpec.Generator.Customizations;
 namespace OpenAI.Assistants;
 
 [CodeGenType("CreateThreadAndRunRequest")]
-internal partial class InternalCreateThreadAndRunRequest
+public partial class InternalCreateThreadAndRunRequest
 {
     public string Model { get; set; }
     public ToolResources ToolResources { get; set; }

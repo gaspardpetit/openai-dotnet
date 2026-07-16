@@ -9,7 +9,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalVoiceConsentListResource
+    public partial class InternalVoiceConsentListResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

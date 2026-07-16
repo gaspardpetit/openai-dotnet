@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalTokenCountsResource
+    public partial class InternalTokenCountsResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

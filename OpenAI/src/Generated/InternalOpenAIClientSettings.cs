@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace OpenAI
 {
     [Experimental("SCME0002")]
-    internal partial class InternalOpenAIClientSettings : ClientSettings
+    public partial class InternalOpenAIClientSettings : ClientSettings
     {
         public Uri Endpoint { get; set; }
 

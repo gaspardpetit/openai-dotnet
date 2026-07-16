@@ -12,7 +12,7 @@ using OpenAI.Responses;
 
 namespace OpenAI.Conversations
 {
-    internal partial class InternalCreateConversationItemsParametersBody : IJsonModel<InternalCreateConversationItemsParametersBody>
+    public partial class InternalCreateConversationItemsParametersBody : IJsonModel<InternalCreateConversationItemsParametersBody>
     {
         internal InternalCreateConversationItemsParametersBody() : this(null, default)
         {

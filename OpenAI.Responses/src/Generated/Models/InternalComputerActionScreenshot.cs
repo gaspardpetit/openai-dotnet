@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalComputerActionScreenshot : ComputerCallAction
+    public partial class InternalComputerActionScreenshot : ComputerCallAction
     {
         public InternalComputerActionScreenshot() : this(ComputerCallActionKind.Screenshot, default)
         {

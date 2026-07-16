@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalUnknownChunkingStrategyConfig : AudioTranscriptionCustomChunkingStrategy, IJsonModel<AudioTranscriptionCustomChunkingStrategy>
+    public partial class InternalUnknownChunkingStrategyConfig : AudioTranscriptionCustomChunkingStrategy, IJsonModel<AudioTranscriptionCustomChunkingStrategy>
     {
         internal InternalUnknownChunkingStrategyConfig() : this(default, null)
         {

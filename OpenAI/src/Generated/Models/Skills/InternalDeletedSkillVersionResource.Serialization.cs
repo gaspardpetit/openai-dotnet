@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Skills
 {
-    internal partial class InternalDeletedSkillVersionResource : IJsonModel<InternalDeletedSkillVersionResource>
+    public partial class InternalDeletedSkillVersionResource : IJsonModel<InternalDeletedSkillVersionResource>
     {
         internal InternalDeletedSkillVersionResource()
         {

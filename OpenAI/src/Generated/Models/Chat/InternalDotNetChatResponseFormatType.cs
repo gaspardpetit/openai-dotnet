@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Chat
 {
-    internal readonly partial struct InternalDotNetChatResponseFormatType : IEquatable<InternalDotNetChatResponseFormatType>
+    public readonly partial struct InternalDotNetChatResponseFormatType : IEquatable<InternalDotNetChatResponseFormatType>
     {
         private readonly string _value;
         private const string TextValue = "text";

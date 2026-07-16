@@ -8,7 +8,7 @@ using OpenAI.Graders;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalGraderStringCheckParams : InternalEvalGraderParams
+    public partial class InternalEvalGraderStringCheckParams : InternalEvalGraderParams
     {
         public InternalEvalGraderStringCheckParams(string name, string input, string reference, GraderStringCheckOperation operation) : base(GraderType.StringCheck)
         {

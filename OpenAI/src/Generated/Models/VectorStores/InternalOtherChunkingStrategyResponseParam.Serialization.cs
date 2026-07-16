@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalOtherChunkingStrategyResponseParam : InternalChunkingStrategyResponseParam, IJsonModel<InternalOtherChunkingStrategyResponseParam>
+    public partial class InternalOtherChunkingStrategyResponseParam : InternalChunkingStrategyResponseParam, IJsonModel<InternalOtherChunkingStrategyResponseParam>
     {
         protected override InternalChunkingStrategyResponseParam PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

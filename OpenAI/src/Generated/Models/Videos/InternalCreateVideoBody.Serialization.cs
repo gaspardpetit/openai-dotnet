@@ -13,7 +13,7 @@ using OpenAI;
 #pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Videos
 {
-    internal partial class InternalCreateVideoBody : IJsonModel<InternalCreateVideoBody>
+    public partial class InternalCreateVideoBody : IJsonModel<InternalCreateVideoBody>
     {
         internal InternalCreateVideoBody()
         {

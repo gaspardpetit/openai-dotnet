@@ -5,7 +5,7 @@ namespace OpenAI.Files;
 
 // CUSTOM: Renamed.
 [CodeGenType("CreateUploadRequest")]
-internal partial class InternalCreateUploadRequest
+public partial class InternalCreateUploadRequest
 {
     public static implicit operator BinaryContent(InternalCreateUploadRequest internalCreateUploadRequest)
     {

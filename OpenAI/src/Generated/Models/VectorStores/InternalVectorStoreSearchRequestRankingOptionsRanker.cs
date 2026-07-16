@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.VectorStores
 {
-    internal readonly partial struct InternalVectorStoreSearchRequestRankingOptionsRanker : IEquatable<InternalVectorStoreSearchRequestRankingOptionsRanker>
+    public readonly partial struct InternalVectorStoreSearchRequestRankingOptionsRanker : IEquatable<InternalVectorStoreSearchRequestRankingOptionsRanker>
     {
         private readonly string _value;
         private const string NoneValue = "none";

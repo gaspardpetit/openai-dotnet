@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalDotNetChatResponseFormatJsonObject : ChatResponseFormat, IJsonModel<InternalDotNetChatResponseFormatJsonObject>
+    public partial class InternalDotNetChatResponseFormatJsonObject : ChatResponseFormat, IJsonModel<InternalDotNetChatResponseFormatJsonObject>
     {
         protected override ChatResponseFormat PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

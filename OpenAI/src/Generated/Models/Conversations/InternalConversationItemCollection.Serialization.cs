@@ -13,7 +13,7 @@ using OpenAI.Responses;
 
 namespace OpenAI.Conversations
 {
-    internal partial class InternalConversationItemCollection : IJsonModel<InternalConversationItemCollection>
+    public partial class InternalConversationItemCollection : IJsonModel<InternalConversationItemCollection>
     {
         internal InternalConversationItemCollection() : this(null, null, null, null, default, default)
         {

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownRealtimeServerEventGA : RealtimeServerUpdate, IJsonModel<RealtimeServerUpdate>
+    public partial class InternalUnknownRealtimeServerEventGA : RealtimeServerUpdate, IJsonModel<RealtimeServerUpdate>
     {
         internal InternalUnknownRealtimeServerEventGA() : this(default, default)
         {

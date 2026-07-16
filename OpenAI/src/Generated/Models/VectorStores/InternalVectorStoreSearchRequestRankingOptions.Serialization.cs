@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalVectorStoreSearchRequestRankingOptions : IJsonModel<InternalVectorStoreSearchRequestRankingOptions>
+    public partial class InternalVectorStoreSearchRequestRankingOptions : IJsonModel<InternalVectorStoreSearchRequestRankingOptions>
     {
         protected virtual InternalVectorStoreSearchRequestRankingOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.FineTuning
 {
-    internal partial class InternalFineTuningCheckpointCollectionOptions : IJsonModel<InternalFineTuningCheckpointCollectionOptions>
+    public partial class InternalFineTuningCheckpointCollectionOptions : IJsonModel<InternalFineTuningCheckpointCollectionOptions>
     {
         protected virtual InternalFineTuningCheckpointCollectionOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

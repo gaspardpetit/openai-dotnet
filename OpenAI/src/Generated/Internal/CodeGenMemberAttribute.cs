@@ -7,7 +7,7 @@ using System;
 namespace Microsoft.TypeSpec.Generator.Customizations
 {
     [AttributeUsage((AttributeTargets.Property | AttributeTargets.Field))]
-    internal partial class CodeGenMemberAttribute : CodeGenTypeAttribute
+    public partial class CodeGenMemberAttribute : CodeGenTypeAttribute
     {
         public CodeGenMemberAttribute(string originalName) : base(originalName)
         {

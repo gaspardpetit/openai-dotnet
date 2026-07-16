@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalTranscriptionInclude : IEquatable<InternalTranscriptionInclude>
+    public readonly partial struct InternalTranscriptionInclude : IEquatable<InternalTranscriptionInclude>
     {
         private readonly string _value;
         private const string LogprobsValue = "logprobs";

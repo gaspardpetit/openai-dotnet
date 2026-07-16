@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalCreateChatCompletionStreamResponseChoice
+    public partial class InternalCreateChatCompletionStreamResponseChoice
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

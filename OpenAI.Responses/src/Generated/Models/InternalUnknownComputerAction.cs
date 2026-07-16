@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownComputerAction : ComputerCallAction
+    public partial class InternalUnknownComputerAction : ComputerCallAction
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownComputerAction(ComputerCallActionKind kind, in JsonPatch patch) : base(kind, patch)

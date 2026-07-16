@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalUnknownDotNetCreateSpeechStreamingResponse : StreamingSpeechUpdate, IJsonModel<StreamingSpeechUpdate>
+    public partial class InternalUnknownDotNetCreateSpeechStreamingResponse : StreamingSpeechUpdate, IJsonModel<StreamingSpeechUpdate>
     {
         internal InternalUnknownDotNetCreateSpeechStreamingResponse() : this(default, null)
         {

@@ -7,7 +7,7 @@ using System.Linq;
 namespace OpenAI.VectorStores;
 
 [CodeGenType("CreateVectorStoreFileBatchRequest")]
-internal partial class InternalCreateVectorStoreFileBatchRequest
+public partial class InternalCreateVectorStoreFileBatchRequest
 {
     public InternalCreateVectorStoreFileBatchRequest(IEnumerable<string> fileIds) : this(fileIds.ToList(), null, null, null, null)
     {

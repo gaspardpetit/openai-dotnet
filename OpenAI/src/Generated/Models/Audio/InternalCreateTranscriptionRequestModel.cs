@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalCreateTranscriptionRequestModel : IEquatable<InternalCreateTranscriptionRequestModel>
+    public readonly partial struct InternalCreateTranscriptionRequestModel : IEquatable<InternalCreateTranscriptionRequestModel>
     {
         private readonly string _value;
         private const string Whisper1Value = "whisper-1";

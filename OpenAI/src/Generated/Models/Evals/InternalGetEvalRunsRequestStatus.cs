@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct InternalGetEvalRunsRequestStatus : IEquatable<InternalGetEvalRunsRequestStatus>
+    public readonly partial struct InternalGetEvalRunsRequestStatus : IEquatable<InternalGetEvalRunsRequestStatus>
     {
         private readonly string _value;
         private const string QueuedValue = "queued";

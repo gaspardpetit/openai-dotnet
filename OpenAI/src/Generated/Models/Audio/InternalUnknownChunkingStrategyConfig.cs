@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalUnknownChunkingStrategyConfig : AudioTranscriptionCustomChunkingStrategy
+    public partial class InternalUnknownChunkingStrategyConfig : AudioTranscriptionCustomChunkingStrategy
     {
         internal InternalUnknownChunkingStrategyConfig(InternalChunkingStrategyConfigType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)
         {

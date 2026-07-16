@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalUnknownEvalTextFormatConfiguration : InternalEvalTextFormatConfiguration, IJsonModel<InternalEvalTextFormatConfiguration>
+    public partial class InternalUnknownEvalTextFormatConfiguration : InternalEvalTextFormatConfiguration, IJsonModel<InternalEvalTextFormatConfiguration>
     {
         internal InternalUnknownEvalTextFormatConfiguration() : this(default, null)
         {

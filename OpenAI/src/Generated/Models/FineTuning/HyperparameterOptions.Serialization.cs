@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.FineTuning
 {
-    internal partial class HyperparameterOptions : IJsonModel<HyperparameterOptions>
+    public partial class HyperparameterOptions : IJsonModel<HyperparameterOptions>
     {
         protected virtual HyperparameterOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

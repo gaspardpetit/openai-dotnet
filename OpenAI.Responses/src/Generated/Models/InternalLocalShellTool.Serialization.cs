@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalLocalShellTool : ResponseTool, IJsonModel<InternalLocalShellTool>
+    public partial class InternalLocalShellTool : ResponseTool, IJsonModel<InternalLocalShellTool>
     {
         protected override ResponseTool PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

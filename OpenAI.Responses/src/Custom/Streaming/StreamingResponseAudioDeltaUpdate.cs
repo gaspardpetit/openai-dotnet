@@ -4,6 +4,6 @@ namespace OpenAI.Responses;
 
 // CUSTOM: Renamed.
 [CodeGenType("ResponseAudioDeltaEvent")]
-internal partial class StreamingResponseAudioDeltaUpdate
+public partial class StreamingResponseAudioDeltaUpdate
 {
 }

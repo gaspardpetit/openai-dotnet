@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.FineTuning
 {
-    internal readonly partial struct InternalFineTuningCheckpointCollectionOrder : IEquatable<InternalFineTuningCheckpointCollectionOrder>
+    public readonly partial struct InternalFineTuningCheckpointCollectionOrder : IEquatable<InternalFineTuningCheckpointCollectionOrder>
     {
         private readonly string _value;
         private const string AscendingValue = "asc";

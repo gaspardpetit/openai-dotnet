@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCompletionsCompletionUsage : IJsonModel<InternalCompletionsCompletionUsage>
+    public partial class InternalCompletionsCompletionUsage : IJsonModel<InternalCompletionsCompletionUsage>
     {
         internal InternalCompletionsCompletionUsage()
         {

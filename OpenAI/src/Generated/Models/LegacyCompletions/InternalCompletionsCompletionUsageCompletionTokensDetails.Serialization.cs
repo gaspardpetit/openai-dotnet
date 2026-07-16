@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCompletionsCompletionUsageCompletionTokensDetails : IJsonModel<InternalCompletionsCompletionUsageCompletionTokensDetails>
+    public partial class InternalCompletionsCompletionUsageCompletionTokensDetails : IJsonModel<InternalCompletionsCompletionUsageCompletionTokensDetails>
     {
         protected virtual InternalCompletionsCompletionUsageCompletionTokensDetails PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

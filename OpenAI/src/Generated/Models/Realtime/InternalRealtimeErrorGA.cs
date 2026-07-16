@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalRealtimeErrorGA
+    public partial class InternalRealtimeErrorGA
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

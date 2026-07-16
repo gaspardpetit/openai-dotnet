@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalItemContentInputText : InternalEvalItemContent
+    public partial class InternalEvalItemContentInputText : InternalEvalItemContent
     {
         public InternalEvalItemContentInputText(string text) : base(InternalEvalItemContentType.InputText)
         {

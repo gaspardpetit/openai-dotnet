@@ -11,7 +11,7 @@ using OpenAI.Assistants;
 
 namespace OpenAI.Internal
 {
-    internal partial class InternalResponseFormatJsonObject : InternalAssistantsResponseFormat, IJsonModel<InternalResponseFormatJsonObject>
+    public partial class InternalResponseFormatJsonObject : InternalAssistantsResponseFormat, IJsonModel<InternalResponseFormatJsonObject>
     {
         protected override InternalAssistantsResponseFormat PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

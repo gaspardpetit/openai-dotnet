@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalTranscriptTextSegmentEvent
+    public partial class InternalTranscriptTextSegmentEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

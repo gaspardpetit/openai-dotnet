@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Files
 {
-    internal partial class InternalUploadsError : IJsonModel<InternalUploadsError>
+    public partial class InternalUploadsError : IJsonModel<InternalUploadsError>
     {
         internal InternalUploadsError()
         {

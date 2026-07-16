@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalCompoundFilter : IJsonModel<InternalCompoundFilter>
+    public partial class InternalCompoundFilter : IJsonModel<InternalCompoundFilter>
     {
         internal InternalCompoundFilter() : this(default, null, default)
         {

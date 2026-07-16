@@ -6,6 +6,6 @@ namespace OpenAI.Conversations;
 // - Renamed.
 // - Made internal until we support the convenience methods.
 [CodeGenType("ConversationItemCollectionOptions")]
-internal partial class InternalConversationItemCollectionOptions
+public partial class InternalConversationItemCollectionOptions
 {
 }

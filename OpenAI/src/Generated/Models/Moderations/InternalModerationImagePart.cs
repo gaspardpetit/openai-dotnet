@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalModerationImagePart : ModerationInputPart
+    public partial class InternalModerationImagePart : ModerationInputPart
     {
         internal InternalModerationImagePart(InternalModerationImagePartImageUrl imageUrl) : base(ModerationInputPartKind.Image)
         {

@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class StreamingResponseAudioTranscriptDeltaUpdate : StreamingResponseUpdate
+    public partial class StreamingResponseAudioTranscriptDeltaUpdate : StreamingResponseUpdate
     {
         internal StreamingResponseAudioTranscriptDeltaUpdate(int sequenceNumber, string delta) : base(StreamingResponseUpdateKind.ResponseAudioTranscriptDelta, sequenceNumber)
         {

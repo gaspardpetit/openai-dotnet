@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownRealtimeToolBaseGA : RealtimeTool, IJsonModel<RealtimeTool>
+    public partial class InternalUnknownRealtimeToolBaseGA : RealtimeTool, IJsonModel<RealtimeTool>
     {
         internal InternalUnknownRealtimeToolBaseGA() : this(default, default)
         {

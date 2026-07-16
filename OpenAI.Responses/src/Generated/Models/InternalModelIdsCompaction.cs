@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalModelIdsCompaction : IEquatable<InternalModelIdsCompaction>
+    public readonly partial struct InternalModelIdsCompaction : IEquatable<InternalModelIdsCompaction>
     {
         private readonly string _value;
         private const string Gpt41Value = "gpt-4.1";

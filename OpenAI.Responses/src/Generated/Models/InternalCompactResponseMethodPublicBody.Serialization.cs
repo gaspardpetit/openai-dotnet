@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalCompactResponseMethodPublicBody : IJsonModel<InternalCompactResponseMethodPublicBody>
+    public partial class InternalCompactResponseMethodPublicBody : IJsonModel<InternalCompactResponseMethodPublicBody>
     {
         internal InternalCompactResponseMethodPublicBody()
         {

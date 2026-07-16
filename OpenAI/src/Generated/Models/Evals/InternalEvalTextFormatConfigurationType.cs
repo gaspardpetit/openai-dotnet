@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct InternalEvalTextFormatConfigurationType : IEquatable<InternalEvalTextFormatConfigurationType>
+    public readonly partial struct InternalEvalTextFormatConfigurationType : IEquatable<InternalEvalTextFormatConfigurationType>
     {
         private readonly string _value;
         private const string TextValue = "text";

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalCreateThreadAndRunRequestToolChoiceFunction
+    public partial class InternalCreateThreadAndRunRequestToolChoiceFunction
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

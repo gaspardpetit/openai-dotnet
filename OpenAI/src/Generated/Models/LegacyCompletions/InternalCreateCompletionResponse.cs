@@ -9,7 +9,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCreateCompletionResponse
+    public partial class InternalCreateCompletionResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

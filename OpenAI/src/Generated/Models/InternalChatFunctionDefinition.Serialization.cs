@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace OpenAI
 {
-    internal partial class InternalChatFunctionDefinition : IJsonModel<InternalChatFunctionDefinition>
+    public partial class InternalChatFunctionDefinition : IJsonModel<InternalChatFunctionDefinition>
     {
         internal InternalChatFunctionDefinition()
         {

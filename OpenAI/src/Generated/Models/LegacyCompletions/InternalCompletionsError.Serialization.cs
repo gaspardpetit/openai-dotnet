@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCompletionsError : IJsonModel<InternalCompletionsError>
+    public partial class InternalCompletionsError : IJsonModel<InternalCompletionsError>
     {
         internal InternalCompletionsError()
         {

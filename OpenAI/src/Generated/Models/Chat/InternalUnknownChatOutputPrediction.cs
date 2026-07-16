@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalUnknownChatOutputPrediction : ChatOutputPrediction
+    public partial class InternalUnknownChatOutputPrediction : ChatOutputPrediction
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownChatOutputPrediction(InternalChatOutputPredictionKind kind, in JsonPatch patch) : base(kind != default ? kind : "unknown", patch)

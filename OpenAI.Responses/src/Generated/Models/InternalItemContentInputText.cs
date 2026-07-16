@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalItemContentInputText : ResponseContentPart
+    public partial class InternalItemContentInputText : ResponseContentPart
     {
         public InternalItemContentInputText(string internalText) : base(InternalItemContentType.InputText)
         {

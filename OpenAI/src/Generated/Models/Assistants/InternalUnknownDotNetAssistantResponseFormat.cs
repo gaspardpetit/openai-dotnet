@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalUnknownDotNetAssistantResponseFormat : AssistantResponseFormat
+    public partial class InternalUnknownDotNetAssistantResponseFormat : AssistantResponseFormat
     {
         internal InternalUnknownDotNetAssistantResponseFormat(InternalAssistantsResponseFormatType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)
         {

@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownCodeInterpreterContainerConfiguration : CodeInterpreterToolContainerConfiguration
+    public partial class InternalUnknownCodeInterpreterContainerConfiguration : CodeInterpreterToolContainerConfiguration
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownCodeInterpreterContainerConfiguration(InternalCodeInterpreterContainerConfigurationType kind, in JsonPatch patch) : base(kind != default ? kind : "unknown", patch)

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Files
 {
-    internal readonly partial struct InternalFileExpirationAfter
+    public readonly partial struct InternalFileExpirationAfter
     {
         private readonly IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

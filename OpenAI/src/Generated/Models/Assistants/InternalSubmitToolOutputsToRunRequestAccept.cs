@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalSubmitToolOutputsToRunRequestAccept : IEquatable<InternalSubmitToolOutputsToRunRequestAccept>
+    public readonly partial struct InternalSubmitToolOutputsToRunRequestAccept : IEquatable<InternalSubmitToolOutputsToRunRequestAccept>
     {
         private readonly string _value;
         private const string ApplicationJsonValue = "application/json";

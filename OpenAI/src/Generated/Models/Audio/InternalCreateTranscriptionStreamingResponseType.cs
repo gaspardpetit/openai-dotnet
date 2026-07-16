@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Audio
 {
-    internal readonly partial struct InternalCreateTranscriptionStreamingResponseType : IEquatable<InternalCreateTranscriptionStreamingResponseType>
+    public readonly partial struct InternalCreateTranscriptionStreamingResponseType : IEquatable<InternalCreateTranscriptionStreamingResponseType>
     {
         private readonly string _value;
         private const string TranscriptTextSegmentValue = "transcript.text.segment";

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalVectorStoreCompoundFilter : IJsonModel<InternalVectorStoreCompoundFilter>
+    public partial class InternalVectorStoreCompoundFilter : IJsonModel<InternalVectorStoreCompoundFilter>
     {
         internal InternalVectorStoreCompoundFilter() : this(default, null, null)
         {

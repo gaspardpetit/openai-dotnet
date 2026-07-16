@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.VectorStores
 {
-    internal readonly partial struct InternalVectorStoreSearchRequestFiltersType1 : IEquatable<InternalVectorStoreSearchRequestFiltersType1>
+    public readonly partial struct InternalVectorStoreSearchRequestFiltersType1 : IEquatable<InternalVectorStoreSearchRequestFiltersType1>
     {
         private readonly string _value;
         private const string AndValue = "and";

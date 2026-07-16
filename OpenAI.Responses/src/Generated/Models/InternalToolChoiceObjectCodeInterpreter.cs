@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalToolChoiceObjectCodeInterpreter : InternalToolChoiceObject
+    public partial class InternalToolChoiceObjectCodeInterpreter : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectCodeInterpreter() : this(InternalToolChoiceObjectType.CodeInterpreter, default)
         {

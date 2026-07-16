@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalAssistantsError : IJsonModel<InternalAssistantsError>
+    public partial class InternalAssistantsError : IJsonModel<InternalAssistantsError>
     {
         internal InternalAssistantsError()
         {

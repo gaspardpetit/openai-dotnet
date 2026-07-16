@@ -2,37 +2,37 @@ using Microsoft.TypeSpec.Generator.Customizations;
 
 namespace OpenAI.FineTuning;
 
-[CodeGenType("FineTuningIntegrationType")] internal readonly partial struct InternalFineTuningIntegrationType { }
-[CodeGenType("FineTuningIntegrationWandb")] internal partial class InternalFineTuningIntegrationWandb { }
-[CodeGenType("FineTuningJobObject")] internal readonly partial struct InternalFineTuningJobObject { }
-[CodeGenType("FineTuningJobCheckpointObject")] internal readonly partial struct InternalFineTuningJobCheckpointObject { }
-[CodeGenType("ListFineTuningJobCheckpointsResponse")] internal partial class InternalListFineTuningJobCheckpointsResponse { }
-[CodeGenType("ListFineTuningJobCheckpointsResponseObject")] internal readonly partial struct InternalListFineTuningJobCheckpointsResponseObject { }
-[CodeGenType("ListFineTuningJobEventsResponse")] internal partial class InternalListFineTuningJobEventsResponse { }
-[CodeGenType("ListPaginatedFineTuningJobsResponse")] internal partial class InternalListPaginatedFineTuningJobsResponse { }
-[CodeGenType("ListPaginatedFineTuningJobsResponseObject")] internal readonly partial struct InternalListPaginatedFineTuningJobsResponseObject { }
-[CodeGenType("FineTuningIntegrationWandbWandb")] internal partial class FineTuningIntegrationWandbWandb { }
-[CodeGenType("UnknownCreateFineTuningJobRequestIntegration")] internal partial class UnknownCreateFineTuningJobRequestIntegration { }
-[CodeGenType("UnknownFineTuningIntegration")] internal partial class UnknownFineTuningIntegration { }
-[CodeGenType("FineTuningJobEventObject")] internal readonly partial struct InternalFineTuningJobEventObject { }
-[CodeGenType("ListFineTuningJobEventsResponseObject")] internal readonly partial struct InternalListFineTuningJobEventsResponseObject { }
-[CodeGenType("CreateFineTuningJobRequestModel")] internal readonly partial struct InternalCreateFineTuningJobRequestModel { }
-[CodeGenType("FineTuneDPOMethod")] internal partial class InternalFineTuningJobRequestMethodDpo { }
-[CodeGenType("FineTuneMethodType")] internal readonly partial struct InternalFineTuneMethodType { }
-[CodeGenType("FineTuneSupervisedMethod")] internal partial class InternalFineTuningJobRequestMethodSupervised { }
-[CodeGenType("FineTuneChatRequestInput")] internal partial class InternalTodoFineTuneChatRequestInput { }
-[CodeGenType("FineTuneChatCompletionRequestAssistantMessageWeight")] internal readonly partial struct InternalFineTuneChatCompletionRequestAssistantMessageWeight { }
-[CodeGenType("CreateFineTuningCheckpointPermissionRequest")] internal partial class InternalCreateFineTuningCheckpointPermissionRequest { }
-[CodeGenType("DeleteFineTuningCheckpointPermissionResponse")] internal partial class InternalDeleteFineTuningCheckpointPermissionResponse { }
-[CodeGenType("FineTuningCheckpointPermission")] internal partial class InternalFineTuningCheckpointPermission { }
-[CodeGenType("ListFineTuningCheckpointPermissionResponse")] internal partial class InternalListFineTuningCheckpointPermissionResponse { }
-[CodeGenType("CreateFineTuningJobRequestIntegrationType")] internal readonly partial struct InternalCreateFineTuningJobRequestIntegrationType { }
-[CodeGenType("FineTuneReinforcementHyperparametersReasoningEffort")] internal readonly partial struct InternalFineTuneReinforcementHyperparametersReasoningEffort { }
-[CodeGenType("FineTuneReinforcementMethod")] internal partial class InternalFineTuneReinforcementMethod { }
-[CodeGenType("FineTuningCheckpointPermissionObject")] internal readonly partial struct InternalFineTuningCheckpointPermissionObject { }
-[CodeGenType("ListFineTuningCheckpointPermissionResponseObject")] internal readonly partial struct InternalListFineTuningCheckpointPermissionResponseObject { }
-[CodeGenType("DeleteFineTuningCheckpointPermissionResponseObject")] internal readonly partial struct InternalDeleteFineTuningCheckpointPermissionResponseObject { }
-[CodeGenType("FineTuningErrorResponse")] internal partial class InternalFineTuningErrorResponse { }
-[CodeGenType("FineTuningCheckpointCollectionOrder")] internal readonly partial struct InternalFineTuningCheckpointCollectionOrder { }
-[CodeGenType("FineTuningCheckpointCollectionOptions")] internal partial class InternalFineTuningCheckpointCollectionOptions { }
-[CodeGenType("FineTuneChatRequestInputMessageWeight")] internal readonly partial struct InternalFineTuneChatRequestInputMessageWeight { }
+[CodeGenType("FineTuningIntegrationType")] public readonly partial struct InternalFineTuningIntegrationType { }
+[CodeGenType("FineTuningIntegrationWandb")] public partial class InternalFineTuningIntegrationWandb { }
+[CodeGenType("FineTuningJobObject")] public readonly partial struct InternalFineTuningJobObject { }
+[CodeGenType("FineTuningJobCheckpointObject")] public readonly partial struct InternalFineTuningJobCheckpointObject { }
+[CodeGenType("ListFineTuningJobCheckpointsResponse")] public partial class InternalListFineTuningJobCheckpointsResponse { }
+[CodeGenType("ListFineTuningJobCheckpointsResponseObject")] public readonly partial struct InternalListFineTuningJobCheckpointsResponseObject { }
+[CodeGenType("ListFineTuningJobEventsResponse")] public partial class InternalListFineTuningJobEventsResponse { }
+[CodeGenType("ListPaginatedFineTuningJobsResponse")] public partial class InternalListPaginatedFineTuningJobsResponse { }
+[CodeGenType("ListPaginatedFineTuningJobsResponseObject")] public readonly partial struct InternalListPaginatedFineTuningJobsResponseObject { }
+[CodeGenType("FineTuningIntegrationWandbWandb")] public partial class FineTuningIntegrationWandbWandb { }
+[CodeGenType("UnknownCreateFineTuningJobRequestIntegration")] public partial class UnknownCreateFineTuningJobRequestIntegration { }
+[CodeGenType("UnknownFineTuningIntegration")] public partial class UnknownFineTuningIntegration { }
+[CodeGenType("FineTuningJobEventObject")] public readonly partial struct InternalFineTuningJobEventObject { }
+[CodeGenType("ListFineTuningJobEventsResponseObject")] public readonly partial struct InternalListFineTuningJobEventsResponseObject { }
+[CodeGenType("CreateFineTuningJobRequestModel")] public readonly partial struct InternalCreateFineTuningJobRequestModel { }
+[CodeGenType("FineTuneDPOMethod")] public partial class InternalFineTuningJobRequestMethodDpo { }
+[CodeGenType("FineTuneMethodType")] public readonly partial struct InternalFineTuneMethodType { }
+[CodeGenType("FineTuneSupervisedMethod")] public partial class InternalFineTuningJobRequestMethodSupervised { }
+[CodeGenType("FineTuneChatRequestInput")] public partial class InternalTodoFineTuneChatRequestInput { }
+[CodeGenType("FineTuneChatCompletionRequestAssistantMessageWeight")] public readonly partial struct InternalFineTuneChatCompletionRequestAssistantMessageWeight { }
+[CodeGenType("CreateFineTuningCheckpointPermissionRequest")] public partial class InternalCreateFineTuningCheckpointPermissionRequest { }
+[CodeGenType("DeleteFineTuningCheckpointPermissionResponse")] public partial class InternalDeleteFineTuningCheckpointPermissionResponse { }
+[CodeGenType("FineTuningCheckpointPermission")] public partial class InternalFineTuningCheckpointPermission { }
+[CodeGenType("ListFineTuningCheckpointPermissionResponse")] public partial class InternalListFineTuningCheckpointPermissionResponse { }
+[CodeGenType("CreateFineTuningJobRequestIntegrationType")] public readonly partial struct InternalCreateFineTuningJobRequestIntegrationType { }
+[CodeGenType("FineTuneReinforcementHyperparametersReasoningEffort")] public readonly partial struct InternalFineTuneReinforcementHyperparametersReasoningEffort { }
+[CodeGenType("FineTuneReinforcementMethod")] public partial class InternalFineTuneReinforcementMethod { }
+[CodeGenType("FineTuningCheckpointPermissionObject")] public readonly partial struct InternalFineTuningCheckpointPermissionObject { }
+[CodeGenType("ListFineTuningCheckpointPermissionResponseObject")] public readonly partial struct InternalListFineTuningCheckpointPermissionResponseObject { }
+[CodeGenType("DeleteFineTuningCheckpointPermissionResponseObject")] public readonly partial struct InternalDeleteFineTuningCheckpointPermissionResponseObject { }
+[CodeGenType("FineTuningErrorResponse")] public partial class InternalFineTuningErrorResponse { }
+[CodeGenType("FineTuningCheckpointCollectionOrder")] public readonly partial struct InternalFineTuningCheckpointCollectionOrder { }
+[CodeGenType("FineTuningCheckpointCollectionOptions")] public partial class InternalFineTuningCheckpointCollectionOptions { }
+[CodeGenType("FineTuneChatRequestInputMessageWeight")] public readonly partial struct InternalFineTuneChatRequestInputMessageWeight { }

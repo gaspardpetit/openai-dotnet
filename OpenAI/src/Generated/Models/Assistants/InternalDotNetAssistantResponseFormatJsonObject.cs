@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalDotNetAssistantResponseFormatJsonObject : AssistantResponseFormat
+    public partial class InternalDotNetAssistantResponseFormatJsonObject : AssistantResponseFormat
     {
         public InternalDotNetAssistantResponseFormatJsonObject() : this(InternalAssistantsResponseFormatType.JsonObject, null)
         {

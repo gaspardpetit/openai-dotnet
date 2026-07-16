@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Chat
 {
-    internal readonly partial struct InternalChatModelIds : IEquatable<InternalChatModelIds>
+    public readonly partial struct InternalChatModelIds : IEquatable<InternalChatModelIds>
     {
         private readonly string _value;
         private const string Gpt41Value = "gpt-4.1";

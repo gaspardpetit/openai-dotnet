@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct EvalReasoningEffortLevel : IEquatable<EvalReasoningEffortLevel>
+    public readonly partial struct EvalReasoningEffortLevel : IEquatable<EvalReasoningEffortLevel>
     {
         private readonly string _value;
         private const string NoneValue = "none";

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalVoiceConsentDeletedResource
+    public partial class InternalVoiceConsentDeletedResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

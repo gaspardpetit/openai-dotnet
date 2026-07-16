@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalUnknownRealtimeConversationItemMessageContentPartGA : RealtimeMessageContentPart, IJsonModel<RealtimeMessageContentPart>
+    public partial class InternalUnknownRealtimeConversationItemMessageContentPartGA : RealtimeMessageContentPart, IJsonModel<RealtimeMessageContentPart>
     {
         internal InternalUnknownRealtimeConversationItemMessageContentPartGA() : this(default, default)
         {

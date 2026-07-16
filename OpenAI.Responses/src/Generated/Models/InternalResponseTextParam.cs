@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponseTextParam
+    public partial class InternalResponseTextParam
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

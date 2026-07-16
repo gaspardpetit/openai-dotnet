@@ -13,7 +13,7 @@ using OpenAI;
 #pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Audio
 {
-    internal partial class InternalCreateVoiceRequest : IJsonModel<InternalCreateVoiceRequest>
+    public partial class InternalCreateVoiceRequest : IJsonModel<InternalCreateVoiceRequest>
     {
         internal InternalCreateVoiceRequest()
         {

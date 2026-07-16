@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct InternalEvalToolType : IEquatable<InternalEvalToolType>
+    public readonly partial struct InternalEvalToolType : IEquatable<InternalEvalToolType>
     {
         private readonly string _value;
         private const string FileSearchValue = "file_search";

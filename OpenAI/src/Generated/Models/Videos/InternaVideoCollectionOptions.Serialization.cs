@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternaVideoCollectionOptions : IJsonModel<InternaVideoCollectionOptions>
+    public partial class InternaVideoCollectionOptions : IJsonModel<InternaVideoCollectionOptions>
     {
         protected virtual InternaVideoCollectionOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

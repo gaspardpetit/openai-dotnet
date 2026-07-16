@@ -7,7 +7,7 @@ using System;
 namespace Microsoft.TypeSpec.Generator.Customizations
 {
     [AttributeUsage((AttributeTargets.Class | AttributeTargets.Struct), AllowMultiple = true, Inherited = true)]
-    internal partial class CodeGenSerializationAttribute : Attribute
+    public partial class CodeGenSerializationAttribute : Attribute
     {
         public CodeGenSerializationAttribute(string propertyName)
         {

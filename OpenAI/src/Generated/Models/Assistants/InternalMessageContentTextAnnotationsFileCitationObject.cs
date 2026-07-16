@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalMessageContentTextAnnotationsFileCitationObject : InternalMessageContentTextObjectAnnotation
+    public partial class InternalMessageContentTextAnnotationsFileCitationObject : InternalMessageContentTextObjectAnnotation
     {
         internal InternalMessageContentTextAnnotationsFileCitationObject(string text, InternalMessageContentTextAnnotationsFileCitationObjectFileCitation fileCitation, int startIndex, int endIndex) : base(InternalMessageContentTextAnnotationType.FileCitation)
         {

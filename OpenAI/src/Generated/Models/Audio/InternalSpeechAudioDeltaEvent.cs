@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalSpeechAudioDeltaEvent
+    public partial class InternalSpeechAudioDeltaEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

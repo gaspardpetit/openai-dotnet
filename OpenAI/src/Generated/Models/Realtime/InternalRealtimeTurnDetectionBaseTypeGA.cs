@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalRealtimeTurnDetectionBaseTypeGA : IEquatable<InternalRealtimeTurnDetectionBaseTypeGA>
+    public readonly partial struct InternalRealtimeTurnDetectionBaseTypeGA : IEquatable<InternalRealtimeTurnDetectionBaseTypeGA>
     {
         private readonly string _value;
         private const string ServerVadValue = "server_vad";

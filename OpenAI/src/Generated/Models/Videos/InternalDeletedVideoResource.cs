@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalDeletedVideoResource
+    public partial class InternalDeletedVideoResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalCreateVideoBody
+    public partial class InternalCreateVideoBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

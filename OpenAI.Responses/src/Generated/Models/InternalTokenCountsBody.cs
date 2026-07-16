@@ -8,7 +8,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalTokenCountsBody
+    public partial class InternalTokenCountsBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

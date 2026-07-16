@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalUpdateVoiceConsentRequest : IJsonModel<InternalUpdateVoiceConsentRequest>
+    public partial class InternalUpdateVoiceConsentRequest : IJsonModel<InternalUpdateVoiceConsentRequest>
     {
         internal InternalUpdateVoiceConsentRequest()
         {

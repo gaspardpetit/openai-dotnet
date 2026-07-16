@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Containers
 {
-    internal partial class InternalContainersError
+    public partial class InternalContainersError
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

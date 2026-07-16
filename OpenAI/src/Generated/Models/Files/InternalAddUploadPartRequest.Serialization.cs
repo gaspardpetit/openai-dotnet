@@ -13,7 +13,7 @@ using OpenAI;
 #pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Files
 {
-    internal partial class InternalAddUploadPartRequest : IJsonModel<InternalAddUploadPartRequest>
+    public partial class InternalAddUploadPartRequest : IJsonModel<InternalAddUploadPartRequest>
     {
         internal InternalAddUploadPartRequest()
         {

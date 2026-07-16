@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalAssistantMessageClientGetMessagesCollectionResult : CollectionResult
+    public partial class InternalAssistantMessageClientGetMessagesCollectionResult : CollectionResult
     {
         private readonly InternalAssistantMessageClient _client;
         private readonly string _threadId;

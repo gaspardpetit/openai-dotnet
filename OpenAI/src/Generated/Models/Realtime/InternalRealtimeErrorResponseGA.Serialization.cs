@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Realtime
 {
-    internal partial class InternalRealtimeErrorResponseGA : IJsonModel<InternalRealtimeErrorResponseGA>
+    public partial class InternalRealtimeErrorResponseGA : IJsonModel<InternalRealtimeErrorResponseGA>
     {
         internal InternalRealtimeErrorResponseGA()
         {

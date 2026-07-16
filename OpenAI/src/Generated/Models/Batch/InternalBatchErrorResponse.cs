@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Batch
 {
-    internal partial class InternalBatchErrorResponse
+    public partial class InternalBatchErrorResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

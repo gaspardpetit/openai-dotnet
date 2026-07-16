@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionRequestMessageContentPartRefusal : ChatMessageContentPart
+    public partial class InternalChatCompletionRequestMessageContentPartRefusal : ChatMessageContentPart
     {
         public InternalChatCompletionRequestMessageContentPartRefusal()
         {

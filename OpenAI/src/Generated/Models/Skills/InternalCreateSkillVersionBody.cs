@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Skills
 {
-    internal partial class InternalCreateSkillVersionBody
+    public partial class InternalCreateSkillVersionBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalModifyThreadRequestToolResources : IJsonModel<InternalModifyThreadRequestToolResources>
+    public partial class InternalModifyThreadRequestToolResources : IJsonModel<InternalModifyThreadRequestToolResources>
     {
         protected virtual InternalModifyThreadRequestToolResources PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

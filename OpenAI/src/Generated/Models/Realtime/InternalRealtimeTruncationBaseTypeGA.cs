@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalRealtimeTruncationBaseTypeGA : IEquatable<InternalRealtimeTruncationBaseTypeGA>
+    public readonly partial struct InternalRealtimeTruncationBaseTypeGA : IEquatable<InternalRealtimeTruncationBaseTypeGA>
     {
         private readonly string _value;
         private const string RetentionRatioValue = "retention_ratio";

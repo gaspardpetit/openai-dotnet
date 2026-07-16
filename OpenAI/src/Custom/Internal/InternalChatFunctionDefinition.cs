@@ -4,7 +4,7 @@ using System;
 namespace OpenAI;
 
 [CodeGenType("ChatFunctionObject")]
-internal partial class InternalChatFunctionDefinition
+public partial class InternalChatFunctionDefinition
 {
     /// <summary>
     /// The parameters to the function, formatting as a JSON Schema object.

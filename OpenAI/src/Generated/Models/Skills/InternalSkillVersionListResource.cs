@@ -9,7 +9,7 @@ using OpenAI;
 
 namespace OpenAI.Skills
 {
-    internal partial class InternalSkillVersionListResource
+    public partial class InternalSkillVersionListResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Skills
 {
-    internal readonly partial struct InternalSkillVersionCollectionOrder : IEquatable<InternalSkillVersionCollectionOrder>
+    public readonly partial struct InternalSkillVersionCollectionOrder : IEquatable<InternalSkillVersionCollectionOrder>
     {
         private readonly string _value;
         private const string AscendingValue = "asc";

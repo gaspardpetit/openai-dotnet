@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatCompletionMessageToolCallFunction
+    public partial class InternalChatCompletionMessageToolCallFunction
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

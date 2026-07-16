@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalTranscriptTextDoneEvent : IJsonModel<InternalTranscriptTextDoneEvent>
+    public partial class InternalTranscriptTextDoneEvent : IJsonModel<InternalTranscriptTextDoneEvent>
     {
         internal InternalTranscriptTextDoneEvent() : this(null, null, null, null, null)
         {

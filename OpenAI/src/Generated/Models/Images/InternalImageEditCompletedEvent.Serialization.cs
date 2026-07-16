@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Images
 {
-    internal partial class InternalImageEditCompletedEvent : IJsonModel<InternalImageEditCompletedEvent>
+    public partial class InternalImageEditCompletedEvent : IJsonModel<InternalImageEditCompletedEvent>
     {
         internal InternalImageEditCompletedEvent()
         {

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Skills
 {
-    internal readonly partial struct InternalUpdateSkillDefaultVersionRequestContentType : IEquatable<InternalUpdateSkillDefaultVersionRequestContentType>
+    public readonly partial struct InternalUpdateSkillDefaultVersionRequestContentType : IEquatable<InternalUpdateSkillDefaultVersionRequestContentType>
     {
         private readonly string _value;
         private const string ApplicationJsonValue = "application/json";

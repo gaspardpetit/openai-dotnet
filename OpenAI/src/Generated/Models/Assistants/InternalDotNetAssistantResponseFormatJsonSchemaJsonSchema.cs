@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalDotNetAssistantResponseFormatJsonSchemaJsonSchema
+    public partial class InternalDotNetAssistantResponseFormatJsonSchemaJsonSchema
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

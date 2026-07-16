@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalVectorStoreComparisonFilter
+    public partial class InternalVectorStoreComparisonFilter
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

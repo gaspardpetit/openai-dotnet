@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalModerationImagePartImageUrl
+    public partial class InternalModerationImagePartImageUrl
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

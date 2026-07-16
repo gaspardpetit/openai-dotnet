@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalDotNetChatResponseFormatText : ChatResponseFormat
+    public partial class InternalDotNetChatResponseFormatText : ChatResponseFormat
     {
         public InternalDotNetChatResponseFormatText() : this(InternalDotNetChatResponseFormatType.Text, default)
         {

@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalDotNetChatResponseFormatJsonObject : ChatResponseFormat
+    public partial class InternalDotNetChatResponseFormatJsonObject : ChatResponseFormat
     {
         public InternalDotNetChatResponseFormatJsonObject() : this(InternalDotNetChatResponseFormatType.JsonObject, default)
         {

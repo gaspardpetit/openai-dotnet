@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class VectorStoreClientGetVectorStoreFilesInBatchCollectionResult : CollectionResult
+    public partial class VectorStoreClientGetVectorStoreFilesInBatchCollectionResult : CollectionResult
     {
         private readonly VectorStoreClient _client;
         private readonly string _vectorStoreId;

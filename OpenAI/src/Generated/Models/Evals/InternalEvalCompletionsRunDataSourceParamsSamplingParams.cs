@@ -9,7 +9,7 @@ using OpenAI.Chat;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalCompletionsRunDataSourceParamsSamplingParams
+    public partial class InternalEvalCompletionsRunDataSourceParamsSamplingParams
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

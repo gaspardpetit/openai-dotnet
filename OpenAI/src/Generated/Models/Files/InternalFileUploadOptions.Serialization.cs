@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Files
 {
-    internal partial class InternalFileUploadOptions : IJsonModel<InternalFileUploadOptions>
+    public partial class InternalFileUploadOptions : IJsonModel<InternalFileUploadOptions>
     {
         protected virtual InternalFileUploadOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

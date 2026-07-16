@@ -11,7 +11,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalVoiceConsentResource : IJsonModel<InternalVoiceConsentResource>
+    public partial class InternalVoiceConsentResource : IJsonModel<InternalVoiceConsentResource>
     {
         internal InternalVoiceConsentResource()
         {

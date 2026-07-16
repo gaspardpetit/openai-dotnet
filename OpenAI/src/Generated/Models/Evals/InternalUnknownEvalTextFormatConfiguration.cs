@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalUnknownEvalTextFormatConfiguration : InternalEvalTextFormatConfiguration
+    public partial class InternalUnknownEvalTextFormatConfiguration : InternalEvalTextFormatConfiguration
     {
         internal InternalUnknownEvalTextFormatConfiguration(InternalEvalTextFormatConfigurationType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)
         {

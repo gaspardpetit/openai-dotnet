@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Chat
 {
-    internal partial class InternalChatErrorResponse : IJsonModel<InternalChatErrorResponse>
+    public partial class InternalChatErrorResponse : IJsonModel<InternalChatErrorResponse>
     {
         internal InternalChatErrorResponse()
         {

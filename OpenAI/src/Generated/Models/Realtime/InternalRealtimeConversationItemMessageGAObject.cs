@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalRealtimeConversationItemMessageGAObject : IEquatable<InternalRealtimeConversationItemMessageGAObject>
+    public readonly partial struct InternalRealtimeConversationItemMessageGAObject : IEquatable<InternalRealtimeConversationItemMessageGAObject>
     {
         private readonly string _value;
         private const string RealtimeItemValue = "realtime.item";

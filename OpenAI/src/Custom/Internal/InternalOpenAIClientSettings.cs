@@ -6,7 +6,7 @@ namespace OpenAI;
 
 [CodeGenType("OpenAIClientSettings")]
 [CodeGenSuppress("BindCore", typeof(IConfigurationSection))]
-internal partial class InternalOpenAIClientSettings
+public partial class InternalOpenAIClientSettings
 {
     // CUSTOM: Override BindCore to avoid trying to instantiate abstract AuthenticationPolicy.
     protected override void BindCore(IConfigurationSection section)

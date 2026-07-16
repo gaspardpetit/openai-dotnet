@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Moderations
 {
-    internal partial class InternalUnknownModerationInputPart : ModerationInputPart
+    public partial class InternalUnknownModerationInputPart : ModerationInputPart
     {
         internal InternalUnknownModerationInputPart(ModerationInputPartKind kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind, additionalBinaryDataProperties)
         {

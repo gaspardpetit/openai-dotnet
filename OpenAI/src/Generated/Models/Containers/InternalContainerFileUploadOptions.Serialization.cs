@@ -13,7 +13,7 @@ using OpenAI;
 #pragma warning disable SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 namespace OpenAI.Containers
 {
-    internal partial class InternalContainerFileUploadOptions : IJsonModel<InternalContainerFileUploadOptions>
+    public partial class InternalContainerFileUploadOptions : IJsonModel<InternalContainerFileUploadOptions>
     {
         protected virtual InternalContainerFileUploadOptions PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

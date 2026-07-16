@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Evals
 {
     [PersistableModelProxy(typeof(InternalUnknownEvalTool))]
-    internal abstract partial class InternalEvalTool : IJsonModel<InternalEvalTool>
+    public abstract partial class InternalEvalTool : IJsonModel<InternalEvalTool>
     {
         internal InternalEvalTool()
         {

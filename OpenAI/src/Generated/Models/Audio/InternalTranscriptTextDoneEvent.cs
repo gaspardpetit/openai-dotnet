@@ -8,7 +8,7 @@ using OpenAI;
 
 namespace OpenAI.Audio
 {
-    internal partial class InternalTranscriptTextDoneEvent
+    public partial class InternalTranscriptTextDoneEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

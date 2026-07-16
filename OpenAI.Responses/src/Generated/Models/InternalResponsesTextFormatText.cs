@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponsesTextFormatText : ResponseTextFormat
+    public partial class InternalResponsesTextFormatText : ResponseTextFormat
     {
         public InternalResponsesTextFormatText() : this(InternalResponsesTextFormatType.Text, default)
         {

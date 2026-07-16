@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownItemContent : ResponseContentPart
+    public partial class InternalUnknownItemContent : ResponseContentPart
     {
 #pragma warning disable SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
         internal InternalUnknownItemContent(InternalItemContentType internalType, in JsonPatch patch) : base(internalType != default ? internalType : "unknown", patch)

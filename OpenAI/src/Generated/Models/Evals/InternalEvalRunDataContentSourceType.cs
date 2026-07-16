@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Evals
 {
-    internal readonly partial struct InternalEvalRunDataContentSourceType : IEquatable<InternalEvalRunDataContentSourceType>
+    public readonly partial struct InternalEvalRunDataContentSourceType : IEquatable<InternalEvalRunDataContentSourceType>
     {
         private readonly string _value;
         private const string FileIdValue = "file_id";

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownWebSearchActionSearchSourceBase : WebSearchActionSource, IJsonModel<WebSearchActionSource>
+    public partial class InternalUnknownWebSearchActionSearchSourceBase : WebSearchActionSource, IJsonModel<WebSearchActionSource>
     {
         internal InternalUnknownWebSearchActionSearchSourceBase() : this(default, default)
         {

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Batch
 {
-    internal partial class InternalBatchErrors : IJsonModel<InternalBatchErrors>
+    public partial class InternalBatchErrors : IJsonModel<InternalBatchErrors>
     {
         protected virtual InternalBatchErrors PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

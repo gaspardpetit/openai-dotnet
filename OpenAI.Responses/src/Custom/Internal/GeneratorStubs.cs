@@ -2,110 +2,110 @@ using Microsoft.TypeSpec.Generator.Customizations;
 
 namespace OpenAI.Responses;
 
-[CodeGenType("CreateResponseRequestAccept")] internal readonly partial struct InternalCreateResponseRequestAccept { }
-[CodeGenType("CodeInterpreterContainerConfigurationType")] internal readonly partial struct InternalCodeInterpreterContainerConfigurationType {}
-[CodeGenType("ResponsesComparisonFilter")] internal partial class InternalComparisonFilter {}
-[CodeGenType("ResponsesComparisonFilterType")] internal readonly partial struct InternalComparisonFilterType {}
-[CodeGenType("ResponsesCompoundFilter")] internal partial class InternalCompoundFilter {}
-[CodeGenType("ResponsesCompoundFilterType")] internal readonly partial struct InternalCompoundFilterType {}
-[CodeGenType("ComputerActionClick")] internal partial class InternalComputerActionClick {}
-[CodeGenType("ComputerActionDoubleClick")] internal partial class InternalComputerActionDoubleClick {}
-[CodeGenType("ComputerActionDrag")] internal partial class InternalComputerActionDrag {}
-[CodeGenType("ComputerActionKeyPress")] internal partial class InternalComputerActionKeyPress {}
-[CodeGenType("ComputerActionMove")] internal partial class InternalComputerActionMove {}
-[CodeGenType("ComputerActionScreenshot")] internal partial class InternalComputerActionScreenshot {}
-[CodeGenType("ComputerActionScroll")] internal partial class InternalComputerActionScroll {}
-[CodeGenType("ComputerActionTypeKeys")] internal partial class InternalComputerActionTypeKeys {}
-[CodeGenType("ComputerActionWait")] internal partial class InternalComputerActionWait {}
-[CodeGenType("ComputerToolCallItemParam")] internal partial class InternalComputerUsePreviewToolCallItemParam {}
-[CodeGenType("ComputerToolCallOutputItemOutputComputerScreenshot")] internal partial class InternalComputerToolCallOutputItemOutputComputerScreenshot {}
-[CodeGenType("ComputerToolCallOutputItemOutputType")] internal readonly partial struct InternalComputerUsePreviewToolCallOutputOutputType {}
-[CodeGenType("ComputerToolCallOutputItemParam")] internal partial class InternalComputerUsePreviewToolCallOutputItemParam {}
-[CodeGenType("Coordinate")] internal partial class InternalCoordinate {}
-[CodeGenType("FileSearchToolCallItemParam")] internal partial class InternalFileSearchToolCallItemParam {}
-[CodeGenType("FileSearchToolFiltersType")] internal readonly partial struct InternalFileSearchToolFiltersType { }
-[CodeGenType("FunctionToolCallItemParam")] internal partial class InternalFunctionToolCallItemParam {}
-[CodeGenType("FunctionToolCallOutputItemParam")] internal partial class InternalFunctionToolCallOutputItemParam {}
-[CodeGenType("ImplicitUserMessage")] internal partial class InternalImplicitUserMessage {}
-[CodeGenType("ItemContentInputAudio")] internal partial class InternalItemContentInputAudio {}
-[CodeGenType("ItemContentInputAudioFormat")] internal readonly partial struct InternalItemContentInputAudioFormat {}
-[CodeGenType("ItemContentInputImage")] internal partial class InternalItemContentInputImage {}
-[CodeGenType("ItemContentOutputAudio")] internal partial class InternalItemContentOutputAudio {}
-[CodeGenType("ItemContentType")] internal readonly partial struct InternalItemContentType {}
-[CodeGenType("ItemParam")] internal partial class InternalItemParam {}
-[CodeGenType("ItemReferenceItemParam")] internal partial class InternalItemReferenceItemParam {}
-[CodeGenType("LocationType")] internal readonly partial struct InternalWebSearchUserLocationKind {}
-[CodeGenType("ReasoningGenerateSummary")] internal readonly partial struct InternalReasoningGenerateSummary {}
-[CodeGenType("ReasoningItemParam")] internal partial class InternalReasoningItemParam {}
-[CodeGenType("ReasoningItemSummaryPartType")] internal readonly partial struct InternalReasoningItemSummaryPartType {}
-[CodeGenType("ResponseErrorResponse")] internal partial class InternalResponseErrorResponse {}
-[CodeGenType("ResponsesAssistantMessageItemParam")] internal partial class InternalResponsesAssistantMessageItemParam {}
-[CodeGenType("ResponsesDeveloperMessageItemParam")] internal partial class InternalResponsesDeveloperMessageItemParam {}
-[CodeGenType("ResponsesMessageItemParam")] internal partial class InternalResponsesMessageItemParam {}
-[CodeGenType("ResponsesMessageRole")] internal readonly partial struct InternalResponsesMessageRole {}
-[CodeGenType("ResponsesSystemMessageItemParam")] internal partial class InternalResponsesSystemMessageItemParam {}
-[CodeGenType("ResponsesUserMessageItemParam")] internal partial class InternalResponsesUserMessageItemParam {}
-[CodeGenType("ResponseTextFormatConfigurationJsonObject")] internal partial class InternalResponsesTextFormatJsonObject {}
-[CodeGenType("ResponseTextFormatConfigurationText")] internal partial class InternalResponsesTextFormatText {}
-[CodeGenType("ResponseTextFormatConfigurationType")] internal readonly partial struct InternalResponsesTextFormatType {}
-[CodeGenType("ToolChoiceObject")] internal partial class InternalToolChoiceObject {}
-[CodeGenType("ToolChoiceObjectComputer")] internal partial class InternalToolChoiceObjectComputer {}
-[CodeGenType("ToolChoiceObjectFileSearch")] internal partial class InternalToolChoiceObjectFileSearch {}
-[CodeGenType("ToolChoiceObjectFunction")] internal partial class InternalToolChoiceObjectFunction {}
-[CodeGenType("ToolChoiceObjectType")] internal readonly partial struct InternalToolChoiceObjectType {}
-[CodeGenType("ToolChoiceObjectWebSearch")] internal partial class InternalToolChoiceObjectWebSearch {}
-[CodeGenType("ToolChoiceOptions")] internal readonly partial struct InternalToolChoiceOptions {}
-[CodeGenType("UnknownAnnotation")] internal partial class InternalUnknownAnnotation {}
-[CodeGenType("UnknownComputerAction")] internal partial class InternalUnknownComputerAction {}
-[CodeGenType("UnknownComputerToolCallOutputItemOutput")] internal partial class InternalUnknownComputerToolCallOutputItemOutput {}
-[CodeGenType("UnknownItemContent")] internal partial class InternalUnknownItemContent {}
-[CodeGenType("UnknownItemParam")] internal partial class InternalUnknownItemParam {}
-[CodeGenType("UnknownItemResource")] internal partial class InternalUnknownItemResource {}
-[CodeGenType("UnknownLocation")] internal partial class InternalUnknownLocation {}
-[CodeGenType("UnknownReasoningItemSummaryPart")] internal partial class InternalUnknownReasoningItemSummaryPart {}
-[CodeGenType("UnknownResponsesMessageItemParam")] internal partial class InternalUnknownResponsesMessageItemResourceItemParam {}
-[CodeGenType("UnknownResponsesMessageItemResource")] internal partial class InternalUnknownResponsesMessageItemResource {}
-[CodeGenType("UnknownResponseStreamEvent")] internal partial class InternalUnknownResponseStreamEvent {}
-[CodeGenType("UnknownResponseTextFormatConfiguration")] internal partial class InternalUnknownResponseTextFormatConfiguration {}
-[CodeGenType("UnknownTool")] internal partial class InternalUnknownTool {}
-[CodeGenType("UnknownToolChoiceObject")] internal partial class InternalUnknownToolChoiceObject {}
-[CodeGenType("CodeInterpreterToolOutputType")] internal readonly partial struct InternalCodeInterpreterToolOutputType {}
-[CodeGenType("LocalShellToolCallItemResourceStatus")] internal readonly partial struct InternalLocalShellToolCallItemResourceStatus {}
-[CodeGenType("LocalShellToolCallOutputItemResourceStatus")] internal readonly partial struct InternalLocalShellToolCallOutputItemResourceStatus {}
-[CodeGenType("LocalShellTool")] internal partial class InternalLocalShellTool {}
-[CodeGenType("MCPToolRequireApproval1")] internal partial class InternalMCPToolRequireApproval1 {}
-[CodeGenType("ToolChoiceObjectImageGen")] internal partial class InternalToolChoiceObjectImageGen {}
-[CodeGenType("ToolChoiceObjectCodeInterpreter")] internal partial class InternalToolChoiceObjectCodeInterpreter {}
-[CodeGenType("ToolChoiceObjectMCP")] internal partial class InternalToolChoiceObjectMCP {}
-[CodeGenType("ImageGenToolCallItemParam")] internal partial class InternalImageGenToolCallItemParam {}
-[CodeGenType("ImageGenToolModel")] internal partial struct InternalImageGenToolModel { }
-[CodeGenType("CodeInterpreterToolCallItemParam")] internal partial class InternalCodeInterpreterToolCallItemParam {}
-[CodeGenType("LocalShellToolCallItemParam")] internal partial class InternalLocalShellToolCallItemParam {}
-[CodeGenType("LocalShellExecAction")] internal partial class InternalLocalShellExecAction {}
-[CodeGenType("LocalShellToolCallOutputItemParam")] internal partial class InternalLocalShellToolCallOutputItemParam {}
-[CodeGenType("MCPListToolsItemParam")] internal partial class InternalMCPListToolsItemParam {}
-[CodeGenType("MCPApprovalRequestItemParam")] internal partial class InternalMCPApprovalRequestItemParam {}
-[CodeGenType("MCPApprovalResponseItemParam")] internal partial class InternalMCPApprovalResponseItemParam {}
-[CodeGenType("MCPCallItemParam")] internal partial class InternalMCPCallItemParam {}
-[CodeGenType("LocalShellToolCallItemResource")] internal partial class InternalLocalShellToolCallItemResource {}
-[CodeGenType("LocalShellToolCallOutputItemResource")] internal partial class InternalLocalShellToolCallOutputItemResource {}
-[CodeGenType("UnknownCodeInterpreterToolOutput")] internal partial class InternalUnknownCodeInterpreterToolOutput {}
-[CodeGenType("UnknownCodeInterpreterContainerConfiguration")] internal partial class InternalUnknownCodeInterpreterContainerConfiguration {}
-[CodeGenType("GetInputTokenCountsRequestContentType")] internal readonly partial struct InternalGetInputTokenCountsRequestContentType {}
-[CodeGenType("CompactConversationRequestContentType")] internal readonly partial struct InternalCompactConversationRequestContentType {}
-[CodeGenType("WebSearchActionType")] internal readonly partial struct InternalWebSearchActionType { }
-[CodeGenType("UnknownWebSearchActionBase")] internal partial class InternalUnknownWebSearchActionBase { }
-[CodeGenType("WebSearchActionSearchSourcesType")] internal readonly partial struct InternalWebSearchActionSearchSourcesType { }
-[CodeGenType("UnknownWebSearchActionSearchSourceBase")] internal partial class InternalUnknownWebSearchActionSearchSourceBase { }
-[CodeGenType("ApplyPatchOperationType")] internal readonly partial struct InternalApplyPatchOperationType { }
-[CodeGenType("UnknownApplyPatchOperation")] internal partial class InternalUnknownApplyPatchOperation { }
-[CodeGenType("CreateResponseReasoningGenerateSummary")] internal readonly partial struct InternalCreateResponseReasoningGenerateSummary {}
-[CodeGenType("CompactResource")] internal partial class InternalCompactResource {}
-[CodeGenType("CompactResponseMethodPublicBody")] internal partial class InternalCompactResponseMethodPublicBody {}
-[CodeGenType("ResponseTextParam")] internal partial class InternalResponseTextParam {}
-[CodeGenType("TokenCountsBody")] internal partial class InternalTokenCountsBody {}
-[CodeGenType("TokenCountsResource")] internal partial class InternalTokenCountsResource {}
-[CodeGenType("ModelIdsCompaction")] internal readonly partial struct InternalModelIdsCompaction {}
-[CodeGenType("TokenCountsBodyTextVerbosity")] internal readonly partial struct InternalTokenCountsBodyTextVerbosity {}
-[CodeGenType("TruncationEnum")] internal readonly partial struct InternalTruncationEnum {}
-[CodeGenType("GetResponseContentType")] internal readonly partial struct InternalGetResponseContentType {}
+[CodeGenType("CreateResponseRequestAccept")] public readonly partial struct InternalCreateResponseRequestAccept { }
+[CodeGenType("CodeInterpreterContainerConfigurationType")] public readonly partial struct InternalCodeInterpreterContainerConfigurationType {}
+[CodeGenType("ResponsesComparisonFilter")] public partial class InternalComparisonFilter {}
+[CodeGenType("ResponsesComparisonFilterType")] public readonly partial struct InternalComparisonFilterType {}
+[CodeGenType("ResponsesCompoundFilter")] public partial class InternalCompoundFilter {}
+[CodeGenType("ResponsesCompoundFilterType")] public readonly partial struct InternalCompoundFilterType {}
+[CodeGenType("ComputerActionClick")] public partial class InternalComputerActionClick {}
+[CodeGenType("ComputerActionDoubleClick")] public partial class InternalComputerActionDoubleClick {}
+[CodeGenType("ComputerActionDrag")] public partial class InternalComputerActionDrag {}
+[CodeGenType("ComputerActionKeyPress")] public partial class InternalComputerActionKeyPress {}
+[CodeGenType("ComputerActionMove")] public partial class InternalComputerActionMove {}
+[CodeGenType("ComputerActionScreenshot")] public partial class InternalComputerActionScreenshot {}
+[CodeGenType("ComputerActionScroll")] public partial class InternalComputerActionScroll {}
+[CodeGenType("ComputerActionTypeKeys")] public partial class InternalComputerActionTypeKeys {}
+[CodeGenType("ComputerActionWait")] public partial class InternalComputerActionWait {}
+[CodeGenType("ComputerToolCallItemParam")] public partial class InternalComputerUsePreviewToolCallItemParam {}
+[CodeGenType("ComputerToolCallOutputItemOutputComputerScreenshot")] public partial class InternalComputerToolCallOutputItemOutputComputerScreenshot {}
+[CodeGenType("ComputerToolCallOutputItemOutputType")] public readonly partial struct InternalComputerUsePreviewToolCallOutputOutputType {}
+[CodeGenType("ComputerToolCallOutputItemParam")] public partial class InternalComputerUsePreviewToolCallOutputItemParam {}
+[CodeGenType("Coordinate")] public partial class InternalCoordinate {}
+[CodeGenType("FileSearchToolCallItemParam")] public partial class InternalFileSearchToolCallItemParam {}
+[CodeGenType("FileSearchToolFiltersType")] public readonly partial struct InternalFileSearchToolFiltersType { }
+[CodeGenType("FunctionToolCallItemParam")] public partial class InternalFunctionToolCallItemParam {}
+[CodeGenType("FunctionToolCallOutputItemParam")] public partial class InternalFunctionToolCallOutputItemParam {}
+[CodeGenType("ImplicitUserMessage")] public partial class InternalImplicitUserMessage {}
+[CodeGenType("ItemContentInputAudio")] public partial class InternalItemContentInputAudio {}
+[CodeGenType("ItemContentInputAudioFormat")] public readonly partial struct InternalItemContentInputAudioFormat {}
+[CodeGenType("ItemContentInputImage")] public partial class InternalItemContentInputImage {}
+[CodeGenType("ItemContentOutputAudio")] public partial class InternalItemContentOutputAudio {}
+[CodeGenType("ItemContentType")] public readonly partial struct InternalItemContentType {}
+[CodeGenType("ItemParam")] public partial class InternalItemParam {}
+[CodeGenType("ItemReferenceItemParam")] public partial class InternalItemReferenceItemParam {}
+[CodeGenType("LocationType")] public readonly partial struct InternalWebSearchUserLocationKind {}
+[CodeGenType("ReasoningGenerateSummary")] public readonly partial struct InternalReasoningGenerateSummary {}
+[CodeGenType("ReasoningItemParam")] public partial class InternalReasoningItemParam {}
+[CodeGenType("ReasoningItemSummaryPartType")] public readonly partial struct InternalReasoningItemSummaryPartType {}
+[CodeGenType("ResponseErrorResponse")] public partial class InternalResponseErrorResponse {}
+[CodeGenType("ResponsesAssistantMessageItemParam")] public partial class InternalResponsesAssistantMessageItemParam {}
+[CodeGenType("ResponsesDeveloperMessageItemParam")] public partial class InternalResponsesDeveloperMessageItemParam {}
+[CodeGenType("ResponsesMessageItemParam")] public partial class InternalResponsesMessageItemParam {}
+[CodeGenType("ResponsesMessageRole")] public readonly partial struct InternalResponsesMessageRole {}
+[CodeGenType("ResponsesSystemMessageItemParam")] public partial class InternalResponsesSystemMessageItemParam {}
+[CodeGenType("ResponsesUserMessageItemParam")] public partial class InternalResponsesUserMessageItemParam {}
+[CodeGenType("ResponseTextFormatConfigurationJsonObject")] public partial class InternalResponsesTextFormatJsonObject {}
+[CodeGenType("ResponseTextFormatConfigurationText")] public partial class InternalResponsesTextFormatText {}
+[CodeGenType("ResponseTextFormatConfigurationType")] public readonly partial struct InternalResponsesTextFormatType {}
+[CodeGenType("ToolChoiceObject")] public partial class InternalToolChoiceObject {}
+[CodeGenType("ToolChoiceObjectComputer")] public partial class InternalToolChoiceObjectComputer {}
+[CodeGenType("ToolChoiceObjectFileSearch")] public partial class InternalToolChoiceObjectFileSearch {}
+[CodeGenType("ToolChoiceObjectFunction")] public partial class InternalToolChoiceObjectFunction {}
+[CodeGenType("ToolChoiceObjectType")] public readonly partial struct InternalToolChoiceObjectType {}
+[CodeGenType("ToolChoiceObjectWebSearch")] public partial class InternalToolChoiceObjectWebSearch {}
+[CodeGenType("ToolChoiceOptions")] public readonly partial struct InternalToolChoiceOptions {}
+[CodeGenType("UnknownAnnotation")] public partial class InternalUnknownAnnotation {}
+[CodeGenType("UnknownComputerAction")] public partial class InternalUnknownComputerAction {}
+[CodeGenType("UnknownComputerToolCallOutputItemOutput")] public partial class InternalUnknownComputerToolCallOutputItemOutput {}
+[CodeGenType("UnknownItemContent")] public partial class InternalUnknownItemContent {}
+[CodeGenType("UnknownItemParam")] public partial class InternalUnknownItemParam {}
+[CodeGenType("UnknownItemResource")] public partial class InternalUnknownItemResource {}
+[CodeGenType("UnknownLocation")] public partial class InternalUnknownLocation {}
+[CodeGenType("UnknownReasoningItemSummaryPart")] public partial class InternalUnknownReasoningItemSummaryPart {}
+[CodeGenType("UnknownResponsesMessageItemParam")] public partial class InternalUnknownResponsesMessageItemResourceItemParam {}
+[CodeGenType("UnknownResponsesMessageItemResource")] public partial class InternalUnknownResponsesMessageItemResource {}
+[CodeGenType("UnknownResponseStreamEvent")] public partial class InternalUnknownResponseStreamEvent {}
+[CodeGenType("UnknownResponseTextFormatConfiguration")] public partial class InternalUnknownResponseTextFormatConfiguration {}
+[CodeGenType("UnknownTool")] public partial class InternalUnknownTool {}
+[CodeGenType("UnknownToolChoiceObject")] public partial class InternalUnknownToolChoiceObject {}
+[CodeGenType("CodeInterpreterToolOutputType")] public readonly partial struct InternalCodeInterpreterToolOutputType {}
+[CodeGenType("LocalShellToolCallItemResourceStatus")] public readonly partial struct InternalLocalShellToolCallItemResourceStatus {}
+[CodeGenType("LocalShellToolCallOutputItemResourceStatus")] public readonly partial struct InternalLocalShellToolCallOutputItemResourceStatus {}
+[CodeGenType("LocalShellTool")] public partial class InternalLocalShellTool {}
+[CodeGenType("MCPToolRequireApproval1")] public partial class InternalMCPToolRequireApproval1 {}
+[CodeGenType("ToolChoiceObjectImageGen")] public partial class InternalToolChoiceObjectImageGen {}
+[CodeGenType("ToolChoiceObjectCodeInterpreter")] public partial class InternalToolChoiceObjectCodeInterpreter {}
+[CodeGenType("ToolChoiceObjectMCP")] public partial class InternalToolChoiceObjectMCP {}
+[CodeGenType("ImageGenToolCallItemParam")] public partial class InternalImageGenToolCallItemParam {}
+[CodeGenType("ImageGenToolModel")] public partial struct InternalImageGenToolModel { }
+[CodeGenType("CodeInterpreterToolCallItemParam")] public partial class InternalCodeInterpreterToolCallItemParam {}
+[CodeGenType("LocalShellToolCallItemParam")] public partial class InternalLocalShellToolCallItemParam {}
+[CodeGenType("LocalShellExecAction")] public partial class InternalLocalShellExecAction {}
+[CodeGenType("LocalShellToolCallOutputItemParam")] public partial class InternalLocalShellToolCallOutputItemParam {}
+[CodeGenType("MCPListToolsItemParam")] public partial class InternalMCPListToolsItemParam {}
+[CodeGenType("MCPApprovalRequestItemParam")] public partial class InternalMCPApprovalRequestItemParam {}
+[CodeGenType("MCPApprovalResponseItemParam")] public partial class InternalMCPApprovalResponseItemParam {}
+[CodeGenType("MCPCallItemParam")] public partial class InternalMCPCallItemParam {}
+[CodeGenType("LocalShellToolCallItemResource")] public partial class InternalLocalShellToolCallItemResource {}
+[CodeGenType("LocalShellToolCallOutputItemResource")] public partial class InternalLocalShellToolCallOutputItemResource {}
+[CodeGenType("UnknownCodeInterpreterToolOutput")] public partial class InternalUnknownCodeInterpreterToolOutput {}
+[CodeGenType("UnknownCodeInterpreterContainerConfiguration")] public partial class InternalUnknownCodeInterpreterContainerConfiguration {}
+[CodeGenType("GetInputTokenCountsRequestContentType")] public readonly partial struct InternalGetInputTokenCountsRequestContentType {}
+[CodeGenType("CompactConversationRequestContentType")] public readonly partial struct InternalCompactConversationRequestContentType {}
+[CodeGenType("WebSearchActionType")] public readonly partial struct InternalWebSearchActionType { }
+[CodeGenType("UnknownWebSearchActionBase")] public partial class InternalUnknownWebSearchActionBase { }
+[CodeGenType("WebSearchActionSearchSourcesType")] public readonly partial struct InternalWebSearchActionSearchSourcesType { }
+[CodeGenType("UnknownWebSearchActionSearchSourceBase")] public partial class InternalUnknownWebSearchActionSearchSourceBase { }
+[CodeGenType("ApplyPatchOperationType")] public readonly partial struct InternalApplyPatchOperationType { }
+[CodeGenType("UnknownApplyPatchOperation")] public partial class InternalUnknownApplyPatchOperation { }
+[CodeGenType("CreateResponseReasoningGenerateSummary")] public readonly partial struct InternalCreateResponseReasoningGenerateSummary {}
+[CodeGenType("CompactResource")] public partial class InternalCompactResource {}
+[CodeGenType("CompactResponseMethodPublicBody")] public partial class InternalCompactResponseMethodPublicBody {}
+[CodeGenType("ResponseTextParam")] public partial class InternalResponseTextParam {}
+[CodeGenType("TokenCountsBody")] public partial class InternalTokenCountsBody {}
+[CodeGenType("TokenCountsResource")] public partial class InternalTokenCountsResource {}
+[CodeGenType("ModelIdsCompaction")] public readonly partial struct InternalModelIdsCompaction {}
+[CodeGenType("TokenCountsBodyTextVerbosity")] public readonly partial struct InternalTokenCountsBodyTextVerbosity {}
+[CodeGenType("TruncationEnum")] public readonly partial struct InternalTruncationEnum {}
+[CodeGenType("GetResponseContentType")] public readonly partial struct InternalGetResponseContentType {}

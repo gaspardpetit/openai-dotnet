@@ -12,7 +12,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalLocalShellExecAction
+    public partial class InternalLocalShellExecAction
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;

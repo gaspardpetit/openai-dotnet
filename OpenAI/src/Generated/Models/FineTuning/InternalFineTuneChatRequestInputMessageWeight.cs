@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.FineTuning
 {
-    internal readonly partial struct InternalFineTuneChatRequestInputMessageWeight : IEquatable<InternalFineTuneChatRequestInputMessageWeight>
+    public readonly partial struct InternalFineTuneChatRequestInputMessageWeight : IEquatable<InternalFineTuneChatRequestInputMessageWeight>
     {
         private readonly string _value;
         private const string _0Value = "0";

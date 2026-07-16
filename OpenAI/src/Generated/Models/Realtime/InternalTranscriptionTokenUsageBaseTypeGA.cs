@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalTranscriptionTokenUsageBaseTypeGA : IEquatable<InternalTranscriptionTokenUsageBaseTypeGA>
+    public readonly partial struct InternalTranscriptionTokenUsageBaseTypeGA : IEquatable<InternalTranscriptionTokenUsageBaseTypeGA>
     {
         private readonly string _value;
         private const string TokensValue = "tokens";

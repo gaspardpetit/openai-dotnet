@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class StreamingResponseCustomToolCallInputDoneUpdate : StreamingResponseUpdate, IJsonModel<StreamingResponseCustomToolCallInputDoneUpdate>
+    public partial class StreamingResponseCustomToolCallInputDoneUpdate : StreamingResponseUpdate, IJsonModel<StreamingResponseCustomToolCallInputDoneUpdate>
     {
         public StreamingResponseCustomToolCallInputDoneUpdate() : this(StreamingResponseUpdateKind.ResponseCustomToolCallInputDone, default, default, default, null, null)
         {

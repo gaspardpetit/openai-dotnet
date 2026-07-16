@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Batch
 {
-    internal partial class BatchClientGetBatchesCollectionResultOfT : CollectionResult<BatchJob>
+    public partial class BatchClientGetBatchesCollectionResultOfT : CollectionResult<BatchJob>
     {
         private readonly BatchClient _client;
         private readonly string _after;

@@ -9,7 +9,7 @@ using OpenAI;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalVideoListResource
+    public partial class InternalVideoListResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Conversations
 {
-    internal partial class InternalConversationItemCollectionOptions : IJsonModel<InternalConversationItemCollectionOptions>
+    public partial class InternalConversationItemCollectionOptions : IJsonModel<InternalConversationItemCollectionOptions>
     {
         internal InternalConversationItemCollectionOptions() : this(null, default, default, null, null, null)
         {

@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalDotNetAssistantResponseFormatJsonObject : AssistantResponseFormat, IJsonModel<InternalDotNetAssistantResponseFormatJsonObject>
+    public partial class InternalDotNetAssistantResponseFormatJsonObject : AssistantResponseFormat, IJsonModel<InternalDotNetAssistantResponseFormatJsonObject>
     {
         protected override AssistantResponseFormat PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
         {

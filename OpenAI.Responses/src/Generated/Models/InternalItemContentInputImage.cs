@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalItemContentInputImage : ResponseContentPart
+    public partial class InternalItemContentInputImage : ResponseContentPart
     {
         public InternalItemContentInputImage() : this(InternalItemContentType.InputImage, default, null, null, default)
         {

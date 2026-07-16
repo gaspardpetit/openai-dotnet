@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Realtime
 {
-    internal readonly partial struct InternalRealtimeAudioFormatType : IEquatable<InternalRealtimeAudioFormatType>
+    public readonly partial struct InternalRealtimeAudioFormatType : IEquatable<InternalRealtimeAudioFormatType>
     {
         private readonly string _value;
         private const string AudioPcmValue = "audio/pcm";

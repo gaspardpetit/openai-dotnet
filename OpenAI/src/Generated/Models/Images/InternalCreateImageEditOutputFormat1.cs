@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalCreateImageEditOutputFormat1 : IEquatable<InternalCreateImageEditOutputFormat1>
+    public readonly partial struct InternalCreateImageEditOutputFormat1 : IEquatable<InternalCreateImageEditOutputFormat1>
     {
         private readonly string _value;
         private const string PngValue = "png";

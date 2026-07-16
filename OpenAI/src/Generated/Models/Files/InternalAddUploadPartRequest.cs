@@ -10,7 +10,7 @@ using System.IO;
 
 namespace OpenAI.Files
 {
-    internal partial class InternalAddUploadPartRequest
+    public partial class InternalAddUploadPartRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

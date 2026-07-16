@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalVectorStoresError
+    public partial class InternalVectorStoresError
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

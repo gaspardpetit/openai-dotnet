@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCompletionsCompletionUsageCompletionTokensDetails
+    public partial class InternalCompletionsCompletionUsageCompletionTokensDetails
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

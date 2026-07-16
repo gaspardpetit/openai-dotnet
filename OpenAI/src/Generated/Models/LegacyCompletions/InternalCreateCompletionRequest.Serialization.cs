@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
-    internal partial class InternalCreateCompletionRequest : IJsonModel<InternalCreateCompletionRequest>
+    public partial class InternalCreateCompletionRequest : IJsonModel<InternalCreateCompletionRequest>
     {
         internal InternalCreateCompletionRequest() : this(default, null, default, default, default, null, default, default, default, default, default, null, default, null, null, default, default, null, null)
         {

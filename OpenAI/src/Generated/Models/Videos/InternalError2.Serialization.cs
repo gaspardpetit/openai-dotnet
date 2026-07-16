@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalError2 : IJsonModel<InternalError2>
+    public partial class InternalError2 : IJsonModel<InternalError2>
     {
         internal InternalError2()
         {

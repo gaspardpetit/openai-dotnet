@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalTruncationEnum : IEquatable<InternalTruncationEnum>
+    public readonly partial struct InternalTruncationEnum : IEquatable<InternalTruncationEnum>
     {
         private readonly string _value;
         private const string AutoValue = "auto";

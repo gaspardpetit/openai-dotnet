@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalError2
+    public partial class InternalError2
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

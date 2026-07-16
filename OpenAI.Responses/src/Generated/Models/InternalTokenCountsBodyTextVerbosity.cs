@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Responses
 {
-    internal readonly partial struct InternalTokenCountsBodyTextVerbosity : IEquatable<InternalTokenCountsBodyTextVerbosity>
+    public readonly partial struct InternalTokenCountsBodyTextVerbosity : IEquatable<InternalTokenCountsBodyTextVerbosity>
     {
         private readonly string _value;
         private const string LowValue = "low";

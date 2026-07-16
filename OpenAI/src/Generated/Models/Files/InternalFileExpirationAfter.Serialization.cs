@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Files
 {
-    internal readonly partial struct InternalFileExpirationAfter : IJsonModel<InternalFileExpirationAfter>, IJsonModel<object>
+    public readonly partial struct InternalFileExpirationAfter : IJsonModel<InternalFileExpirationAfter>, IJsonModel<object>
     {
         public InternalFileExpirationAfter()
         {

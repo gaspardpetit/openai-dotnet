@@ -4,7 +4,7 @@ using System.ClientModel;
 namespace OpenAI.LegacyCompletions;
 
 [CodeGenType("CreateCompletionRequest")]
-internal partial class InternalCreateCompletionRequest
+public partial class InternalCreateCompletionRequest
 {
     public static implicit operator BinaryContent(InternalCreateCompletionRequest internalCreateCompletionRequest)
     {

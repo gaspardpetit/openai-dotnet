@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalRunStepFileSearchRanker : IEquatable<InternalRunStepFileSearchRanker>
+    public readonly partial struct InternalRunStepFileSearchRanker : IEquatable<InternalRunStepFileSearchRanker>
     {
         private readonly string _value;
         private const string AutoValue = "auto";

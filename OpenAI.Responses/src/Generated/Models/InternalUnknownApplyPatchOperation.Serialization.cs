@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalUnknownApplyPatchOperation : ApplyPatchOperation, IJsonModel<ApplyPatchOperation>
+    public partial class InternalUnknownApplyPatchOperation : ApplyPatchOperation, IJsonModel<ApplyPatchOperation>
     {
         internal InternalUnknownApplyPatchOperation() : this(default, default)
         {

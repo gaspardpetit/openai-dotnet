@@ -9,7 +9,7 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalResponsesAssistantMessage : MessageResponseItem
+    public partial class InternalResponsesAssistantMessage : MessageResponseItem
     {
         public InternalResponsesAssistantMessage(IEnumerable<ResponseContentPart> internalContent) : base(InternalResponsesMessageRole.Assistant)
         {

@@ -6,7 +6,7 @@ using System.ClientModel.Primitives;
 
 namespace OpenAI.Responses
 {
-    internal partial class InternalItemContentInputAudio : ResponseContentPart
+    public partial class InternalItemContentInputAudio : ResponseContentPart
     {
         internal InternalItemContentInputAudio(string data, InternalItemContentInputAudioFormat format) : base(InternalItemContentType.InputAudio)
         {

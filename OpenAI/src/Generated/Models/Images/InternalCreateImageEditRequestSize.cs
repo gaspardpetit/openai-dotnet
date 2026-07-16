@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Images
 {
-    internal readonly partial struct InternalCreateImageEditRequestSize : IEquatable<InternalCreateImageEditRequestSize>
+    public readonly partial struct InternalCreateImageEditRequestSize : IEquatable<InternalCreateImageEditRequestSize>
     {
         private readonly string _value;
         private const string _256x256Value = "256x256";

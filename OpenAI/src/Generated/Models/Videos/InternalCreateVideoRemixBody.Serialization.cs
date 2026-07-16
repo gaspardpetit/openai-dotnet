@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Videos
 {
-    internal partial class InternalCreateVideoRemixBody : IJsonModel<InternalCreateVideoRemixBody>
+    public partial class InternalCreateVideoRemixBody : IJsonModel<InternalCreateVideoRemixBody>
     {
         internal InternalCreateVideoRemixBody()
         {

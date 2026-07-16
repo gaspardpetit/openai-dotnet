@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace OpenAI.Assistants
 {
-    internal readonly partial struct InternalCreateThreadAndRunRequestTruncationStrategyType : IEquatable<InternalCreateThreadAndRunRequestTruncationStrategyType>
+    public readonly partial struct InternalCreateThreadAndRunRequestTruncationStrategyType : IEquatable<InternalCreateThreadAndRunRequestTruncationStrategyType>
     {
         private readonly string _value;
         private const string AutoValue = "auto";

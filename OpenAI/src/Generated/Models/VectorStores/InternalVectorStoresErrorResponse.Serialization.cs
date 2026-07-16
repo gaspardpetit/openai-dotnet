@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.VectorStores
 {
-    internal partial class InternalVectorStoresErrorResponse : IJsonModel<InternalVectorStoresErrorResponse>
+    public partial class InternalVectorStoresErrorResponse : IJsonModel<InternalVectorStoresErrorResponse>
     {
         internal InternalVectorStoresErrorResponse()
         {

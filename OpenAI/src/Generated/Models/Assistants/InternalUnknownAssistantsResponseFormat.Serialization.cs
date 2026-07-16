@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Assistants
 {
-    internal partial class InternalUnknownAssistantsResponseFormat : InternalAssistantsResponseFormat, IJsonModel<InternalAssistantsResponseFormat>
+    public partial class InternalUnknownAssistantsResponseFormat : InternalAssistantsResponseFormat, IJsonModel<InternalAssistantsResponseFormat>
     {
         internal InternalUnknownAssistantsResponseFormat() : this(default, null)
         {

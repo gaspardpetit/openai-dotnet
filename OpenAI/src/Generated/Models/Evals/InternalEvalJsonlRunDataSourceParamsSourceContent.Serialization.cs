@@ -10,7 +10,7 @@ using OpenAI;
 
 namespace OpenAI.Evals
 {
-    internal partial class InternalEvalJsonlRunDataSourceParamsSourceContent : IJsonModel<InternalEvalJsonlRunDataSourceParamsSourceContent>
+    public partial class InternalEvalJsonlRunDataSourceParamsSourceContent : IJsonModel<InternalEvalJsonlRunDataSourceParamsSourceContent>
     {
         internal InternalEvalJsonlRunDataSourceParamsSourceContent() : this(null, null, null)
         {
