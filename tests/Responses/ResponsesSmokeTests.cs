@@ -18,6 +18,30 @@ namespace OpenAI.Tests.Responses;
 public partial class ResponsesSmokeTests
 {
     [Test]
+    public void StreamingErrorDeserializesNestedErrorDetails()
+    {
+        BinaryData data = BinaryData.FromString("""
+            {
+              "type": "error",
+              "sequence_number": 1,
+              "error": {
+                "type": "invalid_request_error",
+                "code": "invalid_value",
+                "message": "Invalid value.",
+                "param": "input"
+              }
+            }
+            """);
+
+        StreamingResponseErrorUpdate update = (StreamingResponseErrorUpdate)ModelReaderWriter.Read<StreamingResponseUpdate>(data);
+
+        Assert.That(update.ErrorType, Is.EqualTo("invalid_request_error"));
+        Assert.That(update.Code, Is.EqualTo("invalid_value"));
+        Assert.That(update.Message, Is.EqualTo("Invalid value."));
+        Assert.That(update.Param, Is.EqualTo("input"));
+    }
+
+    [Test]
     public void CanCreateResponsesClientFromTopLevelClient()
     {
         Uri fakeUri = new("https://example.invalid");

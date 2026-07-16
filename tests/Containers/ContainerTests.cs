@@ -539,7 +539,7 @@ public class ContainerTests : OpenAIRecordedTestBase
             byte[] contentBytes = System.Text.Encoding.UTF8.GetBytes(testContent);
 
             // Create multipart form data using the internal helper
-            var formData = new MultiPartFormDataBinaryContent();
+            var formData = new TestMultiPartFormDataBinaryContent();
             formData.Add(contentBytes, "file", "test-file.txt", "text/plain");
 
             ClientResult uploadResult = await client.UploadContainerFileAsync(_testContainerId, formData, formData.ContentType);
@@ -596,7 +596,7 @@ public class ContainerTests : OpenAIRecordedTestBase
             string testContent = "Test file content for get/delete operations.";
             byte[] contentBytes = System.Text.Encoding.UTF8.GetBytes(testContent);
 
-            var formData = new MultiPartFormDataBinaryContent();
+            var formData = new TestMultiPartFormDataBinaryContent();
             formData.Add(contentBytes, "file", "test-get-file.txt", "text/plain");
 
             ClientResult uploadResult = await client.UploadContainerFileAsync(_testContainerId, formData, formData.ContentType);
@@ -660,7 +660,7 @@ public class ContainerTests : OpenAIRecordedTestBase
             string testContent = "Test content for cancellation test.";
             byte[] contentBytes = System.Text.Encoding.UTF8.GetBytes(testContent);
 
-            var formData = new MultiPartFormDataBinaryContent();
+            var formData = new TestMultiPartFormDataBinaryContent();
             formData.Add(contentBytes, "file", "test-cancel-file.txt", "text/plain");
 
             ClientResult uploadResult = await client.UploadContainerFileAsync(_testContainerId, formData, formData.ContentType);
@@ -720,7 +720,7 @@ public class ContainerTests : OpenAIRecordedTestBase
             string testContent = "Test content for deletion with cancellation.";
             byte[] contentBytes = System.Text.Encoding.UTF8.GetBytes(testContent);
 
-            var formData = new MultiPartFormDataBinaryContent();
+            var formData = new TestMultiPartFormDataBinaryContent();
             formData.Add(contentBytes, "file", "test-delete-cancel-file.txt", "text/plain");
 
             ClientResult uploadResult = await client.UploadContainerFileAsync(_testContainerId, formData, formData.ContentType);
@@ -760,7 +760,7 @@ public class ContainerTests : OpenAIRecordedTestBase
             await client.UploadContainerFileAsync(_testContainerId, null, "multipart/form-data"));
 
         // Test null/empty container ID
-        var testFormData = new MultiPartFormDataBinaryContent();
+        var testFormData = new TestMultiPartFormDataBinaryContent();
         testFormData.Add("test", "file", "test.txt", "text/plain");
 
         Assert.ThrowsAsync<ArgumentNullException>(async () =>

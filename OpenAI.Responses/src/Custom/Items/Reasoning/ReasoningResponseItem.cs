@@ -1,4 +1,5 @@
 using Microsoft.TypeSpec.Generator.Customizations;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OpenAI.Responses;
@@ -18,6 +19,15 @@ public partial class ReasoningResponseItem
     {
         Argument.AssertNotNull(summaryText, nameof(summaryText));
     }
+
+    // <GP> Added constructor for providing encrypted reasoning content.
+    /// <summary> Initializes a reasoning item with encrypted reasoning content. </summary>
+    public ReasoningResponseItem(string id, IReadOnlyList<ReasoningSummaryPart> summaryParts, string encryptedContent)
+        : this(ResponseItemKind.Reasoning, id, default, null, encryptedContent, summaryParts?.ToList())
+    {
+        Argument.AssertNotNull(summaryParts, nameof(summaryParts));
+    }
+    // </GP>
 
     // CUSTOM: Added for convenience.
     public string GetSummaryText()

@@ -128,6 +128,9 @@ namespace OpenAI.Responses
             string code = default;
             string message = default;
             string @param = default;
+            // <GP> Preserve the provider-specific type from nested streaming error payloads.
+            string errorType = default;
+            // </GP>
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
@@ -140,6 +143,35 @@ namespace OpenAI.Responses
                     sequenceNumber = prop.Value.GetInt32();
                     continue;
                 }
+                // <GP> Some providers wrap streaming error details in an error object.
+                if (prop.NameEquals("error"u8))
+                {
+                    if (prop.Value.ValueKind == JsonValueKind.Object)
+                    {
+                        foreach (var errorProp in prop.Value.EnumerateObject())
+                        {
+                            if (errorProp.NameEquals("type"u8))
+                            {
+                                errorType = errorProp.Value.ValueKind == JsonValueKind.Null ? null : errorProp.Value.GetString();
+                            }
+                            else if (errorProp.NameEquals("code"u8))
+                            {
+                                code = errorProp.Value.ValueKind == JsonValueKind.Null ? null : errorProp.Value.GetString();
+                            }
+                            else if (errorProp.NameEquals("message"u8))
+                            {
+                                message = errorProp.Value.ValueKind == JsonValueKind.Null ? null : errorProp.Value.GetString();
+                            }
+                            else if (errorProp.NameEquals("param"u8))
+                            {
+                                @param = errorProp.Value.ValueKind == JsonValueKind.Null ? null : errorProp.Value.GetString();
+                            }
+                        }
+                    }
+                    patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
+                    continue;
+                }
+                // </GP>
                 if (prop.NameEquals("code"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
@@ -167,13 +199,17 @@ namespace OpenAI.Responses
                 }
                 patch.Set([.. "$."u8, .. Encoding.UTF8.GetBytes(prop.Name)], prop.Value.GetUtf8Bytes());
             }
-            return new StreamingResponseErrorUpdate(
+            StreamingResponseErrorUpdate result = new StreamingResponseErrorUpdate(
                 kind,
                 sequenceNumber,
                 patch,
                 code,
                 message,
                 @param);
+            // <GP> Preserve the provider-specific type from nested streaming error payloads.
+            result.ErrorType = errorType;
+            // </GP>
+            return result;
         }
     }
 }

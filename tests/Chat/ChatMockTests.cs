@@ -182,6 +182,23 @@ public class ChatMockTests : ClientTestBase
         Assert.That(contentPart.Text, Is.EqualTo("This is the content."));
     }
 
+    [TestCase("reasoning")]
+    [TestCase("reasoning_content")]
+    public async Task CompleteChatStreamingDeserializesCompatibleReasoningContent(string propertyName)
+    {
+        MockPipelineResponse response = new MockPipelineResponse(200).WithContent($$"""
+            data: {"id":"chatcmpl-reasoning","object":"chat.completion.chunk","created":1726417424,"model":"compatible-model","choices":[{"index":0,"delta":{"{{propertyName}}":"thinking"},"finish_reason":null}]}
+
+            data: [DONE]
+            """);
+        OpenAIClientOptions options = GetClientOptionsWithMockResponse(response);
+        ChatClient client = CreateProxyFromClient(new ChatClient("model", s_fakeCredential, options));
+
+        StreamingChatCompletionUpdate update = await client.CompleteChatStreamingAsync(s_messages).FirstAsync();
+
+        Assert.That(update.ReasoningUpdate.Single().Text, Is.EqualTo("thinking"));
+    }
+
     [Test]
     public void CompleteChatRespectsTheCancellationToken()
     {

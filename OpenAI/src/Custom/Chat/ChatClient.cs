@@ -398,7 +398,9 @@ public partial class ChatClient
         if (stream)
         {
             clonedOptions.Stream = true;
-            clonedOptions.StreamOptions = s_includeUsageStreamOptions;
+            // <GP> Allow callers to override include_usage for Mistral-compatible endpoints.
+            clonedOptions.StreamOptions ??= s_includeUsageStreamOptions;
+            // </GP>
         }
         else
         {

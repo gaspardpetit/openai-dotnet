@@ -280,9 +280,15 @@ public static partial class OpenAIChatModelFactory
         ChatServiceTier? serviceTier = default,
         string systemFingerprint = null,
         ChatTokenUsage usage = default,
-        StreamingChatOutputAudioUpdate outputAudioUpdate = default)
+        StreamingChatOutputAudioUpdate outputAudioUpdate = default,
+        // <GP> Added reasoning support as used by Ollama and llama.cpp.
+        ChatMessageContent reasoningUpdate = null)
+        // </GP>
     {
         contentUpdate ??= new ChatMessageContent();
+        // <GP> Added reasoning support as used by Ollama and llama.cpp.
+        reasoningUpdate ??= new ChatMessageContent();
+        // </GP>
         toolCallUpdates ??= new List<StreamingChatToolCallUpdate>();
         contentTokenLogProbabilities ??= new List<ChatTokenLogProbabilityDetails>();
         refusalTokenLogProbabilities ??= new List<ChatTokenLogProbabilityDetails>();
@@ -294,6 +300,9 @@ public static partial class OpenAIChatModelFactory
             refusal: refusalUpdate,
             role: role,
             content: contentUpdate,
+            // <GP> Added reasoning support as used by Ollama and llama.cpp.
+            reasoning: reasoningUpdate,
+            // </GP>
             patch: default);
 
         InternalCreateChatCompletionStreamResponseChoiceLogprobs logprobs = new InternalCreateChatCompletionStreamResponseChoiceLogprobs(

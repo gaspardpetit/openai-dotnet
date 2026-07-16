@@ -25,7 +25,7 @@ public partial class SkillTests : OpenAIRecordedTestBase
         // Create a skill using multipart directory upload
         byte[] skillMd = await File.ReadAllBytesAsync(Path.Combine("Assets", "skills_basic_math_SKILL.md"));
 
-        using MultiPartFormDataBinaryContent createContent = new();
+        using TestMultiPartFormDataBinaryContent createContent = new();
         createContent.Add(skillMd, "files[]", "basic_math/SKILL.md", "text/markdown");
 
         ClientResult createResult = await client.UploadSkillAsync(createContent, createContent.ContentType);
@@ -81,7 +81,7 @@ public partial class SkillTests : OpenAIRecordedTestBase
         // Create a skill — this also creates version 1
         byte[] skillMd = await File.ReadAllBytesAsync(Path.Combine("Assets", "skills_basic_math_SKILL.md"));
 
-        using MultiPartFormDataBinaryContent createContent = new();
+        using TestMultiPartFormDataBinaryContent createContent = new();
         createContent.Add(skillMd, "files[]", "basic_math/SKILL.md", "text/markdown");
 
         ClientResult createResult = await client.UploadSkillAsync(createContent, createContent.ContentType);
@@ -95,7 +95,7 @@ public partial class SkillTests : OpenAIRecordedTestBase
         Assert.That(createRoot.GetProperty("latest_version").GetString(), Is.EqualTo("1"));
 
         // Create a new version
-        using MultiPartFormDataBinaryContent versionContent = new();
+        using TestMultiPartFormDataBinaryContent versionContent = new();
         versionContent.Add(skillMd, "files[]", "basic_math/SKILL.md", "text/markdown");
 
         ClientResult versionResult = await client.UploadSkillVersionAsync(skillId, versionContent, versionContent.ContentType);

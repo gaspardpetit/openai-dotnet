@@ -27,7 +27,7 @@ public partial class VoiceTests : OpenAIRecordedTestBase
         string consentAudioPath = Path.Combine("Assets", "audio_agent_reference.wav");
         byte[] consentAudioBytes = await File.ReadAllBytesAsync(consentAudioPath);
 
-        using MultiPartFormDataBinaryContent consentContent = new();
+        using TestMultiPartFormDataBinaryContent consentContent = new();
         consentContent.Add("Test Consent", "name");
         consentContent.Add("en-US", "language");
         consentContent.Add(consentAudioBytes, "recording", "consent_recording.wav", "audio/x-wav");
@@ -50,7 +50,7 @@ public partial class VoiceTests : OpenAIRecordedTestBase
         string audioSamplePath = Path.Combine("Assets", "audio_agent_reference.wav");
         byte[] audioSampleBytes = await File.ReadAllBytesAsync(audioSamplePath);
 
-        using MultiPartFormDataBinaryContent voiceContent = new();
+        using TestMultiPartFormDataBinaryContent voiceContent = new();
         voiceContent.Add("Test Voice", "name");
         voiceContent.Add(consentId, "consent");
         voiceContent.Add(audioSampleBytes, "audio_sample", "audio_sample.wav", "audio/x-wav");

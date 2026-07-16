@@ -51,7 +51,9 @@ public partial class ChatCompletionOptions
 
     /// <summary> Gets or sets the stream options. </summary>
     [CodeGenMember("StreamOptions")]
-    internal InternalChatCompletionStreamOptions StreamOptions { get; set; }
+    // <GP> Exposed to configure streaming behavior for compatible providers.
+    public InternalChatCompletionStreamOptions StreamOptions { get; set; }
+    // </GP>
 
     // CUSTOM: Renamed.
     /// <summary> Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the message content. </summary>

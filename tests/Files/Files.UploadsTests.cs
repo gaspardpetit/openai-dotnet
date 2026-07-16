@@ -60,7 +60,7 @@ public class UploadsTests : OpenAIRecordedTestBase
         {
             OpenAIFileClient fileClient = GetProxiedOpenAIClient<OpenAIFileClient>();
             UploadDetails uploadDetails = await CreateTestUploadAsync(fileClient);
-            using MultiPartFormDataBinaryContent content = new();
+            using TestMultiPartFormDataBinaryContent content = new();
 
             content.Add([1, 2, 3, 4], "data", "data", "application/octet-stream");
 
@@ -83,8 +83,8 @@ public class UploadsTests : OpenAIRecordedTestBase
         {
             OpenAIFileClient fileClient = GetProxiedOpenAIClient<OpenAIFileClient>();
             UploadDetails createdUploadDetails = await CreateTestUploadAsync(fileClient);
-            using MultiPartFormDataBinaryContent firstPartContent = new();
-            using MultiPartFormDataBinaryContent secondPartContent = new();
+            using TestMultiPartFormDataBinaryContent firstPartContent = new();
+            using TestMultiPartFormDataBinaryContent secondPartContent = new();
 
             firstPartContent.Add([1, 2, 3, 4], "data", "data", "application/octet-stream");
             secondPartContent.Add([5, 6, 7, 8], "data", "data", "application/octet-stream");
@@ -174,7 +174,7 @@ public class UploadsTests : OpenAIRecordedTestBase
         return GetUploadDetails(jsonDocument);
     }
 
-    private async Task<UploadPartDetails> AddTestUploadPartAsync(OpenAIFileClient fileClient, string uploadId, MultiPartFormDataBinaryContent content)
+    private async Task<UploadPartDetails> AddTestUploadPartAsync(OpenAIFileClient fileClient, string uploadId, TestMultiPartFormDataBinaryContent content)
     {
         ClientResult result = await fileClient.AddUploadPartAsync(uploadId, content, content.ContentType);
         BinaryData response = result.GetRawResponse().Content;

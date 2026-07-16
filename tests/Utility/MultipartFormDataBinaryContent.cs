@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace OpenAI
 {
-    public partial class MultiPartFormDataBinaryContent : BinaryContent
+    public partial class TestMultiPartFormDataBinaryContent : BinaryContent
     {
         private readonly MultipartFormDataContent _multipartContent;
         private static readonly Random _random = new Random();
         private static readonly char[] _boundaryValues = "0123456789=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".ToCharArray();
 
-        public MultiPartFormDataBinaryContent()
+        public TestMultiPartFormDataBinaryContent()
         {
             _multipartContent = new MultipartFormDataContent(CreateBoundary());
         }
