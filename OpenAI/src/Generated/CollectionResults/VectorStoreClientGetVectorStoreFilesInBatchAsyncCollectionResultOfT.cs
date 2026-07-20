@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.VectorStores
 {
-    public partial class VectorStoreClientGetVectorStoreFilesInBatchAsyncCollectionResultOfT : AsyncCollectionResult<VectorStoreFile>
+    internal partial class VectorStoreClientGetVectorStoreFilesInBatchAsyncCollectionResultOfT : AsyncCollectionResult<VectorStoreFile>
     {
         private readonly VectorStoreClient _client;
         private readonly string _vectorStoreId;

@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Containers
 {
+    [Experimental("OPENAI001")]
     public partial class InternalContainersErrorResponse
     {
         [Experimental("SCME0001")]
@@ -33,6 +34,6 @@ namespace OpenAI.Containers
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
 
-        internal InternalContainersError Error { get; }
+        public InternalContainersError Error { get; }
     }
 }

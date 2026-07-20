@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct RunReasoningEffortLevel : IEquatable<RunReasoningEffortLevel>
     {
         private readonly string _value;
@@ -18,18 +21,20 @@ namespace OpenAI.Assistants
 
         public RunReasoningEffortLevel(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static RunReasoningEffortLevel None { get; } = new RunReasoningEffortLevel(NoneValue);
+        public static RunReasoningEffortLevel None { get; } = new RunReasoningEffortLevel(NoneValue);
 
-        internal static RunReasoningEffortLevel Minimal { get; } = new RunReasoningEffortLevel(MinimalValue);
+        public static RunReasoningEffortLevel Minimal { get; } = new RunReasoningEffortLevel(MinimalValue);
 
-        internal static RunReasoningEffortLevel Low { get; } = new RunReasoningEffortLevel(LowValue);
+        public static RunReasoningEffortLevel Low { get; } = new RunReasoningEffortLevel(LowValue);
 
-        internal static RunReasoningEffortLevel Medium { get; } = new RunReasoningEffortLevel(MediumValue);
+        public static RunReasoningEffortLevel Medium { get; } = new RunReasoningEffortLevel(MediumValue);
 
-        internal static RunReasoningEffortLevel High { get; } = new RunReasoningEffortLevel(HighValue);
+        public static RunReasoningEffortLevel High { get; } = new RunReasoningEffortLevel(HighValue);
 
         public static bool operator ==(RunReasoningEffortLevel left, RunReasoningEffortLevel right) => left.Equals(right);
 

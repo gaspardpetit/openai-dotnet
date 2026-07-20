@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVideoSize : IEquatable<InternalVideoSize>
     {
         private readonly string _value;
@@ -17,16 +20,18 @@ namespace OpenAI.Videos
 
         public InternalVideoSize(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalVideoSize _720x1280 { get; } = new InternalVideoSize(_720x1280Value);
+        public static InternalVideoSize _720x1280 { get; } = new InternalVideoSize(_720x1280Value);
 
-        internal static InternalVideoSize _1280x720 { get; } = new InternalVideoSize(_1280x720Value);
+        public static InternalVideoSize _1280x720 { get; } = new InternalVideoSize(_1280x720Value);
 
-        internal static InternalVideoSize _1024x1792 { get; } = new InternalVideoSize(_1024x1792Value);
+        public static InternalVideoSize _1024x1792 { get; } = new InternalVideoSize(_1024x1792Value);
 
-        internal static InternalVideoSize _1792x1024 { get; } = new InternalVideoSize(_1792x1024Value);
+        public static InternalVideoSize _1792x1024 { get; } = new InternalVideoSize(_1792x1024Value);
 
         public static bool operator ==(InternalVideoSize left, InternalVideoSize right) => left.Equals(right);
 

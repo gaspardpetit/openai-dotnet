@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Responses
 {
-    public partial class ResponsesClientGetResponseInputItemsAsyncCollectionResultOfT : AsyncCollectionResult<ResponseItem>
+    internal partial class ResponsesClientGetResponseInputItemsAsyncCollectionResultOfT : AsyncCollectionResult<ResponseItem>
     {
         private readonly ResponsesClient _client;
         private readonly string _responseId;

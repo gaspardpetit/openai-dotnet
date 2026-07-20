@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalResponsesRunDataSourceParamsSamplingParamsText
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -21,7 +23,7 @@ namespace OpenAI.Evals
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalEvalTextFormatConfiguration Format { get; set; }
+        public InternalEvalTextFormatConfiguration Format { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

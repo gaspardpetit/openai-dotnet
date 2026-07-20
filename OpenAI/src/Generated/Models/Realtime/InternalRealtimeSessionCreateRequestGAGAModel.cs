@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeSessionCreateRequestGAGAModel : IEquatable<InternalRealtimeSessionCreateRequestGAGAModel>
     {
         private readonly string _value;
@@ -27,36 +30,38 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeSessionCreateRequestGAGAModel(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptRealtime { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeValue);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptRealtime { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeValue);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptRealtime20250828 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtime20250828Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptRealtime20250828 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtime20250828Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreviewValue);
+        public static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreviewValue);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview20241001 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreview20241001Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview20241001 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreview20241001Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview20241217 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreview20241217Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview20241217 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreview20241217Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview20250603 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreview20250603Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oRealtimePreview20250603 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oRealtimePreview20250603Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oMiniRealtimePreview { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oMiniRealtimePreviewValue);
+        public static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oMiniRealtimePreview { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oMiniRealtimePreviewValue);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oMiniRealtimePreview20241217 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oMiniRealtimePreview20241217Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel Gpt4oMiniRealtimePreview20241217 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(Gpt4oMiniRealtimePreview20241217Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptRealtimeMini { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeMiniValue);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptRealtimeMini { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeMiniValue);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptRealtimeMini20251006 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeMini20251006Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptRealtimeMini20251006 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeMini20251006Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptRealtimeMini20251215 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeMini20251215Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptRealtimeMini20251215 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptRealtimeMini20251215Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptAudioMini { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptAudioMiniValue);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptAudioMini { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptAudioMiniValue);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptAudioMini20251006 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptAudioMini20251006Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptAudioMini20251006 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptAudioMini20251006Value);
 
-        internal static InternalRealtimeSessionCreateRequestGAGAModel GptAudioMini20251215 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptAudioMini20251215Value);
+        public static InternalRealtimeSessionCreateRequestGAGAModel GptAudioMini20251215 { get; } = new InternalRealtimeSessionCreateRequestGAGAModel(GptAudioMini20251215Value);
 
         public static bool operator ==(InternalRealtimeSessionCreateRequestGAGAModel left, InternalRealtimeSessionCreateRequestGAGAModel right) => left.Equals(right);
 

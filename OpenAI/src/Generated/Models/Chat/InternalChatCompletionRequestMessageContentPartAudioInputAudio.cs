@@ -7,9 +7,11 @@ using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartAudioInputAudio
     {
         [Experimental("SCME0001")]
@@ -17,6 +19,8 @@ namespace OpenAI.Chat
 
         public InternalChatCompletionRequestMessageContentPartAudioInputAudio(BinaryData data, ChatInputAudioFormat format)
         {
+            Argument.AssertNotNull(data, nameof(data));
+
             Data = data;
             Format = format;
         }

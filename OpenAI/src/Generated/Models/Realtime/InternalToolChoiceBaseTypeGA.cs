@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalToolChoiceBaseTypeGA : IEquatable<InternalToolChoiceBaseTypeGA>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Realtime
 
         public InternalToolChoiceBaseTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalToolChoiceBaseTypeGA Function { get; } = new InternalToolChoiceBaseTypeGA(FunctionValue);
+        public static InternalToolChoiceBaseTypeGA Function { get; } = new InternalToolChoiceBaseTypeGA(FunctionValue);
 
-        internal static InternalToolChoiceBaseTypeGA Mcp { get; } = new InternalToolChoiceBaseTypeGA(McpValue);
+        public static InternalToolChoiceBaseTypeGA Mcp { get; } = new InternalToolChoiceBaseTypeGA(McpValue);
 
         public static bool operator ==(InternalToolChoiceBaseTypeGA left, InternalToolChoiceBaseTypeGA right) => left.Equals(right);
 

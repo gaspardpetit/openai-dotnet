@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalRunResponsesDataContentSource : InternalEvalRunDataContentSource
     {
         public InternalEvalRunResponsesDataContentSource() : this(InternalEvalRunDataContentSourceType.Responses, null, null, null, null, default, default, default, default, default, null, null)
@@ -39,7 +41,7 @@ namespace OpenAI.Evals
 
         public int? CreatedBefore { get; set; }
 
-        internal EvalReasoningEffortLevel? ReasoningEffort { get; set; }
+        public EvalReasoningEffortLevel? ReasoningEffort { get; set; }
 
         public float? Temperature { get; set; }
 

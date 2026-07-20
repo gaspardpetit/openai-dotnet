@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalLegacyChatCompletionStreamOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

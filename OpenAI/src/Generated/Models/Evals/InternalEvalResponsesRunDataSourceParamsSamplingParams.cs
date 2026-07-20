@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalResponsesRunDataSourceParamsSamplingParams
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -36,9 +38,9 @@ namespace OpenAI.Evals
 
         public int? Seed { get; set; }
 
-        internal IList<InternalEvalTool> Tools { get; }
+        public IList<InternalEvalTool> Tools { get; }
 
-        internal InternalEvalResponsesRunDataSourceParamsSamplingParamsText Text { get; set; }
+        public InternalEvalResponsesRunDataSourceParamsSamplingParamsText Text { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

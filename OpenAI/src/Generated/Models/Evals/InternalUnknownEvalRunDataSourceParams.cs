@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalUnknownEvalRunDataSourceParams : InternalEvalRunDataSourceParams
     {
         internal InternalUnknownEvalRunDataSourceParams(InternalEvalRunDataSourceType kind, IDictionary<string, BinaryData> additionalBinaryDataProperties) : base(kind != default ? kind : "unknown", additionalBinaryDataProperties)

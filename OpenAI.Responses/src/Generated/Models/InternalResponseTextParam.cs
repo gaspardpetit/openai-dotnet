@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseTextParam
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -24,7 +26,7 @@ namespace OpenAI.Responses
 
         public ResponseTextFormat Format { get; }
 
-        internal InternalTokenCountsBodyTextVerbosity? Verbosity { get; }
+        public InternalTokenCountsBodyTextVerbosity? Verbosity { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

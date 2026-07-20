@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVectorStoreFileBatchObjectFileCounts
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

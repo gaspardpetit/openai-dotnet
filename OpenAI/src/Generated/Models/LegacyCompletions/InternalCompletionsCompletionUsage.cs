@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCompletionsCompletionUsage
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -34,9 +36,9 @@ namespace OpenAI.LegacyCompletions
 
         public int TotalTokens { get; }
 
-        internal InternalCompletionsCompletionUsageCompletionTokensDetails CompletionTokensDetails { get; }
+        public InternalCompletionsCompletionUsageCompletionTokensDetails CompletionTokensDetails { get; }
 
-        internal InternalCompletionsCompletionUsagePromptTokensDetails PromptTokensDetails { get; }
+        public InternalCompletionsCompletionUsagePromptTokensDetails PromptTokensDetails { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

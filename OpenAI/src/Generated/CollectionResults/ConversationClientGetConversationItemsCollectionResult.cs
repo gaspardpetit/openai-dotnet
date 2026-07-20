@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Conversations
 {
-    public partial class ConversationClientGetConversationItemsCollectionResult : CollectionResult
+    internal partial class ConversationClientGetConversationItemsCollectionResult : CollectionResult
     {
         private readonly ConversationClient _client;
         private readonly string _conversationId;
