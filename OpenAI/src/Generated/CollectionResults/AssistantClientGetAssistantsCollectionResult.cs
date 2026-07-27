@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    public partial class AssistantClientGetAssistantsCollectionResult : CollectionResult
+    internal partial class AssistantClientGetAssistantsCollectionResult : CollectionResult
     {
         private readonly AssistantClient _client;
         private readonly int? _limit;

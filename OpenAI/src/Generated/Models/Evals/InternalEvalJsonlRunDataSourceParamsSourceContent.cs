@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalJsonlRunDataSourceParamsSourceContent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -15,6 +17,8 @@ namespace OpenAI.Evals
         public InternalEvalJsonlRunDataSourceParamsSourceContent(IDictionary<string, BinaryData> item)
         {
             // Plugin customization: ensure initialization of collections
+            Argument.AssertNotNull(item, nameof(item));
+
             Item = item ?? new ChangeTrackingDictionary<string, BinaryData>();
             Sample = new ChangeTrackingDictionary<string, BinaryData>();
         }

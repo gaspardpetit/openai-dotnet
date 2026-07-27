@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatErrorResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -22,7 +24,7 @@ namespace OpenAI.Chat
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalChatError Error { get; }
+        public InternalChatError Error { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

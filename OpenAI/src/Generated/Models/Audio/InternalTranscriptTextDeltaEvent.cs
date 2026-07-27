@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public partial class InternalTranscriptTextDeltaEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -32,7 +34,7 @@ namespace OpenAI.Audio
 
         public string Delta { get; }
 
-        internal IList<InternalTranscriptTextDeltaEventLogprobs> Logprobs { get; }
+        public IList<InternalTranscriptTextDeltaEventLogprobs> Logprobs { get; }
 
         public string SegmentId { get; }
 

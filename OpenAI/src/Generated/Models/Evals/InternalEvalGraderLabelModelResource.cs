@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 using OpenAI.Graders;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalGraderLabelModelResource : InternalEvalGraderResource
     {
         internal InternalEvalGraderLabelModelResource(string name, string model, IEnumerable<InternalEvalItem> input, IEnumerable<string> labels, IEnumerable<string> passingLabels) : base(GraderType.LabelModel)
@@ -35,7 +37,7 @@ namespace OpenAI.Evals
 
         public string Model { get; }
 
-        internal IList<InternalEvalItem> Input { get; }
+        public IList<InternalEvalItem> Input { get; }
 
         public IList<string> Labels { get; }
 

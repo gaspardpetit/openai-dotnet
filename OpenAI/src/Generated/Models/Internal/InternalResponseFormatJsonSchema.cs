@@ -4,14 +4,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 using OpenAI.Assistants;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseFormatJsonSchema : InternalAssistantsResponseFormat
     {
-        internal InternalResponseFormatJsonSchema(InternalResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalAssistantsResponseFormatType.JsonSchema)
+        public InternalResponseFormatJsonSchema(InternalResponseFormatJsonSchemaJsonSchema jsonSchema) : base(InternalAssistantsResponseFormatType.JsonSchema)
         {
+            Argument.AssertNotNull(jsonSchema, nameof(jsonSchema));
+
             JsonSchema = jsonSchema;
         }
 
@@ -20,6 +25,6 @@ namespace OpenAI.Internal
             JsonSchema = jsonSchema;
         }
 
-        internal InternalResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
+        public InternalResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
     }
 }

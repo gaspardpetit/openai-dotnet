@@ -5,9 +5,11 @@
 using System;
 using System.ClientModel;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFineTuningJobsPageToken : ContinuationToken
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalToolChoiceObjectComputer : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectComputer() : this(InternalToolChoiceObjectType.Computer, default)

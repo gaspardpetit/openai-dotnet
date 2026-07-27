@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 using OpenAI.Chat;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public partial class InternalEvalCompletionsRunDataSourceParamsSamplingParams
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -37,7 +39,7 @@ namespace OpenAI.Evals
 
         public int? Seed { get; set; }
 
-        internal InternalEvalTextFormatConfiguration ResponseFormat { get; set; }
+        public InternalEvalTextFormatConfiguration ResponseFormat { get; set; }
 
         public IList<ChatTool> Tools { get; }
 

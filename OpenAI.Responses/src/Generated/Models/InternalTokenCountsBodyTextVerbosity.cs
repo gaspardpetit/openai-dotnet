@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalTokenCountsBodyTextVerbosity : IEquatable<InternalTokenCountsBodyTextVerbosity>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Responses
 
         public InternalTokenCountsBodyTextVerbosity(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalTokenCountsBodyTextVerbosity Low { get; } = new InternalTokenCountsBodyTextVerbosity(LowValue);
+        public static InternalTokenCountsBodyTextVerbosity Low { get; } = new InternalTokenCountsBodyTextVerbosity(LowValue);
 
-        internal static InternalTokenCountsBodyTextVerbosity Medium { get; } = new InternalTokenCountsBodyTextVerbosity(MediumValue);
+        public static InternalTokenCountsBodyTextVerbosity Medium { get; } = new InternalTokenCountsBodyTextVerbosity(MediumValue);
 
-        internal static InternalTokenCountsBodyTextVerbosity High { get; } = new InternalTokenCountsBodyTextVerbosity(HighValue);
+        public static InternalTokenCountsBodyTextVerbosity High { get; } = new InternalTokenCountsBodyTextVerbosity(HighValue);
 
         public static bool operator ==(InternalTokenCountsBodyTextVerbosity left, InternalTokenCountsBodyTextVerbosity right) => left.Equals(right);
 

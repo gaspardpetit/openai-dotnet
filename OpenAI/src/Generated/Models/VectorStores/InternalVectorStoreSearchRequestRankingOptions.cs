@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVectorStoreSearchRequestRankingOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -22,7 +24,7 @@ namespace OpenAI.VectorStores
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalVectorStoreSearchRequestRankingOptionsRanker? Ranker { get; set; }
+        public InternalVectorStoreSearchRequestRankingOptionsRanker? Ranker { get; set; }
 
         public float? ScoreThreshold { get; set; }
 

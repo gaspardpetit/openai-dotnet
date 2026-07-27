@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalFineTuneChatRequestInputMessageWeight : IEquatable<InternalFineTuneChatRequestInputMessageWeight>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.FineTuning
 
         public InternalFineTuneChatRequestInputMessageWeight(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalFineTuneChatRequestInputMessageWeight _0 { get; } = new InternalFineTuneChatRequestInputMessageWeight(_0Value);
+        public static InternalFineTuneChatRequestInputMessageWeight _0 { get; } = new InternalFineTuneChatRequestInputMessageWeight(_0Value);
 
-        internal static InternalFineTuneChatRequestInputMessageWeight _1 { get; } = new InternalFineTuneChatRequestInputMessageWeight(_1Value);
+        public static InternalFineTuneChatRequestInputMessageWeight _1 { get; } = new InternalFineTuneChatRequestInputMessageWeight(_1Value);
 
         public static bool operator ==(InternalFineTuneChatRequestInputMessageWeight left, InternalFineTuneChatRequestInputMessageWeight right) => left.Equals(right);
 

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalEvalToolType : IEquatable<InternalEvalToolType>
     {
         private readonly string _value;
@@ -23,28 +26,30 @@ namespace OpenAI.Evals
 
         public InternalEvalToolType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalEvalToolType FileSearch { get; } = new InternalEvalToolType(FileSearchValue);
+        public static InternalEvalToolType FileSearch { get; } = new InternalEvalToolType(FileSearchValue);
 
-        internal static InternalEvalToolType Function { get; } = new InternalEvalToolType(FunctionValue);
+        public static InternalEvalToolType Function { get; } = new InternalEvalToolType(FunctionValue);
 
-        internal static InternalEvalToolType ComputerUsePreview { get; } = new InternalEvalToolType(ComputerUsePreviewValue);
+        public static InternalEvalToolType ComputerUsePreview { get; } = new InternalEvalToolType(ComputerUsePreviewValue);
 
-        internal static InternalEvalToolType WebSearch { get; } = new InternalEvalToolType(WebSearchValue);
+        public static InternalEvalToolType WebSearch { get; } = new InternalEvalToolType(WebSearchValue);
 
-        internal static InternalEvalToolType WebSearchPreview { get; } = new InternalEvalToolType(WebSearchPreviewValue);
+        public static InternalEvalToolType WebSearchPreview { get; } = new InternalEvalToolType(WebSearchPreviewValue);
 
-        internal static InternalEvalToolType Mcp { get; } = new InternalEvalToolType(McpValue);
+        public static InternalEvalToolType Mcp { get; } = new InternalEvalToolType(McpValue);
 
-        internal static InternalEvalToolType CodeInterpreter { get; } = new InternalEvalToolType(CodeInterpreterValue);
+        public static InternalEvalToolType CodeInterpreter { get; } = new InternalEvalToolType(CodeInterpreterValue);
 
-        internal static InternalEvalToolType ImageGeneration { get; } = new InternalEvalToolType(ImageGenerationValue);
+        public static InternalEvalToolType ImageGeneration { get; } = new InternalEvalToolType(ImageGenerationValue);
 
-        internal static InternalEvalToolType LocalShell { get; } = new InternalEvalToolType(LocalShellValue);
+        public static InternalEvalToolType LocalShell { get; } = new InternalEvalToolType(LocalShellValue);
 
-        internal static InternalEvalToolType ApplyPatch { get; } = new InternalEvalToolType(ApplyPatchValue);
+        public static InternalEvalToolType ApplyPatch { get; } = new InternalEvalToolType(ApplyPatchValue);
 
         public static bool operator ==(InternalEvalToolType left, InternalEvalToolType right) => left.Equals(right);
 

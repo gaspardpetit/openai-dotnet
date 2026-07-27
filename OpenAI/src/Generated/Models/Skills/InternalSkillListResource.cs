@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Skills
 {
+    [Experimental("OPENAI001")]
     public partial class InternalSkillListResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -34,7 +36,7 @@ namespace OpenAI.Skills
 
         internal string Object { get; } = "list";
 
-        internal IList<InternalSkillResource> Data { get; }
+        public IList<InternalSkillResource> Data { get; }
 
         public string FirstId { get; }
 

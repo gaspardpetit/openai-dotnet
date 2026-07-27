@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalFineTuningCheckpointCollectionOrder : IEquatable<InternalFineTuningCheckpointCollectionOrder>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.FineTuning
 
         public InternalFineTuningCheckpointCollectionOrder(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalFineTuningCheckpointCollectionOrder Ascending { get; } = new InternalFineTuningCheckpointCollectionOrder(AscendingValue);
+        public static InternalFineTuningCheckpointCollectionOrder Ascending { get; } = new InternalFineTuningCheckpointCollectionOrder(AscendingValue);
 
-        internal static InternalFineTuningCheckpointCollectionOrder Descending { get; } = new InternalFineTuningCheckpointCollectionOrder(DescendingValue);
+        public static InternalFineTuningCheckpointCollectionOrder Descending { get; } = new InternalFineTuningCheckpointCollectionOrder(DescendingValue);
 
         public static bool operator ==(InternalFineTuningCheckpointCollectionOrder left, InternalFineTuningCheckpointCollectionOrder right) => left.Equals(right);
 
