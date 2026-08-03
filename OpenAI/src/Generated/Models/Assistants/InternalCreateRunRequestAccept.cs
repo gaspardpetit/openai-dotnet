@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateRunRequestAccept : IEquatable<InternalCreateRunRequestAccept>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Assistants
 
         public InternalCreateRunRequestAccept(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateRunRequestAccept ApplicationJson { get; } = new InternalCreateRunRequestAccept(ApplicationJsonValue);
+        public static InternalCreateRunRequestAccept ApplicationJson { get; } = new InternalCreateRunRequestAccept(ApplicationJsonValue);
 
-        internal static InternalCreateRunRequestAccept TextEventStream { get; } = new InternalCreateRunRequestAccept(TextEventStreamValue);
+        public static InternalCreateRunRequestAccept TextEventStream { get; } = new InternalCreateRunRequestAccept(TextEventStreamValue);
 
         public static bool operator ==(InternalCreateRunRequestAccept left, InternalCreateRunRequestAccept right) => left.Equals(right);
 

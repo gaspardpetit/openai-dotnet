@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepDetailsToolCallsFileSearchRankingOptionsObject
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -24,7 +26,7 @@ namespace OpenAI.Assistants
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRunStepFileSearchRanker Ranker { get; }
+        public InternalRunStepFileSearchRanker Ranker { get; }
 
         public float ScoreThreshold { get; }
 

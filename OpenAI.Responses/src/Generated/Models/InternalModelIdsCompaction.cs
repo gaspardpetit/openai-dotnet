@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalModelIdsCompaction : IEquatable<InternalModelIdsCompaction>
     {
         private readonly string _value;
@@ -82,146 +85,148 @@ namespace OpenAI.Responses
 
         public InternalModelIdsCompaction(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalModelIdsCompaction Gpt41 { get; } = new InternalModelIdsCompaction(Gpt41Value);
+        public static InternalModelIdsCompaction Gpt41 { get; } = new InternalModelIdsCompaction(Gpt41Value);
 
-        internal static InternalModelIdsCompaction Gpt41Mini { get; } = new InternalModelIdsCompaction(Gpt41MiniValue);
+        public static InternalModelIdsCompaction Gpt41Mini { get; } = new InternalModelIdsCompaction(Gpt41MiniValue);
 
-        internal static InternalModelIdsCompaction Gpt41Nano { get; } = new InternalModelIdsCompaction(Gpt41NanoValue);
+        public static InternalModelIdsCompaction Gpt41Nano { get; } = new InternalModelIdsCompaction(Gpt41NanoValue);
 
-        internal static InternalModelIdsCompaction Gpt4120250414 { get; } = new InternalModelIdsCompaction(Gpt4120250414Value);
+        public static InternalModelIdsCompaction Gpt4120250414 { get; } = new InternalModelIdsCompaction(Gpt4120250414Value);
 
-        internal static InternalModelIdsCompaction Gpt41Mini20250414 { get; } = new InternalModelIdsCompaction(Gpt41Mini20250414Value);
+        public static InternalModelIdsCompaction Gpt41Mini20250414 { get; } = new InternalModelIdsCompaction(Gpt41Mini20250414Value);
 
-        internal static InternalModelIdsCompaction Gpt41Nano20250414 { get; } = new InternalModelIdsCompaction(Gpt41Nano20250414Value);
+        public static InternalModelIdsCompaction Gpt41Nano20250414 { get; } = new InternalModelIdsCompaction(Gpt41Nano20250414Value);
 
-        internal static InternalModelIdsCompaction O4Mini { get; } = new InternalModelIdsCompaction(O4MiniValue);
+        public static InternalModelIdsCompaction O4Mini { get; } = new InternalModelIdsCompaction(O4MiniValue);
 
-        internal static InternalModelIdsCompaction O4Mini20250416 { get; } = new InternalModelIdsCompaction(O4Mini20250416Value);
+        public static InternalModelIdsCompaction O4Mini20250416 { get; } = new InternalModelIdsCompaction(O4Mini20250416Value);
 
-        internal static InternalModelIdsCompaction O3 { get; } = new InternalModelIdsCompaction(O3Value);
+        public static InternalModelIdsCompaction O3 { get; } = new InternalModelIdsCompaction(O3Value);
 
-        internal static InternalModelIdsCompaction O320250416 { get; } = new InternalModelIdsCompaction(O320250416Value);
+        public static InternalModelIdsCompaction O320250416 { get; } = new InternalModelIdsCompaction(O320250416Value);
 
-        internal static InternalModelIdsCompaction O3Mini { get; } = new InternalModelIdsCompaction(O3MiniValue);
+        public static InternalModelIdsCompaction O3Mini { get; } = new InternalModelIdsCompaction(O3MiniValue);
 
-        internal static InternalModelIdsCompaction O3Mini20250131 { get; } = new InternalModelIdsCompaction(O3Mini20250131Value);
+        public static InternalModelIdsCompaction O3Mini20250131 { get; } = new InternalModelIdsCompaction(O3Mini20250131Value);
 
-        internal static InternalModelIdsCompaction O1 { get; } = new InternalModelIdsCompaction(O1Value);
+        public static InternalModelIdsCompaction O1 { get; } = new InternalModelIdsCompaction(O1Value);
 
-        internal static InternalModelIdsCompaction O120241217 { get; } = new InternalModelIdsCompaction(O120241217Value);
+        public static InternalModelIdsCompaction O120241217 { get; } = new InternalModelIdsCompaction(O120241217Value);
 
-        internal static InternalModelIdsCompaction O1Preview { get; } = new InternalModelIdsCompaction(O1PreviewValue);
+        public static InternalModelIdsCompaction O1Preview { get; } = new InternalModelIdsCompaction(O1PreviewValue);
 
-        internal static InternalModelIdsCompaction O1Preview20240912 { get; } = new InternalModelIdsCompaction(O1Preview20240912Value);
+        public static InternalModelIdsCompaction O1Preview20240912 { get; } = new InternalModelIdsCompaction(O1Preview20240912Value);
 
-        internal static InternalModelIdsCompaction O1Mini { get; } = new InternalModelIdsCompaction(O1MiniValue);
+        public static InternalModelIdsCompaction O1Mini { get; } = new InternalModelIdsCompaction(O1MiniValue);
 
-        internal static InternalModelIdsCompaction O1Mini20240912 { get; } = new InternalModelIdsCompaction(O1Mini20240912Value);
+        public static InternalModelIdsCompaction O1Mini20240912 { get; } = new InternalModelIdsCompaction(O1Mini20240912Value);
 
-        internal static InternalModelIdsCompaction Gpt4o { get; } = new InternalModelIdsCompaction(Gpt4oValue);
+        public static InternalModelIdsCompaction Gpt4o { get; } = new InternalModelIdsCompaction(Gpt4oValue);
 
-        internal static InternalModelIdsCompaction Gpt4o20241120 { get; } = new InternalModelIdsCompaction(Gpt4o20241120Value);
+        public static InternalModelIdsCompaction Gpt4o20241120 { get; } = new InternalModelIdsCompaction(Gpt4o20241120Value);
 
-        internal static InternalModelIdsCompaction Gpt4o20240806 { get; } = new InternalModelIdsCompaction(Gpt4o20240806Value);
+        public static InternalModelIdsCompaction Gpt4o20240806 { get; } = new InternalModelIdsCompaction(Gpt4o20240806Value);
 
-        internal static InternalModelIdsCompaction Gpt4o20240513 { get; } = new InternalModelIdsCompaction(Gpt4o20240513Value);
+        public static InternalModelIdsCompaction Gpt4o20240513 { get; } = new InternalModelIdsCompaction(Gpt4o20240513Value);
 
-        internal static InternalModelIdsCompaction Gpt4oAudioPreview { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreviewValue);
+        public static InternalModelIdsCompaction Gpt4oAudioPreview { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4oAudioPreview20241001 { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreview20241001Value);
+        public static InternalModelIdsCompaction Gpt4oAudioPreview20241001 { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreview20241001Value);
 
-        internal static InternalModelIdsCompaction Gpt4oAudioPreview20241217 { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreview20241217Value);
+        public static InternalModelIdsCompaction Gpt4oAudioPreview20241217 { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreview20241217Value);
 
-        internal static InternalModelIdsCompaction Gpt4oAudioPreview20250603 { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreview20250603Value);
+        public static InternalModelIdsCompaction Gpt4oAudioPreview20250603 { get; } = new InternalModelIdsCompaction(Gpt4oAudioPreview20250603Value);
 
-        internal static InternalModelIdsCompaction Gpt4oMiniAudioPreview { get; } = new InternalModelIdsCompaction(Gpt4oMiniAudioPreviewValue);
+        public static InternalModelIdsCompaction Gpt4oMiniAudioPreview { get; } = new InternalModelIdsCompaction(Gpt4oMiniAudioPreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4oMiniAudioPreview20241217 { get; } = new InternalModelIdsCompaction(Gpt4oMiniAudioPreview20241217Value);
+        public static InternalModelIdsCompaction Gpt4oMiniAudioPreview20241217 { get; } = new InternalModelIdsCompaction(Gpt4oMiniAudioPreview20241217Value);
 
-        internal static InternalModelIdsCompaction Gpt4oSearchPreview { get; } = new InternalModelIdsCompaction(Gpt4oSearchPreviewValue);
+        public static InternalModelIdsCompaction Gpt4oSearchPreview { get; } = new InternalModelIdsCompaction(Gpt4oSearchPreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4oMiniSearchPreview { get; } = new InternalModelIdsCompaction(Gpt4oMiniSearchPreviewValue);
+        public static InternalModelIdsCompaction Gpt4oMiniSearchPreview { get; } = new InternalModelIdsCompaction(Gpt4oMiniSearchPreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4oSearchPreview20250311 { get; } = new InternalModelIdsCompaction(Gpt4oSearchPreview20250311Value);
+        public static InternalModelIdsCompaction Gpt4oSearchPreview20250311 { get; } = new InternalModelIdsCompaction(Gpt4oSearchPreview20250311Value);
 
-        internal static InternalModelIdsCompaction Gpt4oMiniSearchPreview20250311 { get; } = new InternalModelIdsCompaction(Gpt4oMiniSearchPreview20250311Value);
+        public static InternalModelIdsCompaction Gpt4oMiniSearchPreview20250311 { get; } = new InternalModelIdsCompaction(Gpt4oMiniSearchPreview20250311Value);
 
-        internal static InternalModelIdsCompaction Chatgpt4oLatest { get; } = new InternalModelIdsCompaction(Chatgpt4oLatestValue);
+        public static InternalModelIdsCompaction Chatgpt4oLatest { get; } = new InternalModelIdsCompaction(Chatgpt4oLatestValue);
 
-        internal static InternalModelIdsCompaction CodexMiniLatest { get; } = new InternalModelIdsCompaction(CodexMiniLatestValue);
+        public static InternalModelIdsCompaction CodexMiniLatest { get; } = new InternalModelIdsCompaction(CodexMiniLatestValue);
 
-        internal static InternalModelIdsCompaction Gpt4oMini { get; } = new InternalModelIdsCompaction(Gpt4oMiniValue);
+        public static InternalModelIdsCompaction Gpt4oMini { get; } = new InternalModelIdsCompaction(Gpt4oMiniValue);
 
-        internal static InternalModelIdsCompaction Gpt4oMini20240718 { get; } = new InternalModelIdsCompaction(Gpt4oMini20240718Value);
+        public static InternalModelIdsCompaction Gpt4oMini20240718 { get; } = new InternalModelIdsCompaction(Gpt4oMini20240718Value);
 
-        internal static InternalModelIdsCompaction Gpt4Turbo { get; } = new InternalModelIdsCompaction(Gpt4TurboValue);
+        public static InternalModelIdsCompaction Gpt4Turbo { get; } = new InternalModelIdsCompaction(Gpt4TurboValue);
 
-        internal static InternalModelIdsCompaction Gpt4Turbo20240409 { get; } = new InternalModelIdsCompaction(Gpt4Turbo20240409Value);
+        public static InternalModelIdsCompaction Gpt4Turbo20240409 { get; } = new InternalModelIdsCompaction(Gpt4Turbo20240409Value);
 
-        internal static InternalModelIdsCompaction Gpt40125Preview { get; } = new InternalModelIdsCompaction(Gpt40125PreviewValue);
+        public static InternalModelIdsCompaction Gpt40125Preview { get; } = new InternalModelIdsCompaction(Gpt40125PreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4TurboPreview { get; } = new InternalModelIdsCompaction(Gpt4TurboPreviewValue);
+        public static InternalModelIdsCompaction Gpt4TurboPreview { get; } = new InternalModelIdsCompaction(Gpt4TurboPreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt41106Preview { get; } = new InternalModelIdsCompaction(Gpt41106PreviewValue);
+        public static InternalModelIdsCompaction Gpt41106Preview { get; } = new InternalModelIdsCompaction(Gpt41106PreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4VisionPreview { get; } = new InternalModelIdsCompaction(Gpt4VisionPreviewValue);
+        public static InternalModelIdsCompaction Gpt4VisionPreview { get; } = new InternalModelIdsCompaction(Gpt4VisionPreviewValue);
 
-        internal static InternalModelIdsCompaction Gpt4 { get; } = new InternalModelIdsCompaction(Gpt4Value);
+        public static InternalModelIdsCompaction Gpt4 { get; } = new InternalModelIdsCompaction(Gpt4Value);
 
-        internal static InternalModelIdsCompaction Gpt40314 { get; } = new InternalModelIdsCompaction(Gpt40314Value);
+        public static InternalModelIdsCompaction Gpt40314 { get; } = new InternalModelIdsCompaction(Gpt40314Value);
 
-        internal static InternalModelIdsCompaction Gpt40613 { get; } = new InternalModelIdsCompaction(Gpt40613Value);
+        public static InternalModelIdsCompaction Gpt40613 { get; } = new InternalModelIdsCompaction(Gpt40613Value);
 
-        internal static InternalModelIdsCompaction Gpt432k { get; } = new InternalModelIdsCompaction(Gpt432kValue);
+        public static InternalModelIdsCompaction Gpt432k { get; } = new InternalModelIdsCompaction(Gpt432kValue);
 
-        internal static InternalModelIdsCompaction Gpt432k0314 { get; } = new InternalModelIdsCompaction(Gpt432k0314Value);
+        public static InternalModelIdsCompaction Gpt432k0314 { get; } = new InternalModelIdsCompaction(Gpt432k0314Value);
 
-        internal static InternalModelIdsCompaction Gpt432k0613 { get; } = new InternalModelIdsCompaction(Gpt432k0613Value);
+        public static InternalModelIdsCompaction Gpt432k0613 { get; } = new InternalModelIdsCompaction(Gpt432k0613Value);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo { get; } = new InternalModelIdsCompaction(Gpt35TurboValue);
+        public static InternalModelIdsCompaction Gpt35Turbo { get; } = new InternalModelIdsCompaction(Gpt35TurboValue);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo16k { get; } = new InternalModelIdsCompaction(Gpt35Turbo16kValue);
+        public static InternalModelIdsCompaction Gpt35Turbo16k { get; } = new InternalModelIdsCompaction(Gpt35Turbo16kValue);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo0301 { get; } = new InternalModelIdsCompaction(Gpt35Turbo0301Value);
+        public static InternalModelIdsCompaction Gpt35Turbo0301 { get; } = new InternalModelIdsCompaction(Gpt35Turbo0301Value);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo0613 { get; } = new InternalModelIdsCompaction(Gpt35Turbo0613Value);
+        public static InternalModelIdsCompaction Gpt35Turbo0613 { get; } = new InternalModelIdsCompaction(Gpt35Turbo0613Value);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo1106 { get; } = new InternalModelIdsCompaction(Gpt35Turbo1106Value);
+        public static InternalModelIdsCompaction Gpt35Turbo1106 { get; } = new InternalModelIdsCompaction(Gpt35Turbo1106Value);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo0125 { get; } = new InternalModelIdsCompaction(Gpt35Turbo0125Value);
+        public static InternalModelIdsCompaction Gpt35Turbo0125 { get; } = new InternalModelIdsCompaction(Gpt35Turbo0125Value);
 
-        internal static InternalModelIdsCompaction Gpt35Turbo16k0613 { get; } = new InternalModelIdsCompaction(Gpt35Turbo16k0613Value);
+        public static InternalModelIdsCompaction Gpt35Turbo16k0613 { get; } = new InternalModelIdsCompaction(Gpt35Turbo16k0613Value);
 
-        internal static InternalModelIdsCompaction O1Pro { get; } = new InternalModelIdsCompaction(O1ProValue);
+        public static InternalModelIdsCompaction O1Pro { get; } = new InternalModelIdsCompaction(O1ProValue);
 
-        internal static InternalModelIdsCompaction O1Pro20250319 { get; } = new InternalModelIdsCompaction(O1Pro20250319Value);
+        public static InternalModelIdsCompaction O1Pro20250319 { get; } = new InternalModelIdsCompaction(O1Pro20250319Value);
 
-        internal static InternalModelIdsCompaction O3Pro { get; } = new InternalModelIdsCompaction(O3ProValue);
+        public static InternalModelIdsCompaction O3Pro { get; } = new InternalModelIdsCompaction(O3ProValue);
 
-        internal static InternalModelIdsCompaction O3Pro20250610 { get; } = new InternalModelIdsCompaction(O3Pro20250610Value);
+        public static InternalModelIdsCompaction O3Pro20250610 { get; } = new InternalModelIdsCompaction(O3Pro20250610Value);
 
-        internal static InternalModelIdsCompaction O3DeepResearch { get; } = new InternalModelIdsCompaction(O3DeepResearchValue);
+        public static InternalModelIdsCompaction O3DeepResearch { get; } = new InternalModelIdsCompaction(O3DeepResearchValue);
 
-        internal static InternalModelIdsCompaction O3DeepResearch20250626 { get; } = new InternalModelIdsCompaction(O3DeepResearch20250626Value);
+        public static InternalModelIdsCompaction O3DeepResearch20250626 { get; } = new InternalModelIdsCompaction(O3DeepResearch20250626Value);
 
-        internal static InternalModelIdsCompaction O4MiniDeepResearch { get; } = new InternalModelIdsCompaction(O4MiniDeepResearchValue);
+        public static InternalModelIdsCompaction O4MiniDeepResearch { get; } = new InternalModelIdsCompaction(O4MiniDeepResearchValue);
 
-        internal static InternalModelIdsCompaction O4MiniDeepResearch20250626 { get; } = new InternalModelIdsCompaction(O4MiniDeepResearch20250626Value);
+        public static InternalModelIdsCompaction O4MiniDeepResearch20250626 { get; } = new InternalModelIdsCompaction(O4MiniDeepResearch20250626Value);
 
-        internal static InternalModelIdsCompaction ComputerUsePreview { get; } = new InternalModelIdsCompaction(ComputerUsePreviewValue);
+        public static InternalModelIdsCompaction ComputerUsePreview { get; } = new InternalModelIdsCompaction(ComputerUsePreviewValue);
 
-        internal static InternalModelIdsCompaction ComputerUsePreview20250311 { get; } = new InternalModelIdsCompaction(ComputerUsePreview20250311Value);
+        public static InternalModelIdsCompaction ComputerUsePreview20250311 { get; } = new InternalModelIdsCompaction(ComputerUsePreview20250311Value);
 
-        internal static InternalModelIdsCompaction Gpt5Codex { get; } = new InternalModelIdsCompaction(Gpt5CodexValue);
+        public static InternalModelIdsCompaction Gpt5Codex { get; } = new InternalModelIdsCompaction(Gpt5CodexValue);
 
-        internal static InternalModelIdsCompaction Gpt5Pro { get; } = new InternalModelIdsCompaction(Gpt5ProValue);
+        public static InternalModelIdsCompaction Gpt5Pro { get; } = new InternalModelIdsCompaction(Gpt5ProValue);
 
-        internal static InternalModelIdsCompaction Gpt5Pro20251006 { get; } = new InternalModelIdsCompaction(Gpt5Pro20251006Value);
+        public static InternalModelIdsCompaction Gpt5Pro20251006 { get; } = new InternalModelIdsCompaction(Gpt5Pro20251006Value);
 
-        internal static InternalModelIdsCompaction Gpt51CodexMax { get; } = new InternalModelIdsCompaction(Gpt51CodexMaxValue);
+        public static InternalModelIdsCompaction Gpt51CodexMax { get; } = new InternalModelIdsCompaction(Gpt51CodexMaxValue);
 
         public static bool operator ==(InternalModelIdsCompaction left, InternalModelIdsCompaction right) => left.Equals(right);
 

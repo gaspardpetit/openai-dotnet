@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateCompletionResponseChoiceLogprobs
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

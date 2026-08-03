@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Evals
 {
     [PersistableModelProxy(typeof(InternalUnknownEvalTextFormatConfiguration))]
-    public abstract partial class InternalEvalTextFormatConfiguration : IJsonModel<InternalEvalTextFormatConfiguration>
+    public partial class InternalEvalTextFormatConfiguration : IJsonModel<InternalEvalTextFormatConfiguration>
     {
         internal InternalEvalTextFormatConfiguration()
         {

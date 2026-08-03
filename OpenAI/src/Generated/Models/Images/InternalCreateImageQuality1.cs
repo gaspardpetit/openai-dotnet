@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageQuality1 : IEquatable<InternalCreateImageQuality1>
     {
         private readonly string _value;
@@ -17,16 +20,18 @@ namespace OpenAI.Images
 
         public InternalCreateImageQuality1(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateImageQuality1 Low { get; } = new InternalCreateImageQuality1(LowValue);
+        public static InternalCreateImageQuality1 Low { get; } = new InternalCreateImageQuality1(LowValue);
 
-        internal static InternalCreateImageQuality1 Medium { get; } = new InternalCreateImageQuality1(MediumValue);
+        public static InternalCreateImageQuality1 Medium { get; } = new InternalCreateImageQuality1(MediumValue);
 
-        internal static InternalCreateImageQuality1 High { get; } = new InternalCreateImageQuality1(HighValue);
+        public static InternalCreateImageQuality1 High { get; } = new InternalCreateImageQuality1(HighValue);
 
-        internal static InternalCreateImageQuality1 Auto { get; } = new InternalCreateImageQuality1(AutoValue);
+        public static InternalCreateImageQuality1 Auto { get; } = new InternalCreateImageQuality1(AutoValue);
 
         public static bool operator ==(InternalCreateImageQuality1 left, InternalCreateImageQuality1 right) => left.Equals(right);
 

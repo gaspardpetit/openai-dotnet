@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVideoStatus : IEquatable<InternalVideoStatus>
     {
         private readonly string _value;
@@ -17,16 +20,18 @@ namespace OpenAI.Videos
 
         public InternalVideoStatus(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalVideoStatus Queued { get; } = new InternalVideoStatus(QueuedValue);
+        public static InternalVideoStatus Queued { get; } = new InternalVideoStatus(QueuedValue);
 
-        internal static InternalVideoStatus InProgress { get; } = new InternalVideoStatus(InProgressValue);
+        public static InternalVideoStatus InProgress { get; } = new InternalVideoStatus(InProgressValue);
 
-        internal static InternalVideoStatus Completed { get; } = new InternalVideoStatus(CompletedValue);
+        public static InternalVideoStatus Completed { get; } = new InternalVideoStatus(CompletedValue);
 
-        internal static InternalVideoStatus Failed { get; } = new InternalVideoStatus(FailedValue);
+        public static InternalVideoStatus Failed { get; } = new InternalVideoStatus(FailedValue);
 
         public static bool operator ==(InternalVideoStatus left, InternalVideoStatus right) => left.Equals(right);
 

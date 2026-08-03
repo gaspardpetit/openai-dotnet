@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public partial class InternalRealtimeErrorResponseGA
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -22,7 +24,7 @@ namespace OpenAI.Realtime
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalRealtimeErrorGA Error { get; }
+        public InternalRealtimeErrorGA Error { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

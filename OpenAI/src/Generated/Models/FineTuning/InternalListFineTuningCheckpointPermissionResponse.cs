@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public partial class InternalListFineTuningCheckpointPermissionResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -30,7 +32,7 @@ namespace OpenAI.FineTuning
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal IList<InternalFineTuningCheckpointPermission> Data { get; }
+        public IList<InternalFineTuningCheckpointPermission> Data { get; }
 
         public string Object { get; } = "list";
 

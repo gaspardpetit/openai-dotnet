@@ -4,15 +4,21 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVectorStoreComparisonFilter
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
-        internal InternalVectorStoreComparisonFilter(InternalVectorStoreSearchRequestFiltersType kind, string key, BinaryData value)
+        public InternalVectorStoreComparisonFilter(InternalVectorStoreSearchRequestFiltersType kind, string key, BinaryData value)
         {
+            Argument.AssertNotNull(key, nameof(key));
+            Argument.AssertNotNull(value, nameof(value));
+
             Kind = kind;
             Key = key;
             Value = value;
@@ -26,7 +32,7 @@ namespace OpenAI.VectorStores
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalVectorStoreSearchRequestFiltersType Kind { get; }
+        public InternalVectorStoreSearchRequestFiltersType Kind { get; }
 
         public string Key { get; }
 

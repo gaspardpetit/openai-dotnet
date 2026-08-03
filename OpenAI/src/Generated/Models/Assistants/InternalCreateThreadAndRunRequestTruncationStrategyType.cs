@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateThreadAndRunRequestTruncationStrategyType : IEquatable<InternalCreateThreadAndRunRequestTruncationStrategyType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Assistants
 
         public InternalCreateThreadAndRunRequestTruncationStrategyType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateThreadAndRunRequestTruncationStrategyType Auto { get; } = new InternalCreateThreadAndRunRequestTruncationStrategyType(AutoValue);
+        public static InternalCreateThreadAndRunRequestTruncationStrategyType Auto { get; } = new InternalCreateThreadAndRunRequestTruncationStrategyType(AutoValue);
 
-        internal static InternalCreateThreadAndRunRequestTruncationStrategyType LastMessages { get; } = new InternalCreateThreadAndRunRequestTruncationStrategyType(LastMessagesValue);
+        public static InternalCreateThreadAndRunRequestTruncationStrategyType LastMessages { get; } = new InternalCreateThreadAndRunRequestTruncationStrategyType(LastMessagesValue);
 
         public static bool operator ==(InternalCreateThreadAndRunRequestTruncationStrategyType left, InternalCreateThreadAndRunRequestTruncationStrategyType right) => left.Equals(right);
 

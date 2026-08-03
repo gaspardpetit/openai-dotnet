@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerActionScroll : ComputerCallAction
     {
         public InternalComputerActionScroll(int x, int y, int scrollX, int scrollY) : base(ComputerCallActionKind.Scroll)

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Skills
 {
+    [Experimental("OPENAI001")]
     public partial class InternalSetDefaultSkillVersionBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;

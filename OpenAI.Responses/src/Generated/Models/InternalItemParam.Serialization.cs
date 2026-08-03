@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Responses
 {
     [PersistableModelProxy(typeof(InternalUnknownItemParam))]
-    public abstract partial class InternalItemParam : IJsonModel<InternalItemParam>
+    public partial class InternalItemParam : IJsonModel<InternalItemParam>
     {
         internal InternalItemParam()
         {

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateResponseReasoningGenerateSummary : IEquatable<InternalCreateResponseReasoningGenerateSummary>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Responses
 
         public InternalCreateResponseReasoningGenerateSummary(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateResponseReasoningGenerateSummary Auto { get; } = new InternalCreateResponseReasoningGenerateSummary(AutoValue);
+        public static InternalCreateResponseReasoningGenerateSummary Auto { get; } = new InternalCreateResponseReasoningGenerateSummary(AutoValue);
 
-        internal static InternalCreateResponseReasoningGenerateSummary Concise { get; } = new InternalCreateResponseReasoningGenerateSummary(ConciseValue);
+        public static InternalCreateResponseReasoningGenerateSummary Concise { get; } = new InternalCreateResponseReasoningGenerateSummary(ConciseValue);
 
-        internal static InternalCreateResponseReasoningGenerateSummary Detailed { get; } = new InternalCreateResponseReasoningGenerateSummary(DetailedValue);
+        public static InternalCreateResponseReasoningGenerateSummary Detailed { get; } = new InternalCreateResponseReasoningGenerateSummary(DetailedValue);
 
         public static bool operator ==(InternalCreateResponseReasoningGenerateSummary left, InternalCreateResponseReasoningGenerateSummary right) => left.Equals(right);
 

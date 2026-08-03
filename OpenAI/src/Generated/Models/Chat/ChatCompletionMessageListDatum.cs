@@ -58,7 +58,7 @@ namespace OpenAI.Chat
 
         public IReadOnlyList<ChatMessageAnnotation> Annotations { get; }
 
-        internal InternalChatCompletionResponseMessageFunctionCall FunctionCall { get; }
+        public InternalChatCompletionResponseMessageFunctionCall FunctionCall { get; }
 
         public IList<ChatMessageContentPart> ContentParts { get; }
 

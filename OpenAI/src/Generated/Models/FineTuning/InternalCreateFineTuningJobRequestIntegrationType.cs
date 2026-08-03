@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateFineTuningJobRequestIntegrationType : IEquatable<InternalCreateFineTuningJobRequestIntegrationType>
     {
         private readonly string _value;
@@ -14,10 +17,12 @@ namespace OpenAI.FineTuning
 
         public InternalCreateFineTuningJobRequestIntegrationType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateFineTuningJobRequestIntegrationType Wandb { get; } = new InternalCreateFineTuningJobRequestIntegrationType(WandbValue);
+        public static InternalCreateFineTuningJobRequestIntegrationType Wandb { get; } = new InternalCreateFineTuningJobRequestIntegrationType(WandbValue);
 
         public static bool operator ==(InternalCreateFineTuningJobRequestIntegrationType left, InternalCreateFineTuningJobRequestIntegrationType right) => left.Equals(right);
 

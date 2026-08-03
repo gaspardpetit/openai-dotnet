@@ -34,6 +34,6 @@ namespace OpenAI.Responses
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
 
-        internal InternalCreateResponseReasoningGenerateSummary? GenerateSummary { get; set; }
+        public InternalCreateResponseReasoningGenerateSummary? GenerateSummary { get; set; }
     }
 }

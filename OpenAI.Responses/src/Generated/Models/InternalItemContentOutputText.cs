@@ -4,15 +4,20 @@
 
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentOutputText : ResponseContentPart
     {
         public InternalItemContentOutputText(string internalText, IEnumerable<ResponseMessageAnnotation> annotations) : base(InternalItemContentType.OutputText)
         {
+            Argument.AssertNotNull(internalText, nameof(internalText));
+            Argument.AssertNotNull(annotations, nameof(annotations));
+
             InternalText = internalText;
             Annotations = annotations.ToList();
             Logprobs = new ChangeTrackingList<ResponseTokenLogProbabilityDetails>();

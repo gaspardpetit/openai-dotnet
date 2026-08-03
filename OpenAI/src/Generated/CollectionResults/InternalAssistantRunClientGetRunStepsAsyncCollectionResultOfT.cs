@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantRunClientGetRunStepsAsyncCollectionResultOfT : AsyncCollectionResult<RunStep>
+    internal partial class InternalAssistantRunClientGetRunStepsAsyncCollectionResultOfT : AsyncCollectionResult<RunStep>
     {
         private readonly InternalAssistantRunClient _client;
         private readonly string _threadId;
@@ -22,7 +22,7 @@ namespace OpenAI.Assistants
         private readonly IEnumerable<InternalIncludedRunStepProperty> _include;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantRunClientGetRunStepsAsyncCollectionResultOfT(InternalAssistantRunClient client, string threadId, string runId, int? limit, string order, string after, string before, IEnumerable<InternalIncludedRunStepProperty> include, RequestOptions options)
+        public InternalAssistantRunClientGetRunStepsAsyncCollectionResultOfT(InternalAssistantRunClient client, string threadId, string runId, int? limit, string order, string after, string before, IEnumerable<InternalIncludedRunStepProperty> include, RequestOptions options)
         {
             _client = client;
             _threadId = threadId;

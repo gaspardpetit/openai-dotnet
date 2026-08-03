@@ -7,9 +7,11 @@ using System.ClientModel;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using OpenAI;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public partial class InternalAddUploadPartRequest
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -17,24 +19,32 @@ namespace OpenAI.Files
         [Experimental("SCME0004")]
         public InternalAddUploadPartRequest(string dataPath)
         {
+            Argument.AssertNotNullOrEmpty(dataPath, nameof(dataPath));
+
             Data = new FileBinaryContent(dataPath);
         }
 
         [Experimental("SCME0004")]
         public InternalAddUploadPartRequest(Stream data)
         {
+            Argument.AssertNotNull(data, nameof(data));
+
             Data = new FileBinaryContent(data);
         }
 
         [Experimental("SCME0004")]
         public InternalAddUploadPartRequest(BinaryData data)
         {
+            Argument.AssertNotNull(data, nameof(data));
+
             Data = new FileBinaryContent(data);
         }
 
         [Experimental("SCME0004")]
         public InternalAddUploadPartRequest(FileBinaryContent data)
         {
+            Argument.AssertNotNull(data, nameof(data));
+
             Data = data;
         }
 

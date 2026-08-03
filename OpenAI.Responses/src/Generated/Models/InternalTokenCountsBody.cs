@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalTokenCountsBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -41,11 +43,11 @@ namespace OpenAI.Responses
 
         public IList<ResponseTool> Tools { get; }
 
-        internal InternalResponseTextParam Text { get; }
+        public InternalResponseTextParam Text { get; }
 
         public ResponseReasoningOptions Reasoning { get; }
 
-        internal InternalTruncationEnum? Truncation { get; }
+        public InternalTruncationEnum? Truncation { get; }
 
         public string Instructions { get; }
 

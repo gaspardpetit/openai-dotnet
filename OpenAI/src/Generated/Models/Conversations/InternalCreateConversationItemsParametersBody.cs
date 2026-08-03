@@ -13,6 +13,7 @@ using OpenAI.Responses;
 
 namespace OpenAI.Conversations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateConversationItemsParametersBody
     {
         [Experimental("SCME0001")]
