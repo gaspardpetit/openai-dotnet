@@ -13,13 +13,16 @@ using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCompoundFilter
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        internal InternalCompoundFilter(InternalCompoundFilterType kind, IEnumerable<BinaryData> filters)
+        public InternalCompoundFilter(InternalCompoundFilterType kind, IEnumerable<BinaryData> filters)
         {
+            Argument.AssertNotNull(filters, nameof(filters));
+
             Kind = kind;
             Filters = filters.ToList();
         }
@@ -39,7 +42,7 @@ namespace OpenAI.Responses
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
 
-        internal InternalCompoundFilterType Kind { get; set; }
+        public InternalCompoundFilterType Kind { get; set; }
 
         public IList<BinaryData> Filters { get; }
     }

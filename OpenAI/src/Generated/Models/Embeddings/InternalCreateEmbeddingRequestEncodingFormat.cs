@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Embeddings
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateEmbeddingRequestEncodingFormat : IEquatable<InternalCreateEmbeddingRequestEncodingFormat>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Embeddings
 
         public InternalCreateEmbeddingRequestEncodingFormat(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateEmbeddingRequestEncodingFormat Float { get; } = new InternalCreateEmbeddingRequestEncodingFormat(FloatValue);
+        public static InternalCreateEmbeddingRequestEncodingFormat Float { get; } = new InternalCreateEmbeddingRequestEncodingFormat(FloatValue);
 
-        internal static InternalCreateEmbeddingRequestEncodingFormat Base64 { get; } = new InternalCreateEmbeddingRequestEncodingFormat(Base64Value);
+        public static InternalCreateEmbeddingRequestEncodingFormat Base64 { get; } = new InternalCreateEmbeddingRequestEncodingFormat(Base64Value);
 
         public static bool operator ==(InternalCreateEmbeddingRequestEncodingFormat left, InternalCreateEmbeddingRequestEncodingFormat right) => left.Equals(right);
 

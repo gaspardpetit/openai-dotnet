@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalModifyAssistantRequestToolResources
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -22,9 +24,9 @@ namespace OpenAI.Assistants
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalModifyAssistantRequestToolResourcesCodeInterpreter CodeInterpreter { get; set; }
+        public InternalModifyAssistantRequestToolResourcesCodeInterpreter CodeInterpreter { get; set; }
 
-        internal InternalToolResourcesFileSearchIdsOnly FileSearch { get; set; }
+        public InternalToolResourcesFileSearchIdsOnly FileSearch { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

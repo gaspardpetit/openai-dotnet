@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateThreadAndRunRequestToolChoiceType : IEquatable<InternalCreateThreadAndRunRequestToolChoiceType>
     {
         private readonly string _value;
@@ -16,14 +19,16 @@ namespace OpenAI.Assistants
 
         public InternalCreateThreadAndRunRequestToolChoiceType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateThreadAndRunRequestToolChoiceType Function { get; } = new InternalCreateThreadAndRunRequestToolChoiceType(FunctionValue);
+        public static InternalCreateThreadAndRunRequestToolChoiceType Function { get; } = new InternalCreateThreadAndRunRequestToolChoiceType(FunctionValue);
 
-        internal static InternalCreateThreadAndRunRequestToolChoiceType CodeInterpreter { get; } = new InternalCreateThreadAndRunRequestToolChoiceType(CodeInterpreterValue);
+        public static InternalCreateThreadAndRunRequestToolChoiceType CodeInterpreter { get; } = new InternalCreateThreadAndRunRequestToolChoiceType(CodeInterpreterValue);
 
-        internal static InternalCreateThreadAndRunRequestToolChoiceType FileSearch { get; } = new InternalCreateThreadAndRunRequestToolChoiceType(FileSearchValue);
+        public static InternalCreateThreadAndRunRequestToolChoiceType FileSearch { get; } = new InternalCreateThreadAndRunRequestToolChoiceType(FileSearchValue);
 
         public static bool operator ==(InternalCreateThreadAndRunRequestToolChoiceType left, InternalCreateThreadAndRunRequestToolChoiceType right) => left.Equals(right);
 

@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCompactResponseMethodPublicBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -25,7 +27,7 @@ namespace OpenAI.Responses
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalModelIdsCompaction? Model { get; }
+        public InternalModelIdsCompaction? Model { get; }
 
         public BinaryData Input { get; }
 

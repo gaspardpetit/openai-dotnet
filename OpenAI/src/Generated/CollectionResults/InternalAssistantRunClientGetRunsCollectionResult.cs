@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace OpenAI.Assistants
 {
-    public partial class InternalAssistantRunClientGetRunsCollectionResult : CollectionResult
+    internal partial class InternalAssistantRunClientGetRunsCollectionResult : CollectionResult
     {
         private readonly InternalAssistantRunClient _client;
         private readonly string _threadId;
@@ -19,7 +19,7 @@ namespace OpenAI.Assistants
         private readonly string _before;
         private readonly RequestOptions _options;
 
-        internal InternalAssistantRunClientGetRunsCollectionResult(InternalAssistantRunClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
+        public InternalAssistantRunClientGetRunsCollectionResult(InternalAssistantRunClient client, string threadId, int? limit, string order, string after, string before, RequestOptions options)
         {
             _client = client;
             _threadId = threadId;

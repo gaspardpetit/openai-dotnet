@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalMessageContentTextAnnotationType : IEquatable<InternalMessageContentTextAnnotationType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Assistants
 
         public InternalMessageContentTextAnnotationType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalMessageContentTextAnnotationType FileCitation { get; } = new InternalMessageContentTextAnnotationType(FileCitationValue);
+        public static InternalMessageContentTextAnnotationType FileCitation { get; } = new InternalMessageContentTextAnnotationType(FileCitationValue);
 
-        internal static InternalMessageContentTextAnnotationType FilePath { get; } = new InternalMessageContentTextAnnotationType(FilePathValue);
+        public static InternalMessageContentTextAnnotationType FilePath { get; } = new InternalMessageContentTextAnnotationType(FilePathValue);
 
         public static bool operator ==(InternalMessageContentTextAnnotationType left, InternalMessageContentTextAnnotationType right) => left.Equals(right);
 

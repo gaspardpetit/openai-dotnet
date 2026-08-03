@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComputerToolCallOutputItemOutputComputerScreenshot : ComputerCallOutput
     {
         public InternalComputerToolCallOutputItemOutputComputerScreenshot() : this(InternalComputerUsePreviewToolCallOutputOutputType.Screenshot, default, null, null)

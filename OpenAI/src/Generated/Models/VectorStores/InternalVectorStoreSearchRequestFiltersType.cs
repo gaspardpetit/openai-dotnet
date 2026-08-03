@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVectorStoreSearchRequestFiltersType : IEquatable<InternalVectorStoreSearchRequestFiltersType>
     {
         private readonly string _value;
@@ -19,20 +22,22 @@ namespace OpenAI.VectorStores
 
         public InternalVectorStoreSearchRequestFiltersType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalVectorStoreSearchRequestFiltersType Eq { get; } = new InternalVectorStoreSearchRequestFiltersType(EqValue);
+        public static InternalVectorStoreSearchRequestFiltersType Eq { get; } = new InternalVectorStoreSearchRequestFiltersType(EqValue);
 
-        internal static InternalVectorStoreSearchRequestFiltersType Ne { get; } = new InternalVectorStoreSearchRequestFiltersType(NeValue);
+        public static InternalVectorStoreSearchRequestFiltersType Ne { get; } = new InternalVectorStoreSearchRequestFiltersType(NeValue);
 
-        internal static InternalVectorStoreSearchRequestFiltersType Gt { get; } = new InternalVectorStoreSearchRequestFiltersType(GtValue);
+        public static InternalVectorStoreSearchRequestFiltersType Gt { get; } = new InternalVectorStoreSearchRequestFiltersType(GtValue);
 
-        internal static InternalVectorStoreSearchRequestFiltersType Gte { get; } = new InternalVectorStoreSearchRequestFiltersType(GteValue);
+        public static InternalVectorStoreSearchRequestFiltersType Gte { get; } = new InternalVectorStoreSearchRequestFiltersType(GteValue);
 
-        internal static InternalVectorStoreSearchRequestFiltersType Lt { get; } = new InternalVectorStoreSearchRequestFiltersType(LtValue);
+        public static InternalVectorStoreSearchRequestFiltersType Lt { get; } = new InternalVectorStoreSearchRequestFiltersType(LtValue);
 
-        internal static InternalVectorStoreSearchRequestFiltersType Lte { get; } = new InternalVectorStoreSearchRequestFiltersType(LteValue);
+        public static InternalVectorStoreSearchRequestFiltersType Lte { get; } = new InternalVectorStoreSearchRequestFiltersType(LteValue);
 
         public static bool operator ==(InternalVectorStoreSearchRequestFiltersType left, InternalVectorStoreSearchRequestFiltersType right) => left.Equals(right);
 

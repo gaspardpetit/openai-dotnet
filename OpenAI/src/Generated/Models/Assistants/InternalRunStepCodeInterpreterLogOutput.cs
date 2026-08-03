@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalRunStepCodeInterpreterLogOutput : RunStepCodeInterpreterOutput
     {
         internal InternalRunStepCodeInterpreterLogOutput(string internalLogs) : base(InternalRunStepDetailsCodeInterpreterOutputType.Logs)

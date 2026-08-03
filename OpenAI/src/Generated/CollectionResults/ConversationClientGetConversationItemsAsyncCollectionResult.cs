@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Conversations
 {
-    public partial class ConversationClientGetConversationItemsAsyncCollectionResult : AsyncCollectionResult
+    internal partial class ConversationClientGetConversationItemsAsyncCollectionResult : AsyncCollectionResult
     {
         private readonly ConversationClient _client;
         private readonly string _conversationId;

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCompoundFilterType : IEquatable<InternalCompoundFilterType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Responses
 
         public InternalCompoundFilterType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCompoundFilterType AndValue { get; } = new InternalCompoundFilterType(AndValueValue);
+        public static InternalCompoundFilterType AndValue { get; } = new InternalCompoundFilterType(AndValueValue);
 
-        internal static InternalCompoundFilterType OrValue { get; } = new InternalCompoundFilterType(OrValueValue);
+        public static InternalCompoundFilterType OrValue { get; } = new InternalCompoundFilterType(OrValueValue);
 
         public static bool operator ==(InternalCompoundFilterType left, InternalCompoundFilterType right) => left.Equals(right);
 

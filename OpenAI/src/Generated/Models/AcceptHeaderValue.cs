@@ -4,9 +4,11 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct AcceptHeaderValue : IEquatable<AcceptHeaderValue>
     {
         private readonly string _value;
@@ -15,12 +17,14 @@ namespace OpenAI
 
         public AcceptHeaderValue(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static AcceptHeaderValue ApplicationJson { get; } = new AcceptHeaderValue(ApplicationJsonValue);
+        public static AcceptHeaderValue ApplicationJson { get; } = new AcceptHeaderValue(ApplicationJsonValue);
 
-        internal static AcceptHeaderValue TextEventStream { get; } = new AcceptHeaderValue(TextEventStreamValue);
+        public static AcceptHeaderValue TextEventStream { get; } = new AcceptHeaderValue(TextEventStreamValue);
 
         public static bool operator ==(AcceptHeaderValue left, AcceptHeaderValue right) => left.Equals(right);
 

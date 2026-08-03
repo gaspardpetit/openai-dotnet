@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.FineTuning
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFineTuningCheckpointCollectionOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -27,7 +29,7 @@ namespace OpenAI.FineTuning
 
         public int? PageSizeLimit { get; set; }
 
-        internal InternalFineTuningCheckpointCollectionOrder? Order { get; set; }
+        public InternalFineTuningCheckpointCollectionOrder? Order { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

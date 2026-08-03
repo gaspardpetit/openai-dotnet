@@ -4,15 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseFormatJsonSchemaJsonSchema
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalResponseFormatJsonSchemaJsonSchema(string name)
         {
+            Argument.AssertNotNull(name, nameof(name));
+
             Name = name;
         }
 
