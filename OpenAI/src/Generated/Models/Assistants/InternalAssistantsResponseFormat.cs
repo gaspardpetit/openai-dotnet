@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
-    public abstract partial class InternalAssistantsResponseFormat
+    [Experimental("OPENAI001")]
+    public partial class InternalAssistantsResponseFormat
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 

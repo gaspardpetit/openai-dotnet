@@ -90,7 +90,7 @@ namespace OpenAI.Chat
                 if (!Patch.IsRemoved("$.tool_calls"u8))
                 {
                     writer.WritePropertyName("tool_calls"u8);
-                    writer.WriteRawValue(Patch.GetJson("$.tool_calls"u8));
+                    Patch.WriteTo(writer, "$.tool_calls"u8);
                 }
             }
             else if (options.Format != "W" && Optional.IsCollectionDefined(ToolCalls))
@@ -144,9 +144,6 @@ namespace OpenAI.Chat
             }
             StreamingChatOutputAudioUpdate audio = default;
             ChatMessageContent content = default;
-            // <GP> Added reasoning support as used by Ollama and llama.cpp.
-            ChatMessageContent reasoning = default;
-            // </GP>
             StreamingChatFunctionCallUpdate functionCall = default;
             IReadOnlyList<StreamingChatToolCallUpdate> toolCalls = default;
             ChatMessageRole? role = default;
@@ -170,13 +167,6 @@ namespace OpenAI.Chat
                     DeserializeContentValue(prop, ref content, options);
                     continue;
                 }
-                // <GP> Ollama uses reasoning; llama.cpp uses reasoning_content.
-                if (prop.NameEquals("reasoning"u8) || prop.NameEquals("reasoning_content"u8))
-                {
-                    DeserializeContentValue(prop, ref reasoning, options);
-                    continue;
-                }
-                // </GP>
                 if (prop.NameEquals("function_call"u8))
                 {
                     if (prop.Value.ValueKind == JsonValueKind.Null)
@@ -224,9 +214,6 @@ namespace OpenAI.Chat
             return new InternalChatCompletionStreamResponseDelta(
                 audio,
                 content,
-                // <GP> Added reasoning support as used by Ollama and llama.cpp.
-                reasoning,
-                // </GP>
                 functionCall,
                 toolCalls ?? new ChangeTrackingList<StreamingChatToolCallUpdate>(),
                 role,

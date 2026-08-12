@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalItemContentInputAudio : ResponseContentPart
     {
-        internal InternalItemContentInputAudio(string data, InternalItemContentInputAudioFormat format) : base(InternalItemContentType.InputAudio)
+        public InternalItemContentInputAudio(string data, InternalItemContentInputAudioFormat format) : base(InternalItemContentType.InputAudio)
         {
+            Argument.AssertNotNull(data, nameof(data));
+
             Data = data;
             Format = format;
         }
@@ -24,6 +29,6 @@ namespace OpenAI.Responses
 
         public string Data { get; set; }
 
-        internal InternalItemContentInputAudioFormat Format { get; set; }
+        public InternalItemContentInputAudioFormat Format { get; set; }
     }
 }

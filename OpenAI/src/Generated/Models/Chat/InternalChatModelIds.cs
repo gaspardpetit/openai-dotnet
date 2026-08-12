@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalChatModelIds : IEquatable<InternalChatModelIds>
     {
         private readonly string _value;
@@ -68,118 +71,120 @@ namespace OpenAI.Chat
 
         public InternalChatModelIds(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalChatModelIds Gpt41 { get; } = new InternalChatModelIds(Gpt41Value);
+        public static InternalChatModelIds Gpt41 { get; } = new InternalChatModelIds(Gpt41Value);
 
-        internal static InternalChatModelIds Gpt41Mini { get; } = new InternalChatModelIds(Gpt41MiniValue);
+        public static InternalChatModelIds Gpt41Mini { get; } = new InternalChatModelIds(Gpt41MiniValue);
 
-        internal static InternalChatModelIds Gpt41Nano { get; } = new InternalChatModelIds(Gpt41NanoValue);
+        public static InternalChatModelIds Gpt41Nano { get; } = new InternalChatModelIds(Gpt41NanoValue);
 
-        internal static InternalChatModelIds Gpt4120250414 { get; } = new InternalChatModelIds(Gpt4120250414Value);
+        public static InternalChatModelIds Gpt4120250414 { get; } = new InternalChatModelIds(Gpt4120250414Value);
 
-        internal static InternalChatModelIds Gpt41Mini20250414 { get; } = new InternalChatModelIds(Gpt41Mini20250414Value);
+        public static InternalChatModelIds Gpt41Mini20250414 { get; } = new InternalChatModelIds(Gpt41Mini20250414Value);
 
-        internal static InternalChatModelIds Gpt41Nano20250414 { get; } = new InternalChatModelIds(Gpt41Nano20250414Value);
+        public static InternalChatModelIds Gpt41Nano20250414 { get; } = new InternalChatModelIds(Gpt41Nano20250414Value);
 
-        internal static InternalChatModelIds O4Mini { get; } = new InternalChatModelIds(O4MiniValue);
+        public static InternalChatModelIds O4Mini { get; } = new InternalChatModelIds(O4MiniValue);
 
-        internal static InternalChatModelIds O4Mini20250416 { get; } = new InternalChatModelIds(O4Mini20250416Value);
+        public static InternalChatModelIds O4Mini20250416 { get; } = new InternalChatModelIds(O4Mini20250416Value);
 
-        internal static InternalChatModelIds O3 { get; } = new InternalChatModelIds(O3Value);
+        public static InternalChatModelIds O3 { get; } = new InternalChatModelIds(O3Value);
 
-        internal static InternalChatModelIds O320250416 { get; } = new InternalChatModelIds(O320250416Value);
+        public static InternalChatModelIds O320250416 { get; } = new InternalChatModelIds(O320250416Value);
 
-        internal static InternalChatModelIds O3Mini { get; } = new InternalChatModelIds(O3MiniValue);
+        public static InternalChatModelIds O3Mini { get; } = new InternalChatModelIds(O3MiniValue);
 
-        internal static InternalChatModelIds O3Mini20250131 { get; } = new InternalChatModelIds(O3Mini20250131Value);
+        public static InternalChatModelIds O3Mini20250131 { get; } = new InternalChatModelIds(O3Mini20250131Value);
 
-        internal static InternalChatModelIds O1 { get; } = new InternalChatModelIds(O1Value);
+        public static InternalChatModelIds O1 { get; } = new InternalChatModelIds(O1Value);
 
-        internal static InternalChatModelIds O120241217 { get; } = new InternalChatModelIds(O120241217Value);
+        public static InternalChatModelIds O120241217 { get; } = new InternalChatModelIds(O120241217Value);
 
-        internal static InternalChatModelIds O1Preview { get; } = new InternalChatModelIds(O1PreviewValue);
+        public static InternalChatModelIds O1Preview { get; } = new InternalChatModelIds(O1PreviewValue);
 
-        internal static InternalChatModelIds O1Preview20240912 { get; } = new InternalChatModelIds(O1Preview20240912Value);
+        public static InternalChatModelIds O1Preview20240912 { get; } = new InternalChatModelIds(O1Preview20240912Value);
 
-        internal static InternalChatModelIds O1Mini { get; } = new InternalChatModelIds(O1MiniValue);
+        public static InternalChatModelIds O1Mini { get; } = new InternalChatModelIds(O1MiniValue);
 
-        internal static InternalChatModelIds O1Mini20240912 { get; } = new InternalChatModelIds(O1Mini20240912Value);
+        public static InternalChatModelIds O1Mini20240912 { get; } = new InternalChatModelIds(O1Mini20240912Value);
 
-        internal static InternalChatModelIds Gpt4o { get; } = new InternalChatModelIds(Gpt4oValue);
+        public static InternalChatModelIds Gpt4o { get; } = new InternalChatModelIds(Gpt4oValue);
 
-        internal static InternalChatModelIds Gpt4o20241120 { get; } = new InternalChatModelIds(Gpt4o20241120Value);
+        public static InternalChatModelIds Gpt4o20241120 { get; } = new InternalChatModelIds(Gpt4o20241120Value);
 
-        internal static InternalChatModelIds Gpt4o20240806 { get; } = new InternalChatModelIds(Gpt4o20240806Value);
+        public static InternalChatModelIds Gpt4o20240806 { get; } = new InternalChatModelIds(Gpt4o20240806Value);
 
-        internal static InternalChatModelIds Gpt4o20240513 { get; } = new InternalChatModelIds(Gpt4o20240513Value);
+        public static InternalChatModelIds Gpt4o20240513 { get; } = new InternalChatModelIds(Gpt4o20240513Value);
 
-        internal static InternalChatModelIds Gpt4oAudioPreview { get; } = new InternalChatModelIds(Gpt4oAudioPreviewValue);
+        public static InternalChatModelIds Gpt4oAudioPreview { get; } = new InternalChatModelIds(Gpt4oAudioPreviewValue);
 
-        internal static InternalChatModelIds Gpt4oAudioPreview20241001 { get; } = new InternalChatModelIds(Gpt4oAudioPreview20241001Value);
+        public static InternalChatModelIds Gpt4oAudioPreview20241001 { get; } = new InternalChatModelIds(Gpt4oAudioPreview20241001Value);
 
-        internal static InternalChatModelIds Gpt4oAudioPreview20241217 { get; } = new InternalChatModelIds(Gpt4oAudioPreview20241217Value);
+        public static InternalChatModelIds Gpt4oAudioPreview20241217 { get; } = new InternalChatModelIds(Gpt4oAudioPreview20241217Value);
 
-        internal static InternalChatModelIds Gpt4oAudioPreview20250603 { get; } = new InternalChatModelIds(Gpt4oAudioPreview20250603Value);
+        public static InternalChatModelIds Gpt4oAudioPreview20250603 { get; } = new InternalChatModelIds(Gpt4oAudioPreview20250603Value);
 
-        internal static InternalChatModelIds Gpt4oMiniAudioPreview { get; } = new InternalChatModelIds(Gpt4oMiniAudioPreviewValue);
+        public static InternalChatModelIds Gpt4oMiniAudioPreview { get; } = new InternalChatModelIds(Gpt4oMiniAudioPreviewValue);
 
-        internal static InternalChatModelIds Gpt4oMiniAudioPreview20241217 { get; } = new InternalChatModelIds(Gpt4oMiniAudioPreview20241217Value);
+        public static InternalChatModelIds Gpt4oMiniAudioPreview20241217 { get; } = new InternalChatModelIds(Gpt4oMiniAudioPreview20241217Value);
 
-        internal static InternalChatModelIds Gpt4oSearchPreview { get; } = new InternalChatModelIds(Gpt4oSearchPreviewValue);
+        public static InternalChatModelIds Gpt4oSearchPreview { get; } = new InternalChatModelIds(Gpt4oSearchPreviewValue);
 
-        internal static InternalChatModelIds Gpt4oMiniSearchPreview { get; } = new InternalChatModelIds(Gpt4oMiniSearchPreviewValue);
+        public static InternalChatModelIds Gpt4oMiniSearchPreview { get; } = new InternalChatModelIds(Gpt4oMiniSearchPreviewValue);
 
-        internal static InternalChatModelIds Gpt4oSearchPreview20250311 { get; } = new InternalChatModelIds(Gpt4oSearchPreview20250311Value);
+        public static InternalChatModelIds Gpt4oSearchPreview20250311 { get; } = new InternalChatModelIds(Gpt4oSearchPreview20250311Value);
 
-        internal static InternalChatModelIds Gpt4oMiniSearchPreview20250311 { get; } = new InternalChatModelIds(Gpt4oMiniSearchPreview20250311Value);
+        public static InternalChatModelIds Gpt4oMiniSearchPreview20250311 { get; } = new InternalChatModelIds(Gpt4oMiniSearchPreview20250311Value);
 
-        internal static InternalChatModelIds Chatgpt4oLatest { get; } = new InternalChatModelIds(Chatgpt4oLatestValue);
+        public static InternalChatModelIds Chatgpt4oLatest { get; } = new InternalChatModelIds(Chatgpt4oLatestValue);
 
-        internal static InternalChatModelIds CodexMiniLatest { get; } = new InternalChatModelIds(CodexMiniLatestValue);
+        public static InternalChatModelIds CodexMiniLatest { get; } = new InternalChatModelIds(CodexMiniLatestValue);
 
-        internal static InternalChatModelIds Gpt4oMini { get; } = new InternalChatModelIds(Gpt4oMiniValue);
+        public static InternalChatModelIds Gpt4oMini { get; } = new InternalChatModelIds(Gpt4oMiniValue);
 
-        internal static InternalChatModelIds Gpt4oMini20240718 { get; } = new InternalChatModelIds(Gpt4oMini20240718Value);
+        public static InternalChatModelIds Gpt4oMini20240718 { get; } = new InternalChatModelIds(Gpt4oMini20240718Value);
 
-        internal static InternalChatModelIds Gpt4Turbo { get; } = new InternalChatModelIds(Gpt4TurboValue);
+        public static InternalChatModelIds Gpt4Turbo { get; } = new InternalChatModelIds(Gpt4TurboValue);
 
-        internal static InternalChatModelIds Gpt4Turbo20240409 { get; } = new InternalChatModelIds(Gpt4Turbo20240409Value);
+        public static InternalChatModelIds Gpt4Turbo20240409 { get; } = new InternalChatModelIds(Gpt4Turbo20240409Value);
 
-        internal static InternalChatModelIds Gpt40125Preview { get; } = new InternalChatModelIds(Gpt40125PreviewValue);
+        public static InternalChatModelIds Gpt40125Preview { get; } = new InternalChatModelIds(Gpt40125PreviewValue);
 
-        internal static InternalChatModelIds Gpt4TurboPreview { get; } = new InternalChatModelIds(Gpt4TurboPreviewValue);
+        public static InternalChatModelIds Gpt4TurboPreview { get; } = new InternalChatModelIds(Gpt4TurboPreviewValue);
 
-        internal static InternalChatModelIds Gpt41106Preview { get; } = new InternalChatModelIds(Gpt41106PreviewValue);
+        public static InternalChatModelIds Gpt41106Preview { get; } = new InternalChatModelIds(Gpt41106PreviewValue);
 
-        internal static InternalChatModelIds Gpt4VisionPreview { get; } = new InternalChatModelIds(Gpt4VisionPreviewValue);
+        public static InternalChatModelIds Gpt4VisionPreview { get; } = new InternalChatModelIds(Gpt4VisionPreviewValue);
 
-        internal static InternalChatModelIds Gpt4 { get; } = new InternalChatModelIds(Gpt4Value);
+        public static InternalChatModelIds Gpt4 { get; } = new InternalChatModelIds(Gpt4Value);
 
-        internal static InternalChatModelIds Gpt40314 { get; } = new InternalChatModelIds(Gpt40314Value);
+        public static InternalChatModelIds Gpt40314 { get; } = new InternalChatModelIds(Gpt40314Value);
 
-        internal static InternalChatModelIds Gpt40613 { get; } = new InternalChatModelIds(Gpt40613Value);
+        public static InternalChatModelIds Gpt40613 { get; } = new InternalChatModelIds(Gpt40613Value);
 
-        internal static InternalChatModelIds Gpt432k { get; } = new InternalChatModelIds(Gpt432kValue);
+        public static InternalChatModelIds Gpt432k { get; } = new InternalChatModelIds(Gpt432kValue);
 
-        internal static InternalChatModelIds Gpt432k0314 { get; } = new InternalChatModelIds(Gpt432k0314Value);
+        public static InternalChatModelIds Gpt432k0314 { get; } = new InternalChatModelIds(Gpt432k0314Value);
 
-        internal static InternalChatModelIds Gpt432k0613 { get; } = new InternalChatModelIds(Gpt432k0613Value);
+        public static InternalChatModelIds Gpt432k0613 { get; } = new InternalChatModelIds(Gpt432k0613Value);
 
-        internal static InternalChatModelIds Gpt35Turbo { get; } = new InternalChatModelIds(Gpt35TurboValue);
+        public static InternalChatModelIds Gpt35Turbo { get; } = new InternalChatModelIds(Gpt35TurboValue);
 
-        internal static InternalChatModelIds Gpt35Turbo16k { get; } = new InternalChatModelIds(Gpt35Turbo16kValue);
+        public static InternalChatModelIds Gpt35Turbo16k { get; } = new InternalChatModelIds(Gpt35Turbo16kValue);
 
-        internal static InternalChatModelIds Gpt35Turbo0301 { get; } = new InternalChatModelIds(Gpt35Turbo0301Value);
+        public static InternalChatModelIds Gpt35Turbo0301 { get; } = new InternalChatModelIds(Gpt35Turbo0301Value);
 
-        internal static InternalChatModelIds Gpt35Turbo0613 { get; } = new InternalChatModelIds(Gpt35Turbo0613Value);
+        public static InternalChatModelIds Gpt35Turbo0613 { get; } = new InternalChatModelIds(Gpt35Turbo0613Value);
 
-        internal static InternalChatModelIds Gpt35Turbo1106 { get; } = new InternalChatModelIds(Gpt35Turbo1106Value);
+        public static InternalChatModelIds Gpt35Turbo1106 { get; } = new InternalChatModelIds(Gpt35Turbo1106Value);
 
-        internal static InternalChatModelIds Gpt35Turbo0125 { get; } = new InternalChatModelIds(Gpt35Turbo0125Value);
+        public static InternalChatModelIds Gpt35Turbo0125 { get; } = new InternalChatModelIds(Gpt35Turbo0125Value);
 
-        internal static InternalChatModelIds Gpt35Turbo16k0613 { get; } = new InternalChatModelIds(Gpt35Turbo16k0613Value);
+        public static InternalChatModelIds Gpt35Turbo16k0613 { get; } = new InternalChatModelIds(Gpt35Turbo16k0613Value);
 
         public static bool operator ==(InternalChatModelIds left, InternalChatModelIds right) => left.Equals(right);
 

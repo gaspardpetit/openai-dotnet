@@ -7,16 +7,21 @@ using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalComparisonFilter
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        internal InternalComparisonFilter(InternalFileSearchToolFiltersType kind, string key, BinaryData value)
+        public InternalComparisonFilter(InternalFileSearchToolFiltersType kind, string key, BinaryData value)
         {
+            Argument.AssertNotNull(key, nameof(key));
+            Argument.AssertNotNull(value, nameof(value));
+
             Kind = kind;
             Key = key;
             Value = value;
@@ -37,7 +42,7 @@ namespace OpenAI.Responses
         [Experimental("SCME0001")]
         public ref JsonPatch Patch => ref _patch;
 
-        internal InternalFileSearchToolFiltersType Kind { get; set; }
+        public InternalFileSearchToolFiltersType Kind { get; set; }
 
         public string Key { get; set; }
 

@@ -55,16 +55,20 @@ namespace OpenAI.Files
         }
 
         [Experimental("SCME0004")]
-        internal virtual ClientResult<OpenAIFile> UploadFile(InternalFileUploadOptions body, CancellationToken cancellationToken = default)
+        public virtual ClientResult<OpenAIFile> UploadFile(InternalFileUploadOptions body, CancellationToken cancellationToken = default)
         {
+            Argument.AssertNotNull(body, nameof(body));
+
             using MultiPartFormContent content = body.ToMultipartFormContent();
             ClientResult result = UploadFile(content, content.MediaType, cancellationToken.ToRequestOptions());
             return ClientResult.FromValue((OpenAIFile)result, result.GetRawResponse());
         }
 
         [Experimental("SCME0004")]
-        internal virtual async Task<ClientResult<OpenAIFile>> UploadFileAsync(InternalFileUploadOptions body, CancellationToken cancellationToken = default)
+        public virtual async Task<ClientResult<OpenAIFile>> UploadFileAsync(InternalFileUploadOptions body, CancellationToken cancellationToken = default)
         {
+            Argument.AssertNotNull(body, nameof(body));
+
             using MultiPartFormContent content = body.ToMultipartFormContent();
             ClientResult result = await UploadFileAsync(content, content.MediaType, cancellationToken.ToRequestOptions()).ConfigureAwait(false);
             return ClientResult.FromValue((OpenAIFile)result, result.GetRawResponse());

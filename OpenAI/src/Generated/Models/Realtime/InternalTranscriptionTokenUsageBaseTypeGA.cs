@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalTranscriptionTokenUsageBaseTypeGA : IEquatable<InternalTranscriptionTokenUsageBaseTypeGA>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Realtime
 
         public InternalTranscriptionTokenUsageBaseTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalTranscriptionTokenUsageBaseTypeGA Tokens { get; } = new InternalTranscriptionTokenUsageBaseTypeGA(TokensValue);
+        public static InternalTranscriptionTokenUsageBaseTypeGA Tokens { get; } = new InternalTranscriptionTokenUsageBaseTypeGA(TokensValue);
 
-        internal static InternalTranscriptionTokenUsageBaseTypeGA Duration { get; } = new InternalTranscriptionTokenUsageBaseTypeGA(DurationValue);
+        public static InternalTranscriptionTokenUsageBaseTypeGA Duration { get; } = new InternalTranscriptionTokenUsageBaseTypeGA(DurationValue);
 
         public static bool operator ==(InternalTranscriptionTokenUsageBaseTypeGA left, InternalTranscriptionTokenUsageBaseTypeGA right) => left.Equals(right);
 

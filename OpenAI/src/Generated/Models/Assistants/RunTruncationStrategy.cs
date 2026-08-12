@@ -20,7 +20,7 @@ namespace OpenAI.Assistants
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalCreateThreadAndRunRequestTruncationStrategyType Kind { get; set; }
+        public InternalCreateThreadAndRunRequestTruncationStrategyType Kind { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

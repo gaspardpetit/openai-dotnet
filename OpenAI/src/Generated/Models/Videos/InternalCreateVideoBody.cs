@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateVideoBody
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -30,16 +31,16 @@ namespace OpenAI.Videos
         }
 #pragma warning restore SCME0004 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalVideoModel? Model { get; }
+        public InternalVideoModel? Model { get; }
 
         public string Prompt { get; }
 
         [Experimental("SCME0004")]
         public FileBinaryContent InputReference { get; }
 
-        internal InternalVideoSeconds? Seconds { get; }
+        public InternalVideoSeconds? Seconds { get; }
 
-        internal InternalVideoSize? Size { get; }
+        public InternalVideoSize? Size { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

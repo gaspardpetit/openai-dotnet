@@ -6,16 +6,20 @@ using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionNamedToolChoice
     {
         [Experimental("SCME0001")]
         private JsonPatch _patch;
 
-        internal InternalChatCompletionNamedToolChoice(InternalCreateChatCompletionRequestToolChoiceFunction function)
+        public InternalChatCompletionNamedToolChoice(InternalCreateChatCompletionRequestToolChoiceFunction function)
         {
+            Argument.AssertNotNull(function, nameof(function));
+
             Function = function;
         }
 
@@ -36,6 +40,6 @@ namespace OpenAI.Chat
 
         internal string Kind { get; } = "function";
 
-        internal InternalCreateChatCompletionRequestToolChoiceFunction Function { get; }
+        public InternalCreateChatCompletionRequestToolChoiceFunction Function { get; }
     }
 }

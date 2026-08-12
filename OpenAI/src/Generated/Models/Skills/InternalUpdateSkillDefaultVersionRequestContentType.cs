@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Skills
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalUpdateSkillDefaultVersionRequestContentType : IEquatable<InternalUpdateSkillDefaultVersionRequestContentType>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Skills
 
         public InternalUpdateSkillDefaultVersionRequestContentType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalUpdateSkillDefaultVersionRequestContentType ApplicationJson { get; } = new InternalUpdateSkillDefaultVersionRequestContentType(ApplicationJsonValue);
+        public static InternalUpdateSkillDefaultVersionRequestContentType ApplicationJson { get; } = new InternalUpdateSkillDefaultVersionRequestContentType(ApplicationJsonValue);
 
-        internal static InternalUpdateSkillDefaultVersionRequestContentType ApplicationXWwwFormUrlencoded { get; } = new InternalUpdateSkillDefaultVersionRequestContentType(ApplicationXWwwFormUrlencodedValue);
+        public static InternalUpdateSkillDefaultVersionRequestContentType ApplicationXWwwFormUrlencoded { get; } = new InternalUpdateSkillDefaultVersionRequestContentType(ApplicationXWwwFormUrlencodedValue);
 
         public static bool operator ==(InternalUpdateSkillDefaultVersionRequestContentType left, InternalUpdateSkillDefaultVersionRequestContentType right) => left.Equals(right);
 

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Realtime
 {
+    [Experimental("OPENAI002")]
     public readonly partial struct InternalRealtimeSessionCreateRequestGABaseTypeGA : IEquatable<InternalRealtimeSessionCreateRequestGABaseTypeGA>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Realtime
 
         public InternalRealtimeSessionCreateRequestGABaseTypeGA(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalRealtimeSessionCreateRequestGABaseTypeGA Realtime { get; } = new InternalRealtimeSessionCreateRequestGABaseTypeGA(RealtimeValue);
+        public static InternalRealtimeSessionCreateRequestGABaseTypeGA Realtime { get; } = new InternalRealtimeSessionCreateRequestGABaseTypeGA(RealtimeValue);
 
-        internal static InternalRealtimeSessionCreateRequestGABaseTypeGA Transcription { get; } = new InternalRealtimeSessionCreateRequestGABaseTypeGA(TranscriptionValue);
+        public static InternalRealtimeSessionCreateRequestGABaseTypeGA Transcription { get; } = new InternalRealtimeSessionCreateRequestGABaseTypeGA(TranscriptionValue);
 
         public static bool operator ==(InternalRealtimeSessionCreateRequestGABaseTypeGA left, InternalRealtimeSessionCreateRequestGABaseTypeGA right) => left.Equals(right);
 

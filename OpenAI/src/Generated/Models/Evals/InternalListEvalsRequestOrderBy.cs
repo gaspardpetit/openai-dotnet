@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Evals
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalListEvalsRequestOrderBy : IEquatable<InternalListEvalsRequestOrderBy>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Evals
 
         public InternalListEvalsRequestOrderBy(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalListEvalsRequestOrderBy CreatedAt { get; } = new InternalListEvalsRequestOrderBy(CreatedAtValue);
+        public static InternalListEvalsRequestOrderBy CreatedAt { get; } = new InternalListEvalsRequestOrderBy(CreatedAtValue);
 
-        internal static InternalListEvalsRequestOrderBy UpdatedAt { get; } = new InternalListEvalsRequestOrderBy(UpdatedAtValue);
+        public static InternalListEvalsRequestOrderBy UpdatedAt { get; } = new InternalListEvalsRequestOrderBy(UpdatedAtValue);
 
         public static bool operator ==(InternalListEvalsRequestOrderBy left, InternalListEvalsRequestOrderBy right) => left.Equals(right);
 

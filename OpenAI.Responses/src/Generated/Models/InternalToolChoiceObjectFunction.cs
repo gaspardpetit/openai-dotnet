@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class InternalToolChoiceObjectFunction : InternalToolChoiceObject
     {
         public InternalToolChoiceObjectFunction(string name) : base(InternalToolChoiceObjectType.Function)
         {
+            Argument.AssertNotNull(name, nameof(name));
+
             Name = name;
         }
 

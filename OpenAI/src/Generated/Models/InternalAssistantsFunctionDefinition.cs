@@ -4,15 +4,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI
 {
+    [Experimental("OPENAI001")]
     public partial class InternalAssistantsFunctionDefinition
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalAssistantsFunctionDefinition(string name)
         {
+            Argument.AssertNotNull(name, nameof(name));
+
             Name = name;
         }
 

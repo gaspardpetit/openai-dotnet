@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Assistants
 {
+    [Experimental("OPENAI001")]
     public partial class InternalMessageDeltaContentImageUrlObject : InternalMessageDeltaContent
     {
         internal InternalMessageDeltaContentImageUrlObject(int index) : base(InternalMessageContentType.ImageUrl)
@@ -22,6 +24,6 @@ namespace OpenAI.Assistants
 
         public int Index { get; }
 
-        internal InternalMessageDeltaContentImageUrlObjectImageUrl ImageUrl { get; }
+        public InternalMessageDeltaContentImageUrlObjectImageUrl ImageUrl { get; }
     }
 }

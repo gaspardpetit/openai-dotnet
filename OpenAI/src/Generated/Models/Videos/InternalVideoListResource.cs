@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVideoListResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -34,7 +36,7 @@ namespace OpenAI.Videos
 
         internal string Object { get; } = "list";
 
-        internal IList<InternalVideoResource> Data { get; }
+        public IList<InternalVideoResource> Data { get; }
 
         public string FirstId { get; }
 

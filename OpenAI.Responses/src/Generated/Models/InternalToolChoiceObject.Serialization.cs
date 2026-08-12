@@ -10,7 +10,7 @@ using OpenAI;
 namespace OpenAI.Responses
 {
     [PersistableModelProxy(typeof(InternalUnknownToolChoiceObject))]
-    public abstract partial class InternalToolChoiceObject : IJsonModel<InternalToolChoiceObject>
+    public partial class InternalToolChoiceObject : IJsonModel<InternalToolChoiceObject>
     {
         internal InternalToolChoiceObject()
         {
