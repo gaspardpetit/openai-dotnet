@@ -12,7 +12,7 @@ namespace OpenAI.Moderations
 {
     public partial class InternalModerationTextPart : ModerationInputPart, IJsonModel<InternalModerationTextPart>
     {
-        internal InternalModerationTextPart() : this(default, null, null)
+        internal InternalModerationTextPart() : this(ModerationInputPartKind.Text, null, null)
         {
         }
 

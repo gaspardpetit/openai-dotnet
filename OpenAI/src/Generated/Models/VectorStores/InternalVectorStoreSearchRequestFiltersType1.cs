@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.VectorStores
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalVectorStoreSearchRequestFiltersType1 : IEquatable<InternalVectorStoreSearchRequestFiltersType1>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.VectorStores
 
         public InternalVectorStoreSearchRequestFiltersType1(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalVectorStoreSearchRequestFiltersType1 And { get; } = new InternalVectorStoreSearchRequestFiltersType1(AndValue);
+        public static InternalVectorStoreSearchRequestFiltersType1 And { get; } = new InternalVectorStoreSearchRequestFiltersType1(AndValue);
 
-        internal static InternalVectorStoreSearchRequestFiltersType1 Or { get; } = new InternalVectorStoreSearchRequestFiltersType1(OrValue);
+        public static InternalVectorStoreSearchRequestFiltersType1 Or { get; } = new InternalVectorStoreSearchRequestFiltersType1(OrValue);
 
         public static bool operator ==(InternalVectorStoreSearchRequestFiltersType1 left, InternalVectorStoreSearchRequestFiltersType1 right) => left.Equals(right);
 

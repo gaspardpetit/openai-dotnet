@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalFileSearchToolFiltersType : IEquatable<InternalFileSearchToolFiltersType>
     {
         private readonly string _value;
@@ -19,20 +22,22 @@ namespace OpenAI.Responses
 
         public InternalFileSearchToolFiltersType(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalFileSearchToolFiltersType Eq { get; } = new InternalFileSearchToolFiltersType(EqValue);
+        public static InternalFileSearchToolFiltersType Eq { get; } = new InternalFileSearchToolFiltersType(EqValue);
 
-        internal static InternalFileSearchToolFiltersType Ne { get; } = new InternalFileSearchToolFiltersType(NeValue);
+        public static InternalFileSearchToolFiltersType Ne { get; } = new InternalFileSearchToolFiltersType(NeValue);
 
-        internal static InternalFileSearchToolFiltersType Gt { get; } = new InternalFileSearchToolFiltersType(GtValue);
+        public static InternalFileSearchToolFiltersType Gt { get; } = new InternalFileSearchToolFiltersType(GtValue);
 
-        internal static InternalFileSearchToolFiltersType Gte { get; } = new InternalFileSearchToolFiltersType(GteValue);
+        public static InternalFileSearchToolFiltersType Gte { get; } = new InternalFileSearchToolFiltersType(GteValue);
 
-        internal static InternalFileSearchToolFiltersType Lt { get; } = new InternalFileSearchToolFiltersType(LtValue);
+        public static InternalFileSearchToolFiltersType Lt { get; } = new InternalFileSearchToolFiltersType(LtValue);
 
-        internal static InternalFileSearchToolFiltersType Lte { get; } = new InternalFileSearchToolFiltersType(LteValue);
+        public static InternalFileSearchToolFiltersType Lte { get; } = new InternalFileSearchToolFiltersType(LteValue);
 
         public static bool operator ==(InternalFileSearchToolFiltersType left, InternalFileSearchToolFiltersType right) => left.Equals(right);
 

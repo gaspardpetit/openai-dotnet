@@ -3,13 +3,18 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalChatCompletionRequestMessageContentPartImage : ChatMessageContentPart
     {
-        internal InternalChatCompletionRequestMessageContentPartImage(InternalChatCompletionRequestMessageContentPartImageImageUrl imageUrl)
+        public InternalChatCompletionRequestMessageContentPartImage(InternalChatCompletionRequestMessageContentPartImageImageUrl imageUrl)
         {
+            Argument.AssertNotNull(imageUrl, nameof(imageUrl));
+
             ImageUrl = imageUrl;
         }
 
@@ -21,6 +26,6 @@ namespace OpenAI.Chat
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalChatCompletionRequestMessageContentPartImageImageUrl ImageUrl { get; set; }
+        public InternalChatCompletionRequestMessageContentPartImageImageUrl ImageUrl { get; set; }
     }
 }

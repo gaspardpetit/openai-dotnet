@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace OpenAI.Files
 {
+    [Experimental("OPENAI001")]
     public partial class InternalFileUploadOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -20,7 +22,7 @@ namespace OpenAI.Files
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
-        internal InternalFileExpirationAfter? ExpiresAfter { get; set; }
+        public InternalFileExpirationAfter? ExpiresAfter { get; set; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalCreateImageRequestModel : IEquatable<InternalCreateImageRequestModel>
     {
         private readonly string _value;
@@ -18,18 +21,20 @@ namespace OpenAI.Images
 
         public InternalCreateImageRequestModel(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalCreateImageRequestModel GptImage15 { get; } = new InternalCreateImageRequestModel(GptImage15Value);
+        public static InternalCreateImageRequestModel GptImage15 { get; } = new InternalCreateImageRequestModel(GptImage15Value);
 
-        internal static InternalCreateImageRequestModel DallE2 { get; } = new InternalCreateImageRequestModel(DallE2Value);
+        public static InternalCreateImageRequestModel DallE2 { get; } = new InternalCreateImageRequestModel(DallE2Value);
 
-        internal static InternalCreateImageRequestModel DallE3 { get; } = new InternalCreateImageRequestModel(DallE3Value);
+        public static InternalCreateImageRequestModel DallE3 { get; } = new InternalCreateImageRequestModel(DallE3Value);
 
-        internal static InternalCreateImageRequestModel GptImage1 { get; } = new InternalCreateImageRequestModel(GptImage1Value);
+        public static InternalCreateImageRequestModel GptImage1 { get; } = new InternalCreateImageRequestModel(GptImage1Value);
 
-        internal static InternalCreateImageRequestModel GptImage1Mini { get; } = new InternalCreateImageRequestModel(GptImage1MiniValue);
+        public static InternalCreateImageRequestModel GptImage1Mini { get; } = new InternalCreateImageRequestModel(GptImage1MiniValue);
 
         public static bool operator ==(InternalCreateImageRequestModel left, InternalCreateImageRequestModel right) => left.Equals(right);
 

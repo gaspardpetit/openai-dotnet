@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Videos
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVideoResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -47,9 +49,9 @@ namespace OpenAI.Videos
 
         internal string Object { get; } = "video";
 
-        internal InternalVideoModel Model { get; }
+        public InternalVideoModel Model { get; }
 
-        internal InternalVideoStatus Status { get; }
+        public InternalVideoStatus Status { get; }
 
         public int Progress { get; }
 
@@ -59,13 +61,13 @@ namespace OpenAI.Videos
 
         public int? ExpiresAt { get; }
 
-        internal InternalVideoSize Size { get; }
+        public InternalVideoSize Size { get; }
 
-        internal InternalVideoSeconds Seconds { get; }
+        public InternalVideoSeconds Seconds { get; }
 
         public string RemixedFromVideoId { get; }
 
-        internal InternalError2 Error { get; }
+        public InternalError2 Error { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

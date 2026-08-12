@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using OpenAI;
 
 namespace OpenAI.Skills
 {
+    [Experimental("OPENAI001")]
     public readonly partial struct InternalSkillVersionCollectionOrder : IEquatable<InternalSkillVersionCollectionOrder>
     {
         private readonly string _value;
@@ -15,12 +18,14 @@ namespace OpenAI.Skills
 
         public InternalSkillVersionCollectionOrder(string value)
         {
+            Argument.AssertNotNull(value, nameof(value));
+
             _value = value;
         }
 
-        internal static InternalSkillVersionCollectionOrder Ascending { get; } = new InternalSkillVersionCollectionOrder(AscendingValue);
+        public static InternalSkillVersionCollectionOrder Ascending { get; } = new InternalSkillVersionCollectionOrder(AscendingValue);
 
-        internal static InternalSkillVersionCollectionOrder Descending { get; } = new InternalSkillVersionCollectionOrder(DescendingValue);
+        public static InternalSkillVersionCollectionOrder Descending { get; } = new InternalSkillVersionCollectionOrder(DescendingValue);
 
         public static bool operator ==(InternalSkillVersionCollectionOrder left, InternalSkillVersionCollectionOrder right) => left.Equals(right);
 

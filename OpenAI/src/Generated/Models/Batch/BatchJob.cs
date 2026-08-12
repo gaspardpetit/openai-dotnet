@@ -58,13 +58,13 @@ namespace OpenAI.Batch
 
         public string Endpoint { get; }
 
-        internal InternalBatchErrors Errors { get; }
+        public InternalBatchErrors Errors { get; }
 
         public string InputFileId { get; }
 
         public string CompletionWindow { get; }
 
-        internal InternalBatchStatus Status { get; }
+        public InternalBatchStatus Status { get; }
 
         public string OutputFileId { get; }
 
@@ -88,7 +88,7 @@ namespace OpenAI.Batch
 
         public DateTimeOffset? CancelledAt { get; }
 
-        internal InternalBatchRequestCounts RequestCounts { get; }
+        public InternalBatchRequestCounts RequestCounts { get; }
 
         public IDictionary<string, string> Metadata { get; }
 

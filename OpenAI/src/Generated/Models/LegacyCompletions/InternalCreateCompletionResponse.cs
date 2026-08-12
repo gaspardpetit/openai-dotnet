@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.LegacyCompletions
 {
+    [Experimental("OPENAI001")]
     public partial class InternalCreateCompletionResponse
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -36,7 +38,7 @@ namespace OpenAI.LegacyCompletions
 
         public string Id { get; }
 
-        internal IList<InternalCreateCompletionResponseChoice> Choices { get; }
+        public IList<InternalCreateCompletionResponseChoice> Choices { get; }
 
         public DateTimeOffset Created { get; }
 
@@ -46,7 +48,7 @@ namespace OpenAI.LegacyCompletions
 
         public string Object { get; } = "text_completion";
 
-        internal InternalCompletionsCompletionUsage Usage { get; }
+        public InternalCompletionsCompletionUsage Usage { get; }
 
         internal IDictionary<string, BinaryData> SerializedAdditionalRawData
         {

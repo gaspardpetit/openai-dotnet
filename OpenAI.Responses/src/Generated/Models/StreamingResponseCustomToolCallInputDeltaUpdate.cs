@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Responses
 {
+    [Experimental("OPENAI001")]
     public partial class StreamingResponseCustomToolCallInputDeltaUpdate : StreamingResponseUpdate
     {
         internal StreamingResponseCustomToolCallInputDeltaUpdate(int sequenceNumber, int outputIndex, string itemId, string delta) : base(StreamingResponseUpdateKind.ResponseCustomToolCallInputDelta, sequenceNumber)

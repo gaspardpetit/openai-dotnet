@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OpenAI.Batch
 {
-    public partial class BatchClientGetBatchesAsyncCollectionResultOfT : AsyncCollectionResult<BatchJob>
+    internal partial class BatchClientGetBatchesAsyncCollectionResultOfT : AsyncCollectionResult<BatchJob>
     {
         private readonly BatchClient _client;
         private readonly string _after;

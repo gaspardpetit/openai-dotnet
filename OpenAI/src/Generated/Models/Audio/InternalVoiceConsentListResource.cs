@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OpenAI;
 
 namespace OpenAI.Audio
 {
+    [Experimental("OPENAI001")]
     public partial class InternalVoiceConsentListResource
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -34,7 +36,7 @@ namespace OpenAI.Audio
 
         internal string Object { get; } = "list";
 
-        internal IList<InternalVoiceConsentResource> Data { get; }
+        public IList<InternalVoiceConsentResource> Data { get; }
 
         public string FirstId { get; }
 

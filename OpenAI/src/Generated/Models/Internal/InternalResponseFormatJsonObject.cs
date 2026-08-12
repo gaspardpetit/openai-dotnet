@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI.Assistants;
 
 namespace OpenAI.Internal
 {
+    [Experimental("OPENAI001")]
     public partial class InternalResponseFormatJsonObject : InternalAssistantsResponseFormat
     {
         public InternalResponseFormatJsonObject() : this(InternalAssistantsResponseFormatType.JsonObject, null)

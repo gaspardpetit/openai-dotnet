@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace OpenAI.Containers
 {
+    [Experimental("OPENAI001")]
     public partial class InternalContainersError
     {
         [Experimental("SCME0001")]

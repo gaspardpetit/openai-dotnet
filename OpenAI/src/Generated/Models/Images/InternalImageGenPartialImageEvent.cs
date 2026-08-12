@@ -4,9 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Images
 {
+    [Experimental("OPENAI001")]
     public partial class InternalImageGenPartialImageEvent
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -41,13 +43,13 @@ namespace OpenAI.Images
 
         public DateTimeOffset CreatedAt { get; }
 
-        internal InternalCreateImageSize Size { get; }
+        public InternalCreateImageSize Size { get; }
 
-        internal InternalCreateImageQuality Quality { get; }
+        public InternalCreateImageQuality Quality { get; }
 
-        internal InternalCreateImageBackground Background { get; }
+        public InternalCreateImageBackground Background { get; }
 
-        internal InternalCreateImageOutputFormat OutputFormat { get; }
+        public InternalCreateImageOutputFormat OutputFormat { get; }
 
         public int PartialImageIndex { get; }
 

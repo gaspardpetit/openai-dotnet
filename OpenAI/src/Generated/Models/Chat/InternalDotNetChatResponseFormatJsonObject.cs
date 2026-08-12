@@ -3,9 +3,11 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenAI.Chat
 {
+    [Experimental("OPENAI001")]
     public partial class InternalDotNetChatResponseFormatJsonObject : ChatResponseFormat
     {
         public InternalDotNetChatResponseFormatJsonObject() : this(InternalDotNetChatResponseFormatType.JsonObject, default)

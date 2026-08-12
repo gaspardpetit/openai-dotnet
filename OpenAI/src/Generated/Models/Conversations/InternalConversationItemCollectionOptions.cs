@@ -4,16 +4,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using OpenAI;
 
 namespace OpenAI.Conversations
 {
+    [Experimental("OPENAI001")]
     public partial class InternalConversationItemCollectionOptions
     {
         private protected IDictionary<string, BinaryData> _additionalBinaryDataProperties;
 
         public InternalConversationItemCollectionOptions(string conversationId)
         {
+            Argument.AssertNotNull(conversationId, nameof(conversationId));
+
             ConversationId = conversationId;
             Include = new ChangeTrackingList<IncludedConversationItemProperty>();
         }
@@ -33,7 +37,7 @@ namespace OpenAI.Conversations
 
         public int? Limit { get; set; }
 
-        internal InternalConversationItemCollectionOrder? Order { get; set; }
+        public InternalConversationItemCollectionOrder? Order { get; set; }
 
         public string After { get; set; }
 

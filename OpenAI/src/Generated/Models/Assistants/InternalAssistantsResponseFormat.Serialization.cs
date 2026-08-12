@@ -11,7 +11,7 @@ using OpenAI.Internal;
 namespace OpenAI.Assistants
 {
     [PersistableModelProxy(typeof(InternalUnknownAssistantsResponseFormat))]
-    public abstract partial class InternalAssistantsResponseFormat : IJsonModel<InternalAssistantsResponseFormat>
+    public partial class InternalAssistantsResponseFormat : IJsonModel<InternalAssistantsResponseFormat>
     {
         internal InternalAssistantsResponseFormat()
         {
