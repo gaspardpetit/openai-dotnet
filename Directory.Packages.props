@@ -16,7 +16,7 @@
 
   <!-- Build-only Dependencies -->
   <ItemGroup>
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.102" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.111" PrivateAssets="All" />
     <PackageVersion Include="Microsoft.DotNet.GenAPI.Task" Version="10.0.300-preview.0.26072.115" PrivateAssets="All" />
   </ItemGroup>
 
